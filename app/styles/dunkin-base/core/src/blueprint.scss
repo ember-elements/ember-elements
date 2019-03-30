@@ -1,0 +1,16 @@
+/*!
+
+Copyright 2015-present Palantir Technologies, Inc. All rights reserved.
+Licensed under the terms of the LICENSE file distributed with this project.
+
+*/
+
+// Import files in the same order that they are documented in the docs
+@import "common/variables";
+@import "common/colors";
+
+@import "reset";
+@import "typography";
+@import "accessibility";
+
+@import "components/index";

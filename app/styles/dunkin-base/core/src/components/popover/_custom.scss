@@ -1,0 +1,18 @@
+.popper-arrow {
+    float: right;
+    position: relative;
+    margin: -16px 0px 0px -14px;
+    z-index: 21;
+  
+    button {
+      border-radius: 50%;
+      border: 1px solid #293742;
+    }
+  }
+  
+.pop-over-smallcross:hover {
+    cursor: pointer;
+    background: rgba(167, 182, 194, .3);
+  
+  }
+  

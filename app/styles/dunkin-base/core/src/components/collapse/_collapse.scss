@@ -1,0 +1,20 @@
+// Copyright 2016 Palantir Technologies, Inc. All rights reserved.
+// Licensed under the terms of the LICENSE file distributed with this project.
+
+@import "../../common/variables";
+
+$collapse-transition: ($pt-transition-duration * 2) $pt-transition-ease !default;
+
+.#{$ns}-collapse {
+  height: 0;
+  overflow-y: hidden;
+  transition: height $collapse-transition;
+
+  .#{$ns}-collapse-body {
+    transition: transform $collapse-transition;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}

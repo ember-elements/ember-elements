@@ -1,0 +1,16 @@
+{{#each content as |item index|}}
+<li id="{{{TREE_NODE}}}{{{index}}}" class="{{{TREE_NODE}}} {{if item.isExpanded TREE_NODE_EXPANDED ''}}" onmouseout={{action 'onNodeMouseLeaveFun' item}} onmouseover={{action 'onNodeMouseEnterFun' item}}>
+    <div class="{{{TREE_NODE_CONTENT}}} bp3-tree-node-content-0">
+        <span class="{{{TREE_NODE_CARET}}} {{if item.isExpanded TREE_NODE_CARET_OPEN TREE_NODE_CARET_CLOSED}}"
+            onclick={{action 'onNodeCollapseFun' item }}><Icon @icon='chevron-right' /></span>
+        <span icon="folder-close" class={{ICON}} ondblclick={{action 'onNodeDoubleClickFun' item2}}
+            onclick={{action 'onNodeClickFun' item index}}>
+            {{#if item.icon}}
+            <Icon @icon={{item.icon}}/>
+            {{/if}}
+        </span>
+        <span class={{TREE_NODE_LABEL}} ondblclick={{action 'onNodeDoubleClickFun' item}} onclick={{action 'onNodeClickFun' item index}}>{{item.label}}</span></div>
+    {{db-tree/db-child-node item=item iteration=0 onNodeCollapse=onNodeCollapse onNodeClick=onNodeClick
+    onNodeDoubleClick=onNodeDoubleClick onNodeExpand=onNodeExpand onNodeMouseEnter=onNodeMouseEnter onNodeMouseLeave=onNodeMouseLeave}}
+</li>
+{{/each}}

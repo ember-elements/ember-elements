@@ -1,0 +1,44 @@
+<Input @type='text' @onClick={{action 'togglePopover'}} @placeholder={{dateFormat}} @data={{moment-format date dateFormat}}/>
+{{#if open}} 
+{{#ember-popper class="popper" popperTarget=_popperTarget}}
+<div class={{TRANSITION_CONTAINER}}>
+    <div class={{POPOVER}} style="transform-origin: 141px bottom 0px; min-width:210px">
+        <div class={{POPOVER_CONTENT}}>
+            <div>
+                {{#power-calendar
+                    center=center
+                    selected=selected
+                    onSelect=(action (mut selected) value="date")
+                    onCenterChange=(action (mut center) value="date") as |calendar|}}
+                    {{#calendar.nav}}
+                        <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'MMMM') as |currentMonth|}}
+                            {{currentMonth}}
+                            <select onchange={{action "changeCenter" "month" calendar}}>
+                            {{#each months as |month|}}
+                                <option value="{{month}}" selected={{eq month currentMonth}}>{{month}}</option>
+                            {{/each}}
+                            </select>
+                        {{/with}}
+                        </span>
+                        <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'YYYY') as |currentYear|}}
+                            {{currentYear}}
+                            <select onchange={{action "changeCenter" "year" calendar}}>
+                            {{#each years as |year|}}
+                                <option value="{{year}}" selected={{eq year currentYear}}>{{year}}</option>
+                            {{/each}}
+                            </select>
+                        {{/with}}
+                        </span>
+                    {{/calendar.nav}}
+                    <div class={{DIVIDER}}></div>
+                    {{calendar.days click=(action 'onselect')}}
+                {{/power-calendar}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/ember-popper}} 
+{{/if}} 
+{{yield}}

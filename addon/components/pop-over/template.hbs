@@ -1,0 +1,21 @@
+<Button @text={{btnTitle}} @minimal={{minimal}} @active={{active}} @onClick={{action 'togglePopover'}} @icon={{icon}} @rightIcon={{rightIcon}}/>
+{{#if open}} 
+  <EmberPopper @class="popper" @popperTarget={{_popperTarget}} @placement={{placement}}>
+     <div class="popper-arrow pop-over-smallcross" style="margin-top: 0px;margin-left: -23px;">
+       <svg class={{ICON}} data-icon="small-cross" width="16" height="16" viewBox="0 0 16 16" style="" {{action 'close'}}>
+            <desc>small-cross</desc>
+            <path d="M9.41 8l2.29-2.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 4.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z" fill-rule="evenodd">
+            </path>
+       </svg>
+     </div>
+     <div class={{TRANSITION_CONTAINER}}>
+        <div class="{{{POPOVER}}} {{{POPOVER_CONTENT_SIZING}}}">
+            <div class={{POPOVER_CONTENT}}>
+               <div>
+                  {{yield}}
+               </div> 
+           </div>
+       </div>
+     </div>
+  </EmberPopper>
+  {{/if}}

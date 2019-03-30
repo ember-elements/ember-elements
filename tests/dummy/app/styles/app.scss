@@ -1,0 +1,29 @@
+@import 'ember-cli-addon-docs.scss';
+@import 'app/styles/ember-elements-styles';
+@import "docs-app.scss";
+.bp3-popover {
+  background-color: #fff;
+  z-index: 10;
+}
+
+.bp3-select-popover ul .bp3-active {
+  background: #137cbd !important;
+}
+
+.popper{
+  z-index: 10;
+}
+.bp3-collapse-expanded {
+  height: auto;
+  overflow-y: visible;
+  transition: none 0s ease 0s;
+}
+
+.bp3-tree.bp3-elevation-0 {
+  width: 350px;
+}
+
+.docs-z-40{
+  z-index: 15 !important;
+}
+

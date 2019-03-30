@@ -1,0 +1,62 @@
+.docs--mb-4 {
+  margin-bottom: 0px !important;
+}
+
+.btn-bottom-padding {
+  padding-bottom: 25px;
+  padding-right: 20px;
+}
+
+.webkit-box-div {
+  display: -webkit-box;
+}
+
+.bp3-dialog-footer {
+  float: right;
+}
+
+.bp3-tag-input.bp3-popover-open {
+  -webkit-box-shadow: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, .3), inset 0 1px 1px rgba(16, 22, 26, .2) !important;
+  box-shadow: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, .3), inset 0 1px 1px rgba(16, 22, 26, .2) !important;
+}
+
+.docs-panel-stack-example {
+  -webkit-box-shadow: 0 0 0 1px rgba(16, 22, 26, .15), 0 0 0 rgba(16, 22, 26, 0), 0 0 0 rgba(16, 22, 26, 0);
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, .15), 0 0 0 rgba(16, 22, 26, 0), 0 0 0 rgba(16, 22, 26, 0);
+  width: 300px;
+  height: 240px;
+}
+
+.docs-panel-stack-contents-example {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 72px;
+}
+
+.docs-viewer {
+  .AddonDocs-DocsViewer-Nav {
+    background-color: #fff !important;
+  }
+
+  main {
+    margin-top: 0px !important;
+    background: #f5f8fa !important;
+  }
+  .docs-rounded > div{
+    padding: 0px !important;
+  }
+}
+.docs-md ul {
+ margin-bottom: 0px !important;
+}

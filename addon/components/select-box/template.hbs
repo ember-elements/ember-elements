@@ -1,0 +1,42 @@
+{{#if (eq type 'link')}}
+    <a {{action 'togglePopover'}}>{{placeholder}}</a>
+    {{else if (eq type 'button')}}
+    <Button @text={{selected}} @minimal={{minimal}} @active={{active}} @onClick={{action 'togglePopover'}} @icon={{icon}} @style='width:100%'/>
+    {{else}}
+    <Input @onClick={{action 'togglePopover'}} @placeholder={{placeholder}} @data={{selected}} @onkeyDown={{action "handleKeydown"}} @onkeyUp={{action 'onSearchElement'  }}/>
+{{/if}}
+
+{{#if open}} <EmberPopper @class="popper" @popperTarget={{_popperTarget}}>
+<div class="popper-arrow pop-over-smallcross" style="margin-top: 0px;margin-left: -23px;background: white;width: 22px;">
+    <svg class={{ICON}} data-icon="small-cross" width="16" height="16" viewBox="0 0 16 16" style="" {{action 'onClosePopover'}}>
+       <desc>small-cross</desc>
+       <path d="M9.41 8l2.29-2.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 4.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z" fill-rule="evenodd">
+       </path>
+    </svg>
+</div>
+<div class={{TRANSITION_CONTAINER}}>
+        <span>
+              
+        </span>
+    <div class="{{{POPOVER}}} bp3-select-popover" style="transform-origin: 141px bottom 0px;">
+    
+        <div class={{POPOVER_CONTENT}}>
+            <div>
+                <ul class={{MENU}}>
+                    {{#each filteredList as |item index|}}
+                    <li class="">
+                        <a label="1994" class="{{{MENU_ITEM}}} {{{POPOVER_DISMISS}}}" {{action 'onMouseSelect' item index}}>
+                            <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">{{item}}</div>
+                        </a>
+                    </li>
+                    {{/each}}
+                    {{#if (eq filteredList.length 0)}}
+                        <li>no result!</li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</EmberPopper>
+{{/if}} {{yield}}

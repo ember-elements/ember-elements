@@ -1,0 +1,16 @@
+{{#if icon}} <Icon @icon={{icon}} @iconSize={{IconSize}} @onclick={{action "lefticonClick"}}/> {{/if}}
+{{input value=data readonly=readonly autofocus=autofocus placeholder=placeholder size=size tabindex=tabindex
+maxlength=maxlength name=name min=min max=max pattern=pattern  autocomplete=autocomplete type=type class="bp3-input" disabled=disabled  }}
+{{#if rightIcon}}
+<span class={{INPUT_ACTION}}>
+    <span class={{POPOVER_WRAPPER}}>
+        <span class={{POPOVER_TARGET}}>
+            <button type="button" class="{{{BUTTON}}} {{{MINIMAL}}}" tabindex="0" disabled={{disabled}} {{action 'righticonClick'}}>
+                <Icon @icon={{rightIcon}} @iconSize={{IconSize }}/>
+            </button>
+        </span>
+    </span>
+</span>
+{{/if}} 
+{{yield}}
+

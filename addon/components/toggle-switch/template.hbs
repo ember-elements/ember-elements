@@ -1,0 +1,7 @@
+<div class="flex-none flex items-center">
+    <div class="order flex items-center flex-none darken1 rounded focusable radioSet" tabindex="0" style="padding: 3px; width: 160px;cursor:pointer">
+        {{toggle-switch/item active=data title='A → Z' click=(action 'toggle' true)}}
+        {{toggle-switch/item active=(not data) title='Z → A' click=(action 'toggle' false)}}
+    </div>
+</div>
+{{yield}}

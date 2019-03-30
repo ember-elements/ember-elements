@@ -1,0 +1,14 @@
+{{#if isOpenDialog}}
+<DomOuterRender @destinationElementId="destination">
+<div class="{{{OVERLAY}}} {{{OVERLAY_OPEN}}} {{{OVERLAY_SCROLL_CONTAINER}}}">
+   <div class={{OVERLAY_BACKDROP}} tabindex="0" {{action "outerClickCloseDialog"}}></div>
+   <div class="{{{DIALOG_CONTAINER}}} {{{OVERLAY_CONTENT}}}" tabindex="0">
+      <div id={{dbId}} class={{DIALOG}} tabindex="0">
+         <div style="padding: 12px;">
+            {{yield}}
+         </div>
+      </div>
+   </div>
+</div>
+</DomOuterRender>
+{{/if}}

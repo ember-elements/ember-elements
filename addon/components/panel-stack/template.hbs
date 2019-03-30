@@ -1,0 +1,25 @@
+
+
+<div class="bp3-panel-stack ">
+    <div class="bp3-panel-stack-view">
+        <div class="bp3-panel-stack-header">
+            {{#if isPushPanel}}
+            <span></span>
+            <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{HEADING}}}">{{title}}</div><span></span>
+            {{else if isPopPanel}}
+              <span>
+                <button type="button" {{action 'closeCurrentPanel'}} class="{{{BUTTON}}} {{{MINIMAL}}} {{{SMALL}}} {{{PANEL_STACK_HEADER_BACK}}}">
+                    <Icon @icon='chevron-left' />
+                    <span class={{BUTTON_TEXT}}>{{prevTitle}}</span>
+                </button>
+            </span>
+            <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{HEADING}}}">{{title}}</div><span></span>
+            {{/if}}
+        </div>
+        <span style="border: 1px solid lightgray"></span>
+        <div id="panel-stack-contents{{{contentId}}}">
+            {{yield}}
+        </div>
+    </div>
+</div>
+

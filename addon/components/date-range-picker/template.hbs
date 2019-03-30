@@ -1,0 +1,114 @@
+<Input @type='text' @onClick={{action 'togglePopover'}} @placeholder={{dateFormat}} @data={{date   }}/>
+{{#if open}} 
+<EmberPopper @class="popper" @popperTarget={{_popperTarget}}>
+<div class={{TRANSITION_CONTAINER}}>
+    <div class={{POPOVER}} style="transform-origin: 141px bottom 0px;">
+        <div class={{POPOVER_CONTENT}}>
+            <div>
+                <div class="ember-power-calendar calendar-option" style="background-color:#ccc">
+                    <ul class={{MENU}}>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-314="314" {{action 'past' '1week'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">past week</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-316="316" {{action 'past' '1month'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}}  {{{FILL}}}">past month</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-318="318" {{action 'past' '3months'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">past 3 months</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-320="320" {{action 'past' '6months'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">past 6 months</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-320="320" {{action 'past' '1year'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">past year</div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a label="1994" class="{{{MENUITEM}}} {{{POPOVERDISMISS}}}" data-ember-action=""
+                                data-ember-action-320="320" {{action 'past' '2years'}}>
+                                <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">past 2 years</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <span>
+                    {{#power-calendar-range class="demo-range-calendar-with-pretty-range-ends-yo bp3-date-range-picker
+                    calendar"
+                    center=range1
+                    selected=range
+                    onCenterChange=(action (mut range1) value="date")
+                    onSelect=(action (mut range) value="date") as |calendar|}}
+                    {{#calendar.nav}}
+                    <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'MMMM') as |currentMonth|}}
+                        {{currentMonth}}
+                        <select onchange={{action "changeCenter" "month" calendar}}>
+                            {{#each months as |month|}}
+                            <option value="{{month}}" selected={{eq month currentMonth}}>{{month}}</option>
+                            {{/each}}
+                        </select>
+                        {{/with}}
+                    </span>
+                    <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'YYYY') as |currentYear|}}
+                        {{currentYear}}
+                        <select onchange={{action "changeCenter" "year" calendar}}>
+                            {{#each years as |year|}}
+                            <option value="{{year}}" selected={{eq year currentYear}}>{{year}}</option>
+                            {{/each}}
+                        </select>
+                        {{/with}}
+                    </span>
+                    {{/calendar.nav}}
+                    <div class={{DIVIDER}}></div>
+                    {{calendar.days click=(action 'onselect')}}
+                    {{/power-calendar-range}}
+                    {{#power-calendar-range class="demo-range-calendar-with-pretty-range-ends-yo
+                    bp3-date-range-picker calendar" center=range2 selected=range onCenterChange=(action (mut range2)
+                    value="date") onSelect=(action
+                    (mut range) value="date") as |calendar|}}
+                    {{#calendar.nav}}
+                    <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'MMMM') as |currentMonth|}}
+                        {{currentMonth}}
+                        <select onchange={{action "changeCenter" "month" calendar}}>
+                            {{#each months as |month|}}
+                            <option value="{{month}}" selected={{eq month currentMonth}}>{{month}}</option>
+                            {{/each}}
+                        </select>
+                        {{/with}}
+                    </span>
+                    <span class="with-invisible-select">
+                        {{#with (moment-format calendar.center 'YYYY') as |currentYear|}}
+                        {{currentYear}}
+                        <select onchange={{action "changeCenter" "year" calendar}}>
+                            {{#each years as |year|}}
+                            <option value="{{year}}" selected={{eq year currentYear}}>{{year}}</option>
+                            {{/each}}
+                        </select>
+                        {{/with}}
+                    </span>
+                    {{/calendar.nav}}
+                    <div class={{DIVIDER}}></div>
+                    {{calendar.days click=(action 'onselect')}}
+                    {{/power-calendar-range}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</EmberPopper> {{/if}} {{yield}}

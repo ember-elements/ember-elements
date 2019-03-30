@@ -1,0 +1,1 @@
+export { default } from 'ember-elements/components/db-tree/db-child-node/component';

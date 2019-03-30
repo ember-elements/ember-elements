@@ -1,0 +1,92 @@
+<ResizeSensor @onResize={{action 'resize'}} @observeParents={{observeParents}}>
+    <ul class={{OVERFLOW_LIST}}>
+        {{#if (eq CollapseFrom START)}}
+        {{#if (gt overflow.length 0)}}
+        <li {{action "breadcrumbsPopOPen"}}>
+            <span class={{BREADCRUMBS_COLLAPSED}}>
+                {{#if isOpen}}
+                {{#ember-popper-targeting-parent  class='overflow-list-popper left'  placement='bottom' }}
+                <div class={{POPOVER_ARROW}} style="left: 1px; top: -11px;">
+                    <svg viewBox="0 0 30 30" style="transform: rotate(90deg);">
+                        <path class="bp3-popover-arrow-border"
+                            d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z">
+                        </path>
+                        <path class="bp3-popover-arrow-fill"
+                            d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z">
+                        </path>
+                    </svg>
+                </div>
+                <ul class={{MENU}}>
+                    {{#each orderedItems as |item|}}
+                    <li class="">
+                        <a href={{item.href}} tabindex={{if item.href '' '-1'}}
+                            class="{{{MENU_ITEM}}} {{{if item.href POPOVER_DISMISS DISABLED}}} ">
+                            <Icon @icon={{item.icon}}/>
+                            <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">{{item.text}}</div>
+                        </a>
+                    </li>
+                    {{/each}}
+
+                </ul>
+                {{/ember-popper-targeting-parent}}
+                {{/if}}
+            </span>
+
+        </li>
+
+        {{/if}}
+        {{/if}}
+        {{#each breadcrumb as |item|}}
+        <li key={{item.index}} class={{className}}>
+            {{#if item.renderBreadcrumb.href}}
+            <a class={{item.renderBreadcrumb.className}} href={{item.renderBreadcrumb.href}}
+                onclick={{action "breadcrumbOnClick" item.renderBreadcrumb.disabled }}
+                tabIndex={{item.renderBreadcrumb.tabIndex}} target={{item.renderBreadcrumb.target}}>
+                {{item.renderBreadcrumb.text}}
+            </a>
+            {{else}}
+            <span class={{item.renderBreadcrumb.className}}
+                onclick={{action "breadcrumbOnClick" item.renderBreadcrumb.disabled }}>
+                {{item.renderBreadcrumb.text}}
+            </span>
+            {{/if}}
+        </li>
+        {{/each}}
+
+        {{#if (eq CollapseFrom END)}}
+        {{#if (gt overflow.length 0)}}
+        <li {{action "breadcrumbsPopOPen"}}>
+            <span class={{BREADCRUMBS_COLLAPSED}}> </span>
+            {{#if isOpen}}
+            {{#ember-popper-targeting-parent  class='overflow-list-popper right'  placement='bottom' }}
+            <div class="bp3-popover-arrow" style="left: 149px; top: -11px;">
+                <svg viewBox="0 0 30 30" style="transform: rotate(90deg);">
+                    <path class="bp3-popover-arrow-border"
+                        d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z">
+                    </path>
+                    <path class="bp3-popover-arrow-fill"
+                        d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z">
+                    </path>
+                </svg>
+            </div>
+            <ul class={{MENU}}>
+                {{#each orderedItems as |item|}}
+                <li class="">
+                    <a href={{item.href}} tabindex={{if item.href '' '-1'}}
+                        class="{{{MENU_ITEM}}} {{{if item.href POPOVER_DISMISS  DISABLED}}} ">
+                        <Icon @icon={{item.icon}}/>
+                        <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">{{item.text}}</div>
+                    </a>
+                </li>
+                {{/each}}
+
+            </ul>
+            {{/ember-popper-targeting-parent}}
+            {{/if}}
+        </li>
+        {{/if}}
+        {{/if}}
+        <div class={{OVERFLOW_LIST_SPACER}} />
+    </ul>
+</ResizeSensor>
+{{yield}}
