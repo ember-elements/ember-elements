@@ -5,65 +5,99 @@
 
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
 
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="ButtonsExample">
         <div class="docs-example">
-            <div class='webkit-box-div'>
-                <div class='btn-bottom-padding'>
-                    <Button @minimal={{true}} @type='button' @text='Minimal button' @onClick={{action 'onClickButton'}}>
-                    </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @active=true @type='button' @text='Active Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @disabled=true @type='button' @text='Disabled Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @primary=true @type='button' @text='Primary Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @success=true @type='button' @text='Success Button'> </Button>
-                </div>
-            </div>
-            <div class='webkit-box-div'>
-                <div class='btn-bottom-padding'>
-                    <Button @warning=true @type='button' @text='Warning Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @danger=true @type='button' @text='Danger Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @small=true @type='button' @text='Small Button'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @icon='floppy-disk' @iconLeft=true @type='button' @text='Icon Left'> </Button>
-                </div>
-                <div class='btn-bottom-padding'>
-                    <Button @rightIcon='floppy-disk' @iconSize=18 @type='button' @text='Icon Right'> </Button>
-                </div>
-            </div>
-            <div class='webkit-box-div'>
-                 <div class='btn-bottom-padding'>
-                    <Button @large=true @type='button' @text='Large button'> </Button>
-                </div>
-                 <div class='btn-bottom-padding'>
-                    <Button @icon='floppy-disk' @type='button' @minimal=true> </Button>
-                </div>
-               
-            </div>
-            <Button @fill=true @type='button' @text='fill button'> </Button>
+            {{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
+            <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} @primary={{primary}}
+                @success={{success}} @warning={{warning}} @danger={{danger}} @small={{small}} @large={{large}}
+                @icon={{icon}} @rightIcon={{rightIcon}} @fill={{fill}} @type='button' @text={{text}}
+                @onClick={{action 'onClickButton'}}>
+            </Button>
+            {{! END-SNIPPET }}
+        </div>
+        <div class="docs-example-options">
+            <h5 class="bp3-heading">args</h5>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'minimal'}}>
+                <span class="bp3-control-indicator"></span>
+                Minimal
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'active'}}>
+                <span class="bp3-control-indicator"></span>
+                Active
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'disabled'}}>
+                <span class="bp3-control-indicator"></span>
+                Disabled
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'primary'}}>
+                <span class="bp3-control-indicator"></span>
+                Primary
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'success'}}>
+                <span class="bp3-control-indicator"></span>
+                Success
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'warning'}}>
+                <span class="bp3-control-indicator"></span>
+                Warning
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'danger'}}>
+                <span class="bp3-control-indicator"></span>
+                Danger
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'small'}}>
+                <span class="bp3-control-indicator"></span>
+                Small
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'large'}}>
+                <span class="bp3-control-indicator"></span>
+                Large
+            </label>
+            <label class="bp3-control bp3-switch" {{action 'doFuction' 'icon'}}>
+                {{#if rightIcon}}
+                <input type="checkbox" value="on">
+                {{else}}
+                {{#if icon}}
+                <input type="checkbox" checked value="on">
+                {{else}}
+                <input type="checkbox" value="on">
+                {{/if}}
+                {{/if}}
+                <span class="bp3-control-indicator"></span>
+                Icon (left-icon)
+            </label>
+            <label class="bp3-control bp3-switch" {{action 'doFuction' 'rightIcon'}}>
+                {{#if rightIcon}}
+                <input type="checkbox" checked>
+                {{else}}
+                <input type="checkbox">
+                {{/if}}
+                <span class="bp3-control-indicator"></span>
+                rightIcon
+            </label>
+            <label class="bp3-control bp3-switch">
+                <input type="checkbox" onclick={{action 'doFuction' 'fill'}}>
+                <span class="bp3-control-indicator"></span>
+                Fill
+            </label>
         </div>
     </div>
 </div>
-{{! END-SNIPPET }}
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-button.hbs'}}
 {{demo.snippet label='component.ts' name='docs-example-basic-button.js'}}
 {{/docs-demo}}
-
 
 ### List of Arguments
 
@@ -341,7 +375,8 @@
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
-                                <p>HTML <code>type</code> attribute of button. Common values are <code>"clear"</code>
+                                <p>HTML <code>type</code> attribute of button. Common values are
+                                    <code>"clear"</code>
                                     <code>"button"</code>
                                     and <code>"submit"</code>.
                                 </p>
