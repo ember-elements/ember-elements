@@ -60,3 +60,12 @@
 .docs-md ul {
  margin-bottom: 0px !important;
 }
+
+.docs-bg-brand, body {
+  background-color: #191970 !important;
+  background-color: var(--brand-primary, #191970) !important;
+}
+.docs-text-brand {
+  color: #191970 !important;
+  color: var(--brand-primary, #191970) !important;
+}
