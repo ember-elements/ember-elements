@@ -5,62 +5,31 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
 
 <div class="demo-container">
   <div class="docs-example-frame docs-example-frame-row">
     <div class="docs-example">
-      <div class='webkit-box-div'>
-        <div class='btn-bottom-padding'>
-          <p><code class="bp3-code">Simple button group</code></p>
-          <ButtonGroup>
-            <Button @icon='database' @type='button' @text='Queries'> </Button>
-            <Button @icon='function' @type='button' @text='Functions'> </Button>
-            <Button @icon='cog' @type='button' @text='Settings'> </Button>
-          </ButtonGroup>
-        </div>
-        <div class='btn-bottom-padding'>
-          <p><code class="bp3-code">Minimal button group</code></p>
-          <ButtonGroup @minimal=true>
-            <Button @icon='database' @type='button' @text='Queries'> </Button>
-            <Button @icon='function' @type='button' @text='Functions'> </Button>
-            <Button @icon='cog' @type='button' @text='Settings'> </Button>
-          </ButtonGroup>
-        </div>
-      </div>
-      <div class='webkit-box-div'>
-        <div class='btn-bottom-padding'>
-          <p><code class="bp3-code">Large button group</code></p>
-          <ButtonGroup @large=true>
-            <Button @icon='database' @type='button' @text='Queries'> </Button>
-            <Button @icon='function' @type='button' @text='Functions'> </Button>
-            <Button @rightIcon='cog' @type='button' @text='Settings'> </Button>
-          </ButtonGroup>
-        </div>
-      </div>
-      <div class='webkit-box-div'>
-        <div class='btn-bottom-padding'>
-          <p><code class="bp3-code">Vertical button group</code></p>
-          <ButtonGroup @vertical=true>
-            <Button @icon='database' @type='button' @text='Queries'> </Button>
-            <Button @icon='function' @type='button' @text='Functions'> </Button>
-            <Button @icon='cog' @type='button' @text='Settings'> </Button>
-          </ButtonGroup>
-        </div>
-      </div>
-      <p><code class="bp3-code">Fill button group</code></p>
-      <ButtonGroup @fill=true>
+      {{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
+      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} @fill={{fill}}>
         <Button @icon='database' @type='button' @text='Queries'> </Button>
         <Button @icon='function' @type='button' @text='Functions'> </Button>
         <Button @icon='cog' @type='button' @text='Settings'> </Button>
       </ButtonGroup>
-
+      {{! END-SNIPPET }}
+    </div>
+    <div class="docs-example-options">
+      <h5 class="bp3-heading">Props</h5>
+      <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" "fill"}}><span
+          class="bp3-control-indicator"></span>Fill</label>
+      <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" 'large'}}><span
+          class="bp3-control-indicator"></span>Large</label>
+      <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" 'minimal'}}><span
+          class="bp3-control-indicator"></span>Minimal</label>
+      <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" 'vertical'}}><span
+          class="bp3-control-indicator"></span>Vertical</label>
     </div>
   </div>
 </div>
-
-{{! END-SNIPPET }}
-
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-button-group.hbs'}}
 {{/docs-demo}}
