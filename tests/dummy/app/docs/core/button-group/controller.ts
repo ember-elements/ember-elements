@@ -6,7 +6,10 @@ export default class DocsCoreButtonGroup extends Controller {
   large: boolean = false;
   vertical: boolean = false;
   minimal: boolean = false;
-
+  alignText: string = '';
+  leftActive: boolean = false;
+  centerActive: boolean = false;
+  rightActive: boolean = false;
   @action
   onChangeProps(type: string) {
     if (type == 'fill')
@@ -17,7 +20,27 @@ export default class DocsCoreButtonGroup extends Controller {
       this.set('vertical', !this.vertical);
     else if (type == 'minimal')
       this.set('minimal', !this.minimal);
-
+  }
+  @action
+  onTextAlign(type: string) {
+    if (type == 'left') {
+      this.set('alignText', 'left');
+      this.set('leftActive', true);
+      this.set('rightActive', false);
+      this.set('centerActive', false);
+    }
+    else if (type == "center") {
+      this.set('alignText', 'center');
+      this.set('leftActive', false);
+      this.set('rightActive', false);
+      this.set('centerActive', true);
+    }
+    else {
+      this.set('alignText', 'right');
+      this.set('leftActive', false);
+      this.set('rightActive', true);
+      this.set('centerActive', false);
+    }
   }
 }
 
