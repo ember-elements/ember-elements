@@ -9,13 +9,10 @@ export default class DocsCoreButton extends Controller {
   active = false;
   minimal = false;
   disabled = false;
-  primary = false;
-  success = false;
-  warning = false;
-  danger = false;
+  intent = 'none';
   small = false;
   large = false;
-  icon = '';
+  icon = 'floppy-disk';
   rightIcon = '';
   fill = false;
   @action
@@ -26,36 +23,20 @@ export default class DocsCoreButton extends Controller {
       this.set('minimal', !this.minimal);
     else if (type == 'disabled')
       this.set('disabled', !this.disabled);
-    else if (type == 'primary')
-      this.set('primary', !this.primary);
-    else if (type == 'success')
-      this.set('success', !this.success);
-    else if (type == 'warning')
-      this.set('warning', !this.warning);
-    else if (type == 'danger')
-      this.set('danger', !this.danger);
     else if (type == 'small')
       this.set('small', !this.small);
     else if (type == 'large')
       this.set('large', !this.large);
-    else if (type == 'icon'){
-      this.set('icon', this.icon == '' ? 'floppy-disk' : '');
-      if(this.icon !='')
-      {
-        this.set('rightIcon','');
-      }
-    }
-    else if (type == 'rightIcon'){
+    else if (type == 'rightIcon')
       this.set('rightIcon', this.rightIcon == '' ? 'refresh' : '');
-      if(this.rightIcon=='refresh')
-      {
-        this.set('icon','');
-      }
-    }
     else if (type == 'fill')
       this.set('fill', !this.fill);
-
-
+    else if (type == 'iconsonly')
+    this.set('text', this.text != '' ? '' : 'sample button');
+  }
+  @action
+  selectIntent(e) {
+    this.set('intent', e.target.value);
   }
   // BEGIN-SNIPPET docs-example-basic-button.js
   @action

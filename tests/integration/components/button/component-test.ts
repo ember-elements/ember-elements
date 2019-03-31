@@ -39,13 +39,13 @@ module('Integration | Component | button', function (hooks) {
     assert.equal(element.querySelectorAll('.bp3-active').length, 0);
   });
 
-  test(' primary is true', async function (assert) {
-    await render(hbs`<Button @primary={{true}}/>`);
+  test('intent primary is true', async function (assert) {
+    await render(hbs`<Button @intent="primary"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-primary').length, 1);
   });
   test('if input primary is false', async function (assert) {
-    await render(hbs`<Button @primary={{false}}/>`);
+    await render(hbs`<Button @intent="none"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-primary').length, 0);
   });
@@ -56,12 +56,12 @@ module('Integration | Component | button', function (hooks) {
   });
 
   test('if input success is true', async function (assert) {
-    await render(hbs`<Button @success={{true}}/>`);
+    await render(hbs`<Button @intent="success"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-success').length, 1);
   });
   test(' success is false', async function (assert) {
-    await render(hbs`<Button @success={{false}}/>`);
+    await render(hbs`<Button @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-success').length, 0);
   });
@@ -72,12 +72,12 @@ module('Integration | Component | button', function (hooks) {
   });
 
   test('if input warning is true', async function (assert) {
-    await render(hbs`<Button @warning={{true}}/>`);
+    await render(hbs`<Button @intent="warning"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-warning').length, 1);
   });
   test(' warning is false', async function (assert) {
-    await render(hbs`<Button @warning={{false}} />`);
+    await render(hbs`<Button @intent="" />`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-warning').length, 0);
   });
@@ -88,12 +88,12 @@ module('Integration | Component | button', function (hooks) {
   });
 
   test(' danger is true', async function (assert) {
-    await render(hbs`<Button @danger={{true}}/>`);
+    await render(hbs`<Button @intent="danger"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-danger').length, 1);
   });
   test(' danger is false', async function (assert) {
-    await render(hbs`<Button @danger={{false}}/>`);
+    await render(hbs`<Button @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-danger').length, 0);
   });
