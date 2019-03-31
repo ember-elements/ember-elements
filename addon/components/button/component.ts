@@ -6,24 +6,21 @@ import { classNames, tagName, attribute,layout, className} from '@ember-decorato
 import { readOnly, alias } from '@ember-decorators/object/computed';
 import { get } from '@ember/object';
 import * as Classes from "../../-private/common/classes";
+import {Intent} from "../../-private/common/intent";
+import { computed } from '@ember-decorators/object';
+
 @layout(template)
 @tagName('button')
 @classNames(Classes.BUTTON)
 export default class Button extends Component {
   @attribute('style') style:string = Ember.String.htmlSafe(this.style);
   @alias(Classes.BUTTON_TEXT) BUTTON_TEXT:string;
-  @readOnly('iconSize') IconSize: number;
+  @readOnly('iconSize') IconSize:number;
   @className(Classes.ACTIVE)
   active:boolean = false;
   @className(Classes.DISABLED)
   disabled:boolean = false;
-  @className(Classes.INTENT_PRIMARY)
-  primary:boolean = false;
-  @className(Classes.INTENT_SUCCESS)
-  success:boolean = false;
-  @className(Classes.INTENT_WARNING)
-  warning:boolean = false;
-  @className(Classes.INTENT_DANGER)
+  @readOnly('intent') Intents:Intent;
   danger:boolean = false;
   @className(Classes.MINIMAL)
   minimal:boolean = false;
@@ -33,6 +30,11 @@ export default class Button extends Component {
   small:boolean = false;
   @className(Classes.FILL)
   fill:boolean = false;
+  @className
+  @computed('Intents')
+  get intentStyle() {
+    return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
+  }
   onClick!: (event: any) => void;
   click(event: any) {
     if (this.disabled)
