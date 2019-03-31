@@ -88,4 +88,14 @@ module('Integration | Component | button-group', function(hooks) {
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-fill').length, 0);
   });
+  test('text align left', async function (assert) {
+    await render(hbs`<ButtonGroup @alignText="left" />`);
+    let element = this.element;
+    assert.equal(element.querySelectorAll('.bp3-align-left').length, 1);
+  });
+  test('text align right', async function (assert) {
+    await render(hbs`<ButtonGroup @alignText="right" />`);
+    let element = this.element;
+    assert.equal(element.querySelectorAll('.bp3-align-right').length, 1);
+  });
 });

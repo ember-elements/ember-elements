@@ -10,7 +10,7 @@
   <div class="docs-example-frame docs-example-frame-row">
     <div class="docs-example">
       {{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
-      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} @fill={{fill}}>
+      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} @fill={{fill}} @alignText={{alignText}}>
         <Button @icon='database' @type='button' @text='Queries'> </Button>
         <Button @icon='function' @type='button' @text='Functions'> </Button>
         <Button @icon='cog' @type='button' @text='Settings'> </Button>
@@ -27,6 +27,13 @@
           class="bp3-control-indicator"></span>Minimal</label>
       <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" 'vertical'}}><span
           class="bp3-control-indicator"></span>Vertical</label>
+      <div> Align text
+        <ButtonGroup @fill=true>
+          <Button @text="Left" @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} />
+          <Button @text="Center" @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} />
+          <Button @text="Right" @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} />
+        </ButtonGroup>
+      </div>
     </div>
   </div>
 </div>
@@ -34,18 +41,35 @@
 {{demo.snippet name='docs-example-basic-button-group.hbs'}}
 {{/docs-demo}}
 
-### List of Arguments
+### Props
 
 
 <div class="docs-modifiers-table bp3-running-text">
   <table class="bp3-html-table">
     <thead>
       <tr>
-        <th>Arguments</th>
+        <th>Props</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td class="docs-prop-name"><code>alignText</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Text alignment within button. By default, icons and text will be centered
+                  within the button. Passing <code>"left"</code> or <code>"right"</code> will align the button
+                  text to that side and push <code>icon</code> and <code>rightIcon</code> to either edge. Passing
+                  <code>"center"</code> will center the text and icons together.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-prop-tags"></div>
+        </td>
+      </tr>
       <tr>
         <td class="docs-prop-name"><code>class</code></td>
         <td class="docs-prop-details"><code
