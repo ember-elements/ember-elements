@@ -34,16 +34,16 @@ export default class OverflowList extends Component {
   OVERFLOW_LIST: string = Classes.OVERFLOW_LIST + ' ' + Classes.BREADCRUMBS;
   spacer: Element | null = null;
   private previousWidths = new Map<Element, number>();
-  BREADCRUMBS_COLLAPSED:string=Classes.BREADCRUMBS_COLLAPSED;
-  POPOVER_ARROW:string=Classes.POPOVER_ARROW;
-  MENU:string=Classes.MENU;
-  MENU_ITEM:string=Classes.MENU_ITEM;
-  POPOVER_DISMISS:string=Classes.POPOVER_DISMISS;
-  DISABLED:string=Classes.DISABLED;
-  TEXT_OVERFLOW_ELLIPSIS:string=Classes.TEXT_OVERFLOW_ELLIPSIS;
-  FILL:string=Classes.FILL;
-  OVERFLOW_LIST_SPACER:string=Classes.OVERFLOW_LIST_SPACER;
-
+  BREADCRUMBS_COLLAPSED: string = Classes.BREADCRUMBS_COLLAPSED;
+  POPOVER_ARROW: string = Classes.POPOVER_ARROW;
+  MENU: string = Classes.MENU;
+  MENU_ITEM: string = Classes.MENU_ITEM;
+  POPOVER_DISMISS: string = Classes.POPOVER_DISMISS;
+  DISABLED: string = Classes.DISABLED;
+  TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  FILL: string = Classes.FILL;
+  OVERFLOW_LIST_SPACER: string = Classes.OVERFLOW_LIST_SPACER;
+  breadId: string = '';
 
   init() {
     super.init();
@@ -64,16 +64,38 @@ export default class OverflowList extends Component {
   }
   didInsertElement() {
     this._super(...arguments);
+    this.set('breadId', 'breadId' + this.elementId)
     this.set('spacer', this.element.querySelector(`.${Classes.OVERFLOW_LIST_SPACER}`));
     this.repartition(false);
   }
-
-  didUpdate() {
+  async didUpdate() {
     if (this.direction != 0)
       this.repartition(false);
-
+    if (this.isOpen) { //set popover arrow positions
+      var docOver: any = await document.querySelector('.overflow-list-popper');
+      var bread: any = await document.getElementById(this.breadId);
+      if (docOver && bread && this.CollapseFrom != this.END) {
+        const left = bread.getBoundingClientRect().left - docOver.getBoundingClientRect().left;
+        docOver.style.setProperty('left', left - 4 + "px", "important");
+      }
+      else {
+        if (docOver.getBoundingClientRect().left > docOver.getBoundingClientRect().width) {
+          const right = docOver.getBoundingClientRect().right - bread.getBoundingClientRect().right;
+          docOver.style.setProperty('left', -(right - 4) + "px", "important");
+          var arrowPos: any = document.querySelector('.' + this.POPOVER_ARROW);
+          arrowPos.style.right = "1px";
+        }
+        else {
+          const left = bread.getBoundingClientRect().left - docOver.getBoundingClientRect().left;
+          docOver.style.setProperty('left', left - 4 + "px", "important");
+          var arrowPos: any = document.querySelector('.' + this.POPOVER_ARROW);
+          arrowPos.style.left = "1px";
+        }
+      }
+    }
   }
-  didRender() {
+  async didRender() {
+    super.init();
     Ember.run.next(this, this.detachClickHandler);
   }
   private repartition(growing: boolean) {
