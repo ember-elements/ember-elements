@@ -10,15 +10,17 @@
 {{#docs-demo as |demo|}}
 {{#demo.example}}
 {{! BEGIN-SNIPPET docs-example-basic-panel-block.hbs }}
-
 <div class="demo-container">
-    <div class="docs-example">
-        <PanelStack @class='docs-panel-stack-example' @closePanel={{action 'onClosePanel'}} @panelList={{panelList}}>
-            <div class="docs-panel-stack-contents-example">
-            {{component componentName panelList=panelList sendComponentName=(action 'sendComponentName')}}
-            </div>
-        </PanelStack>
-        <div class="docs-example-options" style="height: 238px;overflow-y: auto;">
+    <div class="docs-example-frame docs-example-frame-row">
+        <div class="docs-example">
+            <PanelStack @class='docs-panel-stack-example' @closePanel={{action 'onClosePanel'}}
+                @panelList={{panelList}}>
+                <div class="docs-panel-stack-contents-example">
+                    {{component componentName panelList=panelList sendComponentName=(action 'sendComponentName')}}
+                </div>
+            </PanelStack>
+        </div>
+        <div class="docs-example-options" >
             <h5 class="bp3-heading">Current stack</h5>
             <ul class="bp3-list">
                 {{#each reversePanelList as |item index|}}
@@ -27,11 +29,8 @@
             </ul>
         </div>
     </div>
-
 </div>
-
 {{! END-SNIPPET }}
-
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-panel-block.hbs'}}
 {{demo.snippet name='docs-example-basic-create-panel.hbs'}}
@@ -39,11 +38,12 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-create-panel.js'}}
 {{/docs-demo}}
 
-### Panels
+## Panels
 <p class='bp3-running-text bp3-text-large'>
     The <code>panelList</code> is an<strong> Array of objects</strong>. It contains <code>{title,component}</code> for
     <code>panel-stack</code> component.
-    You must be add ember dyanamic component invoking code(please see above example). <code>{component componentName}</code>
+    You must be add ember dyanamic component invoking code(please see above example).
+    <code>{component componentName}</code>
     for rendering the panel list. Generating each
     components which avoiding cloning multiple elements. Note that each panel is only mounted when it is atop the stack
     and
@@ -59,20 +59,21 @@
     when a panel opens above it.
 </p>
 
-### List of Arguments
+## Props
 
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
         <thead>
             <tr>
-                <th>Arguments</th>
+                <th>Props</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="docs-prop-name docs-prop-is-required"><code>component</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>name of generated ember component </strong></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>name of generated ember component </strong></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -83,12 +84,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span></div>
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>panelList</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>Array of objects</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>Array of objects</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -97,7 +100,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span></div>
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span></div>
                 </td>
             </tr>
         </tbody>

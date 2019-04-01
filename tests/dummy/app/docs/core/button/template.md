@@ -76,7 +76,7 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-button.js'}}
 {{/docs-demo}}
 
-### Props
+## Props
 
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
@@ -331,7 +331,7 @@
     <br>
     <div class="bp3-callout bp3-intent-danger ">
         <h4 class="bp3-heading">
-            <Icon @icon='error' @iconSize=20 /> Disabled <code>Button</code> prevents all
+            <Icon @icon='error' @iconSize=16 /> Disabled <code>Button</code> prevents all
             interaction
         </h4>
     </div>

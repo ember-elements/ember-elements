@@ -23,7 +23,7 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-date-range-picker.ts'}}
 {{/docs-demo}}
 
-### Shortcuts
+## Shortcuts
 <div class="bp3-running-text bp3-text-large">
     <p>The menu on the left of the calendars provides "shortcuts" that allow users to
         quickly select common date ranges.</p>
@@ -39,14 +39,14 @@
     <p><strong>Custom shortcuts</strong> use the following interface:</p>
 </div>
 
-### List of Arguments
+## Props
 
 
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
         <thead>
             <tr>
-                <th>Arguments</th>
+                <th>Props</th>
                 <th>Description</th>
             </tr>
         </thead>

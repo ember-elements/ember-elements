@@ -12,8 +12,7 @@
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
             <p>
-                <TagInput @data={{data}} @placeholder='enter tags..' @save={{action 'saveTag'}}
-                    @delete={{action  'deleteTag'}}></TagInput>
+             <TagInput @data={{data}} @placeholder='enter tags..' @save={{action 'saveTag'}} @delete={{action  'deleteTag'}}></TagInput>
             </p>
         </div>
     </div>
@@ -26,14 +25,14 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-tag-input.js'}}
 {{/docs-demo}}
 
-### List of Arguments
+## Props
 
 
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
         <thead>
             <tr>
-                <th>Arguments</th>
+                <th>Props</th>
                 <th>Description</th>
             </tr>
         </thead>

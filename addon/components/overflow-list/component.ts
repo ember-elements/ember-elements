@@ -79,7 +79,7 @@ export default class OverflowList extends Component {
         docOver.style.setProperty('left', left - 4 + "px", "important");
       }
       else {
-        if (docOver.getBoundingClientRect().left > docOver.getBoundingClientRect().width) {
+        if ((docOver.getBoundingClientRect().left > docOver.getBoundingClientRect().width) || ((docOver.getBoundingClientRect().left + docOver.getBoundingClientRect().width) > bread.getBoundingClientRect().right)) {
           const right = docOver.getBoundingClientRect().right - bread.getBoundingClientRect().right;
           docOver.style.setProperty('left', -(right - 4) + "px", "important");
           var arrowPos: any = document.querySelector('.' + this.POPOVER_ARROW);
