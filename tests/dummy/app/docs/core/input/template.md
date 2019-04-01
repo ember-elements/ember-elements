@@ -24,47 +24,32 @@
       </div>
       {{! END-SNIPPET }}
     </div>
-  </div>
-</div>
-{{/demo.example}}
-
-{{demo.snippet name='docs-example-basic-text-input.hbs'}}
-<!-- {{demo.snippet label='component.ts' name='docs-example-basic-text-input.ts'}} -->
-{{/docs-demo}}
-
-
-### available options
-<p>
-  <div style='display: -webkit-box;'>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"
+    <div class="docs-example-options">
+      <h5 class="bp3-heading">Props</h5>
+        <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"
         onclick={{action 'disableFun' }}><span class="bp3-control-indicator"></span>Disabled</label>
     <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'primaryFun' }}></span>Primary</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'successFun' }}></span>Success</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
         class="bp3-control-indicator" onclick={{action 'roundFun' }}></span>Round</label>
-  </div>
-  <div style='display: -webkit-box;'>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'warningFun' }}></span>Warning</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'dangerFun' }}></span>Danger</label>
     <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
         class="bp3-control-indicator" onclick={{action 'readOnlyFun' }}></span>Readonly</label>
     <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
         class="bp3-control-indicator" onclick={{action 'largeFun' }}></span>large</label>
+    </div>
   </div>
-</p>
+</div>
+{{/demo.example}}
+{{demo.snippet name='docs-example-basic-text-input.hbs'}}
+<!-- {{demo.snippet label='component.ts' name='docs-example-basic-text-input.ts'}} -->
+{{/docs-demo}}
 
-### List of Arguments
+## Props
 
 
 <div class="docs-modifiers-table bp3-running-text">
   <table class="bp3-html-table">
     <thead>
       <tr>
-        <th>Arguments</th>
+        <th>Props</th>
         <th>Description</th>
       </tr>
     </thead>

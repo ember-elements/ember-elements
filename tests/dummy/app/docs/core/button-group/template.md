@@ -12,7 +12,7 @@
       {{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
       <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} @fill={{fill}} @alignText={{alignText}}>
         <Button @icon='database' @type='button' @text='Queries'> </Button>
-        <Button @icon='function' @type='button' @text='Functions'> </Button>
+        <Button @icon='function' @type='button' @text='Fun'> </Button>
         <Button @icon='cog' @type='button' @text='Settings'> </Button>
       </ButtonGroup>
       {{! END-SNIPPET }}
@@ -29,9 +29,9 @@
           class="bp3-control-indicator"></span>Vertical</label>
       <div> Align text
         <ButtonGroup @fill=true>
-          <Button @text="Left" @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} />
-          <Button @text="Center" @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} />
-          <Button @text="Right" @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} />
+          <Button @text="Left" @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} ></Button>
+          <Button @text="Center" @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} ></Button>
+          <Button @text="Right" @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} ></Button>
         </ButtonGroup>
       </div>
     </div>
@@ -41,7 +41,7 @@
 {{demo.snippet name='docs-example-basic-button-group.hbs'}}
 {{/docs-demo}}
 
-### Props
+## Props
 
 
 <div class="docs-modifiers-table bp3-running-text">

@@ -2,30 +2,26 @@
 <div class="bp3-running-text bp3-text-large">
     <p>Trees display hierarchical data.</p>
 </div>
-
 {{#docs-demo as |demo|}}
 {{#demo.example}}
 {{! BEGIN-SNIPPET docs-example-basic-tree.hbs }}
-
 <div class="demo-container">
-    <div class="" data-example-id="TreeExample">
-
-        <DbTree @content={{content}} @class='docs-example' @onNodeCollapse={{action 'onNodeCollapse'}} @onNodeClick={{action
-        'onNodeClick'}}
-            @onNodeDoubleClick={{action 'onNodeDoubleClick'}} @onNodeExpand={{action 'onNodeExpand'}} @onNodeMouseEnter={{action 'onNodeMouseEnter'}}
-            @onNodeMouseLeave={{action
-        'onNodeMouseLeave'}}></DbTree>
+    <div class="docs-example-frame docs-example-frame-row" data-example-id="TreeExample">
+        <div class="docs-example">
+            <DbTree @content={{content}} @class='docs-example' @onNodeCollapse={{action 'onNodeCollapse'}} 
+              @onNodeClick={{action 'onNodeClick'}} @onNodeDoubleClick={{action 'onNodeDoubleClick'}} @onNodeExpand={{action 'onNodeExpand'}}
+              @onNodeMouseEnter={{action 'onNodeMouseEnter'}} @onNodeMouseLeave={{action 'onNodeMouseLeave'}}>
+            </DbTree>
+        </div>
     </div>
 </div>
-
 {{! END-SNIPPET }}
-
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-tree.hbs'}}
 {{demo.snippet label='component.ts' name='docs-example-basic-tree.js'}}
 {{/docs-demo}}
 
-### Args
+## Props
 
 <div class="bp3-running-text bp3-text-large">
     <p><code>Tree</code> is a stateless component. Its contents are dictated by the <code>contents</code> argument,
@@ -57,7 +53,8 @@
         <tbody>
             <tr>
                 <td class="docs-prop-name"><code>class</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -69,22 +66,26 @@
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>hasCaret</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
                                 <p>Whether the caret to expand/collapse a node should be shown.
-                                    If not specified, this will be true if the node has children and false otherwise.</p>
+                                    If not specified, this will be true if the node has children and false otherwise.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Inherited
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Inherited
                                 from <code>content.hasCaret</code></span></span></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>icon</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>IconName | MaybeElement</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>IconName | MaybeElement</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -97,7 +98,8 @@
             </tr>
             <tr>
                 <td class="docs-prop-name docs-prop-is-required"><code>id</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>string | number</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>string | number</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -105,24 +107,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span><span
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span><span
                             class="bp3-tag bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Inherited
                                 from <code>content.id</code></span></span></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>isExpanded</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section"></div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Inherited
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Inherited
                                 from <code>content.isExpanded</code></span></span></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name docs-prop-is-required"><code>label</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>string | Element</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>string | Element</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -130,56 +136,64 @@
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span><span
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-intent-success bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Required</span></span><span
                             class="bp3-tag bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Inherited
                                 from <code>content.label</code></span></span></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onClick</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onCollapse</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLSpanElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLSpanElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onDoubleClick</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onExpand</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLSpanElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLSpanElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onMouseEnter</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>onMouseLeave</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>(node: TreeNode&lt;T&gt;, e: MouseEvent&lt;HTMLDivElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description"></div>
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
             <tr>
                 <td class="docs-prop-name"><code>secondaryIcon</code></td>
-                <td class="docs-prop-details"><code class="docs-prop-type"><strong>string </strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                <td class="docs-prop-details"><code
+                        class="docs-prop-type"><strong>string </strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -187,7 +201,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span class="bp3-text-overflow-ellipsis bp3-fill">Inherited
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span
+                                class="bp3-text-overflow-ellipsis bp3-fill">Inherited
                                 from <code>content.secondaryIcon</code></span></span></div>
                 </td>
             </tr>

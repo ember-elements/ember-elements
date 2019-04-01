@@ -38,10 +38,10 @@ Router.map(function() {
       this.route('icons');
       });
       this.route('quick-start')
-      this.route('accessibility');
+      // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
- 
+  
 });
 
 export default Router;

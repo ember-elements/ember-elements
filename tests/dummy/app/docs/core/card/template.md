@@ -19,7 +19,7 @@
             {{! END-SNIPPET }}
         </div>
         <div class="docs-example-options">
-            <h5 class="bp3-heading">Args</h5>
+            <h5 class="bp3-heading">Props</h5>
             <label class="bp3-control bp3-switch">
                 <input type="checkbox" value="on">
                 <span class="bp3-control-indicator" onclick={{action "toggleInteractive"}}></span>Interactive</label><label
@@ -60,7 +60,7 @@
         height in the UI. Five elevations are supported, from 0 to 4.</p>
 </div>
 
-### List of arguments
+## Props
 
 <div class="docs-modifiers">
     <div class="docs-modifiers-table bp3-running-text">

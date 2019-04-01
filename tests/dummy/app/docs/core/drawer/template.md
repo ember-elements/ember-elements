@@ -4,9 +4,9 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-<div class="docs-example-frame docs-example-frame-row">
-    <div class="demo-container">
-        <div class="docs-example" style="width: 488px;   height: 100%;">
+<div class="demo-container">
+    <div class="docs-example-frame docs-example-frame-row" data-example-id="DrawerExample">
+        <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-drawer.hbs }}
             <Button @onClick={{action 'openDrawerComponent'}} @primary=true @text='Show Drawer'></Button>
             <DbDrawer @isOpen={{isOpenDrawer}} @size={{size}} @vertical={{vertical}} @autoFocus={{autoFocus}}
@@ -41,96 +41,97 @@
             </DbDrawer>
             {{! END-SNIPPET }}
         </div>
+        <div class="docs-example-options">
+            <h5 class="bp3-heading">Props</h5>
+            <label class="bp3-label">Size
+                <div class="bp3-html-select">
+                    <select onchange={{action 'selectSize'}}>
+                        <option label="Default" value="50%">Default</option>
+                        <option label="Small" value="SIZE_SMALL">Small</option>
+                        <option label="Standard" value="SIZE_STANDARD">Standard</option>
+                        <option label="Large" value="SIZE_LARGE">Large</option>
+                        <option value="72%">72%</option>
+                        <option value="560px">560px</option>
+                    </select>
+                    <Icon @icon="double-caret-vertical"></Icon>
+                </div>
+            </label>
+            <label class="bp3-control bp3-switch" {{action "onChangeVertical"}}>
+                {{#if vertical}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Vertical
+            </label>
+            <div class="bp3-divider"></div>
+            <label class="bp3-control bp3-switch" {{action 'onautoFocus'}}>
+                {{#if autoFocus}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Auto focus</label>
+            <label class="bp3-control bp3-switch" {{action 'onenforceFocus'}}>
+                {{#if enforceFocus}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Enforce focus</label>
+            <label class="bp3-control bp3-switch" {{action 'onhasBackdrop'}}>
+                {{#if hasBackdrop}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Has backdrop</label>
+            <label class="bp3-control bp3-switch" {{action 'onusePortal'}}>
+                {{#if usePortal}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Use <code class="bp3-code">Portal</code>
+            </label>
+            <label class="bp3-control bp3-switch" {{action 'oncanOutsideClickClose'}}>
+                {{#if canOutsideClickClose}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}
+                Click outside to close</label>
+            <label class="bp3-control bp3-switch" {{action 'oncanEscapeKeyClose'}}>
+                {{#if canEscapeKeyClose}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}Escape key to close</label>
+            <label class="bp3-control bp3-switch" {{action 'onisLeft'}}>
+                {{#if isLeft}}
+                <input type="checkbox" checked>
+                <span class="bp3-control-indicator"></span>
+                {{else}}
+                <input type="checkbox">
+                <span class="bp3-control-indicator"></span>
+                {{/if}}Drawer render from left</label>
+        </div>
     </div>
-    <div class="docs-example-options">
-        <h5 class="bp3-heading">Args</h5>
-        <label class="bp3-label">Size
-            <div class="bp3-html-select">
-                <select onchange={{action 'selectSize'}}>
-                    <option label="Default" value="50%">Default</option>
-                    <option label="Small" value="SIZE_SMALL">Small</option>
-                    <option label="Standard" value="SIZE_STANDARD">Standard</option>
-                    <option label="Large" value="SIZE_LARGE">Large</option>
-                    <option value="72%">72%</option>
-                    <option value="560px">560px</option>
-                </select>
-                <Icon @icon="double-caret-vertical"></Icon>
-            </div>
-        </label>
-        <label class="bp3-control bp3-switch" {{action "onChangeVertical"}}>
-            {{#if vertical}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Vertical
-        </label>
-        <div class="bp3-divider"></div>
-        <label class="bp3-control bp3-switch" {{action 'onautoFocus'}}>
-            {{#if autoFocus}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Auto focus</label>
-        <label class="bp3-control bp3-switch" {{action 'onenforceFocus'}}>
-            {{#if enforceFocus}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Enforce focus</label>
-        <label class="bp3-control bp3-switch" {{action 'onhasBackdrop'}}>
-            {{#if hasBackdrop}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Has backdrop</label>
-        <label class="bp3-control bp3-switch" {{action 'onusePortal'}}>
-            {{#if usePortal}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Use <code class="bp3-code">Portal</code>
-        </label>
-        <label class="bp3-control bp3-switch" {{action 'oncanOutsideClickClose'}}>
-            {{#if canOutsideClickClose}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}
-            Click outside to close</label>
-        <label class="bp3-control bp3-switch" {{action 'oncanEscapeKeyClose'}}>
-            {{#if canEscapeKeyClose}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}Escape key to close</label>
-        <label class="bp3-control bp3-switch" {{action 'onisLeft'}}>
-            {{#if isLeft}}
-            <input type="checkbox" checked>
-            <span class="bp3-control-indicator"></span>
-            {{else}}
-            <input type="checkbox">
-            <span class="bp3-control-indicator"></span>
-            {{/if}}Drawer render from left</label>
-    </div>
+
 </div>
 
 {{/demo.example}}
@@ -138,7 +139,8 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-drawer.js'}}
 {{/docs-demo}}
 
-### List of Arguments
+### Props
+
 <div class="bp3-running-text bp3-text-large">
     <p>Use the <code>size</code> prop to set the size of the <code>Drawer</code>. This prop sets CSS <code>width</code>
         if
@@ -155,7 +157,7 @@
     <table class="bp3-html-table">
         <thead>
             <tr>
-                <th>Arguments</th>
+                <th>Props</th>
                 <th>Description</th>
             </tr>
         </thead>

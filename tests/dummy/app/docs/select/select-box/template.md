@@ -33,14 +33,14 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-select-box.ts'}}
 {{/docs-demo}}
 
-### List of Arguments
+## Props
 
 
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
         <thead>
             <tr>
-                <th>Arguments</th>
+                <th>Props</th>
                 <th>Description</th>
             </tr>
         </thead>
