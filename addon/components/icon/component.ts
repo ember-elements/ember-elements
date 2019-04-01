@@ -24,23 +24,23 @@ export default class Icon extends Component {
   @readOnly('color') Color!: string;
   @readOnly('title') Title!: string;
   @className
-  @computed
+  @computed('Intent')
   get intentStyle() {
     return this.Intent ? Classes.intentClass(this.Intent) : ``;
   }
-  @computed
+  @computed('Icon')
   get titleValue() {
     return this.Title || this.Icon;
   }
-  @computed
+  @computed('iconsize')
   get viewBox() {
     return this.iconsize > this.SIZE_STANDARD ? '0 0 20 20' : '0 0 16 16';
   }
-  @computed
+  @computed('iconsize')
   get heightWidth() {
     return this.iconsize == undefined ? 16 : this.iconsize;
   }
-  @computed
+  @computed('Color')
   get getColor() {
     return this.Color ? `${this.Color}` : 'currentColor';
   }

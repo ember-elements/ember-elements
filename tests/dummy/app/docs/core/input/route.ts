@@ -9,6 +9,7 @@ export default class DocsCoreInput extends Route.extend({
       controller.set('isFill', false);
       controller.set('isReadOnly', false);
       controller.set('isLarge', false);
+      controller.set('intent', "none");
 
       }
   }
