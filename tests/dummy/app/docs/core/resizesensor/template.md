@@ -27,7 +27,7 @@
 {{/docs-demo}}
 
 
-### List of arguments
+## Props
 
 <div class="docs-modifiers">
     <div class="docs-section">
