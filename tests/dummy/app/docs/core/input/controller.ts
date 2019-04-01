@@ -4,11 +4,7 @@ import { action } from '@ember-decorators/object';
 export default class DocsCoreInput extends Controller {
   // normal class body definition here
   isDisabled: boolean = false;
-  isPrimary: boolean = false;
-  isSuccess: boolean = false;
-  isRound: boolean = false;
-  isWarning: boolean = false;
-  isDanger: boolean = false;
+  intent: string = 'none';
   isFill: boolean = false;
   isReadOnly: boolean = false;
   isLarge: boolean = false;
@@ -21,6 +17,10 @@ export default class DocsCoreInput extends Controller {
   }
 
   // END-SNIPPET
+  @action
+  selectIntent(e: any) {
+    this.set('intent', e.target.value);
+  }
   @action
   disableFun() {
     this.toggleProperty('isDisabled');

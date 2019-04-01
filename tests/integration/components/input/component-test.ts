@@ -23,12 +23,12 @@ module('Integration | Component | input', function (hooks) {
   });
 
   test('input primary is true', async function (assert) {
-    await render(hbs`<Input @primary=true/>`);
+    await render(hbs`<Input @intent="primary"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-primary').length, 1);
   });
   test('input primary is false', async function (assert) {
-    await render(hbs`<Input @primary={{false}}/>`);
+    await render(hbs`<Input @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-primary').length, 0);
   });
@@ -39,12 +39,12 @@ module('Integration | Component | input', function (hooks) {
   });
 
   test('input success is true', async function (assert) {
-    await render(hbs`<Input @success=true/>`);
+    await render(hbs`<Input @intent="success"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-success').length, 1);
   });
   test('input success is false', async function (assert) {
-    await render(hbs`<Input @success={{false}}/>`);
+    await render(hbs`<Input @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-success').length, 0);
   });
@@ -55,12 +55,12 @@ module('Integration | Component | input', function (hooks) {
   });
 
   test('input warning is true', async function (assert) {
-    await render(hbs`<Input @warning=true/>`);
+    await render(hbs`<Input @intent="warning"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-warning').length, 1);
   });
   test('input warning is false', async function (assert) {
-    await render(hbs`<Input @warning={{false}}/>`);
+    await render(hbs`<Input @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-warning').length, 0);
   });
@@ -71,12 +71,12 @@ module('Integration | Component | input', function (hooks) {
   });
 
   test('input danger is true', async function (assert) {
-    await render(hbs`<Input @danger=true/>`);
+    await render(hbs`<Input @intent="danger"/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-danger').length, 1);
   });
   test('input danger is false', async function (assert) {
-    await render(hbs`<Input @danger={{false}}/>`);
+    await render(hbs`<Input @intent=""/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-intent-danger').length, 0);
   });

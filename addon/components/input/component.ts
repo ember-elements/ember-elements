@@ -7,6 +7,7 @@ import { reads, readOnly, alias } from '@ember-decorators/object/computed';
 import Ember from 'ember';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
 import * as Classes from "../../-private/common/classes";
+import {Intent} from "../../-private/common/intent";
 @layout(template)
 @tagName('div')
 @classNames(Classes.INPUT_GROUP)
@@ -22,14 +23,12 @@ export default class Input extends Component {
   @readOnly('iconSize') IconSize!: number;
   @className(Classes.DISABLED)
   disabled: boolean = false;
-  @className(Classes.INTENT_PRIMARY)
-  primary: boolean = false;
-  @className(Classes.INTENT_SUCCESS)
-  success: boolean = false;
-  @className(Classes.INTENT_WARNING)
-  warning: boolean = false;
-  @className(Classes.INTENT_DANGER)
-  danger: boolean = false;
+  @readOnly('intent') Intents:Intent;
+  @className
+  @computed('Intents')
+  get intentStyle() {
+    return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
+  }
   @className(Classes.MINIMAL)
   minimal: boolean = false;
   @className(Classes.LARGE)
