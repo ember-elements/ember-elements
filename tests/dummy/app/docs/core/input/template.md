@@ -18,22 +18,34 @@
         <Input @data='hiii...' @success=true @round=true @placeholder='Any text....' @rightIcon='lock'></Input>
       </div> <br>
       <div>
-        <Input @autofocus=true @placeholder='enter any text...' @data='' @disabled={{isDisabled}} @primary={{isPrimary}}
-          @success={{isSuccess}} @round={{isRound}} @warning={{isWarning}} @danger={{isDanger}} @readonly={{isReadOnly}}
-          @large={{isLarge}} @onkeyDown={{action 'onkeyDown'}}></Input>
+        <Input @autofocus=true @placeholder='enter any text...' @data='' @disabled={{isDisabled}} @intent={{intent}}
+          @round={{isRound}} @readonly={{isReadOnly}} @large={{isLarge}} @onkeyDown={{action 'onkeyDown'}}>
+        </Input>
       </div>
       {{! END-SNIPPET }}
     </div>
     <div class="docs-example-options">
       <h5 class="bp3-heading">Props</h5>
-        <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"
-        onclick={{action 'disableFun' }}><span class="bp3-control-indicator"></span>Disabled</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'roundFun' }}></span>Round</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'readOnlyFun' }}></span>Readonly</label>
-    <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-        class="bp3-control-indicator" onclick={{action 'largeFun' }}></span>large</label>
+      <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"
+          onclick={{action 'disableFun' }}><span class="bp3-control-indicator"></span>Disabled</label>
+      <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
+          class="bp3-control-indicator" onclick={{action 'roundFun' }}></span>Round</label>
+      <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
+          class="bp3-control-indicator" onclick={{action 'readOnlyFun' }}></span>Readonly</label>
+      <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
+          class="bp3-control-indicator" onclick={{action 'largeFun' }}></span>large</label>
+       <label class="bp3-label">Intent
+                <div class="bp3-html-select">
+                  <select onchange={{action "selectIntent"}}>
+                        <option label="None" value="none">None</option>
+                        <option label="Primary" value="primary">Primary</option>
+                        <option label="Success" value="success">Success</option>
+                        <option label="Warning" value="warning">Warning</option>
+                        <option label="Danger" value="danger">Danger</option>
+                  </select>
+                  <span icon="double-caret-vertical" class="bp3-icon bp3-icon-double-caret-vertical"><svg data-icon="double-caret-vertical" width="16" height="16" viewBox="0 0 16 16"><desc>double-caret-vertical</desc><path d="M5 7h6a1.003 1.003 0 0 0 .71-1.71l-3-3C8.53 2.11 8.28 2 8 2s-.53.11-.71.29l-3 3A1.003 1.003 0 0 0 5 7zm6 2H5a1.003 1.003 0 0 0-.71 1.71l3 3c.18.18.43.29.71.29s.53-.11.71-.29l3-3A1.003 1.003 0 0 0 11 9z" fill-rule="evenodd"></path></svg></span>
+                </div>
+            </label>
     </div>
   </div>
 </div>
@@ -94,52 +106,14 @@
         </td>
       </tr>
       <tr>
-        <td class="docs-prop-name"><code>primary</code></td>
-        <td class="docs-prop-details"><code
-            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+        <td class="docs-prop-name"><code>intent</code></td>
+        <td class="docs-prop-details">
+          <code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
           <div class="docs-prop-description">
             <div class="docs-section">
               <div class="bp3-running-text">
-                <p>It changes the color of the input border to blue.</p>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs-prop-name"><code>success</code></td>
-        <td class="docs-prop-details"><code
-            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-          <div class="docs-prop-description">
-            <div class="docs-section">
-              <div class="bp3-running-text">
-                <p> It changes the color of the input border to green, simbolises success.</p>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs-prop-name"><code>warning</code></td>
-        <td class="docs-prop-details"><code
-            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-          <div class="docs-prop-description">
-            <div class="docs-section">
-              <div class="bp3-running-text">
-                <p> It changes the color of the input border to yellow, warning.</p>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs-prop-name"><code>danger</code></td>
-        <td class="docs-prop-details"><code
-            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-          <div class="docs-prop-description">
-            <div class="docs-section">
-              <div class="bp3-running-text">
-                <p> It changes the color of the input border to red, danger.</p>
+                <p>Visual intent color to apply to element. Options are
+                  <code>primary,success,warning,danger,none.</code></p>
               </div>
             </div>
           </div>
