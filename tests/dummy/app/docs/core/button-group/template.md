@@ -10,7 +10,8 @@
   <div class="docs-example-frame docs-example-frame-row">
     <div class="docs-example">
       {{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
-      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} @fill={{fill}} @alignText={{alignText}}>
+      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} 
+         @fill={{fill}} @alignText={{alignText}} @style="min-width:200px">
         <Button @icon='database' @type='button' @text='Queries'> </Button>
         <Button @icon='function' @type='button' @text='Fun'> </Button>
         <Button @icon='cog' @type='button' @text='Settings'> </Button>
@@ -27,8 +28,8 @@
           class="bp3-control-indicator"></span>Minimal</label>
       <label class="bp3-control bp3-switch"><input type="checkbox" onclick={{action "onChangeProps" 'vertical'}}><span
           class="bp3-control-indicator"></span>Vertical</label>
-      <div> Align text
-        <ButtonGroup @fill=true>
+      <div style="margin-top: 5px;"> Align text
+        <ButtonGroup @fill=true @style="margin-top: 5px;">
           <Button @text="Left" @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} ></Button>
           <Button @text="Center" @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} ></Button>
           <Button @text="Right" @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} ></Button>
@@ -38,7 +39,8 @@
   </div>
 </div>
 {{/demo.example}}
-{{demo.snippet name='docs-example-basic-button-group.hbs'}}
+{{demo.snippet label='template.hbs' name='docs-example-basic-button-group.hbs'}}
+{{demo.snippet label='component.ts' name='docs-example-basic-button-group.ts'}}
 {{/docs-demo}}
 
 ## Props

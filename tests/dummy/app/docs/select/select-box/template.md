@@ -5,28 +5,35 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-select-box.hbs }}
 
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="SelectExample">
         <div class="docs-example">
+           {{! BEGIN-SNIPPET docs-example-basic-select-box.hbs }}
             <p>
-                <SelectBox @data={{data}} @selected={{selected}} @placeholder='select'
-                    @onSelect={{action 'optionSelected'   }}></SelectBox>
+             <SelectBox @data={{data}} @selected={{selected}} 
+              @placeholder='select'
+              @onSelect={{action 'optionSelected'}}>
+             </SelectBox>
             </p>
             <p>
-                <SelectBox @data={{data2}} @type='button' @selected={{selected2}} @placeholder='Select item'
-                    @icon='select' @active=true @onSelect={{action 'optionSelected'   }}></SelectBox>
+             <SelectBox @data={{data2}} @type='button' @selected={{selected2}}
+              @placeholder='Select item'
+              @icon='select' @active=true 
+              @onSelect={{action 'optionSelected' }}>
+             </SelectBox>
             </p>
             <p>
-                <SelectBox @data={{data3}} @type='link' @placeholder='Select item' @selected={{selected3}}
-                    @onSelect={{action 'optionSelected' }}></SelectBox>
+             <SelectBox @data={{data3}} @type='link' 
+              @placeholder='Select item' @selected={{selected3}}
+              @onSelect={{action 'optionSelected' }}>
+             </SelectBox>
             </p>
+           {{! END-SNIPPET }}
         </div>
     </div>
 </div>
 
-{{! END-SNIPPET }}
 
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-select-box.hbs'}}
@@ -184,7 +191,7 @@
     <br>
     <div class="bp3-callout bp3-intent-primary ">
         <h4 class="bp3-heading">
-            <Icon @icon='info-sign' @iconSize=18 /> select box additional features</h4>
+            <Icon @icon='info-sign' @iconSize=16 /> select box additional features</h4>
         <p> <code> up & down </code> <strong> navigation Key </strong>: navigate within the suggest box.
             <code>enter </code> <strong> Key </strong>:select an item from suggest box.
         </p>

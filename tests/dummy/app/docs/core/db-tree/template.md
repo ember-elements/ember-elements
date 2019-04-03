@@ -4,18 +4,22 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-tree.hbs }}
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="TreeExample">
         <div class="docs-example">
-            <DbTree @content={{content}} @class='docs-example' @onNodeCollapse={{action 'onNodeCollapse'}} 
-              @onNodeClick={{action 'onNodeClick'}} @onNodeDoubleClick={{action 'onNodeDoubleClick'}} @onNodeExpand={{action 'onNodeExpand'}}
-              @onNodeMouseEnter={{action 'onNodeMouseEnter'}} @onNodeMouseLeave={{action 'onNodeMouseLeave'}}>
+            {{! BEGIN-SNIPPET docs-example-basic-tree.hbs }}
+            <DbTree @content={{content}} @class='docs-example' 
+              @onNodeCollapse={{action 'onNodeCollapse'}} 
+              @onNodeClick={{action 'onNodeClick'}} 
+              @onNodeDoubleClick={{action 'onNodeDoubleClick'}}
+              @onNodeExpand={{action 'onNodeExpand'}}
+              @onNodeMouseEnter={{action 'onNodeMouseEnter'}} 
+              @onNodeMouseLeave={{action 'onNodeMouseLeave'}}>
             </DbTree>
+             {{! END-SNIPPET }}
         </div>
     </div>
 </div>
-{{! END-SNIPPET }}
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-tree.hbs'}}
 {{demo.snippet label='component.ts' name='docs-example-basic-tree.js'}}

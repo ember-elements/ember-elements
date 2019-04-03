@@ -6,9 +6,9 @@ export default class DocsCoreButtonGroup extends Controller {
   large: boolean = false;
   vertical: boolean = false;
   minimal: boolean = false;
-  alignText: string = '';
+  alignText: string = 'center';
   leftActive: boolean = false;
-  centerActive: boolean = false;
+  centerActive: boolean = true;
   rightActive: boolean = false;
   @action
   onChangeProps(type: string) {

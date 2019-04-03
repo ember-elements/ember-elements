@@ -6,11 +6,11 @@
 {{#demo.example}}
 {{! BEGIN-SNIPPET docs-example-basic-icons.hbs }}
 <div class="demo-container">
-    <p>
-        <Input @data={{data}} @onkeyUp={{action 'onkeyUp'}} @round=true @placeholder='Search for icons....'
-        @rightIcon='search' />
-    </p>
-    <div class="docs-icons">
+     <div class="docs-icons">
+       <p>
+         <Input @data={{data}} @onkeyUp={{action 'onkeyUp'}} @round=true @placeholder='Search for icons....'
+         @rightIcon='search' />
+       </p>
         {{#each iconsList as |item|}}
         <div class="docs-icon-group">
             <h3 class="bp3-heading">{{item.name}}</h3>

@@ -41,6 +41,7 @@ export default class DocsCoreButton extends Controller {
   // BEGIN-SNIPPET docs-example-basic-button.js
   @action
   onClickButton(event: object) { //mouse event action
+    alert('button clicked!!!!')
   }
   // END-SNIPPET
 

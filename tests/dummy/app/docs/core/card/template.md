@@ -10,9 +10,8 @@
             {{! BEGIN-SNIPPET docs-example-basic-card.hbs }}
             <Card @interactive={{isInteractive}} @elevation={{elevation}}>
                 <h5 class="bp3-heading"><a href="#">Analytical applications</a></h5>
-                <p>User interfaces that enable people to interact smoothly with data, ask better questions, and make
-                    better
-                    decisions.
+                <p>User interfaces that enable people to interact smoothly with data, 
+                   ask better questions, and make better decisions.
                 </p>
                 <Button @text='Explore products'> </Button>
             </Card>
@@ -38,6 +37,7 @@
                             <option label="3" value="3">3</option>
                             <option label="4" value="4">4</option>
                         </select>
+                         <span icon="double-caret-vertical" class="bp3-icon bp3-icon-double-caret-vertical"><svg data-icon="double-caret-vertical" width="16" height="16" viewBox="0 0 16 16"><desc>double-caret-vertical</desc><path d="M5 7h6a1.003 1.003 0 0 0 .71-1.71l-3-3C8.53 2.11 8.28 2 8 2s-.53.11-.71.29l-3 3A1.003 1.003 0 0 0 5 7zm6 2H5a1.003 1.003 0 0 0-.71 1.71l3 3c.18.18.43.29.71.29s.53-.11.71-.29l3-3A1.003 1.003 0 0 0 11 9z" fill-rule="evenodd"></path></svg></span>
                     </div>
                 </div>
             </label>

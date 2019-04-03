@@ -8,9 +8,9 @@ export default class DocsCoreButtonGroup extends Route.extend({
       controller.set('large', false);
       controller.set('vertical', false);
       controller.set('minimal', false);
-      controller.set('alignText', "");
+      controller.set('alignText', "center");
       controller.set('leftActive', false);
-      controller.set('centerActive', false);
+      controller.set('centerActive', true);
       controller.set('rightActive', false);
 
       }

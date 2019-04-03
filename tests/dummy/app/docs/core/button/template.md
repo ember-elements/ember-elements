@@ -8,14 +8,15 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="ButtonsExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
-            <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} @intent={{intent}} @small={{small}}
-                @large={{large}} @icon={{icon}} @rightIcon={{rightIcon}} @fill={{fill}} @type='button' @text={{text}}
-                @onClick={{action 'onClickButton'}}>
+            <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} 
+              @intent={{intent}} @small={{small}} @large={{large}} @icon={{icon}} 
+              @rightIcon={{rightIcon}} @fill={{fill}} @type='button' @text={{text}}
+              @onClick={{action 'onClickButton'}}>
             </Button>
             {{! END-SNIPPET }}
         </div>
         <div class="docs-example-options">
-            <h5 class="bp3-heading">props</h5>
+            <h5 class="bp3-heading">Props</h5>
             <label class="bp3-control bp3-switch">
                 <input type="checkbox" onclick={{action 'doFuction' 'minimal'}}>
                 <span class="bp3-control-indicator"></span>
@@ -51,7 +52,7 @@
                 <span class="bp3-control-indicator"></span>
                 Fill
             </label>
-            <label class="bp3-label">Intent
+            <label class="bp3-label" style="margin-top:5px">Intent
                 <div class="bp3-html-select">
                   <select onchange={{action "selectIntent"}}>
                         <option label="None" value="none">None</option>
