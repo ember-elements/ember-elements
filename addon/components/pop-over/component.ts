@@ -24,6 +24,9 @@ export default class PopOver extends Component {
   POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
   POPOVER_CONTENT_SIZING: string = Classes.POPOVER_CONTENT_SIZING;
   FILL: string = Classes.FILL;
+  popOverArrow!: boolean;
+  arrow: boolean = true;
+  canEscapeKeyClose: boolean = true;
   popCloseClickFun!: () => void;
   popOpenClickFun!: () => void;
   didInsertElement() {
@@ -36,13 +39,23 @@ export default class PopOver extends Component {
   parent: boolean = false;
   isOutClickClose: boolean = this.isOutClickClose == undefined ? true : this.isOutClickClose;
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
-
+  popperClass: string = "popper";
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
     this._closeOnEsc = this._closeOnEsc.bind(this);
   }
-
+  didReceiveAttrs() {
+    super.init();
+    if (this.get('arrow') == false) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
+    }
+  }
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
@@ -64,7 +77,7 @@ export default class PopOver extends Component {
     if (!clickIsInside && !$(e.target).hasClass(this.FILL)) { this._close(); }
   }
   _closeOnEsc(e: any) {
-    if (e.keyCode === this.ESC) { this._close(); }
+    if (e.keyCode === this.ESC && this.get('canEscapeKeyClose')) { this._close(); }
   }
   _close() {
     if (this.isDestroyed || this.isDestroying)
