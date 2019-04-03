@@ -5,18 +5,18 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-date-range-picker.hbs }}
-
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
-            <DateRangePicker @format={{format}} @range={{this.range}} @onSelect={{action 'selectDate' }}>
+            {{! BEGIN-SNIPPET docs-example-basic-date-range-picker.hbs }}
+            <DateRangePicker @format={{format}} 
+             @range={{this.range}} 
+             @onSelect={{action 'selectDate' }}>
             </DateRangePicker>
+            {{! END-SNIPPET }}
         </div>
     </div>
 </div>
-{{! END-SNIPPET }}
-
 {{/demo.example}}
 
 {{demo.snippet name='docs-example-basic-date-range-picker.hbs'}}

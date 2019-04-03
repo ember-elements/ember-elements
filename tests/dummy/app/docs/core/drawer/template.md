@@ -8,36 +8,41 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="DrawerExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-drawer.hbs }}
-            <Button @onClick={{action 'openDrawerComponent'}} @primary=true @text='Show Drawer'></Button>
-            <DbDrawer @isOpen={{isOpenDrawer}} @size={{size}} @vertical={{vertical}} @autoFocus={{autoFocus}}
-                @enforceFocus={{enforceFocus}} @hasBackdrop={{hasBackdrop}} @usePortal={{usePortal}}
-                @canOutsideClickClose={{canOutsideClickClose}} @canEscapeKeyClose={{canEscapeKeyClose}}
-                @isLeft={{isLeft}}>
-                {{#db-drawer/header}}
-                <Icon @icon="info-sign"></Icon>
+            <Button @onClick={{action 'openDrawerComponent'}} @primary=true 
+            @text='Show Drawer'></Button>
+            <DbDrawer @isOpen={{isOpenDrawer}} @size={{size}} 
+            @vertical={{vertical}} @autoFocus={{autoFocus}} @enforceFocus={{enforceFocus}}
+            @hasBackdrop={{hasBackdrop}} @usePortal={{usePortal}} 
+            @canOutsideClickClose={{canOutsideClickClose}}
+            @canEscapeKeyClose={{canEscapeKeyClose}} @isLeft={{isLeft}}>
+            {{#db-drawer/header}}
+              <Icon @icon="info-sign"></Icon>
                 <h4 class="bp3-heading">Palantir Foundry</h4>
                 <Button @icon='small-cross' @minimal=true></Button>
-                {{/db-drawer/header}}
-                {{#db-drawer/body}}
+            {{/db-drawer/header}}
+            {{#db-drawer/body}}
                 <p><strong>Data integration is the seminal problem of the digital age. For over ten years, we’ve
-                        helped the world’s premier organizations rise to the challenge.</strong></p>
+                   helped the world’s premier organizations rise to the challenge.</strong></p>
                 <p>Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and
-                    extending the power of data integration. With Foundry, anyone can source, fuse, and transform
-                    data into any shape they desire. Business analysts become data engineers — and leaders in their
-                    organization’s data revolution.</p>
+                   extending the power of data integration. With Foundry, anyone can source, fuse, and transform
+                   data into any shape they desire. Business analysts become data engineers — and leaders in their
+                   organization’s data revolution.
+                </p>
                 <p>Foundry’s back end includes a suite of best-in-class data integration capabilities: data
-                    provenance, git-style versioning semantics, granular access controls, branching, transformation
-                    authoring, and more. But these powers are not limited to the back-end IT shop.</p>
+                   provenance, git-style versioning semantics, granular access controls, branching, transformation
+                   authoring, and more. But these powers are not limited to the back-end IT shop.
+                </p>
                 <p>In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data
-                    integrations in their own right. Access controls, transformation logic, and data quality flow
-                    from original data source to intermediate analysis to presentation in real time. Every end
-                    product created in Foundry becomes a new data source that other users can build upon. And the
-                    enterprise data foundation goes where the business drives it.</p>
+                   integrations in their own right. Access controls, transformation logic, and data quality flow
+                   from original data source to intermediate analysis to presentation in real time. Every end
+                   product created in Foundry becomes a new data source that other users can build upon. And the
+                   enterprise data foundation goes where the business drives it.
+                </p>
                 <p>Start the revolution. Unleash the power of data integration with Palantir Foundry.</p>
-                {{/db-drawer/body}}
-                {{#db-drawer/footer}}
-                Footer
-                {{/db-drawer/footer}}
+             {{/db-drawer/body}}
+             {{#db-drawer/footer}}
+               Footer
+             {{/db-drawer/footer}}
             </DbDrawer>
             {{! END-SNIPPET }}
         </div>
@@ -139,7 +144,7 @@
 {{demo.snippet label='component.ts' name='docs-example-basic-drawer.js'}}
 {{/docs-demo}}
 
-### Props
+## Props
 
 <div class="bp3-running-text bp3-text-large">
     <p>Use the <code>size</code> prop to set the size of the <code>Drawer</code>. This prop sets CSS <code>width</code>
@@ -404,7 +409,7 @@
     <br>
     <div class="bp3-callout bp3-intent-primary ">
         <h4 class="bp3-heading">
-            <Icon @icon='info-sign' @iconSize=18 /> Important for dialog box</h4>
+            <Icon @icon='info-sign' @iconSize=16 /> Important for dialog box</h4>
         <p>
             Need to add
             <strong>&lt;div id="destination"&gt; &lt;div&gt;</strong> to main<strong> application.hbs</strong>.The

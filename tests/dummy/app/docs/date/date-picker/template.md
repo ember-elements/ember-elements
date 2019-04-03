@@ -7,21 +7,20 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-date-picker.hbs }}
-
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
             <div class='webkit-box-div'>
                 <div class='btn-bottom-padding'>
+                   {{! BEGIN-SNIPPET docs-example-basic-date-picker.hbs }}
                     <DatePicker @onSelect={{action 'selectDate' }}></DatePicker>
+                   {{! END-SNIPPET }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-{{! END-SNIPPET }}
 
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-date-picker.hbs'}}

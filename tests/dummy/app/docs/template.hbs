@@ -2,7 +2,7 @@
 {{#viewer.nav as |nav|}}
 <li class="mt-8"></li>
 
-{{nav.section 'Introduction' style='large' }}
+{{nav.section 'Introduction'  style='large' }}
 {{nav.item 'Quickstart' 'docs.quick-start'}}
 
 <li class="mt-8"></li>
@@ -10,24 +10,41 @@
 
 {{nav.section 'Core' style='large'}}
 {{!-- {{nav.item 'Accessibility' 'docs.accessibility' }} --}}
-{{nav.item 'Button' 'docs.core.button'}}
-{{nav.item 'Button Group' 'docs.core.button-group'}}
-{{nav.item 'Card' 'docs.core.card'}}
-{{nav.item 'Dialog' 'docs.core.dialog'}}
-{{nav.item 'Drawer' 'docs.core.drawer'}}
-{{nav.item 'Icon' 'docs.core.icon'}}
-{{nav.item 'Input' 'docs.core.input'}}
-{{nav.item 'Overflow List' 'docs.core.overflowList'}}
-{{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
-{{nav.item 'Pop Over' 'docs.core.pop-over'}}
-{{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
-{{nav.item 'Tag Input' 'docs.core.tag-input'}}
-{{nav.item 'Tooltip' 'docs.core.tooltip'}}
-{{nav.item 'Tree' 'docs.core.db-tree'}} 
+<div class="subnav-section">
+    {{nav.section 'COMPONENTS' style='large'}}
+</div>
+{{#nav.subnav as |nav|}}
+    {{nav.item 'Button' 'docs.core.button'}}
+    {{nav.item 'Button Group' 'docs.core.button-group'}}
+    {{nav.item 'Card' 'docs.core.card'}}
+    {{nav.item 'Icon' 'docs.core.icon'}}
+    {{nav.item 'Overflow List' 'docs.core.overflowList'}}
+    {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
+    {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
+    {{nav.item 'Tree' 'docs.core.db-tree'}}
+{{/nav.subnav}}
+<div class="subnav-section">
+    {{nav.section 'FORM INPUTS' style='large'}}
+</div>
+{{#nav.subnav as |nav|}}
+    {{nav.item 'Input' 'docs.core.input'}}
+    {{nav.item 'Tag Input' 'docs.core.tag-input'}}
+{{/nav.subnav}}
+<div class="subnav-section">
+    {{nav.section 'OVERLAYS' style='large'}}
+</div>
+{{#nav.subnav as |nav|}}
+    {{nav.item 'Dialog' 'docs.core.dialog'}}
+    {{nav.item 'Drawer' 'docs.core.drawer'}}
+    {{nav.item 'Pop Over' 'docs.core.pop-over'}}
+    {{nav.item 'Tooltip' 'docs.core.tooltip'}}
+{{/nav.subnav}}
+
+
 
 <li class="mt-8"></li>
 {{nav.section 'DateTime' style='large'}}
- {{nav.item 'Date Picker' 'docs.date.date-picker'}}
+{{nav.item 'Date Picker' 'docs.date.date-picker'}}
 {{nav.item 'Date Range Picker' 'docs.date.date-range-picker'}}
 
 <li class="mt-8"></li>

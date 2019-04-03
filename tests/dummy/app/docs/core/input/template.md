@@ -2,26 +2,25 @@
 <div class='bp3-running-text bp3-text-large'>
   The <code>Input</code> tag specifies an input field where the user can enter data.
 </div>
-
-### A simple view of text input
-
 {{#docs-demo as |demo|}}
 {{#demo.example}}
 <div class="demo-container">
   <div class="docs-example-frame docs-example-frame-row">
     <div class="docs-example">
       {{! BEGIN-SNIPPET docs-example-basic-text-input.hbs }}
-      <div style='width:40%'>
-        <Input @data='hiii...' @icon='filter' @placeholder='Any text....' @rightIcon='lock'></Input>
-      </div> <br>
-      <div style='width:40%'>
-        <Input @data='hiii...' @success=true @round=true @placeholder='Any text....' @rightIcon='lock'></Input>
-      </div> <br>
-      <div>
-        <Input @autofocus=true @placeholder='enter any text...' @data='' @disabled={{isDisabled}} @intent={{intent}}
-          @round={{isRound}} @readonly={{isReadOnly}} @large={{isLarge}} @onkeyDown={{action 'onkeyDown'}}>
+        <Input @data='hellow world' @icon='filter' @placeholder='Any text....'
+         @disabled={{isDisabled}} @intent={{intent}} @round={{isRound}}
+        @readonly={{isReadOnly}} @large={{isLarge}}  
+        @rightIcon='lock' @style='width:40%'></Input>
+        <Input @data='hellow world' @placeholder='Any text....'
+        @disabled={{isDisabled}} @intent={{intent}} @round={{isRound}}
+        @readonly={{isReadOnly}} @large={{isLarge}} 
+        @rightIcon='lock' @style='width:40%'></Input>
+        <Input @autofocus=true @placeholder='enter any text...' @data='' 
+        @disabled={{isDisabled}} @intent={{intent}} @round={{isRound}}
+        @readonly={{isReadOnly}} @large={{isLarge}} 
+        @onkeyDown={{action 'onkeyDown'}}>
         </Input>
-      </div>
       {{! END-SNIPPET }}
     </div>
     <div class="docs-example-options">
@@ -33,8 +32,8 @@
       <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
           class="bp3-control-indicator" onclick={{action 'readOnlyFun' }}></span>Readonly</label>
       <label class="bp3-control bp3-switch" style='padding-right:25px'><input type="checkbox" value="on"><span
-          class="bp3-control-indicator" onclick={{action 'largeFun' }}></span>large</label>
-       <label class="bp3-label">Intent
+          class="bp3-control-indicator" onclick={{action 'largeFun' }}></span>Large</label>
+       <label class="bp3-label" style="margin-top:5px">Intent
                 <div class="bp3-html-select">
                   <select onchange={{action "selectIntent"}}>
                         <option label="None" value="none">None</option>
@@ -51,7 +50,7 @@
 </div>
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-text-input.hbs'}}
-<!-- {{demo.snippet label='component.ts' name='docs-example-basic-text-input.ts'}} -->
+{{demo.snippet label='component.ts' name='docs-example-basic-text-input.ts'}}
 {{/docs-demo}}
 
 ## Props
@@ -372,7 +371,7 @@
   <br>
   <div class="bp3-callout bp3-intent-danger ">
     <h4 class="bp3-heading">
-      <Icon @icon='error' @iconSize=20 /> Disabled and readonly <code>input</code>
+      <Icon @icon='error' @iconSize=16 /> Disabled and readonly <code>input</code>
       prevents all interaction</h4>
   </div>
 

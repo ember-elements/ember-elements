@@ -22,11 +22,12 @@
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="OverflowListExample">
         <div class="docs-example">
-            {{! BEGIN-SNIPPET docs-example-basic-overflow.hbs }}
             <div id='overflowListCard1' class="bp3-card bp3-elevation-0" style="width: 50%;">
-                <OverflowList @items={{items}} @collapseFrom={{fromValue}}></OverflowList>
-            </div>
+            {{! BEGIN-SNIPPET docs-example-basic-overflow.hbs }}
+                <OverflowList @items={{items}} @collapseFrom={{fromValue}}>
+                </OverflowList>
             {{! END-SNIPPET }}
+            </div>
         </div>
         <div class="docs-example-options">
             <h5 class="bp3-heading">Props</h5>
@@ -48,7 +49,7 @@
             <h5 class="bp3-heading">Example</h5><label class="bp3-label">Width</label>
             <div class="bp3-control-group bp3-numeric-input">
                 <div class="bp3-input-group">
-                    <input type="text" autocomplete="off" onkeydown={{action 'onKeyDown'}} max="100" min="0"
+                    <input type="text" autocomplete="off" onkeyup={{action 'onKeyUp'}} onkeydown={{action 'onKeyDown'}} max="100" min="0"
                         placeholder="Enter a number..." class="bp3-input" value="50" style="padding-right: 10px;"
                         id='overflowWidthInput'>
                 </div>

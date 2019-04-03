@@ -101,6 +101,9 @@ body {
     .bp3-html-select{
       width: 70%;
     }
+    .bp3-input-group{
+      width: 61%;
+    }
   }
   .bp3-tree.bp3-elevation-0 {
     width: 274px !important;
@@ -113,4 +116,28 @@ body {
   margin-left: 0px !important;
 }
 
+
+}
+
+// .htmlbars.ember-view.hljs{
+//   padding-top: 32px;
+// }
+// .javascript.ember-view.hljs{
+//   padding-top: 32px;
+// }
+.demo-container{
+  padding-bottom: 10px;
+}
+
+.subnav-section{
+  margin-top: 4px;
+  margin-left: 14px ;
+  li{
+  font-weight: 500  !important;
+    margin-top: 5px !important;
+    font-size: 12px !important;
+  }
+}
+li.docs-text-xs{
+  font-weight: bold ;
 }

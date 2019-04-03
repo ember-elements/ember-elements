@@ -9,16 +9,19 @@
 
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-panel-block.hbs }}
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
-            <PanelStack @class='docs-panel-stack-example' @closePanel={{action 'onClosePanel'}}
-                @panelList={{panelList}}>
+            {{! BEGIN-SNIPPET docs-example-basic-panel-block.hbs }}
+            <PanelStack @class='docs-panel-stack-example' 
+             @closePanel={{action 'onClosePanel'}}
+             @panelList={{panelList}}>
                 <div class="docs-panel-stack-contents-example">
-                    {{component componentName panelList=panelList sendComponentName=(action 'sendComponentName')}}
+                    {{component componentName panelList=panelList 
+                     sendComponentName=(action 'sendComponentName')}}
                 </div>
             </PanelStack>
+            {{! END-SNIPPET }}
         </div>
         <div class="docs-example-options" >
             <h5 class="bp3-heading">Current stack</h5>
@@ -30,12 +33,11 @@
         </div>
     </div>
 </div>
-{{! END-SNIPPET }}
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-panel-block.hbs'}}
-{{demo.snippet name='docs-example-basic-create-panel.hbs'}}
+{{demo.snippet label="CreatePanel:template.hbs" name='docs-example-basic-create-panel.hbs'}}
 {{demo.snippet label='component.ts' name='docs-example-basic-panel-block.js'}}
-{{demo.snippet label='component.ts' name='docs-example-basic-create-panel.js'}}
+{{demo.snippet label="CreatePanel:component.ts" name='docs-example-basic-create-panel.js'}}
 {{/docs-demo}}
 
 ## Panels

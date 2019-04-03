@@ -7,29 +7,34 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-multi-select-box.hbs }}
-
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="SelectExample">
         <div class="docs-example">
-            <div class='webkit-box-div' style="width: 100%">
-                <MultiSelect @data={{data}} @selected={{selected}} @placeholder='select'
-                    @onSelect={{action 'optionSelected'}} @onDelete={{action 'onDelete' }}></MultiSelect>
+            {{! BEGIN-SNIPPET docs-example-basic-multi-select-box.hbs }}
+            <div style="width:100%">
+                <MultiSelect @data={{data}} @selected={{selected}} 
+                 @placeholder='select' @onSelect={{action 'optionSelected'}} 
+                 @onDelete={{action 'onDelete' }}>
+                </MultiSelect>
             </div>
-            <div class='webkit-box-div' style="width: 100%">
-                <MultiSelect @data={{data2}} @selected={{selected2}} @placeholder='select'
-                    @onSelect={{action 'optionSelected'}} @onDelete={{action 'onDelete'}} @isDBrequired=true
-                    @defaultBgColor='orange' @defaultFgColor='black'></MultiSelect>
+            <div style="width:100%">
+                <MultiSelect @data={{data2}} @selected={{selected2}} 
+                 @placeholder='select' @onSelect={{action 'optionSelected'}} 
+                 @onDelete={{action 'onDelete'}} @isDBrequired=true
+                 @defaultBgColor='orange' @defaultFgColor='black'>
+                </MultiSelect>
             </div>
-            <div class='webkit-box-div' style="width: 100%">
-                <MultiSelect @data={{data3}} @selected={{selected3}} @placeholder='select'
-                    @onSelect={{action 'optionSelected'}} @onDelete={{action 'onDelete'}} @tagColor={{tagColor}}
-                    @isDBrequired=true></MultiSelect>
+            <div style="width:100%">
+                <MultiSelect @data={{data3}} @selected={{selected3}} 
+                  @placeholder='select' @onSelect={{action 'optionSelected'}} 
+                  @onDelete={{action 'onDelete'}} @tagColor={{tagColor}}
+                  @isDBrequired=true>
+                </MultiSelect>
             </div>
+            {{! END-SNIPPET }}
         </div>
     </div>
 </div>
-{{! END-SNIPPET }}
 
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-multi-select-box.hbs'}}
@@ -225,7 +230,7 @@
     <br>
     <div class="bp3-callout bp3-intent-primary ">
         <h4 class="bp3-heading">
-            <Icon @icon='info-sign' @iconSize=18 /> multi-select box additional features</h4>
+            <Icon @icon='info-sign' @iconSize=16 /> multi-select box additional features</h4>
         <b>There are 6 main keys used to interact with multiselect box</b>
         <p> <code> up & down </code> <strong> navigation Key </strong>: navigate within the suggest box.
             <code>left & right </code> <strong> navigation Key </strong>:navigate within the selected items inside tag

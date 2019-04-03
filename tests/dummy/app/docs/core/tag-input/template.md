@@ -6,19 +6,21 @@
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
-{{! BEGIN-SNIPPET docs-example-basic-tag-input.hbs }}
 
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
             <p>
-             <TagInput @data={{data}} @placeholder='enter tags..' @save={{action 'saveTag'}} @delete={{action  'deleteTag'}}></TagInput>
+             {{! BEGIN-SNIPPET docs-example-basic-tag-input.hbs }}
+             <TagInput @data={{data}} @placeholder='enter tags..' 
+             @save={{action 'saveTag'}} @delete={{action  'deleteTag'}}>
+             </TagInput>
+             {{! END-SNIPPET }}
             </p>
         </div>
     </div>
 </div>
 
-{{! END-SNIPPET }}
 
 {{/demo.example}}
 {{demo.snippet name='docs-example-basic-tag-input.hbs'}}
