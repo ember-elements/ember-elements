@@ -3,7 +3,9 @@
 // *:focus {
 //   outline: none;
 // }
-
+.ember-power-calendar{
+  min-width: 206px;
+}
 .ember-power-calendar .ember-power-calendar-weekdays {
   color: #333;
 }
@@ -26,14 +28,24 @@
 
 // selected
 .ember-power-calendar-day--current-month.ember-power-calendar-day--selected {
+  // background-color: #ebf1f5;
+  // color: rgb(24, 32, 38);
+  background-color: #137cbd ;
+  color: #fff ;
+}
+.demo-range-calendar-with-pretty-range-ends-yo{
+                    
+.ember-power-calendar-day--current-month.ember-power-calendar-day--selected {
   background-color: #ebf1f5;
-  ;
   color: rgb(24, 32, 38);
+  // background-color: #137cbd ;
+  // color: #fff ;
+}
 }
 
 // today
-.ember-power-calendar .ember-power-calendar-day--today,
-.ember-power-calendar .ember-power-calendar-day:not([disabled]):hover {
+.ember-power-calendar .ember-power-calendar-day--today{
+// .ember-power-calendar .ember-power-calendar-day:not([disabled]):hover {
   background: #d8e1e8;
   color: #182026;
 }

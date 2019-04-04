@@ -14,7 +14,7 @@ module('Integration | Component | date-range-picker', function(hooks) {
     });
     var element:any=this.element;
     await render(hbs`<DateRangePicker @range={{this.range}}/>`);
-    assert.equal(element.querySelector('input').value, '01-12-2018 - 05-12-2018')
+    assert.equal(element.querySelector('input').value, '01-12-2018 -- 05-12-2018')
   });
   test('date range picker format DD/MM/YYYY', async function (assert) {
     this.set('range', {
@@ -23,7 +23,7 @@ module('Integration | Component | date-range-picker', function(hooks) {
     });
     var element:any=this.element;
     await render(hbs`<DateRangePicker @range={{this.range}} @format='DD/MM/YYYY'/>`);
-    assert.equal(element.querySelector('input').value, '01/12/2018 - 05/12/2018')
+    assert.equal(element.querySelector('input').value, '01/12/2018 -- 05/12/2018')
   });
   test('date range picker format `MM/DD/YYYY', async function (assert) {
     this.set('range', {
@@ -32,7 +32,7 @@ module('Integration | Component | date-range-picker', function(hooks) {
     });
     var element:any=this.element;
     await render(hbs`<DateRangePicker @range={{this.range}} @format='MM/DD/YY'/>`);
-    assert.equal(element.querySelector('input').value, '12/01/18 - 12/05/18')
+    assert.equal(element.querySelector('input').value, '12/01/18 -- 12/05/18')
   });
 
   test(' check isDefaultOpen true', async function (assert) {

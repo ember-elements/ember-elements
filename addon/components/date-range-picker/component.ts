@@ -45,6 +45,10 @@ export default class DateRangePicker extends Component {
   currentWindow: any;
   months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   years = Array(...Array(40)).map((_, i) => `${i + 1990}`);
+  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  popperClass: string = "popper";
+  popOverArrow!: boolean;
+  minimal: boolean = false;
   didInsertElement() {
     set(this, '_popperTarget', this.element);
     this.set('currentWindow', this.$(window));
@@ -59,13 +63,19 @@ export default class DateRangePicker extends Component {
   }
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
-    let d = moment(this.range.start).format(this.dateFormat) + " - " + moment(this.range.end).format(this.dateFormat);
+    let d = moment(this.range.start).format(this.dateFormat) + " -- " + moment(this.range.end).format(this.dateFormat);
     this.set('date', d);
   }
   async didReceiveAttrs() {
     await set(this, '_popperTarget', this.element);
-
-
+    if (this.get('minimal')) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
+    }
     if (this.get('isDefaultOpen'))
       this.set('open', this.get('isDefaultOpen'));
 
@@ -150,7 +160,7 @@ export default class DateRangePicker extends Component {
       set(this, 'range2', new Date(past.getFullYear(), past.getMonth() + 1, past.getDate()));
     } else
       this.set('range2', today);
-    this.set('date', (moment(this.range.start).format(this.dateFormat) + " - " + moment(this.range.end).format(this.dateFormat)));
+    this.set('date', (moment(this.range.start).format(this.dateFormat) + " -- " + moment(this.range.end).format(this.dateFormat)));
     if (this.range.start && this.range.end && this.get('onSelect')) {
       get(this, 'onSelect')(this.range);
     }
