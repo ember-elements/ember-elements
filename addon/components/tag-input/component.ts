@@ -15,7 +15,7 @@ export default class TagInput extends Component {
   isCloseNotRequired!: boolean;
   //function declarations
   save!: (value: any) => void;
-  delete!: (value: any) => void;
+  delete!: (index: any, value: string, e: MouseEvent) => void;
   @className(Classes.DISABLED)
   disabled: boolean = false;
   @className(Classes.ACTIVE)
@@ -58,9 +58,9 @@ export default class TagInput extends Component {
     this.set('tag', '')
   }
   @action
-  Delete(index: any) {
+  Delete(value: string, index: any, e: MouseEvent) {
     if (this.get('delete'))
-      this.get('delete')(index);
+      this.get('delete')(index, value, e);
   }
   @action
   DeleteAll() {
@@ -95,7 +95,7 @@ export default class TagInput extends Component {
         element.forEach((item: any) => {
           item.className = this.TAG
         });
-        element[this.selectedItem].className += ' '+Classes.ACTIVE;
+        element[this.selectedItem].className += ' ' + Classes.ACTIVE;
       }
     }
   }

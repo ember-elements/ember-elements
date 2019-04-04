@@ -1,6 +1,11 @@
 <div class={{TAG_INPUT_VALUES}} onclick={{action "onFocus"}} onkeydown={{action "handleKeydown"}}>
     {{#each data as |item index|}}
-    <TagItem @item={{item}} @index={{index}} @disabled={{disabled}}  @onDelete={{action 'Delete'}} @defaultBg_color={{defaultBgcolor}} @defaultFg_color={{defaultFgcolor}}/>
+ <Tag  @large={{large}} @minimal={{minimal}} @params={{index}}
+              @active={{active}} @interactive={{interactive}} @round={{round}} 
+              @icon={{icon}} @rightIcon={{rightIcon}} @intent={{intent}}
+              @value={{item}} @removable={{removable}} @bgColor={{defaultBgcolor}} @fgColor={{defaultFgcolor}}
+              @onRemove={{action 'Delete'}} @disabled={{disabled}}/>
+    {{!-- <TagItem @item={{item}} @index={{index}} @disabled={{disabled}}  @onDelete={{action 'Delete'}} @defaultBg_color={{defaultBgcolor}} @defaultFg_color={{defaultFgcolor}}/> --}}
     {{/each}}
     <form {{action 'savetag' on='submit' }} autocomplete="off">
         {{#if disabled}}
@@ -19,4 +24,4 @@
         </path>
     </svg>
 </button>
-{{/if}} {{yield}}
+{{/if}} {{yield}} 
