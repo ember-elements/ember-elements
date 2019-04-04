@@ -124,9 +124,11 @@ $day-range-start-background-color: $day-range-bookend-color,
 $day-range-start-background-color--hover: $day-range-start-background-color,
 $day-range-end-background-color: $day-range-bookend-color,
 $day-range-end-background-color--hover: $day-range-end-background-color,
-$day-selected-color: lighten($primary-color, 50%),
+// $day-selected-color: lighten($primary-color, 50%),
+$day-selected-color: $primary-color,
 $day-selected-color--hover: $day-selected-color,
-$day-selected-text-color: #656D78,
+// $day-selected-text-color: #656D78,
+$day-selected-text-color: white,
 $day-selected-text-color--hover: $day-selected-text-color) {
 
   width: $row-width;

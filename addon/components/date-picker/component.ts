@@ -39,6 +39,10 @@ export default class DatePicker extends Component {
   months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   years = Array(...Array(40)).map((_, i) => `${i + 1990}`);
   currentWindow:any;
+  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  popperClass: string = "popper";
+  popOverArrow!: boolean;
+  minimal: boolean = false;
   init() {
     super.init();
    
@@ -56,6 +60,14 @@ export default class DatePicker extends Component {
       if (yearDiff > 1) {
         this.years = Array(...Array(yearDiff)).map((_, i) => `${i + this.get('startYear')}`);
       }
+    }
+    if (this.get('minimal')) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
     }
 
   }
