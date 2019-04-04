@@ -13,7 +13,8 @@
             <p>
              {{! BEGIN-SNIPPET docs-example-basic-tag-input.hbs }}
              <TagInput @data={{data}} @placeholder='enter tags..' 
-             @save={{action 'saveTag'}} @delete={{action  'deleteTag'}}>
+             @save={{action 'saveTag'}} @delete={{action  'deleteTag'}}
+             @interactive=true @removable=true >
              </TagInput>
              {{! END-SNIPPET }}
             </p>
