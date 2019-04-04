@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="docs-example-options">
-      <h5 class="bp3-heading">Appearance</h5>
-      <div class="bp3-form-group"><label class="bp3-label" for="position">Position when opened <span
+      <h5 class="bp3-heading">Props</h5>
+      <div class="bp3-form-group"><label class="bp3-label" for="position">Position when opened (placement) <span
             class="bp3-text-muted"></span></label>
         <div class="bp3-form-content">
           <div class="bp3-html-select"><select onchange={{action 'selectPositon'}}>

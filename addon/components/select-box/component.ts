@@ -30,7 +30,10 @@ export default class SelectBox extends Component {
   ACTIVE: string = Classes.ACTIVE;
   MENU: string = Classes.MENU;
   MENU_ITEM: string = Classes.MENU_ITEM;
+  MINIMAL: string = Classes.MINIMAL;
+  INTENT_PRIMARY: string | undefined = Classes.INTENT_PRIMARY;
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  intentactive: string = Classes.INTENT_PRIMARY + ' ' + Classes.ACTIVE;
   onSelect!: (data: any, index: number) => void;
   selected: any;
   date!: string;
@@ -39,7 +42,11 @@ export default class SelectBox extends Component {
   data: any;
   selectedKey: number = -1;
   filteredList: Array<string> = [];
-
+  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  popperClass: string = "popper";
+  popOverArrow!: boolean;
+  minimal: boolean = false;
+  defaultSelected: number = -1;
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
@@ -56,7 +63,16 @@ export default class SelectBox extends Component {
     if (this.get('isDefaultOpen')) {
       this.set('open', this.get('isDefaultOpen'));
       let data: Array<string> = JSON.parse(JSON.stringify(this.get('data') || []));
+      this.findDefaultSelect(data);
       set(this, 'filteredList', data);
+    }
+    if (this.get('minimal')) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
     }
   }
 
@@ -90,7 +106,10 @@ export default class SelectBox extends Component {
     this.set('open', false);
   }
   @action
-  onMouseSelect(data: any, index: number) {
+  async onMouseSelect(data: any, index: number, e: any) {
+    var selectDiv: any = await document.getElementById('select' + index);
+    selectDiv.className += ' ' + this.INTENT_PRIMARY + ' ' + this.ACTIVE;
+
     this.set('selected', data);
     if (this.get('onSelect')) {
       this.get('onSelect')(data, index);
@@ -101,14 +120,38 @@ export default class SelectBox extends Component {
   async togglePopover() {
     await this.toggleProperty('open');
     let data: any[] = JSON.parse(JSON.stringify(this.get('data') || []));
+    this.findDefaultSelect(data);
     set(this, 'filteredList', data);
+  }
+  findDefaultSelect(data: any) {
+    var flag = false;
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      if (element == this.selected) {
+        flag = true;
+        this.set('selectedKey', index);
+        this.set('defaultSelected', index);
+        break;
+      }
+    }
+    if (!flag) {
+      this.set('selectedKey', -1);
+      this.set('defaultSelected', -1);
+    }
+
   }
   @action
   handleKeydown(data: any, e: any) {
+    if (this.open == false) {
+      this.findDefaultSelect(this.filteredList);
+
+    }
     this.set('open', true);
     if (e.keyCode == 40 || e.keyCode == 38) {
 
       let container: any = document.querySelector('.' + this.TRANSITION_CONTAINER);
+      if (!container)
+        return;
       let scrollContainer = container.querySelector('ul');
       let list: any[] = container.querySelectorAll(`.${this.POPOVER_CONTENT} ul li`);
       if (list) {
@@ -127,7 +170,7 @@ export default class SelectBox extends Component {
           element.querySelector('a').className = `${this.MENU_ITEM} ${this.POPOVER_DISMISS}`;
         });
         if (list[this.selectedKey])
-          list[this.selectedKey].querySelector('a').className += ' ' + this.ACTIVE;
+          list[this.selectedKey].querySelector('a').className += ' ' + this.ACTIVE + ' ' + this.INTENT_PRIMARY;
       }
     } else if (e.keyCode == 13) {
       if (this.selectedKey > -1) {
@@ -152,6 +195,7 @@ export default class SelectBox extends Component {
         if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
         } else {
           this.selectedKey = -1;
+          this.set('defaultSelected', -1);
           arr.push(txt);
         }
       }

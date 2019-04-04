@@ -1,19 +1,29 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import {
+  action
+} from '@ember-decorators/object';
 
 export default class DocsSelectSelectBox extends Controller {
   // normal class body definition here
   // BEGIN-SNIPPET docs-example-basic-select-box.ts
-  selected: string = 'hi1';
-  data: Array<string> = ['hi1', 'hi2', 'hi3', 'hi4', 'hi5', 'hi6', 'hi7', 'hi8', 'hi9', 'hi10', 'hi11', 'hi12'];
-  selected2: string = 'hi2';
-  data2: Array<string> = ['hi1', 'hi2', 'hi3', 'hi4', 'hi5', 'hi6', 'hi7', 'hi8', 'hi9', 'hi10', 'hi11', 'hi12'];
-  selected3: string = 'hi6';
-  data3: Array<string> = ['hi1', 'hi2', 'hi3', 'hi4', 'hi5', 'hi6',];
+  selected: string = 'April';
+  minimal: boolean = false;
+  placement:string='auto';
+  data: Array < string > =  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  selected2: string = 'February';
+  data2: Array < string > =  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   @action
   optionSelected(selectedValue: string, index: number) {
 
+  }
+  @action
+  onMinimalPopover() {
+    this.set('minimal', !this.minimal);
+  }
+  @action
+  selectPositon(e: any) {
+    this.set('placement', e.target.value);
   }
   // END-SNIPPET
 }
