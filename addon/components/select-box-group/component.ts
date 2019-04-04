@@ -31,6 +31,8 @@ export default class SelectBoxGroup extends Component {
   MENU: string = Classes.MENU;
   MENU_ITEM: string = Classes.MENU_ITEM;
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  intentactive: string = Classes.INTENT_PRIMARY + ' ' + Classes.ACTIVE;
+  INTENT_PRIMARY: string | undefined = Classes.INTENT_PRIMARY;
   onSelect!: (data: any, index: number, optIndex: number) => void;
   selected: any;
   date!: string;
@@ -39,6 +41,12 @@ export default class SelectBoxGroup extends Component {
   data: any;
   selectedKey: number = -1;
   filteredList: Array<string> = [];
+  popperClass: string = "popper";
+  popOverArrow!: boolean;
+  minimal: boolean = false;
+  defaultSelected: string = '';
+  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
@@ -55,7 +63,16 @@ export default class SelectBoxGroup extends Component {
     if (this.get('isDefaultOpen')) {
       this.set('open', this.get('isDefaultOpen'));
       let data: Array<string> = JSON.parse(JSON.stringify(this.get('data') || []));
+      this.findDefaultSelect(data);
       set(this, 'filteredList', data);
+    }
+    if (this.get('minimal')) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
     }
   }
 
@@ -85,10 +102,6 @@ export default class SelectBoxGroup extends Component {
     set(this, 'selectedKey', -1);
   }
   @action
-  onClosePopover() {
-    this.set('open', false);
-  }
-  @action
   onMouseSelect(data: any, index: number, optIndex: number) {
     this.set('selected', data);
     if (this.get('onSelect')) {
@@ -100,14 +113,46 @@ export default class SelectBoxGroup extends Component {
   async togglePopover() {
     await this.toggleProperty('open');
     let data: any[] = JSON.parse(JSON.stringify(this.get('data') || []));
+    this.findDefaultSelect(data);
     set(this, 'filteredList', data);
+  }
+  findDefaultSelect(data: any) {
+    var flag = false;
+    var indx = -1;
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      if (!element.options)
+        throw "Options not found";
+      for (let i = 0; i < element.options.length; i++) {
+        const options = element.options[i];
+        indx++;
+
+        if (options == this.selected) {
+          flag = true;
+          this.set('selectedKey', indx);
+          this.set('defaultSelected', this.selected);
+          break;
+        }
+      }
+
+    }
+    if (!flag) {
+      this.set('selectedKey', -1);
+      this.set('defaultSelected', '');
+    }
+
   }
   @action
   handleKeydown(data: any, e: any) {
+    if (this.open == false) {
+      this.findDefaultSelect(this.filteredList);
+    }
     this.set('open', true);
 
     if (e.keyCode == 40 || e.keyCode == 38) {
       let container: any = document.querySelector('.' + this.TRANSITION_CONTAINER);
+      if (!container)
+        return;
       let scrollContainer = container.querySelector('ul');
       let list: any[] = container.querySelectorAll(`.${this.POPOVER_CONTENT} ul li`);
       if (list) {
@@ -127,11 +172,11 @@ export default class SelectBoxGroup extends Component {
 
         });
         if (list[this.selectedKey])
-          list[this.selectedKey].querySelector('a').className += ' '+this.ACTIVE;
+          list[this.selectedKey].querySelector('a').className += ' ' + this.ACTIVE;
       }
     } else if (e.keyCode == 13) {
       if (this.selectedKey > -1) {
-        let container: any = document.querySelector('.'+this.TRANSITION_CONTAINER);
+        let container: any = document.querySelector('.' + this.TRANSITION_CONTAINER);
         let selectedLi = container.querySelectorAll(`.${this.POPOVER_CONTENT} ul li div`)[this.selectedKey];
         this.set('selected', selectedLi.innerText);
         let keyword: string = selectedLi.innerText;
@@ -169,6 +214,8 @@ export default class SelectBoxGroup extends Component {
           if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
           } else {
             this.selectedKey = -1;
+            this.selectedKey = -1;
+            this.set('defaultSelected', '');
             let filteredObj: object = {
               groupName: data[i].groupName,
               options: [txt],
