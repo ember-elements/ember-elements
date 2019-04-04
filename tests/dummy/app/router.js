@@ -22,6 +22,7 @@ Router.map(function() {
       this.route('tooltip');
       this.route('resizesensor');
       this.route('overflowList');
+      this.route('tag');
 
       });
       this.route('date', function() {
@@ -41,6 +42,7 @@ Router.map(function() {
       // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
+
   
 });
 
