@@ -37,6 +37,11 @@ export default class MultiSelect extends Component {
   TEXT_OVERFLOW_ELLIPSIS:string=Classes.TEXT_OVERFLOW_ELLIPSIS;
   TAG:string=Classes.TAG;
   FILL:string=Classes.FILL;
+  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  popperClass: string = "popper";
+  popOverArrow!: boolean;
+  minimal: boolean = false;
+  defaultSelected: string = '';
   @readOnly('open') Open!: boolean;
   didInsertElement() {
     set(this, '_popperTarget', this.element);
@@ -63,6 +68,14 @@ export default class MultiSelect extends Component {
     if (this.get('isDefaultOpen')) {
       this.set('open', this.get('isDefaultOpen'));
       this.addToFilterList();
+    }
+    if (this.get('minimal')) {
+      this.set('popOverArrow', false);
+      this.set('popperClass', 'popper');
+    }
+    else {
+      this.set('popperClass', 'popper popper-arrow-active');
+      this.set('popOverArrow', true);
     }
   }
 
