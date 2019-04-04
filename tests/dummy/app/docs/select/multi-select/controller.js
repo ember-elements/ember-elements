@@ -4,37 +4,39 @@ import { action } from '@ember-decorators/object';
 export default class DocsSelectMultiSelect extends Controller {
   // normal class body definition here
    // BEGIN-SNIPPET docs-example-basic-multi-select-box.ts
-   selected: Array<string> = ['hi1','hi2','hi3','hi4','hi5'];
-   data: Array<string> = ['hi1','hi2','hi3','hi4','hi5','hi6','hi7','hi8','hi9','hi10','hi11','hi12'];
-   selected2: Array<string> = ['hi1','hi2','hi3','hi4','hi5'];
-   data2: Array<string> = ['hi1','hi2','hi3','hi4','hi5','hi6','hi7','hi8','hi9','hi10','hi11','hi12'];
-   selected3: Array<string> = ['hi1','hi2'];
-   data3: Array<string> = ['hi1','hi2','hi3','hi4','hi5','hi6',];
+   minimal: boolean = false;
+   placement:string='auto';
+   selected: Array<string> = ['January','April','May'];
+   data: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+   selected2: Array<string> = ['February','March','April'];
+   data2: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+   selected3: Array<string> = ['July','August'];
+   data3: Array<string> = [ "July", "August", "September", "October", "November", "December",];
    tagColor:Array<object> = [
      {
        bgColor: 'red',
-       fgColor: 'green',
-       tagName: 'hi1',
+       fgColor: 'white',
+       tagName: 'July',
      },
      {
        bgColor: '#d73a4a',
        fgColor: 'white',
-       tagName: 'hi2',
+       tagName: 'August',
      },
      {
        bgColor: '#db5ea5',
        fgColor: 'white',
-       tagName: 'hi3',
+       tagName: 'September',
      },
      {
        bgColor: '#a7f9f3',
-       fgColor: 'white',
-       tagName: 'hi4',
+       fgColor: 'black',
+       tagName: 'October',
      },
      {
        bgColor: '#37cc61',
        fgColor: 'black',
-       tagName: 'hi5',
+       tagName: 'November',
      },
     ];
    @action
@@ -46,6 +48,14 @@ export default class DocsSelectMultiSelect extends Controller {
    onDelete(options:Array<string>)
    {
  
+   }
+   @action
+   onMinimalPopover() {
+     this.set('minimal', !this.minimal);
+   }
+   @action
+   selectPositon(e: any) {
+     this.set('placement', e.target.value);
    }
    // END-SNIPPET
 }

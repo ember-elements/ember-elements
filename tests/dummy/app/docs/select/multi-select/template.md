@@ -11,27 +11,53 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="SelectExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-multi-select-box.hbs }}
+            <p><code class="bp3-code">Normal</code></p>
             <div style="width:100%">
-                <MultiSelect @data={{data}} @selected={{selected}} 
+                <MultiSelect @data={{data}} @selected={{selected}}  
                  @placeholder='select' @onSelect={{action 'optionSelected'}} 
-                 @onDelete={{action 'onDelete' }}>
+                 @onDelete={{action 'onDelete' }} @minimal={{minimal}}
+                 @placement={{placement}} @isDBrequired=true>
                 </MultiSelect>
             </div>
+            <p><code class="bp3-code">Custom bg and fg color</code></p>
             <div style="width:100%">
                 <MultiSelect @data={{data2}} @selected={{selected2}} 
                  @placeholder='select' @onSelect={{action 'optionSelected'}} 
-                 @onDelete={{action 'onDelete'}} @isDBrequired=true
-                 @defaultBgColor='orange' @defaultFgColor='black'>
+                 @onDelete={{action 'onDelete'}} @minimal={{minimal}}
+                 @defaultBgColor='#37cc61' @defaultFgColor='black'
+                 @placement={{placement}} @isDBrequired=true>
                 </MultiSelect>
             </div>
+            <p><code class="bp3-code">Different Colors</code></p>
             <div style="width:100%">
                 <MultiSelect @data={{data3}} @selected={{selected3}} 
                   @placeholder='select' @onSelect={{action 'optionSelected'}} 
                   @onDelete={{action 'onDelete'}} @tagColor={{tagColor}}
-                  @isDBrequired=true>
+                  @minimal={{minimal}} @placement={{placement}} @isDBrequired=true>
                 </MultiSelect>
             </div>
             {{! END-SNIPPET }}
+        </div>
+        <div class="docs-example-options">
+            <h5 class="bp3-heading">Props</h5>
+            <div class="bp3-form-group">
+                <label class="bp3-label" for="position">Position when opened (placement) <span
+                        class="bp3-text-muted"></span></label>
+                <div class="bp3-form-content">
+                    <div class="bp3-html-select"><select onchange={{action 'selectPositon'}}>
+                            <option value="auto">auto</option>
+                            <option value="left">left</option>
+                            <option value="right">right</option>
+                            <option value="top">top</option>
+                            <option value="bottom">bottom</option>
+                        </select><span icon="double-caret-vertical" class="bp3-icon bp3-icon-double-caret-vertical"><svg data-icon="double-caret-vertical" width="16" height="16" viewBox="0 0 16 16"><desc>double-caret-vertical</desc><path d="M5 7h6a1.003 1.003 0 0 0 .71-1.71l-3-3C8.53 2.11 8.28 2 8 2s-.53.11-.71.29l-3 3A1.003 1.003 0 0 0 5 7zm6 2H5a1.003 1.003 0 0 0-.71 1.71l3 3c.18.18.43.29.71.29s.53-.11.71-.29l3-3A1.003 1.003 0 0 0 11 9z" fill-rule="evenodd"></path></svg></span></div>
+                    <label class="bp3-control bp3-switch">
+                        <input type="checkbox" onclick={{action 'onMinimalPopover'}}>
+                        <span class="bp3-control-indicator"></span>
+                        Minimal popover style
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -223,6 +249,20 @@
                             </div>
                         </div>
                     </div>
+                </td>
+            </tr>
+             <tr>
+                <td class="docs-prop-name"><code>minimal</code></td>
+                <td class="docs-prop-details"><code class="docs-prop-type"><strong>boolean</strong></code>
+                    <div class="docs-prop-description">
+                        <div class="docs-section">
+                            <div class="bp3-running-text">
+                                <p> Minimal popover style.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="docs-prop-tags"></div>
                 </td>
             </tr>
         </tbody>
