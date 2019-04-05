@@ -11,29 +11,12 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="SelectExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-multi-select-box.hbs }}
-            <p><code class="bp3-code">Normal</code></p>
             <div style="width:100%">
                 <MultiSelect @data={{data}} @selected={{selected}}  
                  @placeholder='select' @onSelect={{action 'optionSelected'}} 
                  @onDelete={{action 'onDelete' }} @minimal={{minimal}}
-                 @placement={{placement}} @isDBrequired=true>
-                </MultiSelect>
-            </div>
-            <p><code class="bp3-code">Custom bg and fg color</code></p>
-            <div style="width:100%">
-                <MultiSelect @data={{data2}} @selected={{selected2}} 
-                 @placeholder='select' @onSelect={{action 'optionSelected'}} 
-                 @onDelete={{action 'onDelete'}} @minimal={{minimal}}
-                 @defaultBgColor='#37cc61' @defaultFgColor='black'
-                 @placement={{placement}} @isDBrequired=true>
-                </MultiSelect>
-            </div>
-            <p><code class="bp3-code">Different Colors</code></p>
-            <div style="width:100%">
-                <MultiSelect @data={{data3}} @selected={{selected3}} 
-                  @placeholder='select' @onSelect={{action 'optionSelected'}} 
-                  @onDelete={{action 'onDelete'}} @tagColor={{tagColor}}
-                  @minimal={{minimal}} @placement={{placement}} @isDBrequired=true>
+                 @placement={{placement}} @isDBrequired=true  @removable=true
+                 @minimalPopover={{minimalPopover}}>
                 </MultiSelect>
             </div>
             {{! END-SNIPPET }}
@@ -55,6 +38,11 @@
                         <input type="checkbox" onclick={{action 'onMinimalPopover'}}>
                         <span class="bp3-control-indicator"></span>
                         Minimal popover style
+                    </label>
+                     <label class="bp3-control bp3-switch">
+                        <input type="checkbox" onclick={{action 'onMinimalTag'}}>
+                        <span class="bp3-control-indicator"></span>
+                        Minimal tag style
                     </label>
                 </div>
             </div>
@@ -185,47 +173,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="docs-prop-name"><code>defaultFgColor</code></td>
-                <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-                    <div class="docs-prop-description">
-                        <div class="docs-section">
-                            <div class="bp3-running-text">
-                                <p> Default color for all tag elements.</p>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="docs-prop-name"><code>defaultBgColor</code></td>
-                <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-                    <div class="docs-prop-description">
-                        <div class="docs-section">
-                            <div class="bp3-running-text">
-                                <p>Default background-color for all tag elements</p>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="docs-prop-name"><code>tagColor</code></td>
-                <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>Array &lt;object&gt;</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-                    <div class="docs-prop-description">
-                        <div class="docs-section">
-                            <div class="bp3-running-text">
-                                <p>It is an array of object which is used to add different color(background and
-                                    foreground color) for
-                                    each tag elements.</p>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td class="docs-prop-name"><code>onSelect</code></td>
                 <td class="docs-prop-details"><code
                         class="docs-prop-type"><strong>(date: Array&lt;string&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
@@ -252,7 +199,7 @@
                 </td>
             </tr>
              <tr>
-                <td class="docs-prop-name"><code>minimal</code></td>
+                <td class="docs-prop-name"><code>minimalPopover</code></td>
                 <td class="docs-prop-details"><code class="docs-prop-type"><strong>boolean</strong></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">

@@ -23,24 +23,24 @@ export default class MultiSelect extends Component {
   classNameAssigned: string = `${Classes.TEXT_OVERFLOW_ELLIPSIS} ${Classes.FILL}`;
   select: any[] = this.selected || [];
   isDBrequired!: boolean;
-  currentWindow:any;
-  tagInput:string=Classes.TAG_INPUT_VALUES;
-  INPUT_GHOST:string=Classes.INPUT_GHOST;
-  BUTTON:string=Classes.BUTTON;
-  MINIMAL:string=Classes.MINIMAL;
-  TRANSITION_CONTAINER:string=Classes.TRANSITION_CONTAINER;
-  POPOVER:string=Classes.POPOVER;
-  POPOVER_CONTENT:string=Classes.POPOVER_CONTENT;
-  POPOVER_DISMISS:string=Classes.POPOVER_DISMISS;
-  MENU:string=Classes.MENU;
-  MENU_ITEM:string=Classes.MENU_ITEM;
-  TEXT_OVERFLOW_ELLIPSIS:string=Classes.TEXT_OVERFLOW_ELLIPSIS;
-  TAG:string=Classes.TAG;
-  FILL:string=Classes.FILL;
+  currentWindow: any;
+  tagInput: string = Classes.TAG_INPUT_VALUES;
+  INPUT_GHOST: string = Classes.INPUT_GHOST;
+  BUTTON: string = Classes.BUTTON;
+  MINIMAL: string = Classes.MINIMAL;
+  TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
+  POPOVER: string = Classes.POPOVER;
+  POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
+  POPOVER_DISMISS: string = Classes.POPOVER_DISMISS;
+  MENU: string = Classes.MENU;
+  MENU_ITEM: string = Classes.MENU_ITEM;
+  TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  TAG: string = Classes.TAG;
+  FILL: string = Classes.FILL;
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
   popperClass: string = "popper";
   popOverArrow!: boolean;
-  minimal: boolean = false;
+  minimalPopover: boolean = false;
   defaultSelected: string = '';
   @readOnly('open') Open!: boolean;
   didInsertElement() {
@@ -69,7 +69,7 @@ export default class MultiSelect extends Component {
       this.set('open', this.get('isDefaultOpen'));
       this.addToFilterList();
     }
-    if (this.get('minimal')) {
+    if (this.get('minimalPopover')) {
       this.set('popOverArrow', false);
       this.set('popperClass', 'popper');
     }
@@ -112,8 +112,8 @@ export default class MultiSelect extends Component {
   }
   @action
   async togglePopover() {
+    await this.addToFilterList();
     await this.toggleProperty('open');
-    this.addToFilterList();
   }
   async  addToFilterList() {
     let data: [] = JSON.parse(JSON.stringify(this.get('data') || []));
@@ -132,7 +132,8 @@ export default class MultiSelect extends Component {
     }
   }
   @action
-  onMouseSelect(data: any) {
+  async onMouseSelect(data: any) {
+    await this.set('open', false);
     Ember.A(this.select);
     Ember.A(this.filteredList);
     if (this.select && this.select.filter(e => e === data).length > 0) {
@@ -149,7 +150,7 @@ export default class MultiSelect extends Component {
 
 
   @action
-  delete(index: any) {
+  delete(value: string, index: any, e: any) {
     Ember.A(this.get('select'));
     if (index != null) {
       let removeObj = this.get('select')[index];
@@ -174,18 +175,19 @@ export default class MultiSelect extends Component {
       this.get('onDelete')(this.select);
   }
   @action
-  active() {
+  onActive() {
     let container: any = document.querySelector(`.${this.TRANSITION_CONTAINER}`);
-    if (this.filteredList.length) {
+
+    if (this.filteredList.length && container) {
       let list: any[] = container.querySelectorAll(`.${this.POPOVER_CONTENT} ul li`);
       list.forEach(element => {
         element.querySelector('a').className = `${this.MENU_ITEM} ${this.POPOVER_DISMISS}`;
       });
-      list[this.selectedKey].querySelector('a').className += ' '+Classes.ACTIVE;
+      list[this.selectedKey].querySelector('a').className += ' ' + Classes.ACTIVE;
     }
   }
   @action
-  handleKeydown(e: any) {
+  async handleKeydown(e: any) {
     this.set('open', true);
     let element = this.get('element').querySelectorAll(`.${Classes.TAG_INPUT_VALUES} .${this.TAG}`);
     let textbox: any = this.get('element').querySelector('input');
@@ -193,9 +195,12 @@ export default class MultiSelect extends Component {
       if (this.selectedItem > -1 && textbox.value.length == 0) {
         if (this.selectedItem == null) this.selectedItem = element.length - 1;
         else {
-          this.send('delete', this.selectedItem);
+          this.send('delete', '', this.selectedItem);
+          await this.set('open', false);
           if (this.selectedItem > 0)
             this.selectedItem--;
+          this.set('open', true);
+
         }
       }
     } else if (e.keyCode === 37) {
@@ -211,9 +216,12 @@ export default class MultiSelect extends Component {
     if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 8) {
       if (this.selectedItem > -1 && textbox.value.length == 0) {
         element.forEach((item) => {
-          item.className = 'bp3-tag'
+          if (item.className) {
+            if (item.className.search(Classes.ACTIVE))
+              item.className = item.className.replace(Classes.ACTIVE, "");
+          }
         });
-        element[this.selectedItem].className += ' '+Classes.ACTIVE;
+        element[this.selectedItem].className += ' ' + Classes.ACTIVE;
       }
     }
     if (e.keyCode === 40 || e.keyCode === 38) {
@@ -232,9 +240,10 @@ export default class MultiSelect extends Component {
           if (container.getBoundingClientRect().top - 40 <= list[this.selectedKey].querySelector('a').getBoundingClientRect().top - 40)
             scrollContainer.scrollTop -= 30;
         }
-        this.send('active');
+        this.send('onActive');
       }
     } else if (e.keyCode === 13) {
+
       Ember.A(this.select);
       Ember.A(this.filteredList);
       if (this.get('select').includes(this.filteredList[this.selectedKey])) {
@@ -248,8 +257,11 @@ export default class MultiSelect extends Component {
         }
       }
       this.set('selectedKey', 0);
-      this.send('active');
+      this.send('onActive');
+      await this.set('open', false);
       this.send('onSelected');
+      this.set('open', true);
+
     }
   }
   @action
