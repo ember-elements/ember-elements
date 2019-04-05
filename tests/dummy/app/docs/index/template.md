@@ -2,11 +2,11 @@
 
 ## Installation
 <div style="visibility:hidden">
-{{! BEGIN-SNIPPET  addon-install.css }}
-  @import "ember-elements-styles";
+{{! BEGIN-SNIPPET  addon-install.hbs }}
+  ember install ember-elements
 {{! END-SNIPPET }}
 </div>
-    {{docs-snippet   title="Shell(CLI) Command" name='addon-install.css'}}
+    {{docs-snippet   title="Shell" name='addon-install.hbs'}}
 
 
 ## Styles
@@ -16,7 +16,6 @@
 {{! END-SNIPPET }}
 </div>
     {{docs-snippet   title="styles/app.scss" name='css-import.css'}}
-
  follow addon test style folder if other scss files required(`docs-app.scss`,`ember-cli-addon-docs.scss`)!
 
 ## Browser support

@@ -32,7 +32,6 @@ Router.map(function() {
       this.route('select', function() {
         this.route('multi-select');
         this.route('select-box');
-        this.route('select-box-group');
       });
 
       this.route('icon', function() {
