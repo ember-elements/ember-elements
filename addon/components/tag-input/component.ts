@@ -8,7 +8,7 @@ import { classNames, tagName, attribute, layout, className } from '@ember-decora
 import * as Classes from "../../-private/common/classes";
 @layout(template)
 @tagName('div')
-@classNames('bp3-input', 'bp3-tag-input')
+@classNames(`${Classes.INPUT} ${Classes.TAG_INPUT}`)
 export default class TagInput extends Component {
   tag: any;
   selectedItem: any = null;
