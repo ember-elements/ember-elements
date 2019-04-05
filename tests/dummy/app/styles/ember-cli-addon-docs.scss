@@ -85,6 +85,12 @@ body {
   }
 }
 
+.docs-example{
+  .date-range-pckr{
+    width: 48%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .docs-example-frame {
     display: block !important;
@@ -115,6 +121,11 @@ body {
 }
 
 
+.docs-example{
+  .date-range-pckr{
+    width: 60%;
+  }
+}
 }
 
 // .htmlbars.ember-view.hljs{

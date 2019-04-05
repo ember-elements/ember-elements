@@ -1,4 +1,4 @@
-<Input @type='text' @onClick={{action 'togglePopover'}} @placeholder={{dateFormat}} @data={{date   }}/>
+<Input @type='text' @onClick={{action 'togglePopover'}} @icon={{icon}} @iconSize={{iconSize}} @rightIcon={{rightIcon}} @intent={{intent}} @placeholder={{dateFormat}} @data={{date   }}/>
 {{#if open}} 
 <EmberPopper  @class={{popperClass}} @popperTarget={{_popperTarget}} @placement={{placement}}>
 <div class="popper-margin-height {{{TRANSITION_CONTAINER}}}">

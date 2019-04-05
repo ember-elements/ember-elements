@@ -11,7 +11,7 @@
             {{! BEGIN-SNIPPET docs-example-basic-date-range-picker.hbs }}
             <DateRangePicker @format={{format}} @range={{this.range}}
              @minimal={{minimal}} @placement={{placement}}
-             @onSelect={{action 'selectDate' }}>
+             @onSelect={{action 'selectDate' }} @icon="timeline-events">
             </DateRangePicker>
             {{! END-SNIPPET }}
         </div>
