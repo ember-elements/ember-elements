@@ -31,7 +31,8 @@ Router.map(function() {
       });
       this.route('select', function() {
         this.route('multi-select');
-        this.route('select-box');
+      this.route('select');
+
       });
 
       this.route('icon', function() {
@@ -42,7 +43,8 @@ Router.map(function() {
   });
   this.route('not-found', { path: '/*path' });
 
-  
+
+ 
 });
 
 export default Router;
