@@ -85,12 +85,15 @@ body {
   }
 }
 
-.docs-example{
-  .date-range-pckr{
+.docs-example {
+  .date-range-pckr {
     width: 48%;
   }
 }
-
+#docs-intro-details {
+  padding-top: 45px;
+  width: 75%;
+}
 @media only screen and (max-width: 600px) {
   .docs-example-frame {
     display: block !important;
@@ -104,29 +107,47 @@ body {
       margin-right: 0px !important;
       max-width: 100% !important;
     }
-    .bp3-html-select{
+
+    .bp3-html-select {
       width: 70%;
     }
-    
+
   }
+
   .bp3-tree.bp3-elevation-0 {
     width: 274px !important;
-}
-.ember-power-calendar.calendar-option{
-  width: 100% !important;
-}
-.demo-range-calendar-with-pretty-range-ends-yo{
-  width: 100% !important;
-  margin-left: 0px !important;
-}
+  }
+
+  .ember-power-calendar.calendar-option {
+    width: 100% !important;
+  }
+
+  .demo-range-calendar-with-pretty-range-ends-yo {
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
 
 
-.docs-example{
-  .date-range-pckr{
-    width: 60%;
+  .docs-example {
+    .date-range-pckr {
+      width: 60%;
+    }
+  }
+  #docs-intro-details {
+    padding-top: 12px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
   }
 }
+
+a:hover {
+  .docs-flex {
+    color: #191970 !important;
+  }
 }
+
+
 
 // .htmlbars.ember-view.hljs{
 //   padding-top: 32px;
@@ -134,25 +155,29 @@ body {
 // .javascript.ember-view.hljs{
 //   padding-top: 32px;
 // }
-.demo-container{
+.demo-container {
   padding-bottom: 10px;
-  .bp3-html-select{
+
+  .bp3-html-select {
     margin-bottom: 4px;
   }
 }
 
-.subnav-section{
+.subnav-section {
   margin-top: 4px;
-  margin-left: 14px ;
-  li{
-  font-weight: 500  !important;
+  margin-left: 14px;
+
+  li {
+    font-weight: 500 !important;
     margin-top: 5px !important;
     font-size: 12px !important;
   }
 }
-li.docs-text-xs{
-  font-weight: bold ;
+
+li.docs-text-xs {
+  font-weight: bold;
 }
-.docs-popover-example-scroll{
+
+.docs-popover-example-scroll {
   // width: 718px !important;
 }
