@@ -6,8 +6,8 @@
     "ember-addon"
   ],
   "repository": "https://github.com/dunkinbase/ember-elements",
-  "license": "MIT",
-  "author": "",
+  "license": "Apache-2.0",
+  "author": "dunkinbase",
   "directories": {
     "doc": "doc",
     "test": "tests"
