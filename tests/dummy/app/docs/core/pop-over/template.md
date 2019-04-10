@@ -1,7 +1,3 @@
-<div style="position: absolute;    width: 100%;    height: 100%;    left: 0;    right: 0;    top: 0;    bottom: 0;"
-  onmouseenter={{action "OnMouseEnter"}}>
-</div>
-
 # Popover
 <div class='bp3-running-text bp3-text-large'>
   Popover display floating content next to a target button element. Here there is a default button for popover, Popovers
