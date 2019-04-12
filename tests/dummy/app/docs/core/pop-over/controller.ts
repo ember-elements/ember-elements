@@ -9,15 +9,6 @@ export default class DocsCorePopOver extends Controller {
   canEscapeKeyClose:boolean=true;
   open:boolean=false;
   @action
-  OnMouseEnter() {
-    var doc = document.querySelector('.docs-popover-example-scroll');
-    if (doc) {
-      var scrolldiv: any = document.querySelector('#pop-over-doc-scroll');
-      scrolldiv.scrollTop = doc.getBoundingClientRect().height / 4;
-      scrolldiv.scrollLeft = doc.getBoundingClientRect().width / 4;
-    }
-  }
-  @action
   selectPositon(e: any) {
     this.set('placement', e.target.value);
   }

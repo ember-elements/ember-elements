@@ -3,7 +3,8 @@
 <li class="mt-8"></li>
 
 {{nav.section 'Introduction'  style='large' }}
-{{nav.item 'Quickstart' 'docs.quick-start'}}
+{{nav.item 'Quickstart' 'docs.introduction.quickstart'}}
+{{!-- {{nav.item 'Overview' 'docs.introduction.overview'}} --}}
 
 <li class="mt-8"></li>
 
@@ -67,7 +68,9 @@
 {{/viewer.nav}}
 
 {{#viewer.main}}
-{{outlet}}
+    <Render>
+       {{outlet}}
+    </Render>
 {{/viewer.main}}
 
 {{/docs-viewer}}

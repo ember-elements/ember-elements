@@ -38,13 +38,16 @@ Router.map(function() {
       this.route('icon', function() {
       this.route('icons');
       });
-      this.route('quick-start')
+      this.route('introduction', function() {
+        this.route('quickstart');
+        this.route('overview');
+      });
       // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
 
 
- 
+
 });
 
 export default Router;
