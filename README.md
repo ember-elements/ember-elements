@@ -1,5 +1,5 @@
 
-![Logo](/logo.png)
+![Logo](/tests/dummy/public/ember-elements.png)
 
 **Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.  
 
