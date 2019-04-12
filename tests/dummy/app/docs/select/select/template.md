@@ -1,7 +1,7 @@
 # Select
 <div class='bp3-running-text bp3-text-large'>
     <code> Select</code> component which is used for choosing one of the item from a list. There are three types of
-    select box <code>input box</code>,<code> button </code> and <code>link</code>.
+    select box <code>input</code>,<code> button </code> and <code>link</code>.
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}

@@ -2,7 +2,7 @@
 <div class='bp3-running-text bp3-text-large'>
   Popover display floating content next to a target button element. Here there is a default button for popover, Popovers
   will render based button click.
-  <code>BpPopOver</code> is built on top of the <a href="https://popper.js.org"><strong>Popper.js</strong></a>
+  <code>PopOver</code> is built on top of the <a href="https://popper.js.org"><strong>Popper.js</strong></a>
 </div>
 {{#docs-demo as |demo|}}
 {{#demo.example}}
