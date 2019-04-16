@@ -7,13 +7,21 @@
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="ButtonsExample">
         <div class="docs-example">
+            {{#if text}}
             {{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
             <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} 
               @intent={{intent}} @small={{small}} @large={{large}} @icon={{icon}} 
-              @rightIcon={{rightIcon}} @fill={{fill}} @type='button' @text={{text}}
+              @rightIcon={{rightIcon}} @fill={{fill}} @type='button' 
               @onClick={{action 'onClickButton'}}>
+              {{text}}
             </Button>
             {{! END-SNIPPET }}
+            {{else}}
+              <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} 
+              @intent={{intent}} @small={{small}} @large={{large}} @icon={{icon}} 
+              @rightIcon={{rightIcon}} @fill={{fill}} @type='button' 
+              @onClick={{action 'onClickButton'}}/>
+            {{/if}}
         </div>
         <div class="docs-example-options">
             <h5 class="bp3-heading">Props</h5>
@@ -288,20 +296,6 @@
                         </div>
                     </div>
                     <div class="docs-prop-tags"></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="docs-prop-name"><code>text</code></td>
-                <td class="docs-prop-details">
-                    <code
-                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
-                    <div class="docs-prop-description">
-                        <div class="docs-section">
-                            <div class="bp3-running-text">
-                                <p>Action text.</p>
-                            </div>
-                        </div>
-                    </div>
                 </td>
             </tr>
             <tr>
