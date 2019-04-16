@@ -6,7 +6,11 @@ import { click } from '@ember/test-helpers';
 
 module('Integration | Component | button', function (hooks) {
   setupRenderingTest(hooks);
-
+  test('yield value is rendering', async function (assert) {
+    await render(hbs`<Button >sample</Button>`);
+    let element = this.element;
+    assert.equal((element.querySelector('span') as HTMLInputElement).innerText,"sample");
+  });
   test('disabled is true', async function (assert) {
     await render(hbs`<Button @disabled={{true}} />`);
     let element = this.element;
