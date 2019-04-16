@@ -50,6 +50,7 @@ export default class OverflowList extends Component {
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
     this._closeOnEsc = this._closeOnEsc.bind(this);
   }
+
   didReceiveAttrs() {
     if (this.get('collapseFrom') == 'END') {
       this.set('CollapseFrom', Boundary.END);
@@ -62,12 +63,14 @@ export default class OverflowList extends Component {
 
     }
   }
+
   didInsertElement() {
     this._super(...arguments);
     this.set('breadId', 'breadId' + this.elementId)
     this.set('spacer', this.element.querySelector(`.${Classes.OVERFLOW_LIST_SPACER}`));
     this.repartition(false);
   }
+
   async didUpdate() {
     if (this.direction != 0)
       this.repartition(false);
@@ -94,10 +97,12 @@ export default class OverflowList extends Component {
       }
     }
   }
+
   async didRender() {
     super.init();
     Ember.run.next(this, this.detachClickHandler);
   }
+
   private repartition(growing: boolean) {
     if (this.spacer == null) {
       return;
@@ -132,10 +137,12 @@ export default class OverflowList extends Component {
     this.set('breadcrumb', this.visible.map(this.visibleItemRenderer));
     this.overflowRenderer();
   }
+  
   private visibleItemRenderer = (props: any, index: number) => {
     const isCurrent = this.items[this.items.length - 1] === props;
     return { index: index, renderBreadcrumb: this.renderBreadcrumb(props, isCurrent) }
   };
+
   private overflowRenderer() {
     if (this.overflow.length) {
       this.set('orderedItems', this.overflow || [])
@@ -150,6 +157,7 @@ export default class OverflowList extends Component {
       }
     }
   }
+
   private renderBreadcrumb(props: any, isCurrent: boolean) {
     var classes = Classes.BREADCRUMB + ' ' + this.className + ' ';
     if (isCurrent)
@@ -158,6 +166,7 @@ export default class OverflowList extends Component {
       classes += Classes.DISABLED;
     return { text: props.text, className: classes, href: props.href, isDisabled: props.disabled ? true : false, tabIndex: props.disabled ? "0" : '', target: props.target };
   }
+
   @action
   resize(entries: IResizeEntry[]) {
     const growing = entries.some(entry => {
@@ -166,7 +175,8 @@ export default class OverflowList extends Component {
     });
     this.repartition(growing);
     entries.forEach(entry => this.previousWidths.set(entry.target, entry.contentRect.width));
-  };
+  }
+
   @action
   breadcrumbOnClick(disabled: boolean, event: any) {
     if (disabled)
@@ -175,10 +185,12 @@ export default class OverflowList extends Component {
       this.get('breadCrumbItemClick')(event);
 
   }
+
   @action
   breadcrumbsPopOPen() {
     this.toggleProperty('isOpen');
   }
+
   detachClickHandler() {
     const method = this.get('isOpen') ? 'on' : 'off';
 
@@ -191,15 +203,18 @@ export default class OverflowList extends Component {
       document.addEventListener('keyup', this._closeOnEsc);
     }
   }
+  
   async  _closeOnClickOut(e: any) {
     var popper: any = document.getElementsByClassName('overflow-list-popper');
     if (popper.length && !(popper[0].contains(e.target)) && !e.target.classList.contains(this.BREADCRUMBS_COLLAPSED)) {
       this._close();
     }
   }
+  
   _closeOnEsc(e: any) {
     if (e.keyCode === 27) { this._close(); }
   }
+  
   _close() {
     if (this.isDestroyed || this.isDestroying)
       return;

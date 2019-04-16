@@ -12,11 +12,13 @@ export default class ResizeSensor extends Component {
   layout = layout;
   DomElement!: any;
   private observer = new ResizeObserver(entries => this.findResize(entries));
+  
   findResize(entries: IResizeEntry[]) {
     if (this.get('onResize')) {
       this.get('onResize')(entries);
     }
   }
+  
   public didInsertElement() {
     this.set('DomElement', this.$());
     this.observeElement();
@@ -29,6 +31,7 @@ export default class ResizeSensor extends Component {
   public willDestroyElement() {
     this.observer.disconnect();
   }
+  
   private observeElement(force = false) {
     if (this.DomElement == this.element && !force) {
       // quit if given same element -- nothing to update (unless forced)

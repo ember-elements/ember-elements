@@ -11,15 +11,15 @@ import * as Classes from "../../-private/common/classes";
 @tagName('span')
 @classNames(Classes.POPOVER_TARGET)
 export default class Select extends Component {
-  _popperTarget: any;
+  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+
   @reads('open') Open!: boolean;
+ 
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+ 
   currentWindow: any;
-  didInsertElement() {
-    set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
-  }
+  _popperTarget: any;
   ICON: string = Classes.ICON;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
   POPOVER: string = Classes.POPOVER;
@@ -47,6 +47,7 @@ export default class Select extends Component {
   popOverArrow!: boolean;
   minimal: boolean = false;
   defaultSelected: number = -1;
+
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
@@ -54,10 +55,16 @@ export default class Select extends Component {
     this.set('filteredList', (this.get('data') || []));
     this.set('selected', this.get('selected'));
   }
-  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+  
+  didInsertElement() {
+    set(this, '_popperTarget', this.element);
+    this.set('currentWindow', this.$(window));
+  }
+
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
+ 
   async didReceiveAttrs() {
     await set(this, '_popperTarget', this.element);
     if (this.get('isDefaultOpen')) {
@@ -87,24 +94,29 @@ export default class Select extends Component {
       this.currentWindow.off('keyup', this._closeOnEsc);
     }
   }
+  
   async _closeOnClickOut(e: any) {
     const clickIsInside = document.querySelector('.' + this.TRANSITION_CONTAINER);
     const clickIsInsideFound = clickIsInside ? clickIsInside.contains(e.target) : false
     if (!clickIsInsideFound) { this._close(); }
   }
+
   _closeOnEsc(e: any) {
     if (e.keyCode === this.ESC) { this._close(); }
   }
+
   _close() {
     if (this.isDestroyed || this.isDestroying)
       return;
     set(this, 'open', false);
     set(this, 'selectedKey', -1);
   }
+
   @action
   onClosePopover() {
     this.set('open', false);
   }
+
   @action
   async onMouseSelect(data: any, index: number, e: any) {
     var selectDiv: any = await document.getElementById('select' + index);
@@ -116,6 +128,7 @@ export default class Select extends Component {
     }
     this._close();
   }
+
   @action
   async togglePopover() {
     await this.toggleProperty('open');
@@ -123,6 +136,7 @@ export default class Select extends Component {
     this.findDefaultSelect(data);
     set(this, 'filteredList', data);
   }
+
   findDefaultSelect(data: any) {
     var flag = false;
     for (let index = 0; index < data.length; index++) {
@@ -140,6 +154,7 @@ export default class Select extends Component {
     }
 
   }
+
   @action
   handleKeydown(data: any, e: any) {
     if (this.open == false) {
@@ -184,6 +199,7 @@ export default class Select extends Component {
       }
     }
   }
+
   @action
   onSearchElement(keyword: string, e: any) {
     if (keyword === '') this.set('filteredList', this.get('data'));
@@ -203,6 +219,4 @@ export default class Select extends Component {
     }
 
   }
-
-
 };

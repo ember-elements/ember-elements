@@ -10,15 +10,23 @@ import moment from 'moment';
 import * as Classes from "../../-private/common/classes";
 @tagName('span')
 @layout(template)
-
 @classNames('date-range-pckr bp3-popover-target')
 export default class DateRangePicker extends Component {
-  _popperTarget: any;
   @readOnly('format') Format: string;
+
   @readOnly('open') Open: boolean;
+
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+
   @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+ 
+  @computed('Format')
+  get dateFormat() {
+    return this.Format ? this.Format : this.defaultFormat;
+  }
+
+  _popperTarget: any;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
   POPOVER: string = Classes.POPOVER;
   POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
@@ -28,10 +36,6 @@ export default class DateRangePicker extends Component {
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
   POPOVERDISMISS: string = Classes.POPOVER_DISMISS
   MENU: string = Classes.MENU;
-  @computed('Format')
-  get dateFormat() {
-    return this.Format ? this.Format : this.defaultFormat;
-  }
   onSelect!: (event: any) => void;
   date!: Date;
   range2!: Date;
@@ -49,10 +53,7 @@ export default class DateRangePicker extends Component {
   popperClass: string = "popper";
   popOverArrow!: boolean;
   minimal: boolean = false;
-  didInsertElement() {
-    set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
-  }
+
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
@@ -61,11 +62,18 @@ export default class DateRangePicker extends Component {
       set(this, 'range2', new Date(this.range.start.getFullYear(), this.range.start.getMonth() + 1, this.range.start.getDate()));
     }
   }
+  
+  didInsertElement() {
+    set(this, '_popperTarget', this.element);
+    this.set('currentWindow', this.$(window));
+  }
+
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
     let d = moment(this.range.start).format(this.dateFormat) + " -- " + moment(this.range.end).format(this.dateFormat);
     this.set('date', d);
   }
+
   async didReceiveAttrs() {
     await set(this, '_popperTarget', this.element);
     if (this.get('minimal')) {
@@ -86,31 +94,7 @@ export default class DateRangePicker extends Component {
       }
     }
   }
-
-  detachClickHandler() {
-    const method = this.get('open') ? 'on' : 'off';
-    if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
-    }
-    else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
-    }
-  }
-  _closeOnClickOut(e: any) {
-    const clickIsInside = document.querySelector('.bp3-transition-container');
-    const clickIsInsideFound =clickIsInside?clickIsInside.contains(e.target):false
-    if (!clickIsInsideFound) { this._close(); }
-  }
-  _closeOnEsc(e: any) {
-    if (e.keyCode === this.ESC) { this._close(); }
-  }
-  _close() {
-    if (this.isDestroyed || this.isDestroying)
-      return;
-    set(this, 'open', false);
-  }
+  
   @action
   changeCenter(unit: any, calendar: any, e: any) {
     let newCenter;
@@ -120,16 +104,19 @@ export default class DateRangePicker extends Component {
       newCenter = new Date(calendar.center).setFullYear(e.target.value);
     calendar.actions.changeCenter(new Date(newCenter));
   }
+
   @action
   onselect() {
     if (this.range.start && this.range.end && this.get('onSelect')) {
       get(this, 'onSelect')(this.range);
     }
   }
+
   @action
   togglePopover() {
     this.toggleProperty('open');
   }
+
   @action
   past(data: string) {
     let today: Date = new Date();
@@ -164,6 +151,34 @@ export default class DateRangePicker extends Component {
     if (this.range.start && this.range.end && this.get('onSelect')) {
       get(this, 'onSelect')(this.range);
     }
+  }
+
+  detachClickHandler() {
+    const method = this.get('open') ? 'on' : 'off';
+    if (method == 'on') {
+      this.currentWindow.on('click', this._closeOnClickOut);
+      this.currentWindow.on('keyup', this._closeOnEsc);
+    }
+    else {
+      this.currentWindow.off('click', this._closeOnClickOut);
+      this.currentWindow.off('keyup', this._closeOnEsc);
+    }
+  }
+
+  _closeOnClickOut(e: any) {
+    const clickIsInside = document.querySelector('.bp3-transition-container');
+    const clickIsInsideFound =clickIsInside?clickIsInside.contains(e.target):false
+    if (!clickIsInsideFound) { this._close(); }
+  }
+
+  _closeOnEsc(e: any) {
+    if (e.keyCode === this.ESC) { this._close(); }
+  }
+  
+  _close() {
+    if (this.isDestroyed || this.isDestroying)
+      return;
+    set(this, 'open', false);
   }
 
 };

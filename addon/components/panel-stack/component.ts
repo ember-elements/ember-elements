@@ -21,10 +21,7 @@ export default class DbPanelStack extends Component {
   BUTTON_TEXT: string = Classes.BUTTON_TEXT;
   contentId!: string;
   closePanel!: (currentPanelId: number) => void;
-  didInsertElement() {
-    super.init();
-    this.set('contentId', this.elementId);
-  }
+
   @computed('panelList.[]')
   get isPushPanel(): any {
     if (this.get('panelList') && this.get('panelList').length == 1) {
@@ -53,6 +50,12 @@ export default class DbPanelStack extends Component {
     }
     return false;
   }
+
+  didInsertElement() {
+    super.init();
+    this.set('contentId', this.elementId);
+  }
+
   animation(element, animationName) {
     if (document.getElementById('panel-stack-contents' + this.contentId)) {
       var documents: any = document.querySelector('#' + this.elementId);
@@ -66,6 +69,7 @@ export default class DbPanelStack extends Component {
       node.addEventListener('animationend', handleAnimationEnd)
     }
   }
+  
   @action
   closeCurrentPanel() {
     if (this.get('closePanel'))

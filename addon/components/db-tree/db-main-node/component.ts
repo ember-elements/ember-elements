@@ -28,12 +28,14 @@ export default class DbTreeDbMainNode extends Component {
   onNodeExpand!: (item: any, event: object) => void;
   onNodeMouseEnter!: (item: any, event: object) => void;
   onNodeMouseLeave!: (item: any, event: object) => void;
+
   didInsertElement() {
     if (this.get('content') && this.get('content.0.id') == 0) {
       let node: any = document.getElementById(this.elementId);
       node.classList.add(Classes.TREE_ROOT);
     }
   }
+
   @action
   async onNodeClickFun(item: any, index: number, event: any) {
     if (childIndex.selectedChildIndex >= 0) {
@@ -64,11 +66,13 @@ export default class DbTreeDbMainNode extends Component {
     if (this.get('onNodeClick'))
       this.get('onNodeClick')(item, event);
   }
+
   @action
   onNodeDoubleClickFun(item: any, event: any) {
     if (this.get('onNodeDoubleClick'))
       this.get('onNodeDoubleClick')(item, event);
   }
+
   @action
   onNodeCollapseFun(item: any, event: any) {
     if (item.isExpanded) {
@@ -88,6 +92,7 @@ export default class DbTreeDbMainNode extends Component {
     if (this.get('onNodeMouseEnter'))
       this.get('onNodeMouseEnter')(item, event);
   }
+  
   @action
   onNodeMouseLeaveFun(item: any, event: any) {
     if (this.get('onNodeMouseLeave'))

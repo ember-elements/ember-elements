@@ -11,12 +11,14 @@ import * as Classes from "../../-private/common/classes";
 @tagName('span')
 @classNames(Classes.POPOVER_TARGET)
 export default class PopOver extends Component {
-  _popperTarget: any;
-  popelement: any;
   @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  
   @readOnly('open') Open!: boolean;
+  
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+  _popperTarget: any;
+  popelement: any;
   currentWindow: any;
   ICON: string = Classes.ICON;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
@@ -29,10 +31,6 @@ export default class PopOver extends Component {
   canEscapeKeyClose: boolean = true;
   popCloseClickFun!: () => void;
   popOpenClickFun!: () => void;
-  didInsertElement() {
-    set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
-  }
   child: boolean = false;
   ESC: number = 27;
   hasParent: boolean = false;
@@ -40,11 +38,18 @@ export default class PopOver extends Component {
   isOutClickClose: boolean = this.isOutClickClose == undefined ? true : this.isOutClickClose;
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
   popperClass: string = "popper";
+  
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
     this._closeOnEsc = this._closeOnEsc.bind(this);
   }
+
+  didInsertElement() {
+    set(this, '_popperTarget', this.element);
+    this.set('currentWindow', this.$(window));
+  }
+
   didReceiveAttrs() {
     super.init();
     if (this.get('arrow') == false) {
@@ -56,9 +61,25 @@ export default class PopOver extends Component {
       this.set('popOverArrow', true);
     }
   }
+
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
+
+  @action
+  close() {
+    if (get(this, 'popCloseClickFun'))
+      get(this, 'popCloseClickFun')();
+    this.set('open', false);
+  }
+  
+  @action
+  togglePopover(e: any) {
+    this.toggleProperty('open');
+    if (get(this, 'popOpenClickFun'))
+      get(this, 'popOpenClickFun')();
+  }
+
   detachClickHandler() {
     const method = this.get('open') ? 'on' : 'off';
     this.set('popelement', $('.bp3-transition-container'));
@@ -72,13 +93,16 @@ export default class PopOver extends Component {
       this.currentWindow.off('keyup', this._closeOnEsc);
     }
   }
+  
   async  _closeOnClickOut(e: any) {
     const clickIsInside = await $(this.popelement[this.popelement.length - 1]).find(e.target).length > 0;
     if (!clickIsInside && !$(e.target).hasClass(this.FILL)) { this._close(); }
   }
+  
   _closeOnEsc(e: any) {
     if (e.keyCode === this.ESC && this.get('canEscapeKeyClose')) { this._close(); }
   }
+  
   _close() {
     if (this.isDestroyed || this.isDestroying)
       return;
@@ -86,20 +110,6 @@ export default class PopOver extends Component {
     if (this.isOutClickClose == true)
       this.set('open', false);
   }
-  @action
-  close() {
-    if (get(this, 'popCloseClickFun'))
-      get(this, 'popCloseClickFun')();
-    this.set('open', false);
-  }
-  @action
-  togglePopover(e: any) {
-    this.toggleProperty('open');
-    if (get(this, 'popOpenClickFun'))
-      get(this, 'popOpenClickFun')();
-  }
-
-
 
 };
 

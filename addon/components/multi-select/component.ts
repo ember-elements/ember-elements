@@ -14,7 +14,11 @@ import * as Classes from "../../-private/common/classes";
 export default class MultiSelect extends Component {
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+
   @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+
+  @readOnly('open') Open!: boolean;
+  
   _popperTarget: any;
   ESC: number = 27;
   selectedKey: number = -1;
@@ -42,11 +46,6 @@ export default class MultiSelect extends Component {
   popOverArrow!: boolean;
   minimalPopover: boolean = false;
   defaultSelected: string = '';
-  @readOnly('open') Open!: boolean;
-  didInsertElement() {
-    set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
-  }
   filteredList: any[] = [];
   isDefaultOpen!: boolean;
   data: any;
@@ -57,6 +56,12 @@ export default class MultiSelect extends Component {
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
     this._closeOnEsc = this._closeOnEsc.bind(this);
   }
+
+  didInsertElement() {
+    set(this, '_popperTarget', this.element);
+    this.set('currentWindow', this.$(window));
+  }
+
   async didReceiveAttrs() {
     this.set('select', this.selected || []);
     if (this.get('isDBrequired'))
@@ -83,38 +88,18 @@ export default class MultiSelect extends Component {
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
-  detachClickHandler() {
-    const method = this.get('open') ? 'on' : 'off';
-    if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
-    }
-    else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
-    }
-  }
-  _closeOnClickOut(e: any) {
 
-    if (e.target.className != `${Classes.MENU_ITEM} ${this.POPOVER_DISMISS}` && e.target.className != this.classNameAssigned) { this._close(); }
-  }
-  _closeOnEsc(e: any) {
-    if (e.keyCode === this.ESC) { this._close(); }
-  }
-  _close() {
-    if (this.isDestroyed || this.isDestroying)
-      return;
-    set(this, 'open', false);
-  }
   @action
   close() {
     this._close();
   }
+
   @action
   async togglePopover() {
     await this.addToFilterList();
     await this.toggleProperty('open');
   }
+
   async  addToFilterList() {
     let data: [] = JSON.parse(JSON.stringify(this.get('data') || []));
     let arr = [];
@@ -131,6 +116,7 @@ export default class MultiSelect extends Component {
       this.set('filteredList', arr);
     }
   }
+
   @action
   async onMouseSelect(data: any) {
     await this.set('open', false);
@@ -147,7 +133,6 @@ export default class MultiSelect extends Component {
     this.send('onSelected');
     this.set('open', true);
   }
-
 
   @action
   delete(value: string, index: any, e: any) {
@@ -166,6 +151,7 @@ export default class MultiSelect extends Component {
     this.set('filteredList', arr);
     this.send('onSelected');
   }
+
   @action
   onSelected() {
 
@@ -174,6 +160,7 @@ export default class MultiSelect extends Component {
     if (this.get('onDelete'))
       this.get('onDelete')(this.select);
   }
+
   @action
   onActive() {
     let container: any = document.querySelector(`.${this.TRANSITION_CONTAINER}`);
@@ -186,6 +173,7 @@ export default class MultiSelect extends Component {
       list[this.selectedKey].querySelector('a').className += ' ' + Classes.ACTIVE;
     }
   }
+
   @action
   async handleKeydown(e: any) {
     this.set('open', true);
@@ -264,6 +252,7 @@ export default class MultiSelect extends Component {
 
     }
   }
+
   @action
   onSearchElement(e: any) { //search value
     let keys: Array<Number> = [37, 38, 39, 40, 13];
@@ -289,6 +278,29 @@ export default class MultiSelect extends Component {
     }
   }
 
+  detachClickHandler() {
+    const method = this.get('open') ? 'on' : 'off';
+    if (method == 'on') {
+      this.currentWindow.on('click', this._closeOnClickOut);
+      this.currentWindow.on('keyup', this._closeOnEsc);
+    }
+    else {
+      this.currentWindow.off('click', this._closeOnClickOut);
+      this.currentWindow.off('keyup', this._closeOnEsc);
+    }
+  }
+  _closeOnClickOut(e: any) {
+
+    if (e.target.className != `${Classes.MENU_ITEM} ${this.POPOVER_DISMISS}` && e.target.className != this.classNameAssigned) { this._close(); }
+  }
+  _closeOnEsc(e: any) {
+    if (e.keyCode === this.ESC) { this._close(); }
+  }
+  _close() {
+    if (this.isDestroyed || this.isDestroying)
+      return;
+    set(this, 'open', false);
+  }
 
 
 };

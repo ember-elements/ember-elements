@@ -14,10 +14,12 @@ export default class DomOuterRender extends Component{
   _element:any;
   _wormholeHeadNode:any;
   _wormholeTailNode:any;
+
   @computed('destinationElementId')
   get to() {
     return this.get('destinationElementId');
   }
+
   @computed('destinationElement', 'destinationElementId', 'renderInPlace')
   get _destination() {
     let renderInPlace = this.get('renderInPlace');
@@ -57,12 +59,14 @@ export default class DomOuterRender extends Component{
       this._appendToDestination();
     });
   }
+
   willDestroyElement() {
     let { _wormholeHeadNode, _wormholeTailNode } = this;
     run.schedule('render', () => {
       this._removeRange(_wormholeHeadNode, _wormholeTailNode);
     });
   }
+  
   _appendToDestination() {
     var destinationElement = this.get('_destination');
     if (!destinationElement) {
