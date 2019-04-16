@@ -14,7 +14,6 @@ import { computed } from '@ember-decorators/object';
 @classNames(Classes.BUTTON)
 export default class Button extends Component {
   @attribute('style') style:string = Ember.String.htmlSafe(this.style);
-  BUTTON_TEXT:string=Classes.BUTTON_TEXT;
   @readOnly('iconSize') IconSize:number;
   @className(Classes.ACTIVE)
   active:boolean = false;
