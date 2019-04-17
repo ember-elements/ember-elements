@@ -1,58 +1,105 @@
 <div class={{tagInput}}>
-    {{#each select as |item index|}} 
-   <Tag  @large={{large}} @minimal={{minimal}} @params={{index}}
-    @active={{active}} @interactive={{interactive}} @round={{round}} 
-    @icon={{icon}} @rightIcon={{rightIcon}} @intent={{intent}}
-    @value={{item}} @removable={{removable}} @bgColor={{defaultBgcolor}} 
-    @onRemove={{action 'delete'}} @disabled={{disabled}}/>
-    {{/each}}
-    <input type="text" class={{INPUT_GHOST}} placeholder={{placeholder}} disabled={{disabled}} readonly={{readonly}}
-      onkeydown={{action "handleKeydown"}}   onkeyup={{action "onSearchElement"}}   onclick={{action 'togglePopover'}}/>
-</div> 
-{{#if isDBrequired}}
-   <button type="button" class="{{{BUTTON}}} {{{MINIMAL}}}" {{action 'delete' null}}>
-    <svg class="bp3-icon" data-icon="cross" width="16" height="16" viewBox="0 0 16 16">
-        <desc>cross</desc>
-        <path d="M9.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-3.29-3.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 3.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l3.29 3.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z"
-            fill-rule="evenodd"></path>
-    </svg>
-</button> 
-{{/if}}
+  {{#each select as |item index|}}
+    <Tag
+      @large={{large}}
+      @minimal={{minimal}}
+      @params={{index}}
+      @active={{active}}
+      @interactive={{interactive}}
+      @round={{round}}
+      @icon={{icon}}
+      @rightIcon={{rightIcon}}
+      @intent={{intent}}
+      @value={{item}}
+      @removable={{removable}}
+      @bgColor={{defaultBgcolor}}
+      @onRemove={{action "delete"}}
+      @disabled={{disabled}}
+     />
 
-{{#if open}} <EmberPopper  @class={{popperClass}}  @popperTarget={{_popperTarget}} @placement={{placement}}>
- <div class="popper-margin-height {{{TRANSITION_CONTAINER}}}">
-    <div class="{{{POPOVER}}} bp3-select-popover" style="transform-origin: 141px bottom 0px;">
-        {{#if popOverArrow}}
-         <div class='popper-arrow bp3-popover-arrow' x-arrow>
-            <svg viewBox="0 0 30 30">
-               <path class="bp3-popover-arrow-border"
-                  d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z">
-               </path>
-               <path class="bp3-popover-arrow-fill"
-                  d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z">
-               </path>
-            </svg>
-         </div>
-         {{/if}}
-        <div class={{POPOVER_CONTENT}}>
-            <div>
-                <ul class={{MENU}}>
-                    {{#each filteredList as |item|}}
-                    <li class="">
-                       <a class="{{{MENU_ITEM}}} {{{POPOVER_DISMISS}}}" {{action 'onMouseSelect' item}}>
-                          {{!-- <span class={{TAG}} style={{find-tag-color tagColor item defaultBgColor defaultFgColor }}> --}}
-                            <div class="{{{TEXT_OVERFLOW_ELLIPSIS}}} {{{FILL}}}">{{item}}</div>
-                          {{!-- </span> --}}
-                        </a>
-                    </li>
-                    {{/each}}
-                    {{#if (eq filteredList.length 0)}}
-                        no result!
-                    {{/if}}
-                </ul>
-            </div>
-        </div>
-    </div>
+  {{/each}}
+  <input
+    type="text"
+    class={{INPUT_GHOST}}
+    placeholder={{placeholder}}
+    disabled={{disabled}}
+    readonly={{readonly}}
+    onkeydown={{action "handleKeydown"}}
+    onkeyup={{action "onSearchElement"}}
+    onclick={{action "togglePopover"}}
+   />
+
 </div>
-</EmberPopper> {{/if}}
+{{#if isDBrequired}}
+  <button type="button" class="{{BUTTON}} {{MINIMAL}}" {{action "delete" null}}>
+    <svg
+      class="bp3-icon"
+      data-icon="cross"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+    >
+      <desc>
+        cross
+      </desc>
+      <path
+        d="M9.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-3.29-3.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 3.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l3.29 3.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+  </button>
+{{/if}}
+{{#if open}}
+  <EmberPopper
+    @class={{popperClass}}
+    @popperTarget={{_popperTarget}}
+    @placement={{placement}}
+  >
+    <div class="popper-margin-height {{TRANSITION_CONTAINER}}">
+      <div
+        class="{{POPOVER}} bp3-select-popover"
+        style="transform-origin: 141px bottom 0px;"
+      >
+        {{#if popOverArrow}}
+          <div class="popper-arrow bp3-popover-arrow" x-arrow>
+            <svg viewBox="0 0 30 30">
+              <path
+                class="bp3-popover-arrow-border"
+                d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z"
+              ></path>
+              <path
+                class="bp3-popover-arrow-fill"
+                d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z"
+              ></path>
+            </svg>
+          </div>
+        {{/if}}
+        <div class={{POPOVER_CONTENT}}>
+          <div>
+            <ul class={{MENU}}>
+              {{#each filteredList as |item|}}
+                <li class="">
+                  <a
+                    class="{{MENU_ITEM}} {{POPOVER_DISMISS}}"
+                    {{action "onMouseSelect" item}}
+                  >
+                    {{!-- <span class={{TAG}} style={{find-tag-color tagColor item defaultBgColor defaultFgColor }}>
+                                    --}}
+                    <div class="{{TEXT_OVERFLOW_ELLIPSIS}} {{FILL}}">
+                      {{item}}
+                    </div>
+                    {{! </span> }}
+                  </a>
+                </li>
+              {{/each}}
+              {{#if (eq filteredList.length 0)}}
+                no result!
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </EmberPopper>
+{{/if}}
 {{yield}}

@@ -1,12 +1,14 @@
 {{#if icon}}
-    <Icon @icon={{icon}} @iconSize={{IconSize}} @color={{color}}  />
+  <Icon @icon={{icon}} @iconSize={{IconSize}} @color={{color}} />
 {{/if}}
-    <span class={{TEXT_OVERFLOW_ELLIPSIS_Fill}}>{{value}}</span>
+<span class={{TEXT_OVERFLOW_ELLIPSIS_Fill}}>
+  {{value}}
+</span>
 {{#if rightIcon}}
-    <Icon @icon={{rightIcon}} @iconSize={{IconSize}} @color={{color}}  />
+  <Icon @icon={{rightIcon}} @iconSize={{IconSize}} @color={{color}} />
 {{/if}}
 {{#if Removable}}
-    <button type="button" onclick={{action "OnRemoving"}} class={{TAG_REMOVE}}>
-       <Icon @icon="small-cross" @iconSize={{removeIconSize}}   />
-    </button>
+  <button type="button" onclick={{action "OnRemoving"}} class={{TAG_REMOVE}}>
+    <Icon @icon="small-cross" @iconSize={{removeIconSize}} />
+  </button>
 {{/if}}

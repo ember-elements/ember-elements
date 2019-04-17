@@ -1,55 +1,109 @@
-<div class="{{{COLLAPSE}}} {{if item.isExpanded 'bp3-collapse-expanded'}}">
-    <div class={{COLLAPSE_BODY}} aria-hidden="false" style="transform: translateY(0px); transition: none 0s ease 0s;">
-        <ul class={{TREE_NODE_LIST}}>
-            {{#each item.childNodes as |item2 index|}}
-            {{#if item2.hasCaret}}
-            <li  id="bp3-tree-node2{{{item2.id}}}" class="{{{TREE_NODE}}} {{if item2.isExpanded TREE_NODE_EXPANDED}}" onmouseout={{action 'onNodeMouseLeaveFun' item2}}
-                onmouseover={{action 'onNodeMouseEnterFun' item2}}>
-                <div class={{treeNodeClassName}}>
-                    <span class="{{{TREE_NODE_CARET}}} {{if item2.isExpanded TREE_NODE_CARET_OPEN TREE_NODE_CARET_CLOSED}}"
-                        onclick={{action 'onNodeCollapseFun' item2 }}>
-                        <Icon @icon='chevron-right' @width=16 @height=16/>
-                        </span>
-                    <span icon="folder-close" class={{ICON}} ondblclick={{action 'onNodeDoubleClickFun'}}
-                        onclick={{action 'onNodeClickFun' item2 }}>
-                        {{#if item2.icon}}
-                        <Icon @icon={{item2.icon}} @width=16 @height=16/>
-                        {{/if}}
-                    </span>
-                    <span class={{TREE_NODE_LABEL}} ondblclick={{action 'onNodeDoubleClickFun' item2}} onclick={{action 'onNodeClickFun' item2 }}>{{item2.label}}</span></div>
-                {{db-tree/db-child-node item=item2 iteration=iteration onNodeCollapse=onNodeCollapse
-                onNodeExpand=onNodeExpand onNodeClick=onNodeClick onNodeDoubleClick=onNodeDoubleClick
-                onNodeMouseEnter=onNodeMouseEnter onNodeMouseLeave=onNodeMouseLeave}}
-            </li>
-            {{else}}
-            <li id="bp3-tree-node2{{{item2.id}}}" class={{TREE_NODE}} onmouseout={{action 'onNodeMouseLeaveFun' item2}} onmouseover={{action 'onNodeMouseEnterFun' item2}}
-                ondblclick={{action 'onNodeDoubleClickFun' item2}} onclick={{action 'onNodeClickFun'  item2}}>
-                <div class={{treeNodeClassName}}>
-                    <span class={{TREE_NODE_CARET_NONE}}></span>
-                    {{#if item2.icon}}
-                     <Icon @icon={{item2.icon}} @style='margin-right:10px' @width=16 @height=16/>
-                    {{/if}}
-                    <span class={{TREE_NODE_LABEL}}>{{item2.label}}</span>
-                    {{#if item2.secondaryIcon}}
-                    <span class={{TREE_NODE_SECONDARY_LABEL}}>
-                        <span class={{POPOVER_WRAPPER}}>
-                            <span class={{POPOVER_TARGET}}>
-                                <span icon="eye-open" tabindex="0" class="bp3-icon bp3-icon-eye-open">
-                                    <Icon @icon='eye-open' @width=16 @height=16/>
-                                </span>
-                            </span>
-                        </span>
-                    </span>
-                    {{/if}}
-                </div>
-                <div class={{COLLAPSE}}>
-                    <div class={{COLLAPSE_BODY}} style="transform: translateY(0px);" aria-hidden="false"></div>
-                </div>
-            </li>
-            {{/if}}
+<div class="{{COLLAPSE}} {{if item.isExpanded "bp3-collapse-expanded"}}">
+  <div
+    class={{COLLAPSE_BODY}}
+    aria-hidden="false"
+    style="transform: translateY(0px); transition: none 0s ease 0s;"
+  >
+    <ul class={{TREE_NODE_LIST}}>
+      {{#each item.childNodes as |item2|}}
+        {{#if item2.hasCaret}}
+          <li
+            id="bp3-tree-node2{{item2.id}}"
+            class="{{TREE_NODE}} {{if item2.isExpanded TREE_NODE_EXPANDED}}"
+            onmouseout={{action "onNodeMouseLeaveFun" item2}}
+            onmouseover={{action "onNodeMouseEnterFun" item2}}
+          >
+            <div class={{treeNodeClassName}}>
+              <span
+                class="{{TREE_NODE_CARET}}
 
-            {{/each}}
+                  {{if
+                    item2.isExpanded
+                    TREE_NODE_CARET_OPEN
+                    TREE_NODE_CARET_CLOSED
+                  }}"
+                onclick={{action "onNodeCollapseFun" item2}}
+              >
+                <Icon @icon="chevron-right" @width="16" @height="16" />
+              </span>
+              <span
+                icon="folder-close"
+                class={{ICON}}
+                ondblclick={{action "onNodeDoubleClickFun"}}
+                onclick={{action "onNodeClickFun" item2}}
+              >
+                {{#if item2.icon}}
+                  <Icon @icon={{item2.icon}} @width="16" @height="16" />
+                {{/if}}
+              </span>
+              <span
+                class={{TREE_NODE_LABEL}}
+                ondblclick={{action "onNodeDoubleClickFun" item2}}
+                onclick={{action "onNodeClickFun" item2}}
+              >
+                {{item2.label}}
+              </span>
+            </div>
+            {{db-tree/db-child-node
+              item=item2
+              iteration=iteration
+              onNodeCollapse=onNodeCollapse
+              onNodeExpand=onNodeExpand
+              onNodeClick=onNodeClick
+              onNodeDoubleClick=onNodeDoubleClick
+              onNodeMouseEnter=onNodeMouseEnter
+              onNodeMouseLeave=onNodeMouseLeave
+            }}
+          </li>
+        {{else}}
+          <li
+            id="bp3-tree-node2{{item2.id}}"
+            class={{TREE_NODE}}
+            onmouseout={{action "onNodeMouseLeaveFun" item2}}
+            onmouseover={{action "onNodeMouseEnterFun" item2}}
+            ondblclick={{action "onNodeDoubleClickFun" item2}}
+            onclick={{action "onNodeClickFun" item2}}
+          >
+            <div class={{treeNodeClassName}}>
+              <span class={{TREE_NODE_CARET_NONE}}></span>
+              {{#if item2.icon}}
+                <Icon
+                  @icon={{item2.icon}}
+                  @style="margin-right:10px"
+                  @width="16"
+                  @height="16"
+                 />
 
-        </ul>
-    </div>
+              {{/if}}
+              <span class={{TREE_NODE_LABEL}}>
+                {{item2.label}}
+              </span>
+              {{#if item2.secondaryIcon}}
+                <span class={{TREE_NODE_SECONDARY_LABEL}}>
+                  <span class={{POPOVER_WRAPPER}}>
+                    <span class={{POPOVER_TARGET}}>
+                      <span
+                        icon="eye-open"
+                        tabindex="0"
+                        class="bp3-icon bp3-icon-eye-open"
+                      >
+                        <Icon @icon="eye-open" @width="16" @height="16" />
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              {{/if}}
+            </div>
+            <div class={{COLLAPSE}}>
+              <div
+                class={{COLLAPSE_BODY}}
+                style="transform: translateY(0px);"
+                aria-hidden="false"
+              ></div>
+            </div>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
 </div>

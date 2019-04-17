@@ -1,56 +1,84 @@
-<Input @type='text' @onClick={{action 'togglePopover'}} @icon={{icon}} @iconSize={{iconSize}} @rightIcon={{rightIcon}} @intent={{intent}} @placeholder={{dateFormat}} @data={{moment-format date dateFormat}}/>
-{{#if open}} 
-<EmberPopper @class={{popperClass}} @popperTarget={{_popperTarget}} @placement={{placement}}>
- <div class="popper-margin-height {{{TRANSITION_CONTAINER}}}">
-    <div class="{{{POPOVER}}} bp3-select-popover" style="transform-origin: 141px bottom 0px;">
+<Input
+  @type="text"
+  @onClick={{action "togglePopover"}}
+  @icon={{icon}}
+  @iconSize={{iconSize}}
+  @rightIcon={{rightIcon}}
+  @intent={{intent}}
+  @placeholder={{dateFormat}}
+  @data={{moment-format date dateFormat}}
+ />
+
+{{#if open}}
+  <EmberPopper
+    @class={{popperClass}}
+    @popperTarget={{_popperTarget}}
+    @placement={{placement}}
+  >
+    <div class="popper-margin-height {{TRANSITION_CONTAINER}}">
+      <div class="{{POPOVER}} bp3-select-popover">
         {{#if popOverArrow}}
-         <div class='popper-arrow bp3-popover-arrow' x-arrow>
+          <div class="popper-arrow bp3-popover-arrow" x-arrow>
             <svg viewBox="0 0 30 30">
-               <path class="bp3-popover-arrow-border"
-                  d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z">
-               </path>
-               <path class="bp3-popover-arrow-fill"
-                  d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z">
-               </path>
+              <path
+                class="bp3-popover-arrow-border"
+                d="M8.11 6.302c1.015-.936 1.887-2.922 1.887-4.297v26c0-1.378-.868-3.357-1.888-4.297L.925 17.09c-1.237-1.14-1.233-3.034 0-4.17L8.11 6.302z"
+              ></path>
+              <path
+                class="bp3-popover-arrow-fill"
+                d="M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z"
+              ></path>
             </svg>
-         </div>
-         {{/if}}
+          </div>
+        {{/if}}
         <div class={{POPOVER_CONTENT}}>
-            <div>
-                {{#power-calendar
-                    center=center
-                    selected=selected
-                    onSelect=(action (mut selected) value="date")
-                    onCenterChange=(action (mut center) value="date") as |calendar|}}
-                    {{#calendar.nav}}
-                        <span class="with-invisible-select">
-                        {{#with (moment-format calendar.center 'MMMM') as |currentMonth|}}
-                            {{currentMonth}}
-                            <select onchange={{action "changeCenter" "month" calendar}}>
-                            {{#each months as |month|}}
-                                <option value="{{month}}" selected={{eq month currentMonth}}>{{month}}</option>
-                            {{/each}}
-                            </select>
-                        {{/with}}
-                        </span>
-                        <span class="with-invisible-select">
-                        {{#with (moment-format calendar.center 'YYYY') as |currentYear|}}
-                            {{currentYear}}
-                            <select onchange={{action "changeCenter" "year" calendar}}>
-                            {{#each years as |year|}}
-                                <option value="{{year}}" selected={{eq year currentYear}}>{{year}}</option>
-                            {{/each}}
-                            </select>
-                        {{/with}}
-                        </span>
-                    {{/calendar.nav}}
-                    <div class={{DIVIDER}}></div>
-                    {{calendar.days click=(action 'onselect')}}
-                {{/power-calendar}}
-            </div>
+          <div>
+            {{#power-calendar
+              center=center
+              selected=selected
+              onSelect=(action (mut selected) value="date")
+              onCenterChange=(action (mut center) value="date") as |calendar|
+            }}
+              {{#calendar.nav}}
+                <span class="with-invisible-select">
+                  {{#with
+                    (moment-format calendar.center "MMMM") as |currentMonth|
+                  }}
+                    {{currentMonth}}
+                    <select onchange={{action "changeCenter" "month" calendar}}>
+                      {{#each months as |month|}}
+                        <option
+                          value={{month}}
+                          selected={{eq month currentMonth}}
+                        >
+                          {{month}}
+                        </option>
+                      {{/each}}
+                    </select>
+                  {{/with}}
+                </span>
+                <span class="with-invisible-select">
+                  {{#with
+                    (moment-format calendar.center "YYYY") as |currentYear|
+                  }}
+                    {{currentYear}}
+                    <select onchange={{action "changeCenter" "year" calendar}}>
+                      {{#each years as |year|}}
+                        <option value={{year}} selected={{eq year currentYear}}>
+                          {{year}}
+                        </option>
+                      {{/each}}
+                    </select>
+                  {{/with}}
+                </span>
+              {{/calendar.nav}}
+              <div class={{DIVIDER}}></div>
+              {{calendar.days click=(action "onselect")}}
+            {{/power-calendar}}
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</EmberPopper>
-{{/if}} 
+  </EmberPopper>
+{{/if}}
 {{yield}}
