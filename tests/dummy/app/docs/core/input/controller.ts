@@ -6,6 +6,7 @@ export default class DocsCoreInput extends Controller {
   isDisabled: boolean = false;
   intent: string = 'none';
   isFill: boolean = false;
+  isRound: boolean = false;
   isReadOnly: boolean = false;
   isLarge: boolean = false;
   // BEGIN-SNIPPET docs-example-basic-text-input.ts
@@ -13,7 +14,7 @@ export default class DocsCoreInput extends Controller {
 
   @action
   onkeyDown(data: string, event: object) { //value of text input and events 
-
+    console.log(data, event);
   }
 
   // END-SNIPPET
@@ -26,24 +27,8 @@ export default class DocsCoreInput extends Controller {
     this.toggleProperty('isDisabled');
   }
   @action
-  primaryFun() {
-    this.toggleProperty('isPrimary');
-  }
-  @action
-  successFun() {
-    this.toggleProperty('isSuccess');
-  }
-  @action
   roundFun() {
     this.toggleProperty('isRound');
-  }
-  @action
-  warningFun() {
-    this.toggleProperty('isWarning');
-  }
-  @action
-  dangerFun() {
-    this.toggleProperty('isDanger');
   }
   @action
   fillFun() {

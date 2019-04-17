@@ -36,12 +36,10 @@ module('Integration | Component | date-picker', function (hooks) {
     assert.equal(element.querySelector('input').value, '26/08/2016')
   });
   test(' check isDefaultOpen true', async function (assert) {
-    let element: any = this.element;
     await render(hbs`<DatePicker @date='08-26-2016' @isDefaultOpen=true />`);
     assert.equal(document.querySelectorAll('.popper').length, 1)
   });
   test(' check isDefaultOpen false', async function (assert) {
-    let element: any = this.element;
     await render(hbs`<DatePicker @date='08-26-2016' @isDefaultOpen={{false }}/>`);
     assert.equal(document.querySelectorAll('.popper').length, 0);
 

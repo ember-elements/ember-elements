@@ -14,10 +14,10 @@ export default class Select extends Component {
   @attribute('style') style: any = Ember.String.htmlSafe((this.style));
 
   @reads('open') Open!: boolean;
- 
+
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
- 
+
   currentWindow: any;
   _popperTarget: any;
   ICON: string = Classes.ICON;
@@ -55,7 +55,7 @@ export default class Select extends Component {
     this.set('filteredList', (this.get('data') || []));
     this.set('selected', this.get('selected'));
   }
-  
+
   didInsertElement() {
     set(this, '_popperTarget', this.element);
     this.set('currentWindow', this.$(window));
@@ -64,7 +64,7 @@ export default class Select extends Component {
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
- 
+
   async didReceiveAttrs() {
     await set(this, '_popperTarget', this.element);
     if (this.get('isDefaultOpen')) {
@@ -94,7 +94,7 @@ export default class Select extends Component {
       this.currentWindow.off('keyup', this._closeOnEsc);
     }
   }
-  
+
   async _closeOnClickOut(e: any) {
     const clickIsInside = document.querySelector('.' + this.TRANSITION_CONTAINER);
     const clickIsInsideFound = clickIsInside ? clickIsInside.contains(e.target) : false
@@ -118,7 +118,7 @@ export default class Select extends Component {
   }
 
   @action
-  async onMouseSelect(data: any, index: number, e: any) {
+  async onMouseSelect(data: any, index: number) {
     var selectDiv: any = await document.getElementById('select' + index);
     selectDiv.className += ' ' + this.INTENT_PRIMARY + ' ' + this.ACTIVE;
 
@@ -157,6 +157,7 @@ export default class Select extends Component {
 
   @action
   handleKeydown(data: any, e: any) {
+    data = data;
     if (this.open == false) {
       this.findDefaultSelect(this.filteredList);
 

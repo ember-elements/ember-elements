@@ -106,7 +106,7 @@ export default class SelectBox extends Component {
     this.set('open', false);
   }
   @action
-  async onMouseSelect(data: any, index: number, e: any) {
+  async onMouseSelect(data: any, index: number) {
     var selectDiv: any = await document.getElementById('select' + index);
     selectDiv.className += ' ' + this.INTENT_PRIMARY + ' ' + this.ACTIVE;
 
@@ -142,6 +142,7 @@ export default class SelectBox extends Component {
   }
   @action
   handleKeydown(data: any, e: any) {
+    data = data;
     if (this.open == false) {
       this.findDefaultSelect(this.filteredList);
 

@@ -10,8 +10,8 @@ module('Integration | Component | overflow-list', function (hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{overflow-list}}`);
-
-    assert.equal(this.element.textContent.trim(), '');
+     var element:any=this.element;
+    assert.equal(element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
@@ -19,8 +19,8 @@ module('Integration | Component | overflow-list', function (hooks) {
         template block text
       {{/overflow-list}}
     `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    
+    assert.equal(element.textContent.trim(), 'template block text');
   });
   test('renders all items', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');

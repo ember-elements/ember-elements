@@ -38,13 +38,13 @@ export default class DocsCoreTag extends Controller {
 
   }
   @action
-  selectIntent(e) {
+  selectIntent(e: any) {
     this.set('intent', e.target.value);
   }
   // BEGIN-SNIPPET docs-example-basic-tag.js
   @action
   onRemove(value: string, params: any, event: MouseEvent) {
-    console.log(value, event);
+    console.log(value, event, params);
   }
   // END-SNIPPET
 

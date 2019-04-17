@@ -75,7 +75,7 @@ export default class PopOver extends Component {
   }
   
   @action
-  togglePopover(e: any) {
+  togglePopover() {
     this.toggleProperty('open');
     if (get(this, 'popOpenClickFun'))
       get(this, 'popOpenClickFun')();

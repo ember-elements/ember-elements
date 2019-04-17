@@ -115,14 +115,14 @@ export default class OverflowList extends Component {
     }
     else if (this.spacer.getBoundingClientRect().width < 0.9) {
       if (this.visible.length <= this.minVisibleItems) {
-        return null;
+        return;
       }
       const collapseFromStart = this.CollapseFrom === Boundary.START;
       const visible = this.visible.slice();
 
       const next = collapseFromStart ? visible.shift() : visible.pop();
       if (next === undefined) {
-        return null;
+        return ;
       }
       const overflow = collapseFromStart ? [...this.overflow, next] : [next, ...this.overflow];
 

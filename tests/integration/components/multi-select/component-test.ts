@@ -192,7 +192,7 @@ module('Integration | Component | multi-select', function (hooks) {
 
     ];
     this.set('data', data);
-    let d = [];
+    let d:Array<string> = [];
     this.set('selected', d);
 
     await render(hbs`{{multi-select data=this.data selected=this.selected  }}`);
@@ -216,7 +216,7 @@ module('Integration | Component | multi-select', function (hooks) {
       'hi12',
     ];
     this.set('data', data);
-    let d = [];
+    let d:Array<string> = [];
     this.set('selected', d);
 
     await render(hbs`{{multi-select data=this.data selected=this.selected  }}`);
@@ -244,7 +244,7 @@ module('Integration | Component | multi-select', function (hooks) {
 
     await render(hbs`{{multi-select data=this.data selected=this.selected  }}`);
     await click('input');
-    let doc = document.querySelector('.popper')
+    let doc:any = document.querySelector('.popper')
     assert.equal(doc.querySelectorAll('.bp3-text-overflow-ellipsis').length, 10);
   });
   test('placeholder is rendering', async function (assert) {
@@ -382,163 +382,5 @@ module('Integration | Component | multi-select', function (hooks) {
     await render(hbs`{{multi-select data=this.data selected=this.selected isDefaultOpen=false }}`);
     assert.equal(document.querySelectorAll('.popper').length, 0);
   });
-  test('defaultBgColor =green ', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = ['hi1', 'hi2'];
-    this.set('selected', d);
-
-    await render(hbs`{{multi-select data=this.data selected=this.selected defaultBgColor='green' }}`);
-    var bg: any = document.querySelector('.bp3-tag');
-    assert.equal(bg.style.backgroundColor, 'green');
-  });
-  test('defaultFgColor =green ', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = ['hi1', 'hi2'];
-    this.set('selected', d);
-
-    await render(hbs`{{multi-select data=this.data selected=this.selected defaultFgColor='green' }}`);
-    var clr: any = document.querySelector('.bp3-tag');
-    assert.equal(clr.style.color, 'green');
-  });
-  test('render defaultBgColor =green for popOver options ', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = ['hi1', 'hi2'];
-    this.set('selected', d);
-
-    await render(hbs`{{multi-select data=this.data selected=this.selected defaultBgColor='green' }}`);
-    await click('input');
-    let doc: any = document.querySelector('.popper');
-    var bg: any = doc.querySelector('.bp3-tag');
-    assert.equal(bg.style.backgroundColor, 'green');
-  });
-  test('render defaultFgColor =green for popOver options', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = ['hi1', 'hi2'];
-    this.set('selected', d);
-
-    await render(hbs`{{multi-select data=this.data selected=this.selected defaultFgColor='green' }}`);
-    await click('input');
-    let doc: any = document.querySelector('.popper');
-    let clr: any = doc.querySelector('.bp3-tag');
-    assert.equal(clr.style.color, 'green');
-  });
-  test('tagColor is rendering @ui', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = ['hi1'];
-    this.set('selected', d);
-    var tagColor: Array<object> = [
-      {
-        bgColor: 'red',
-        fgColor: 'green',
-        tagName: 'hi1',
-      }
-    ];
-    this.set('tagColor', tagColor);
-    await render(hbs`{{multi-select data=this.data selected=this.selected tagColor=this.tagColor }}`);
-    var tag: any = document.querySelector('.bp3-tag');
-    assert.equal(tag.style.color, 'green');
-    assert.equal(tag.style.backgroundColor, 'red');
-  });
-  test('tagColor is rendering @popover', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    let d = [];
-    this.set('selected', d);
-    var tagColor: Array<object> = [
-      {
-        bgColor: 'red',
-        fgColor: 'green',
-        tagName: 'hi1',
-      }
-    ];
-    this.set('tagColor', tagColor);
-    await render(hbs`{{multi-select data=this.data selected=this.selected tagColor=this.tagColor }}`);
-    await click('input')
-    var tag: any = document.querySelector('.bp3-tag');
-    assert.equal(tag.style.color, 'green');
-    assert.equal(tag.style.backgroundColor, 'red');
-  });
+  
 });

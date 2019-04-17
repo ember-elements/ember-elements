@@ -73,6 +73,6 @@ export default class Icon extends Component {
     if (pathStrings == null) {
       return null;
     }
-    return pathStrings.map((d:any, i:number) => d);
+    return pathStrings.map((d:any) => d);
   }
 };

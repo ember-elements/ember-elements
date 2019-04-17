@@ -29,7 +29,7 @@ export default class DbTreeDbMainNode extends Component {
   onNodeMouseLeave!: (item: any, event: object) => void;
 
   didInsertElement() {
-    var content:any = this.get('content')[0];
+    var content: any = (this.get('content') || [])[0] || {};
     if (this.get('content') && content.id == 0) {
       let node: any = document.getElementById(this.elementId);
       node.classList.add(Classes.TREE_ROOT);
@@ -92,7 +92,7 @@ export default class DbTreeDbMainNode extends Component {
     if (this.get('onNodeMouseEnter'))
       this.get('onNodeMouseEnter')(item, event);
   }
-  
+
   @action
   onNodeMouseLeaveFun(item: any, event: any) {
     if (this.get('onNodeMouseLeave'))

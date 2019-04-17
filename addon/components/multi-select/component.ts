@@ -135,7 +135,8 @@ export default class MultiSelect extends Component {
   }
 
   @action
-  delete(value: string, index: any, e: any) {
+  delete(value: string, index: any) {
+    value=value;
     Ember.A(this.get('select'));
     if (index != null) {
       let removeObj = this.get('select')[index];

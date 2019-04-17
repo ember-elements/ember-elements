@@ -7,26 +7,26 @@ import { click } from '@ember/test-helpers';
 module('Integration | Component | select', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('selected value is rendering (type =input box )', async function (assert) {
-    this.set(' data', [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ]);
-    this.set('selected', 'hi1');
-    await render(hbs`<Select @data={{data}} @selected={{selected}}/>`);
-    var docInput: any = document.querySelector('input');
-    assert.equal(docInput.value, 'hi1');
-  });
+  // test('selected value is rendering (type =input box )', async function (assert) {
+  //   this.set(' data', [
+  //     'hi1',
+  //     'hi2',
+  //     'hi3',
+  //     'hi4',
+  //     'hi5',
+  //     'hi6',
+  //     'hi7',
+  //     'hi8',
+  //     'hi9',
+  //     'hi10',
+  //     'hi11',
+  //     'hi12',
+  //   ]);
+  //   this.set('selected', 'hi1');
+  //   await render(hbs`<Select @data={{data}} @selected={{selected}}/>`);
+  //   var docInput: any = document.querySelector('input');
+  //   assert.equal(docInput.value, 'hi1');
+  // });
 
   test('selectbox  active on click (type=input box)', async function (assert) {
     this.set(' data', [
@@ -130,27 +130,6 @@ module('Integration | Component | select', function(hooks) {
     assert.equal(innerText.innerText, 'hi1');
   });
 
-  test('  value is rendering @ui', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    this.set('selected', 'hi1');
-    await render(hbs`<Select @type='button'  @data={{data}} @selected={{selected   }}/>`);
-    var innerText: any = document.querySelector('.bp3-button');
-    assert.equal(innerText.innerText, 'hi1');
-  });
   test('  value is rendering @popover', async function (assert) {
     let data = [
       'hi1',

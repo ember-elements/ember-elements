@@ -7,14 +7,14 @@ export default class DocsSelectSelect extends Controller {
   // BEGIN-SNIPPET docs-example-basic-select-box.ts
   selected: string = 'April';
   minimal: boolean = false;
-  placement:string='auto';
-  data: Array < string > =  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  placement: string = 'auto';
+  data: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   selected2: string = 'February';
-  data2: Array < string > =  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  data2: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   @action
   optionSelected(selectedValue: string, index: number) {
-
+    console.log(selectedValue, index);
   }
   @action
   onMinimalPopover() {

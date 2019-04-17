@@ -1,7 +1,7 @@
-import { module, test } from 'qunit';
+import { module } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+// import { render } from '@ember/test-helpers';
+// import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | toggle-switch', function(hooks) {
   setupRenderingTest(hooks);
