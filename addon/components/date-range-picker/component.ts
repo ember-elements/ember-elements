@@ -5,16 +5,16 @@ import Ember from 'ember';
 import { action, computed } from '@ember-decorators/object';
 import { get, set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { reads, readOnly } from '@ember-decorators/object/computed';
+import { readOnly } from '@ember-decorators/object/computed';
 import moment from 'moment';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @tagName('span')
 @layout(template)
 @classNames('date-range-pckr bp3-popover-target')
 export default class DateRangePicker extends Component {
-  @readOnly('format') Format: string;
+  @readOnly('format') Format?: string;
 
-  @readOnly('open') Open: boolean;
+  @readOnly('open') Open?: boolean;
 
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
@@ -47,10 +47,10 @@ export default class DateRangePicker extends Component {
   endYear!: number;
   range: any;
   currentWindow: any;
-  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years = Array(...Array(40)).map((_, i) => `${i + 1990}`);
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
-  popperClass: string = "popper";
+  popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
 
@@ -70,7 +70,7 @@ export default class DateRangePicker extends Component {
 
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
-    let d = moment(this.range.start).format(this.dateFormat) + " -- " + moment(this.range.end).format(this.dateFormat);
+    let d = moment(this.range.start).format(this.dateFormat) + ' -- ' + moment(this.range.end).format(this.dateFormat);
     this.set('date', d);
   }
 
@@ -147,7 +147,7 @@ export default class DateRangePicker extends Component {
       set(this, 'range2', new Date(past.getFullYear(), past.getMonth() + 1, past.getDate()));
     } else
       this.set('range2', today);
-    this.set('date', (moment(this.range.start).format(this.dateFormat) + " -- " + moment(this.range.end).format(this.dateFormat)));
+    this.set('date', (moment(this.range.start).format(this.dateFormat) + ' -- ' + moment(this.range.end).format(this.dateFormat)));
     if (this.range.start && this.range.end && this.get('onSelect')) {
       get(this, 'onSelect')(this.range);
     }

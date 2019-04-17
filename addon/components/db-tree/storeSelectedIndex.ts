@@ -1,2 +1,5 @@
-export var selectedTreeIndex: number;
-export var selectedChildIndex: number;
+declare interface TreeIndex {
+    selectedTreeIndex: number;
+    selectedChildIndex:number;
+}
+export var selectedTree:TreeIndex;

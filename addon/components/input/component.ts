@@ -2,12 +2,12 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import { action, computed } from '@ember-decorators/object';
-import { get, getProperties, set } from '@ember/object';
-import { reads, readOnly, alias } from '@ember-decorators/object/computed';
+import { get } from '@ember/object';
+import { readOnly } from '@ember-decorators/object/computed';
 import Ember from 'ember';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
-import {Intent} from "../../-private/common/intent";
+import * as Classes from '../../-private/common/classes';
+import {Intent} from '../../-private/common/intent';
 @layout(template)
 @tagName('div')
 @classNames(Classes.INPUT_GROUP)
@@ -19,7 +19,7 @@ export default class Input extends Component {
   @className(Classes.DISABLED)
   disabled: boolean = false;
   
-  @readOnly('intent') Intents:Intent;
+  @readOnly('intent') Intents?:Intent;
   
   @className
   @computed('Intents')
@@ -44,7 +44,7 @@ export default class Input extends Component {
   POPOVER_TARGET: string = (Classes.POPOVER_TARGET);
   BUTTON: string = (Classes.BUTTON);
   MINIMAL: string = (Classes.MINIMAL);
-  placeholder: string = (this.placeholder == undefined ? "Any text..." : this.placeholder);
+  placeholder: string = (this.placeholder == undefined ? 'Any text...' : this.placeholder);
   onClick!: (value: string, event: any) => void;
   onkeyUp!: (value: string, event: any) => void;
   onkeyDown!: (value: string, event: any) => void;

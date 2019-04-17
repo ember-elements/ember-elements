@@ -2,11 +2,11 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { get, getProperties, set } from '@ember/object';
+import { action } from '@ember-decorators/object';
+import { get, set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { reads, readOnly } from '@ember-decorators/object/computed';
-import * as Classes from "../../-private/common/classes";
+import { readOnly } from '@ember-decorators/object/computed';
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('span')
 @classNames(Classes.POPOVER_TARGET)
@@ -17,6 +17,7 @@ export default class PopOver extends Component {
   
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+  
   _popperTarget: any;
   popelement: any;
   currentWindow: any;
@@ -37,7 +38,7 @@ export default class PopOver extends Component {
   parent: boolean = false;
   isOutClickClose: boolean = this.isOutClickClose == undefined ? true : this.isOutClickClose;
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
-  popperClass: string = "popper";
+  popperClass: string = 'popper';
   
   init() {
     super.init();

@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { tagName, attribute, classNames } from '@ember-decorators/component';
+import { tagName, attribute } from '@ember-decorators/component';
 import { readOnly } from '@ember-decorators/object/computed';
 import { computed } from '@ember-decorators/object';
 @tagName('span')

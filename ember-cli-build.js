@@ -6,7 +6,11 @@ module.exports = function (defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
   });
-  app.import('node_modules/resize-observer-polyfill/dist/ResizeObserver.js');
+  app.import('node_modules/resize-observer-polyfill/dist/ResizeObserver.js', {
+    using: [
+      { transformation: 'amd', as: 'resize-observer-polyfill' }
+    ]
+  });
   app.options.storeConfigInMeta = false;
   /*
     This build file specifies the options for the dummy test app of this

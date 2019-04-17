@@ -4,7 +4,7 @@ import template from './template';
 import { action } from '@ember-decorators/object';
 import { readOnly } from '@ember-decorators/object/computed';
 import { layout } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class Dialog extends Component {
   @readOnly('width') Width!: string;

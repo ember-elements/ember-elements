@@ -10,6 +10,7 @@ export default class ToggleSwitchItem extends Component {
   layout = layout;
   
   @reads('active') Active!: boolean;
+  
   classNameBindings = [ 'Active:text-white', 'Active:gray','Active:cursor-default'];
   // attributeBindings: ['type'],
 

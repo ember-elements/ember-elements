@@ -2,41 +2,41 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { classNames, tagName, attribute,layout, className} from '@ember-decorators/component';
-import { readOnly, alias } from '@ember-decorators/object/computed';
+import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
+import { readOnly } from '@ember-decorators/object/computed';
 import { get } from '@ember/object';
-import * as Classes from "../../-private/common/classes";
-import {Intent} from "../../-private/common/intent";
+import * as Classes from '../../-private/common/classes';
+import { Intent } from '../../-private/common/intent';
 import { computed } from '@ember-decorators/object';
 
 @layout(template)
 @tagName('button')
 @classNames(Classes.BUTTON)
 export default class Button extends Component {
-  @attribute('style') style:string = Ember.String.htmlSafe(this.style);
+  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
 
-  @readOnly('iconSize') IconSize:number;
+  @readOnly('iconSize') IconSize?: number;
 
   @className(Classes.ACTIVE)
-  active:boolean = false;
+  active: boolean = false;
 
   @className(Classes.DISABLED)
-  disabled:boolean = false;
+  disabled: boolean = false;
 
-  @readOnly('intent') Intents:Intent;
-  danger:boolean = false;
+  @readOnly('intent') Intents?: Intent;
+  danger: boolean = false;
 
   @className(Classes.MINIMAL)
-  minimal:boolean = false;
+  minimal: boolean = false;
 
   @className(Classes.LARGE)
-  large:boolean = false;
+  large: boolean = false;
 
   @className(Classes.SMALL)
-  small:boolean = false;
+  small: boolean = false;
 
   @className(Classes.FILL)
-  fill:boolean = false;
+  fill: boolean = false;
 
   @className
   @computed('Intents')
@@ -44,10 +44,10 @@ export default class Button extends Component {
     return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
   }
 
-  BUTTON_TEXT:string=Classes.BUTTON_TEXT;
+  BUTTON_TEXT: string = Classes.BUTTON_TEXT;
 
   onClick!: (event: any) => void;
-  
+
   click(event: any) {
     if (this.disabled)
       return;

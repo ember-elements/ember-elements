@@ -2,10 +2,9 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { reads } from '@ember-decorators/object/computed';
+import { action } from '@ember-decorators/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('div')
 @classNames(`${Classes.INPUT} ${Classes.TAG_INPUT}`)
@@ -16,8 +15,9 @@ export default class TagInput extends Component {
   disabled: boolean = false;
   
   @className(Classes.ACTIVE)
-  active: boolean = false;
   
+  active: boolean = false;
+  data?:Array<string>;
   TAG_INPUT_VALUES: string = Classes.TAG_INPUT_VALUES;
   TAG: string = Classes.TAG;
   INPUT_GHOST: string = Classes.INPUT_GHOST;

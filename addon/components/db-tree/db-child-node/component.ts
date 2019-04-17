@@ -5,9 +5,9 @@ import Component from '@ember/component';
 import layout from './template';
 import { action } from '@ember-decorators/object';
 import Ember from 'ember';
-import * as stIndex from '../storeSelectedIndex';
-import * as mainNode from '../storeSelectedIndex';
-import * as Classes from "../../../-private/common/classes";
+import { selectedTree } from '../storeSelectedIndex';
+
+import * as Classes from '../../../-private/common/classes';
 export default class DbTreeDbChildNode extends Component {
   layout = layout;
   iteration!: number;
@@ -33,7 +33,7 @@ export default class DbTreeDbChildNode extends Component {
   TREE_NODE_LABEL:string=Classes.TREE_NODE_LABEL;
   TREE_NODE_SELECTED:string=Classes.TREE_NODE_SELECTED;
   TREE_NODE_LIST:string=Classes.TREE_NODE_LIST;
-  ICON:string=Classes.ICON+" "+ Classes.TREE_NODE_ICON+" bp3-icon-folder-close";
+  ICON:string=Classes.ICON+' '+ Classes.TREE_NODE_ICON+' bp3-icon-folder-close';
 
   didReceiveAttrs() {
     this.iteration += 1
@@ -42,12 +42,12 @@ export default class DbTreeDbChildNode extends Component {
 
   @action
   onNodeClickFun(item: any, event: any) {
-    if (mainNode.selectedTreeIndex >= 0) {
-      let node: any = document.getElementById(this.TREE_NODE + mainNode.selectedTreeIndex);
+    if (selectedTree.selectedTreeIndex >= 0) {
+      let node: any = document.getElementById(this.TREE_NODE + selectedTree.selectedTreeIndex);
       node.classList.remove(this.TREE_NODE_SELECTED);
     }
-    if (stIndex.selectedChildIndex >= 0) {
-      if (stIndex.selectedChildIndex == item.id) {
+    if (selectedTree.selectedChildIndex >= 0) {
+      if (selectedTree.selectedChildIndex == item.id) {
         let node: any = document.getElementById('bp3-tree-node2' + item.id);
         if (node.classList.contains(Classes.TREE_NODE_SELECTED))
         node.classList.remove(Classes.TREE_NODE_SELECTED);
@@ -55,7 +55,7 @@ export default class DbTreeDbChildNode extends Component {
         node.classList.add(Classes.TREE_NODE_SELECTED);
       }
       else {
-        let node: any = document.getElementById('bp3-tree-node2' + stIndex.selectedChildIndex);
+        let node: any = document.getElementById('bp3-tree-node2' + selectedTree.selectedChildIndex);
         node.classList.remove(this.TREE_NODE_SELECTED);
         node = document.getElementById('bp3-tree-node2' + item.id);
         node.classList.add(this.TREE_NODE_SELECTED);
@@ -65,7 +65,7 @@ export default class DbTreeDbChildNode extends Component {
       let node: any = document.getElementById('bp3-tree-node2' + item.id);
       node.classList.add(this.TREE_NODE_SELECTED);
     }
-    stIndex.selectedChildIndex = item.id;
+    selectedTree.selectedChildIndex = item.id;
     if (this.get('onNodeClick'))
       this.get('onNodeClick')(item, event);
   }

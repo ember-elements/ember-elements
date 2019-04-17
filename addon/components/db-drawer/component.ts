@@ -2,10 +2,10 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import { action } from '@ember-decorators/object';
-import { readOnly, alias } from '@ember-decorators/object/computed';
+import { readOnly } from '@ember-decorators/object/computed';
 import { attribute, layout } from '@ember-decorators/component';
 import Ember from 'ember';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class DbDrawer extends Component {
   @readOnly('backdropClassName') backdropClass!: string;
@@ -115,7 +115,7 @@ export default class DbDrawer extends Component {
         document.querySelectorAll('#' + this.drawerId + '.bp3-drawer')[0].classList.remove('left-drawer');
       }
     }
-    document.querySelector('.bp3-drawer').setAttribute('tabindex', "0");
+    (document.querySelector('.bp3-drawer') as HTMLInputElement).setAttribute('tabindex', '0');
     var size: string | number = this.get('size');
     var sizeDrawer: any = document.querySelector('#' + this.drawerId);
     if (size == 'SIZE_SMALL') {
@@ -127,7 +127,7 @@ export default class DbDrawer extends Component {
     else if (size == 'SIZE_LARGE') {
       sizeDrawer.style[styleType] = '90% ';
     }
-    else if (!isNaN(size)) {
+    else if (!isNaN(size as number)) {
       sizeDrawer.style[styleType] = size + 'px';
     }
     else if (size != null) {

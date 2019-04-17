@@ -1,9 +1,9 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { Boundary } from "../../-private/common/boundary";
-import * as Classes from "../../-private/common/classes";
-import { action, computed } from '@ember-decorators/object';
+import { Boundary } from '../../-private/common/boundary';
+import * as Classes from '../../-private/common/classes';
+import { action } from '@ember-decorators/object';
 import Ember from 'ember';
 interface IResizeEntry {
   contentRect: DOMRectReadOnly;
@@ -79,20 +79,20 @@ export default class OverflowList extends Component {
       var bread: any = await document.getElementById(this.breadId);
       if (docOver && bread && this.CollapseFrom != this.END) {
         const left = bread.getBoundingClientRect().left - docOver.getBoundingClientRect().left;
-        docOver.style.setProperty('left', left - 4 + "px", "important");
+        docOver.style.setProperty('left', left - 4 + 'px', 'important');
       }
       else {
         if ((docOver.getBoundingClientRect().left > docOver.getBoundingClientRect().width) || ((docOver.getBoundingClientRect().left + docOver.getBoundingClientRect().width) > bread.getBoundingClientRect().right)) {
           const right = docOver.getBoundingClientRect().right - bread.getBoundingClientRect().right;
-          docOver.style.setProperty('left', -(right - 4) + "px", "important");
+          docOver.style.setProperty('left', -(right - 4) + 'px', 'important');
           var arrowPos: any = document.querySelector('.' + this.POPOVER_ARROW);
-          arrowPos.style.right = "1px";
+          arrowPos.style.right = '1px';
         }
         else {
           const left = bread.getBoundingClientRect().left - docOver.getBoundingClientRect().left;
-          docOver.style.setProperty('left', left - 4 + "px", "important");
+          docOver.style.setProperty('left', left - 4 + 'px', 'important');
           var arrowPos: any = document.querySelector('.' + this.POPOVER_ARROW);
-          arrowPos.style.left = "1px";
+          arrowPos.style.left = '1px';
         }
       }
     }
@@ -164,7 +164,7 @@ export default class OverflowList extends Component {
       classes += Classes.BREADCRUMB_CURRENT + ' ';
     if (props.disabled)
       classes += Classes.DISABLED;
-    return { text: props.text, className: classes, href: props.href, isDisabled: props.disabled ? true : false, tabIndex: props.disabled ? "0" : '', target: props.target };
+    return { text: props.text, className: classes, href: props.href, isDisabled: props.disabled ? true : false, tabIndex: props.disabled ? '0' : '', target: props.target };
   }
 
   @action

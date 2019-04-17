@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 import Ember from 'ember';
-export function findTagColor(params/*, hash*/) {
+export function findTagColor(params:Array<any>/*, hash*/) {
   var tagColor = params[0];
   var item = params[1];
   var bg_color = '#ddd';

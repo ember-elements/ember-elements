@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { tagName } from '@ember-decorators/component';
+import ResizeObserver from 'resize-observer-polyfill'
 export interface IResizeEntry {
   contentRect: DOMRectReadOnly;
   target: Element;
@@ -11,7 +11,7 @@ export default class ResizeSensor extends Component {
   observeParents?: boolean;
   layout = layout;
   DomElement!: any;
-  private observer = new ResizeObserver(entries => this.findResize(entries));
+  private observer = new ResizeObserver(entries => this.findResize(entries as IResizeEntry[]));
   
   findResize(entries: IResizeEntry[]) {
     if (this.get('onResize')) {
