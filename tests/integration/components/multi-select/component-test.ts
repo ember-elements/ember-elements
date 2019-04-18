@@ -140,7 +140,7 @@ module('Integration | Component | multi-select', function (hooks) {
     this.set('selected', d);
     await render(hbs`{{multi-select data=this.data   selected=this.selected style='width:50%' class='mult-select-rendering' }}`);
     var innerText: any = document.querySelector('.bp3-text-overflow-ellipsis');
-    assert.equal(innerText.innerText, 'hi1');
+    assert.equal(innerText.textContent.trim(), 'hi1');
   });
   test(' multiple selected value are rendering @ui', async function (assert) {
     let data = [
@@ -198,7 +198,7 @@ module('Integration | Component | multi-select', function (hooks) {
     await render(hbs`{{multi-select data=this.data selected=this.selected  }}`);
     await click('input');
     var innerText: any = document.querySelector('.bp3-text-overflow-ellipsis');
-    assert.equal(innerText.innerText, 'hi1');
+    assert.equal(innerText.textContent.trim(), 'hi1');
   });
   test('multi-select all options are rendering  @ui', async function (assert) {
     let data = [

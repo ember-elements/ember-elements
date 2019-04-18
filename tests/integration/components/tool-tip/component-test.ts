@@ -29,31 +29,31 @@ module('Integration | Component | tool-tip', function (hooks) {
 
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator' content="it is tooltip"}}it is tooltip{{/tool-tip}}`);
     await triggerEvent('.bp3-tooltip-indicator', 'mouseover');
-    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).innerText);
+    assert.ok((document.querySelector('.tooltip-popper') as any).textContent.trim());
 
   });
   test('MouseEnter event is working', async function (assert) {
 
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator' content="it is tooltip"}}it is tooltip{{/tool-tip}}`);
     await triggerEvent('.bp3-tooltip-indicator', 'mouseover');
-    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).innerText);
+    assert.ok((document.querySelector('.tooltip-popper') as any).textContent.trim());
 
   });
   test('MouseLeave event is working', async function (assert) {
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator' content="it is tooltip"}}it is tooltip{{/tool-tip}}`);
     await triggerEvent('.bp3-tooltip-indicator', 'mouseover');
-    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).innerText);
+    assert.ok((document.querySelector('.tooltip-popper') as any).textContent.trim());
     await triggerEvent('.bp3-tooltip-indicator', 'mouseout');
     assert.equal(document.querySelector('.tooltip-popper'), null);
   });
   test('default content', async function (assert) {
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator' }}it is tooltip{{/tool-tip}}`);
     await triggerEvent('.bp3-tooltip-indicator', 'mouseover');
-    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).innerText);
+    assert.ok((document.querySelector('.tooltip-popper') as any).textContent.trim());
   });
   test('defaultIsOpen=true', async function (assert) {
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator' defaultIsOpen=true }}it is tooltip{{/tool-tip}}`);
-    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).innerText);
+    assert.ok((document.querySelector('.tooltip-popper') as any).textContent.trim());
   });
   test('disabled=true with mouseEnter to open tooltip', async function (assert) {
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator'  disabled=true content="it is tooltip"}}it is tooltip{{/tool-tip}}`);

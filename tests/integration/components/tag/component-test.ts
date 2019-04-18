@@ -11,7 +11,7 @@ module('Integration | Component | tag', function (hooks) {
 
     await render(hbs`<Tag  @value="hellow"/>`);
     var doc: any = document.querySelector('.bp3-text-overflow-ellipsis');
-    assert.equal(doc.innerText, "hellow")
+    assert.equal(doc.textContent.trim(), "hellow")
   });
   test('active=true', async function (assert) {
     await render(hbs`<Tag  @value="hellow" @active=true/>`);

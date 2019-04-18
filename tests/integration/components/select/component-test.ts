@@ -127,7 +127,7 @@ module('Integration | Component | select', function(hooks) {
     await render(hbs`<Select  @data={{data}} @selected={{selected   }}/>`);
     await click('input');
     var innerText: any = document.querySelector('.bp3-text-overflow-ellipsis');
-    assert.equal(innerText.innerText, 'hi1');
+    assert.equal(innerText.textContent.trim(), 'hi1');
   });
 
   test('  value is rendering @popover', async function (assert) {
@@ -149,7 +149,7 @@ module('Integration | Component | select', function(hooks) {
     this.set('selected', 'hi2');
     await render(hbs`<Select @type='button'  @data={{data}} @selected={{selected}} @isDefaultOpen=true  />`);
     let doc:any = await document.querySelector('.popper');
-    assert.equal(doc.querySelector('.bp3-text-overflow-ellipsis').innerText, 'hi1');
+    assert.equal(doc.querySelector('.bp3-text-overflow-ellipsis').textContent.trim(), 'hi1');
   });
   test('  all value is rendering @popover', async function (assert) {
     let data = [
