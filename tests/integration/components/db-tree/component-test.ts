@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | db-tree', function(hooks) {
+module('Integration | Component | db-tree', function (hooks) {
   setupRenderingTest(hooks);
 
   // test('it renders', async function(assert) {
@@ -94,142 +94,12 @@ module('Integration | Component | db-tree', function(hooks) {
     assert.ok(document.querySelectorAll('.bp3-tree-node-list'));
   });
   test('empty array', async function (assert) {
-    var content: Array<object> = [{
-      id: 0,
-      hasCaret: true,
-      icon: "folder-close",
-      label: "Folder 0",
-    },
-    {
-      id: 1,
-      icon: "folder-close",
-      isExpanded: true,
-      label: 'Folder 1',
-      childNodes: [
-        {
-          id: 2,
-          icon: "document",
-          label: "Item 0",
-          secondaryIcon: "eye-open"
-        },
-        {
-          id: 3,
-          icon: "tag",
-          label: "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
-        },
-        {
-          id: 4,
-          hasCaret: true,
-          icon: "folder-close",
-          label: " Folder 2",
-          isExpanded: true,
-
-          childNodes: [
-            { id: 5, label: "No-Icon Item" },
-            { id: 6, icon: "tag", label: "Item 1" },
-            {
-              id: 7,
-              hasCaret: true,
-              icon: "folder-close",
-              label: "Folder 3",
-              isExpanded: true,
-
-              childNodes: [
-                { id: 8, icon: "document", label: "Item 0" },
-                { id: 9, icon: "tag", label: "Item 1" },
-                {
-                  id: 10,
-                  hasCaret: true,
-                  icon: "folder-close",
-                  label: "Folder 4",
-                  isExpanded: true,
-                  childNodes: [
-                    { id: 11, icon: "document", label: "Item 0" },
-                    { id: 12, icon: "tag", label: "Item 1" },
-                  ],
-                }
-              ],
-            },
-
-
-
-
-          ],
-        },
-      ],
-    },
-    ];
     this.set('content', []);
     await render(hbs`{{db-tree  content=this.content}}`);
     assert.equal(document.querySelectorAll('.bp3-tree-node-label').length, 0);
   });
 
   test('content =null', async function (assert) {
-    var content: Array<object> = [{
-      id: 0,
-      hasCaret: true,
-      icon: "folder-close",
-      label: "Folder 0",
-    },
-    {
-      id: 1,
-      icon: "folder-close",
-      isExpanded: true,
-      label: 'Folder 1',
-      childNodes: [
-        {
-          id: 2,
-          icon: "document",
-          label: "Item 0",
-          secondaryIcon: "eye-open"
-        },
-        {
-          id: 3,
-          icon: "tag",
-          label: "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
-        },
-        {
-          id: 4,
-          hasCaret: true,
-          icon: "folder-close",
-          label: " Folder 2",
-          isExpanded: true,
-
-          childNodes: [
-            { id: 5, label: "No-Icon Item" },
-            { id: 6, icon: "tag", label: "Item 1" },
-            {
-              id: 7,
-              hasCaret: true,
-              icon: "folder-close",
-              label: "Folder 3",
-              isExpanded: true,
-
-              childNodes: [
-                { id: 8, icon: "document", label: "Item 0" },
-                { id: 9, icon: "tag", label: "Item 1" },
-                {
-                  id: 10,
-                  hasCaret: true,
-                  icon: "folder-close",
-                  label: "Folder 4",
-                  isExpanded: true,
-                  childNodes: [
-                    { id: 11, icon: "document", label: "Item 0" },
-                    { id: 12, icon: "tag", label: "Item 1" },
-                  ],
-                }
-              ],
-            },
-
-
-
-
-          ],
-        },
-      ],
-    },
-    ];
     this.set('content', null);
     await render(hbs`{{db-tree  content=this.content}}`);
     assert.equal(document.querySelectorAll('.bp3-tree-node-label').length, 0);

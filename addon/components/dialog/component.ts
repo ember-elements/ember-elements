@@ -4,14 +4,19 @@ import template from './template';
 import { action } from '@ember-decorators/object';
 import { readOnly } from '@ember-decorators/object/computed';
 import { layout } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class Dialog extends Component {
   @readOnly('width') Width!: string;
+
   @readOnly('height') Height!: string;
+  
   @readOnly('marginTop') Top!: string;
+  
   @readOnly('marginLeft') Left!: string;
+  
   @readOnly('marginRight') Right!: string;
+  
   OVERLAY: string = Classes.OVERLAY;
   OVERLAY_OPEN: string = Classes.OVERLAY_OPEN;
   OVERLAY_SCROLL_CONTAINER: string = Classes.OVERLAY_SCROLL_CONTAINER;
@@ -25,11 +30,13 @@ export default class Dialog extends Component {
   dbId!: string;
   isEscapeToClose!: boolean;
   currentWindow: any;
+  
   init() {
     super.init();
     this._closeOnEsc = this._closeOnEsc.bind(this);
     this.enforceFocusFun = this.enforceFocusFun.bind(this);
   }
+
   async didReceiveAttrs() {
     this.set('dbId', 'dialog_box_id_' + this.elementId);
     await this.set('isOpenDialog', this.get('isOpenDialog'));
@@ -42,6 +49,7 @@ export default class Dialog extends Component {
       doc.style.marginRight = this.Right;
     }
   }
+
   didRender() {
     if (this.get('isEscapeToClose'))
       this.currentWindow.on('keyup', this._closeOnEsc);
@@ -53,17 +61,21 @@ export default class Dialog extends Component {
       }
     }
   }
+
   didInsertElement() {
     this.set('currentWindow', this.$(window));
   }
+
   @action
   outerClickCloseDialog() {
     if (this.isoutClickCloseDialog)
       this.set('isOpenDialog', false);
   }
+
   _closeOnEsc(e: any) {
     if (e.keyCode === this.ESC) { this.set('isOpenDialog', false); }
   }
+  
   enforceFocusFun(e: any) {
     var focus: any = document.getElementById(this.dbId);
     if (focus != null && !focus.contains(e.target)) {

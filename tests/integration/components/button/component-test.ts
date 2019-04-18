@@ -220,12 +220,14 @@ module('Integration | Component | button', function (hooks) {
     this.set('result', '');
     let that = this;
     this.set('buttonAction', function (a: any, b: any) {
+      console.log(a, b)
       that.set('result', a + ' ' + b);
     });
-    await render(hbs`<Button @onClick={{action  buttonAction 'Hello' 'World'  }} />  <div id="result">{{ result }}</div>`);
+    await render(hbs`<Button onClick={{action  buttonAction 'Hello' 'World'  }} />  <div id="result">{{ this.result }}</div>`);
     await click('button');
-    var findResult: any = document.getElementById('result');
-    assert.equal(findResult.innerText, 'Hello World');
+    var findResult: any = await document.getElementById('result');
+    console.log(findResult)
+    assert.equal(findResult.textContent.trim(), 'Hello World');
   });
   test('prevent action when  button disabled  ', async function (assert) {
     this.set('result', '');
@@ -235,7 +237,9 @@ module('Integration | Component | button', function (hooks) {
     });
     await render(hbs`<Button @onClick={{action  buttonAction 'Hello' 'World' }} @disabled={{true}}/>  <div id="result">{{ result }}</div>`);
     await click('button');
-    var findResult: any = document.getElementById('result');
+    var findResult: any = await document.getElementById('result');
+    console.log(findResult)
+
     assert.equal(findResult.innerText, '');
   });
 });

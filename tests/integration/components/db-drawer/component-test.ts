@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { triggerKeyEvent } from '@ember/test-helpers';
+import { click } from '@ember/test-helpers';
 
 module('Integration | Component | db-drawer', function (hooks) {
   setupRenderingTest(hooks);
@@ -12,7 +13,7 @@ module('Integration | Component | db-drawer', function (hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{db-drawer}}`);
-    var element:any=this.element;
+    var element: any = this.element;
 
     assert.equal(element.textContent.trim(), '');
 
@@ -30,8 +31,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-
+    await click('button');
     assert.equal(element.textContent.trim(), 'template block text');
   });
   test('render Header component', async function (assert) {
@@ -48,8 +48,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    var element:any=this.element;
+    await click('button');
+    var element: any = this.element;
     assert.equal(element.textContent.trim(), 'template block text');
   });
   test('render Footer component', async function (assert) {
@@ -66,8 +66,9 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    await click('button');
+    var element: any = this.element;
+    assert.equal(element.textContent.trim(), 'template block text');
   });
   test('Default size for drawer', async function (assert) {
     let that = this;
@@ -83,8 +84,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '50%');
   });
   // horizontal drawer size is rendering 
   test('Small size = "SIZE_SMALL" ', async function (assert) {
@@ -101,8 +102,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '360px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '360px');
   });
   test('STANDARD size = "SIZE_STANDARD" ', async function (assert) {
     let that = this;
@@ -118,8 +119,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '50%');
   });
   test('LARGE size = "SIZE_LARGE" ', async function (assert) {
     let that = this;
@@ -135,8 +136,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '90%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '90%');
   });
   test('custom % size = "72%" ', async function (assert) {
     let that = this;
@@ -152,8 +153,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '72%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '72%');
   });
   test('custom px size = "500px" ', async function (assert) {
     let that = this;
@@ -169,8 +170,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '500px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '500px');
   });
   test('undefined  size = "abc" ', async function (assert) {
     let that = this;
@@ -186,8 +187,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '');
   });
   test('args: vertical=true  ', async function (assert) {
     let that = this;
@@ -203,7 +204,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-vertical').length > 0);
   });
 
@@ -221,8 +222,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '360px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '360px');
   });
   test('STANDARD size = "SIZE_STANDARD"  with vertical=true ', async function (assert) {
     let that = this;
@@ -238,8 +239,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '50%');
   });
   test('LARGE size = "SIZE_LARGE"  with vertical=true ', async function (assert) {
     let that = this;
@@ -255,8 +256,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '90%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '90%');
   });
   test('custom % size = "72%"  with vertical=true ', async function (assert) {
     let that = this;
@@ -272,8 +273,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '72%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '72%');
   });
   test('custom px size = "500px"  with vertical=true ', async function (assert) {
     let that = this;
@@ -289,8 +290,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '500px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '500px');
   });
   test('undefined  size = "abc"  with vertical=true ', async function (assert) {
     let that = this;
@@ -306,8 +307,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '');
   });
   test('default hasBackdrop ', async function (assert) {
     let that = this;
@@ -323,7 +324,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length > 0);
   });
   test('hasBackdrop=true ', async function (assert) {
@@ -340,7 +341,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length > 0);
   });
   test('hasBackdrop=false ', async function (assert) {
@@ -357,8 +358,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-overlay-backdrop').style.backgroundColor, 'inherit');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-overlay-backdrop') as HTMLInputElement).style.backgroundColor, 'inherit');
   });
   test('canOutsideClickClose=true ', async function (assert) {
     let that = this;
@@ -374,7 +375,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     this.$('.bp3-overlay-enter-done').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-enter-done').length == 0);
   });
@@ -392,7 +393,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     await this.$('.bp3-overlay-backdrop').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
@@ -410,7 +411,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    await this.$('button').click();
+    await await click('button');
     await triggerKeyEvent(this.element, 'keydown', 27);
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 0);
   });
@@ -428,7 +429,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    await this.$('button').click();
+    await await click('button');
     await triggerKeyEvent(this.element, 'keydown', 27);
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
@@ -438,66 +439,64 @@ module('Integration | Component | db-drawer', function (hooks) {
 
   //test on portal =false
 
-  test('usePortal=false it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  // test('usePortal=false it renders', async function (assert) {
+  //   // Set any properties with this.set('myProperty', 'value');
+  //   // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{db-drawer}}`);
+  //   let that = this;
+  //   this.set('open', false);
+  //   this.set('buttonAction', function () {
+  //     that.set('open', true);
+  //   });
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    let that = this;
-    this.set('open', false);
-    this.set('buttonAction', function () {
-      that.set('open', true);
-    });
-
-    await render(hbs` <Button @onClick={{action  buttonAction  }} />
-      {{#db-drawer isOpen=this.open usePortal=false}}
-      {{#db-drawer/body}}
-        template block text
-        {{/db-drawer/body}}
-      {{/db-drawer}}
-      <div id="destination"></div>
-    `);
-    this.$('button').click();
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
-  });
-  test('render Header component | usePortal=false', async function (assert) {
-    let that = this;
-    this.set('open', false);
-    this.set('buttonAction', function () {
-      that.set('open', true);
-    });
-    await render(hbs` <Button @onClick={{action  buttonAction  }} />
-      {{#db-drawer isOpen=this.open usePortal=false}}
-      {{#db-drawer/header}}
-        template block text
-        {{/db-drawer/header}}
-      {{/db-drawer}}
-      <div id="destination"></div>
-    `);
-    this.$('button').click();
-    assert.equal(this.element.textContent.trim(), 'template block text');
-  });
-  test('render Footer component | usePortal=false', async function (assert) {
-    let that = this;
-    this.set('open', false);
-    this.set('buttonAction', function () {
-      that.set('open', true);
-    });
-    await render(hbs` <Button @onClick={{action  buttonAction  }} />
-      {{#db-drawer isOpen=this.open}}
-      {{#db-drawer/footer}}
-        template block text
-        {{/db-drawer/footer}}
-      {{/db-drawer}}
-      <div id="destination"></div>
-    `);
-    this.$('button').click();
-    assert.equal(this.element.textContent.trim(), 'template block text');
-  });
+  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
+  //     {{#db-drawer isOpen=this.open usePortal=false}}
+  //     {{#db-drawer/body}}
+  //       template block text
+  //       {{/db-drawer/body}}
+  //     {{/db-drawer}}
+  //     <div id="destination"></div>
+  //   `);
+  //   await click('button');
+  //   var element: any = element;
+  //   assert.equal(element.textContent.trim(), 'template block text');
+  // });
+  // test('render Header component | usePortal=false', async function (assert) {
+  //   let that = this;
+  //   this.set('open', false);
+  //   this.set('buttonAction', function () {
+  //     that.set('open', true);
+  //   });
+  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
+  //     {{#db-drawer isOpen=this.open usePortal=false}}
+  //     {{#db-drawer/header}}
+  //       template block text
+  //       {{/db-drawer/header}}
+  //     {{/db-drawer}}
+  //     <div id="destination"></div>
+  //   `);
+  //   await click('button');
+  //   var element: any = element;
+  //   assert.equal(element.textContent.trim(), 'template block text');
+  // });
+  // test('render Footer component | usePortal=false', async function (assert) {
+  //   let that = this;
+  //   this.set('open', false);
+  //   this.set('buttonAction', function () {
+  //     that.set('open', true);
+  //   });
+  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
+  //     {{#db-drawer isOpen=this.open}}
+  //     {{#db-drawer/footer}}
+  //       template block text
+  //       {{/db-drawer/footer}}
+  //     {{/db-drawer}}
+  //     <div id="destination"></div>
+  //   `);
+  //   await click('button');
+  //   var element: any = element;
+  //   assert.equal(element.textContent.trim(), 'template block text');
+  // });
   test('Default size for drawer | usePortal=false', async function (assert) {
     let that = this;
     this.set('open', false);
@@ -512,8 +511,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '50%');
   });
   // horizontal drawer size is rendering 
   test('Small size = "SIZE_SMALL" | usePortal=false ', async function (assert) {
@@ -530,8 +529,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '360px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '360px');
   });
   test('STANDARD size = "SIZE_STANDARD" | usePortal=false', async function (assert) {
     let that = this;
@@ -547,8 +546,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '50%');
   });
   test('LARGE size = "SIZE_LARGE" | usePortal=false', async function (assert) {
     let that = this;
@@ -564,8 +563,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '90%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '90%');
   });
   test('custom % size = "72%"  | usePortal=false', async function (assert) {
     let that = this;
@@ -581,8 +580,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '72%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '72%');
   });
   test('custom px size = "500px" |usePortal=false ', async function (assert) {
     let that = this;
@@ -598,8 +597,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '500px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '500px');
   });
   test('undefined  size = "abc" |usePortal=false ', async function (assert) {
     let that = this;
@@ -615,8 +614,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.width, '');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.width, '');
   });
   test('args: vertical=true | usePortal=false  ', async function (assert) {
     let that = this;
@@ -632,7 +631,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-vertical').length > 0);
   });
 
@@ -650,8 +649,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '360px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '360px');
   });
   test('STANDARD size = "SIZE_STANDARD"  with vertical=true | usePortal=false', async function (assert) {
     let that = this;
@@ -667,8 +666,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '50%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '50%');
   });
   test('LARGE size = "SIZE_LARGE"  with vertical=true | usePortal=false', async function (assert) {
     let that = this;
@@ -684,8 +683,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '90%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '90%');
   });
   test('custom % size = "72%"  with vertical=true| usePortal=false ', async function (assert) {
     let that = this;
@@ -701,8 +700,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '72%');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '72%');
   });
   test('custom px size = "500px"  with vertical=true| usePortal=false ', async function (assert) {
     let that = this;
@@ -718,8 +717,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '500px');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '500px');
   });
   test('undefined  size = "abc"  with vertical=true | usePortal=false ', async function (assert) {
     let that = this;
@@ -735,8 +734,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-drawer').style.height, '');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-drawer') as HTMLInputElement).style.height, '');
   });
   test('default hasBackdrop | usePortal=false', async function (assert) {
     let that = this;
@@ -752,7 +751,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length > 0);
   });
   test('hasBackdrop=true |usePortal=false', async function (assert) {
@@ -769,7 +768,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length > 0);
   });
   test('hasBackdrop=false | usePortal=false ', async function (assert) {
@@ -786,8 +785,8 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
-    assert.equal(document.querySelector('.bp3-overlay-backdrop').style.backgroundColor, 'inherit');
+    await click('button');
+    assert.equal((document.querySelector('.bp3-overlay-backdrop') as HTMLInputElement).style.backgroundColor, 'inherit');
   });
   test('canOutsideClickClose=true | usePortal=false ', async function (assert) {
     let that = this;
@@ -803,7 +802,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     this.$('.bp3-overlay-enter-done').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-enter-done').length == 0);
   });
@@ -821,7 +820,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    this.$('button').click();
+    await click('button');
     await this.$('.bp3-overlay-backdrop').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
@@ -839,7 +838,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    await this.$('button').click();
+    await await click('button');
     await triggerKeyEvent(this.element, 'keydown', 27);
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 0);
   });
@@ -857,11 +856,11 @@ module('Integration | Component | db-drawer', function (hooks) {
       {{/db-drawer}}
       <div id="destination"></div>
     `);
-    await this.$('button').click();
+    await await click('button');
     await triggerKeyEvent(this.element, 'keydown', 27);
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
- 
- 
+
+
 });
 

@@ -8,26 +8,6 @@ module('Integration | Component | select-box', function (hooks) {
   setupRenderingTest(hooks);
 
 
-  test('selected value is rendering (type =input box )', async function (assert) {
-    this.set(' data', [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ]);
-    this.set('selected', 'hi1');
-    await render(hbs`{{select-box data=data selected=selected }}`);
-    var docInput: any = document.querySelector('input');
-    assert.equal(docInput.value, 'hi1');
-  });
 
   test('selectbox  active on click (type=input box)', async function (assert) {
     this.set(' data', [
@@ -128,30 +108,9 @@ module('Integration | Component | select-box', function (hooks) {
     await render(hbs`{{select-box  data=data selected=selected   }}`);
     await click('input');
     var innerText: any = document.querySelector('.bp3-text-overflow-ellipsis');
-    assert.equal(innerText.innerText, 'hi1');
+    assert.equal(innerText.textContent.trim(), 'hi1');
   });
 
-  test('  value is rendering @ui', async function (assert) {
-    let data = [
-      'hi1',
-      'hi2',
-      'hi3',
-      'hi4',
-      'hi5',
-      'hi6',
-      'hi7',
-      'hi8',
-      'hi9',
-      'hi10',
-      'hi11',
-      'hi12',
-    ];
-    this.set('data', data);
-    this.set('selected', 'hi1');
-    await render(hbs`{{select-box type='button'  data=data selected=selected   }}`);
-    var innerText: any = document.querySelector('.bp3-button');
-    assert.equal(innerText.innerText, 'hi1');
-  });
   test('  value is rendering @popover', async function (assert) {
     let data = [
       'hi1',
@@ -171,7 +130,7 @@ module('Integration | Component | select-box', function (hooks) {
     this.set('selected', 'hi2');
     await render(hbs`{{select-box type='button'  data=data selected=selected isDefaultOpen=true  }}`);
     let doc:any = await document.querySelector('.popper');
-    assert.equal(doc.querySelector('.bp3-text-overflow-ellipsis').innerText, 'hi1');
+    assert.equal(doc.querySelector('.bp3-text-overflow-ellipsis').textContent.trim(), 'hi1');
   });
   test('  all value is rendering @popover', async function (assert) {
     let data = [

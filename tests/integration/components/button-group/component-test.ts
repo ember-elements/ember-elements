@@ -3,15 +3,15 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | button-group', function(hooks) {
+module('Integration | Component | button-group', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{button-group}}`);
-    var element:any=this.element;
+    var element: any = this.element;
     assert.equal(element.textContent.trim(), '');
 
     // Template block usage:
@@ -25,7 +25,7 @@ module('Integration | Component | button-group', function(hooks) {
   });
 
   test('button-group vertical is true', async function (assert) {
-    await render(hbs`<ButtonGroup @vertical={{true}}/>`);
+    await render(hbs`<ButtonGroup @vertical=true/>`);
     let element = this.element;
     assert.equal(element.querySelectorAll('.bp3-vertical').length, 1);
   });

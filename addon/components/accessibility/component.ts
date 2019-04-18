@@ -16,6 +16,6 @@ export default class Accessibility extends Component {
     else
       FocusStyleManager.alwaysShowFocus();
 
-}
+  }
   // normal class body definition here
 };

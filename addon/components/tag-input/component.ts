@@ -2,38 +2,42 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { reads } from '@ember-decorators/object/computed';
+import { action } from '@ember-decorators/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('div')
 @classNames(`${Classes.INPUT} ${Classes.TAG_INPUT}`)
 export default class TagInput extends Component {
-  tag: any;
-  selectedItem: any = null;
-  isCloseNotRequired!: boolean;
-  //function declarations
-  save!: (value: any) => void;
-  delete!: (index: any, value: string, e: MouseEvent) => void;
+  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+
   @className(Classes.DISABLED)
   disabled: boolean = false;
+  
   @className(Classes.ACTIVE)
+  
   active: boolean = false;
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  data?:Array<string>;
   TAG_INPUT_VALUES: string = Classes.TAG_INPUT_VALUES;
   TAG: string = Classes.TAG;
   INPUT_GHOST: string = Classes.INPUT_GHOST;
   BUTTON: string = Classes.BUTTON;
   MINIMAL: string = Classes.MINIMAL;
   ICON: string = Classes.ICON;
-
+  tag: any;
+  selectedItem: any = null;
+  isCloseNotRequired!: boolean;
+  //function declarations
+  save!: (value: any) => void;
+  delete!: (index: any, value: string, e: MouseEvent) => void;
+  
   didReceiveAttrs() {
     if (this.get('isCloseNotRequired'))
       this.set('isCloseNotRequired', true);
     else
       this.set('isCloseNotRequired', false);
   }
+  
   @action
   savetag() {
 
@@ -43,6 +47,7 @@ export default class TagInput extends Component {
     }
     this.set('tag', '');
   }
+  
   @action
   onFocus() {
     let element: any = this.element;
@@ -52,20 +57,24 @@ export default class TagInput extends Component {
       this.set('active', true);
     }
   }
+  
   @action
   onBlur() {
     this.set('active', false);
     this.set('tag', '')
   }
+  
   @action
   Delete(value: string, index: any, e: MouseEvent) {
     if (this.get('delete'))
       this.get('delete')(index, value, e);
   }
+  
   @action
   DeleteAll() {
     this.set('data', []);
   }
+  
   @action
   handleKeydown(e: any) {
     let divelement: any = this.element;

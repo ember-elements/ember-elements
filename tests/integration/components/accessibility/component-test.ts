@@ -11,16 +11,9 @@ module('Integration | Component | accessibility', function(hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`{{accessibility}}`);
+    var element:any=this.element;
+    assert.equal(element.textContent.trim(), '');
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#accessibility}}
-        template block text
-      {{/accessibility}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    
   });
 });

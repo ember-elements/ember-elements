@@ -2,14 +2,16 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import { action } from '@ember-decorators/object';
-import { readOnly, alias } from '@ember-decorators/object/computed';
+import { readOnly } from '@ember-decorators/object/computed';
 import { attribute, layout } from '@ember-decorators/component';
 import Ember from 'ember';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class DbDrawer extends Component {
   @readOnly('backdropClassName') backdropClass!: string;
+  
   @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  
   DRAWER:string=Classes.DRAWER +' '+ Classes.OVERLAY_CONTENT;
   PORTAL:string=Classes.PORTAL;
   OVERLAY_CONTENT:string=Classes.OVERLAY_CONTENT;
@@ -32,11 +34,13 @@ export default class DbDrawer extends Component {
   vertical: boolean = false;
   onClose!: (e: any) => void;
   isLeft: boolean = false;
+  
   init() {
     super.init();
     this.enforceFocusFun = this.enforceFocusFun.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
+  
   didReceiveAttrs() {
     super.init();
     if (this.get('usePortal')) {
@@ -44,12 +48,14 @@ export default class DbDrawer extends Component {
     }
     this.set('isInterval', true);
   }
+  
   didInsertElement() {
     super.init();
     this.set('drawerId', 'drawer' + this.elementId);
     this.set('backDropId', 'backDrop' + this.elementId);
 
   }
+  
   didRender() {
 
     if (this.drawerId != '' && this.get('isOpen') && this.get('isInterval')) {
@@ -81,8 +87,20 @@ export default class DbDrawer extends Component {
     }
 
   }
-  findSize() {
+  
+  @action
+  async outerClickToClose(e: any) {
+    if (!this.get('canOutsideClickClose'))
+      return;
+    this.set('isInterval', false);
+    setTimeout(() => {
+      this.set('isOpen', false);
+    }, 200);
+    if (this.get('onClose'))
+      this.get('onClose')(e);
+  }
 
+  findSize() {
     var styleType = 'width';
     if (this.get('vertical')) {
       styleType = 'height';
@@ -97,7 +115,7 @@ export default class DbDrawer extends Component {
         document.querySelectorAll('#' + this.drawerId + '.bp3-drawer')[0].classList.remove('left-drawer');
       }
     }
-    document.querySelector('.bp3-drawer').setAttribute('tabindex', "0");
+    (document.querySelector('.bp3-drawer') as HTMLInputElement).setAttribute('tabindex', '0');
     var size: string | number = this.get('size');
     var sizeDrawer: any = document.querySelector('#' + this.drawerId);
     if (size == 'SIZE_SMALL') {
@@ -109,7 +127,7 @@ export default class DbDrawer extends Component {
     else if (size == 'SIZE_LARGE') {
       sizeDrawer.style[styleType] = '90% ';
     }
-    else if (!isNaN(size)) {
+    else if (!isNaN(size as number)) {
       sizeDrawer.style[styleType] = size + 'px';
     }
     else if (size != null) {
@@ -121,6 +139,7 @@ export default class DbDrawer extends Component {
 
 
   }
+
   enforceFocusFun(e: any) {
     if (!this.get('enforceFocus'))
       return;
@@ -133,6 +152,7 @@ export default class DbDrawer extends Component {
       e.stopImmediatePropagation();
     }
   }
+  
   handleKeyDown(e: any) {
     if (this.isDestroyed || this.isDestroying)
       return;
@@ -145,17 +165,5 @@ export default class DbDrawer extends Component {
         this.get('onClose')(e);
     }
   }
-  @action
-  async outerClickToClose(e: any) {
-    if (!this.get('canOutsideClickClose'))
-      return;
-    this.set('isInterval', false);
-    setTimeout(() => {
-      this.set('isOpen', false);
-    }, 200);
-    if (this.get('onClose'))
-      this.get('onClose')(e);
-  }
-
 
 };

@@ -1,9 +1,11 @@
-    {{#if icon}}
-         <Icon @iconSize={{IconSize}} @icon={{icon }}/>
-    {{/if}}
-    {{#if text}}
-        <span class={{BUTTON_TEXT}}>{{text}}</span>
-    {{/if}}
-    {{#if rightIcon}}
-        <Icon @icon={{rightIcon}}  @iconSize={{IconSize}}/>
-    {{/if}}
+{{#if icon}}
+  <Icon @iconSize={{IconSize}} @icon={{icon}} />
+{{/if}}
+{{#if text}}
+  <span class={{BUTTON_TEXT}}>
+    {{text}}
+  </span>
+{{/if}}
+{{#if rightIcon}}
+  <Icon @icon={{rightIcon}} @iconSize={{IconSize}} />
+{{/if}}

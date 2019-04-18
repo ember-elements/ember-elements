@@ -1,7 +1,7 @@
 import { helper } from '@ember/component/helper';
 import Ember from 'ember';
 
-export function htmlSafe(params/*, hash*/) {
+export function htmlSafe(params:Array<any>/*, hash*/) {
   var styleList = ['color:', 'background:'];
   var str = '';
   for (let index = 0; index < params.length; index++) {

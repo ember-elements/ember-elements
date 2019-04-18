@@ -1,28 +1,48 @@
 {{#if isOpen}}
-{{#if usePortal}}
-{{#dom-outer-render destinationElementId="destination"}}
-<div class="{{{PORTAL}}} {{{portalClassName}}}">
-    <div class="{{{OVERLAY}}}  {{{OVERLAY_CONTENT}}} {{{if isOpen OVERLAY_OPEN ''}}}">
-        <div id={{backDropId}} class="{{{OVERLAY_BACKDROP}}} {{{backdropClass}}}" {{action "outerClickToClose"}}
-            tabindex="0" aria-hidden="true"></div>
-        {{#if isInterval}}
-        {{#transition-group id=drawerId class=DRAWER  transitionClass=OVERLAY}}
-        {{yield}}
-        {{/transition-group}}
-        {{/if}}
+  {{#if usePortal}}
+    {{#dom-outer-render destinationElementId="destination"}}
+      <div class="{{PORTAL}} {{portalClassName}}">
+        <div
+          class="{{OVERLAY}} {{OVERLAY_CONTENT}} {{if isOpen OVERLAY_OPEN ""}}"
+        >
+          <div
+            id={{backDropId}}
+            class="{{OVERLAY_BACKDROP}} {{backdropClass}}"
+            tabindex="0"
+            aria-hidden="true"
+            {{action "outerClickToClose"}}
+          ></div>
+          {{#if isInterval}}
+            {{#transition-group id=drawerId class=DRAWER transitionClass=OVERLAY
+            }}
+              {{yield}}
+            {{/transition-group}}
+          {{/if}}
+        </div>
+      </div>
+    {{/dom-outer-render}}
+  {{else}}
+    <div
+      class="{{OVERLAY_INLINE}}
 
+        {{OVERLAY}}
+
+        {{if isOpen OVERLAY_OPEN ""}}
+
+        {{OVERLAY_CONTENT}}"
+    >
+      <div
+        id={{backDropId}}
+        class="{{OVERLAY_BACKDROP}} {{backdropClass}}"
+        tabindex="0"
+        aria-hidden="true"
+        {{action "outerClickToClose"}}
+      ></div>
+      {{#if isInterval}}
+        {{#transition-group id=drawerId class=DRAWER transitionClass=OVERLAY}}
+          {{yield}}
+        {{/transition-group}}
+      {{/if}}
     </div>
-</div>
-{{/dom-outer-render}}
-{{else}}
-<div class="{{{OVERLAY_INLINE}}} {{{OVERLAY}}} {{{if isOpen OVERLAY_OPEN ''}}} {{{OVERLAY_CONTENT}}}">
-    <div id={{backDropId}} class="{{{OVERLAY_BACKDROP}}} {{{backdropClass}}}" {{action "outerClickToClose"}}
-        tabindex="0" aria-hidden="true"></div>
-    {{#if isInterval}}
-    {{#transition-group id=drawerId class=DRAWER  transitionClass=OVERLAY}}
-    {{yield}}
-    {{/transition-group}}
-    {{/if}}
-</div>
-{{/if}}
+  {{/if}}
 {{/if}}

@@ -6,6 +6,7 @@ export default class ToggleSwitch extends Component {
   layout = layout;
   data!: boolean;
   onClick!: (data: any) => void;
+  
   @action
   toggle(state: boolean) {
     this.set('data', state);

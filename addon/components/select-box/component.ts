@@ -2,11 +2,11 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { get, set } from '@ember/object';
+import { action } from '@ember-decorators/object';
+import { set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
 import { reads } from '@ember-decorators/object/computed';
-import * as Classes from "../../-private/common/classes";
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('span')
 @classNames(Classes.POPOVER_TARGET)
@@ -43,7 +43,7 @@ export default class SelectBox extends Component {
   selectedKey: number = -1;
   filteredList: Array<string> = [];
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
-  popperClass: string = "popper";
+  popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
   defaultSelected: number = -1;
@@ -106,7 +106,7 @@ export default class SelectBox extends Component {
     this.set('open', false);
   }
   @action
-  async onMouseSelect(data: any, index: number, e: any) {
+  async onMouseSelect(data: any, index: number) {
     var selectDiv: any = await document.getElementById('select' + index);
     selectDiv.className += ' ' + this.INTENT_PRIMARY + ' ' + this.ACTIVE;
 
@@ -142,6 +142,7 @@ export default class SelectBox extends Component {
   }
   @action
   handleKeydown(data: any, e: any) {
+    data = data;
     if (this.open == false) {
       this.findDefaultSelect(this.filteredList);
 
@@ -192,7 +193,7 @@ export default class SelectBox extends Component {
       let data = this.get('data');
       for (var i = 0; i < data.length; i++) {
         let txt = data[i];
-        if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+        if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== '') {
         } else {
           this.selectedKey = -1;
           this.set('defaultSelected', -1);

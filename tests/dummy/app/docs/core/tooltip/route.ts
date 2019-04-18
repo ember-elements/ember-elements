@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 
 export default class DocsCoreTooltip extends Route.extend({
   // anything which *must* be merged to prototype here
-  resetController(controller, isExiting, transition) {
+  resetController(controller: any, isExiting: any, transition: any) {
     if (isExiting && transition.targetName !== 'error') {
       controller.set('isOpen', false);
       }

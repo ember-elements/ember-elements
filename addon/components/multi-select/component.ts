@@ -3,18 +3,22 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { get, getProperties, set } from '@ember/object';
+import { action } from '@ember-decorators/object';
+import { set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { reads, readOnly } from '@ember-decorators/object/computed';
-import * as Classes from "../../-private/common/classes";
+import { readOnly } from '@ember-decorators/object/computed';
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('span')
 @classNames(`${Classes.INPUT} ${Classes.TAG_INPUT}`)
 export default class MultiSelect extends Component {
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+
   @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+
+  @readOnly('open') Open!: boolean;
+  
   _popperTarget: any;
   ESC: number = 27;
   selectedKey: number = -1;
@@ -38,15 +42,10 @@ export default class MultiSelect extends Component {
   TAG: string = Classes.TAG;
   FILL: string = Classes.FILL;
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
-  popperClass: string = "popper";
+  popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimalPopover: boolean = false;
   defaultSelected: string = '';
-  @readOnly('open') Open!: boolean;
-  didInsertElement() {
-    set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
-  }
   filteredList: any[] = [];
   isDefaultOpen!: boolean;
   data: any;
@@ -57,6 +56,12 @@ export default class MultiSelect extends Component {
     this._closeOnClickOut = this._closeOnClickOut.bind(this);
     this._closeOnEsc = this._closeOnEsc.bind(this);
   }
+
+  didInsertElement() {
+    set(this, '_popperTarget', this.element);
+    this.set('currentWindow', this.$(window));
+  }
+
   async didReceiveAttrs() {
     this.set('select', this.selected || []);
     if (this.get('isDBrequired'))
@@ -83,38 +88,18 @@ export default class MultiSelect extends Component {
   didRender() {
     Ember.run.next(this, this.detachClickHandler);
   }
-  detachClickHandler() {
-    const method = this.get('open') ? 'on' : 'off';
-    if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
-    }
-    else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
-    }
-  }
-  _closeOnClickOut(e: any) {
 
-    if (e.target.className != `${Classes.MENU_ITEM} ${this.POPOVER_DISMISS}` && e.target.className != this.classNameAssigned) { this._close(); }
-  }
-  _closeOnEsc(e: any) {
-    if (e.keyCode === this.ESC) { this._close(); }
-  }
-  _close() {
-    if (this.isDestroyed || this.isDestroying)
-      return;
-    set(this, 'open', false);
-  }
   @action
   close() {
     this._close();
   }
+
   @action
   async togglePopover() {
     await this.addToFilterList();
     await this.toggleProperty('open');
   }
+
   async  addToFilterList() {
     let data: [] = JSON.parse(JSON.stringify(this.get('data') || []));
     let arr = [];
@@ -131,30 +116,31 @@ export default class MultiSelect extends Component {
       this.set('filteredList', arr);
     }
   }
+
   @action
   async onMouseSelect(data: any) {
     await this.set('open', false);
     Ember.A(this.select);
     Ember.A(this.filteredList);
     if (this.select && this.select.filter(e => e === data).length > 0) {
-      this.get('select').removeObject(data);
-      this.get('filteredList').pushObject(data);
+      (this.get('select') as any).removeObject(data); // not found type for removeObject
+      (this.get('filteredList') as any).pushObject(data);
     }
     else {
-      this.get('select').pushObject(data);
-      this.get('filteredList').removeObject(data);
+      (this.get('select') as any).pushObject(data);
+      (this.get('filteredList') as any).removeObject(data);
     }
     this.send('onSelected');
     this.set('open', true);
   }
 
-
   @action
-  delete(value: string, index: any, e: any) {
+  delete(value: string, index: any) {
+    value=value;
     Ember.A(this.get('select'));
     if (index != null) {
       let removeObj = this.get('select')[index];
-      this.get('select').removeObject(removeObj);
+      (this.get('select') as any).removeObject(removeObj);
     } else {
       this.set('select', []);
     }
@@ -166,6 +152,7 @@ export default class MultiSelect extends Component {
     this.set('filteredList', arr);
     this.send('onSelected');
   }
+
   @action
   onSelected() {
 
@@ -174,6 +161,7 @@ export default class MultiSelect extends Component {
     if (this.get('onDelete'))
       this.get('onDelete')(this.select);
   }
+
   @action
   onActive() {
     let container: any = document.querySelector(`.${this.TRANSITION_CONTAINER}`);
@@ -186,6 +174,7 @@ export default class MultiSelect extends Component {
       list[this.selectedKey].querySelector('a').className += ' ' + Classes.ACTIVE;
     }
   }
+
   @action
   async handleKeydown(e: any) {
     this.set('open', true);
@@ -218,7 +207,7 @@ export default class MultiSelect extends Component {
         element.forEach((item) => {
           if (item.className) {
             if (item.className.search(Classes.ACTIVE))
-              item.className = item.className.replace(Classes.ACTIVE, "");
+              item.className = item.className.replace(Classes.ACTIVE, '');
           }
         });
         element[this.selectedItem].className += ' ' + Classes.ACTIVE;
@@ -247,13 +236,13 @@ export default class MultiSelect extends Component {
       Ember.A(this.select);
       Ember.A(this.filteredList);
       if (this.get('select').includes(this.filteredList[this.selectedKey])) {
-        this.get('select').removeObject(this.filteredList[this.selectedKey]);
-        this.get('filteredList').pushObject(this.filteredList[this.selectedKey]);
+        (this.get('select') as any).removeObject(this.filteredList[this.selectedKey]);
+        (this.get('filteredList') as any).pushObject(this.filteredList[this.selectedKey]);
       }
       else {
         if (this.filteredList[this.selectedKey]) {
-          this.get('select').pushObject(this.filteredList[this.selectedKey]);
-          this.get('filteredList').removeObject(this.filteredList[this.selectedKey]);
+          (this.get('select') as any).pushObject(this.filteredList[this.selectedKey]);
+          (this.get('filteredList') as any).removeObject(this.filteredList[this.selectedKey]);
         }
       }
       this.set('selectedKey', 0);
@@ -264,6 +253,7 @@ export default class MultiSelect extends Component {
 
     }
   }
+
   @action
   onSearchElement(e: any) { //search value
     let keys: Array<Number> = [37, 38, 39, 40, 13];
@@ -279,7 +269,7 @@ export default class MultiSelect extends Component {
       let arr = [];
       for (var i = 0; i < temp.length; i++) {
         let txt = temp[i];
-        if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+        if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== '') {
         } else {
           this.selectedKey = -1;
           arr.push(txt);
@@ -289,6 +279,29 @@ export default class MultiSelect extends Component {
     }
   }
 
+  detachClickHandler() {
+    const method = this.get('open') ? 'on' : 'off';
+    if (method == 'on') {
+      this.currentWindow.on('click', this._closeOnClickOut);
+      this.currentWindow.on('keyup', this._closeOnEsc);
+    }
+    else {
+      this.currentWindow.off('click', this._closeOnClickOut);
+      this.currentWindow.off('keyup', this._closeOnEsc);
+    }
+  }
+  _closeOnClickOut(e: any) {
+
+    if (e.target.className != `${Classes.MENU_ITEM} ${this.POPOVER_DISMISS}` && e.target.className != this.classNameAssigned) { this._close(); }
+  }
+  _closeOnEsc(e: any) {
+    if (e.keyCode === this.ESC) { this._close(); }
+  }
+  _close() {
+    if (this.isDestroyed || this.isDestroying)
+      return;
+    set(this, 'open', false);
+  }
 
 
 };

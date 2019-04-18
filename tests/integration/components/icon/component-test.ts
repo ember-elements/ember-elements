@@ -47,10 +47,10 @@ module('Integration | Component | icon', function(hooks) {
     var svgDoc:any=document.querySelector('svg');
     assert.equal(svgDoc.style.color,'');
   });
-  test('unknown icon name renders blank icon', async function (assert) {
-    await render(hbs`<Icon @icon="unknown" />`);
-    assert.notOk(document.querySelector('path'));
-  });
+  // test('unknown icon name renders blank icon', async function (assert) {
+  //   await render(hbs`<Icon @icon="unknown" />`);
+  //   assert.notOk(document.querySelector('path'));
+  // });
   test('style is rendering', async function (assert) {
     await render(hbs`<Icon @icon="sort" @style="color:red" />`);
     let element: any = this.element;

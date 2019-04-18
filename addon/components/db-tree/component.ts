@@ -2,8 +2,7 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import { layout } from '@ember-decorators/component';
-import * as Classes from "../../-private/common/classes";
-import { alias } from '@ember-decorators/object/computed';
+import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class DbTree extends Component {
   TREE: string = Classes.TREE;

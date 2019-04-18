@@ -8,7 +8,9 @@ import { classNames, tagName } from '@ember-decorators/component';
 @classNames('rounded', 'px1', 'flex-auto', 'center', 'cursor-pointer', 'link-quiet')
 export default class ToggleSwitchItem extends Component {
   layout = layout;
+  
   @reads('active') Active!: boolean;
+  
   classNameBindings = [ 'Active:text-white', 'Active:gray','Active:cursor-default'];
   // attributeBindings: ['type'],
 

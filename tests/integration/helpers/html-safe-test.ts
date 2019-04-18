@@ -13,6 +13,6 @@ module('Integration | Helper | html-safe', function(hooks) {
     await render(hbs`{{html-safe inputValue}}`);
     var element:any=this.element;
 
-    assert.equal(element.textContent.trim(), '1234');
+    assert.equal(element.textContent.trim(), '1234;');
   });
 });
