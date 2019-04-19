@@ -13,7 +13,6 @@ Router.map(function () {
       this.route('card');
       this.route('icon');
       this.route('dialog');
-      this.route('input');
       this.route('pop-over');
       this.route('panel-stack');
       this.route('tag-input');
