@@ -4,7 +4,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { click } from '@ember/test-helpers';
 
-module('Integration | Component | select', function(hooks) {
+module('Integration | Component | select', function (hooks) {
   setupRenderingTest(hooks);
 
   // test('selected value is rendering (type =input box )', async function (assert) {
@@ -148,7 +148,7 @@ module('Integration | Component | select', function(hooks) {
     this.set('data', data);
     this.set('selected', 'hi2');
     await render(hbs`<Select @type='button'  @data={{data}} @selected={{selected}} @isDefaultOpen=true  />`);
-    let doc:any = await document.querySelector('.popper');
+    let doc: any = await document.querySelector('.popper');
     assert.equal(doc.querySelector('.bp3-text-overflow-ellipsis').textContent.trim(), 'hi1');
   });
   test('  all value is rendering @popover', async function (assert) {
@@ -189,7 +189,7 @@ module('Integration | Component | select', function(hooks) {
     this.set('data', data);
     this.set('selected', 'hi2');
     await render(hbs`<Select  @data={{data}} @selected={{selected}} @placeholder='any text' />`);
-    var placeHolder:any=document.querySelector('.bp3-input');
+    var placeHolder: any = document.querySelector('.bp3-input');
     assert.equal(placeHolder.placeholder, 'any text');
   });
   test(' active=true is rendering ', async function (assert) {
@@ -229,7 +229,8 @@ module('Integration | Component | select', function(hooks) {
     ];
     this.set('data', data);
     this.set('selected', 'hi2');
-    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @minimal=true @placeholder='any text'  />`);
+    this.set('buttonProps', { minimal: true });
+    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @buttonProps={{buttonProps}} @placeholder='any text'  />`);
     assert.ok(document.querySelector('.bp3-minimal'));
   });
 });
