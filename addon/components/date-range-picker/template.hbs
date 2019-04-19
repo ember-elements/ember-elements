@@ -1,12 +1,12 @@
-<Input
+<InputGroup
   @type="text"
   @onClick={{action "togglePopover"}}
-  @icon={{icon}}
+  @leftIcon={{leftIcon}}
   @iconSize={{iconSize}}
   @rightIcon={{rightIcon}}
   @intent={{intent}}
   @placeholder={{dateFormat}}
-  @data={{date}}
+  @value={{date}}
  />
 
 {{#if open}}

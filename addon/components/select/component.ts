@@ -5,7 +5,7 @@ import Ember from 'ember';
 import { action } from '@ember-decorators/object';
 import { set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { reads } from '@ember-decorators/object/computed';
+import { reads, alias } from '@ember-decorators/object/computed';
 import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('span')
@@ -14,6 +14,8 @@ export default class Select extends Component {
   @attribute('style') style: any = Ember.String.htmlSafe((this.style));
 
   @reads('open') Open!: boolean;
+
+  @alias('buttonProps.minimal') buttonMinimal?: boolean;
 
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;

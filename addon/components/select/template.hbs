@@ -5,21 +5,20 @@
 {{else if (eq type "button")}}
   <Button
     @text={{selected}}
-    @minimal={{minimal}}
+    @minimal={{buttonMinimal}}
     @active={{active}}
     @onClick={{action "togglePopover"}}
     @icon={{icon}}
     @rightIcon={{rightIcon}}
-    @style="width:100%"
    />
 
 {{else}}
-  <Input
+  <InputGroup
     @onClick={{action "togglePopover"}}
     @autofocus={{isDefaultOpen}}
     @placeholder={{placeholder}}
-    @data={{selected}}
-    @icon={{icon}}
+    @value={{selected}}
+    @leftIcon={{leftIcon}}
     @rightIcon={{rightIcon}}
     @onkeyDown={{action "handleKeydown"}}
     @onkeyUp={{action "onSearchElement"}}
