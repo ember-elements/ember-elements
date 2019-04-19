@@ -11,7 +11,7 @@
     <div class="docs-example-frame docs-example-frame-row">
         <div class="docs-example">
                    {{! BEGIN-SNIPPET docs-example-basic-date-picker.hbs }}
-                    <DatePicker @onSelect={{action 'selectDate' }} @icon="calendar"
+                    <DatePicker @onSelect={{action 'selectDate' }} @leftIcon="calendar"
                      @date={{date}} @minimal={{minimal}} @placement={{placement}}>
                     </DatePicker>
                    {{! END-SNIPPET }}
