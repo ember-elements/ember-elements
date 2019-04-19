@@ -4,11 +4,11 @@ const Router = AddonDocsRouter.extend({
   location: config.locationType,
   rootURL: config.rootURL,
 });
-Router.map(function() {
-  docsRoute(this, function() { /* Your docs routes go here */
-      
-      this.route('core', function() {
-        this.route('button');
+Router.map(function () {
+  docsRoute(this, function () { /* Your docs routes go here */
+
+    this.route('core', function () {
+      this.route('button');
       this.route('button-group');
       this.route('card');
       this.route('icon');
@@ -23,28 +23,30 @@ Router.map(function() {
       this.route('resizesensor');
       this.route('overflowList');
       this.route('tag');
+      this.route('input-group');
 
-      });
-      this.route('date', function() {
-        this.route('date-range-picker');
-        this.route('date-picker');
-      });
-      this.route('select', function() {
-        this.route('multi-select');
+    });
+    this.route('date', function () {
+      this.route('date-range-picker');
+      this.route('date-picker');
+    });
+    this.route('select', function () {
+      this.route('multi-select');
       this.route('select');
 
-      });
+    });
 
-      this.route('icon', function() {
+    this.route('icon', function () {
       this.route('icons');
-      });
-      this.route('introduction', function() {
-        this.route('quickstart');
-        this.route('overview');
-      });
-      // this.route('accessibility');
+    });
+    this.route('introduction', function () {
+      this.route('quickstart');
+      this.route('overview');
+    });
+    // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
+
 
 
 
