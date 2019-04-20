@@ -67,6 +67,7 @@ export default class DatePicker extends Component {
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
+  onClick!: (open: boolean) => void;
 
   init() {
     super.init();
@@ -126,6 +127,9 @@ export default class DatePicker extends Component {
 
   @action
   async togglePopover() {
+    if (this.get('onClick')) {
+      this.get('onClick')(this.open);
+    }
     await this.toggleProperty('open');
   }
 
