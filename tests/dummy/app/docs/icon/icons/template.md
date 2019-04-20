@@ -8,7 +8,7 @@
 <div class="demo-container">
      <div class="docs-icons">
        <p>
-         <Input @data={{data}} @onkeyUp={{action 'onkeyUp'}} @round=true @placeholder='Search for icons....'
+         <InputGroup @value={{data}} @onkeyUp={{action 'onkeyUp'}} @round=true @placeholder='Search for icons....'
          @rightIcon='search' />
        </p>
         {{#each iconsList as |item|}}

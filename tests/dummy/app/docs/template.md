@@ -29,7 +29,6 @@
     {{nav.section 'FORM INPUTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
-    {{nav.item 'Input' 'docs.core.input'}}
     {{nav.item 'Input Group' 'docs.core.input-group'}}
     {{nav.item 'Tag Input' 'docs.core.tag-input'}}
 {{/nav.subnav}}
