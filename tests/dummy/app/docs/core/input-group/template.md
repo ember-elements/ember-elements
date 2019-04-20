@@ -15,7 +15,7 @@
         @large={{isLarge}} 
         @small={{isSmall}}
         @intent={{intent}} 
-        @rightIcon='lock' >
+      >
       </InputGroup>
       <InputGroup 
         @type={{type}} 
@@ -46,12 +46,10 @@
         @small={{isSmall}} 
         @intent={{intent}}  
         @onkeyDown={{action 'onkeyDown'}}>
-        <Select @data={{data}} @type='button' @disabled={{isDisabled}}   
+        <Select @data={{data}} @type='button'    
          @selected={{selected}} 
-         @rightIcon="caret-down"  
          @minimal={{false}}
-         @minimalButton=true
-         @buttonProps={{buttonprops}}
+         @ButtonProps={{ButtonProps}}
          @onSelect={{action 'optionSelected' }}>
         </Select>
         </InputGroup>
