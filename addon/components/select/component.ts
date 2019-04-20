@@ -15,10 +15,56 @@ export default class Select extends Component {
 
   @reads('open') Open!: boolean;
 
-  @alias('buttonProps.minimal') buttonMinimal?: boolean;
+  @alias('ButtonProps.class') BCLASS?: string;
+
+  @alias('ButtonProps.style') BSTYLE?: string;
+
+  @alias('ButtonProps.active') BACTIVE?: boolean;
+
+  @alias('ButtonProps.disabled') BDISABLED?: boolean;
+
+  @alias('ButtonProps.intent') BINTENT?: string;
+
+  @alias('ButtonProps.fill') BFILL?: boolean;
+
+  @alias('ButtonProps.icon') BICON?: string;
+
+  @alias('ButtonProps.iconSize') BICONSIZE?: number;
+
+  @alias('ButtonProps.large') BLARGE?: boolean;
+
+  @alias('ButtonProps.minimal') BMINIMAL?: boolean;
+
+  @alias('ButtonProps.rightIcon') BRIGHTICON?: string;
+
+  @alias('ButtonProps.small') BSMALL?: boolean;
 
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
+
+  @alias('InputGroupProps.class') IGCLASS?: string;
+
+  @alias('InputGroupProps.style') IGSTYLE?: string;
+
+  @alias('InputGroupProps.disabled') IGDISABLED?: boolean;
+
+  @alias('InputGroupProps.intent') IGINTENT?: string;
+
+  @alias('InputGroupProps.large') IGLARGE?: boolean;
+
+  @alias('InputGroupProps.leftIcon') IGLEFTICON?: string;
+
+  @alias('InputGroupProps.rightIcon') IGRIGHTICON?: string;
+
+  @alias('InputGroupProps.iconSize') IGICONSIZE?: number;
+
+  @alias('InputGroupProps.round') IGROUND?: boolean;
+
+  @alias('InputGroupProps.small') IGSMALL?: boolean;
+
+  @alias('InputGroupProps.placeholder') IGPLACEHOLDER?: string;
+
+  @alias('InputGroupProps.autofocus') IGAUTOFOCUS?: string;
 
   currentWindow: any;
   _popperTarget: any;
@@ -49,6 +95,7 @@ export default class Select extends Component {
   popOverArrow!: boolean;
   minimal: boolean = false;
   defaultSelected: number = -1;
+  onClick!: (open: boolean) => void;
 
   init() {
     super.init();
@@ -133,6 +180,9 @@ export default class Select extends Component {
 
   @action
   async togglePopover() {
+    if (this.get('onClick')) {
+      this.get('onClick')(this.open);
+    }
     await this.toggleProperty('open');
     let data: any[] = JSON.parse(JSON.stringify(this.get('data') || []));
     this.findDefaultSelect(data);
