@@ -1,12 +1,19 @@
 <InputGroup
   @type="text"
   @onClick={{action "togglePopover"}}
-  @leftIcon={{leftIcon}}
+  @class={{IGCLASS}}
+  @style={{IGSTYLE}}
+  @disabled={{IGDISABLED}}
+  @intent={{IGINTENT}}
+  @large={{IGLARGE}}
+  @leftIcon={{IGLEFTICON}}
+  @rightIcon={{IGRIGHTICON}}
   @iconSize={{iconSize}}
-  @rightIcon={{rightIcon}}
-  @intent={{intent}}
-  @placeholder={{dateFormat}}
+  @round={{IGROUND}}
+  @small={{IGSMALL}}
+  @placeholder={{IGPLACEHOLDER}}
   @value={{moment-format date dateFormat}}
+  @onkeyDown={{onkeyDown}}
  />
 
 {{#if open}}
