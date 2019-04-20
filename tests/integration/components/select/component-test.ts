@@ -188,7 +188,8 @@ module('Integration | Component | select', function (hooks) {
     ];
     this.set('data', data);
     this.set('selected', 'hi2');
-    await render(hbs`<Select  @data={{data}} @selected={{selected}} @placeholder='any text' />`);
+    this.set('InputGroupProps', { placeholder: 'any text' });
+    await render(hbs`<Select  @data={{data}} @selected={{selected}} @InputGroupProps={{InputGroupProps}}/>`);
     var placeHolder: any = document.querySelector('.bp3-input');
     assert.equal(placeHolder.placeholder, 'any text');
   });
@@ -209,7 +210,8 @@ module('Integration | Component | select', function (hooks) {
     ];
     this.set('data', data);
     this.set('selected', 'hi2');
-    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @active=true @placeholder='any text'  />`);
+    this.set('ButtonProps', { active: true });
+    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @ButtonProps={{ButtonProps}} @placeholder='any text'  />`);
     assert.ok(document.querySelector('.bp3-active'));
   });
   test(' minimal=true is rendering ', async function (assert) {
@@ -230,7 +232,8 @@ module('Integration | Component | select', function (hooks) {
     this.set('data', data);
     this.set('selected', 'hi2');
     this.set('buttonProps', { minimal: true });
-    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @buttonProps={{buttonProps}} @placeholder='any text'  />`);
+    this.set('ButtonProps', { minimal: true });
+    await render(hbs`<Select @type='button' @data={{data}} @selected={{selected}} @ButtonProps={{ButtonProps}} @placeholder='any text'  />`);
     assert.ok(document.querySelector('.bp3-minimal'));
   });
 });
