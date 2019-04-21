@@ -1,11 +1,9 @@
 {{#if icon}}
-  <Icon @iconSize={{IconSize}} @icon={{icon}} />
+  <Icon @iconSize={{IconSize}} @style={{marginRight}} @icon={{icon}} />
 {{/if}}
-{{#if text}}
-  <span class={{BUTTON_TEXT}}>
-    {{text}}
-  </span>
-{{/if}}
+<span class={{BUTTON_TEXT}}>
+  {{yield}}
+</span>
 {{#if rightIcon}}
-  <Icon @icon={{rightIcon}} @iconSize={{IconSize}} />
+  <Icon @icon={{rightIcon}} @style={{marginLeft}} @iconSize={{IconSize}} />
 {{/if}}
