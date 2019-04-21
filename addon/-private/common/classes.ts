@@ -3,7 +3,7 @@ import { Alignment } from "./alignment";
 import { Elevation } from "./elevation";
 import { Intent } from "./intent";
 
-const NS =  "bp3";
+const NS = "bp3";
 
 // modifiers
 export const ACTIVE = `${NS}-active`;
@@ -169,6 +169,7 @@ export const OVERFLOW_LIST_SPACER = `${OVERFLOW_LIST}-spacer`;
 export const OVERLAY = `${NS}-overlay`;
 export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
 export const OVERLAY_CONTENT = `${OVERLAY}-content`;
+export const OVERLAY_CONTAINER = `${OVERLAY}-container`;
 export const OVERLAY_INLINE = `${OVERLAY}-inline`;
 export const OVERLAY_OPEN = `${OVERLAY}-open`;
 export const OVERLAY_SCROLL_CONTAINER = `${OVERLAY}-scroll-container`;

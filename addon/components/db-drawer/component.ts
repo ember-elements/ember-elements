@@ -9,16 +9,16 @@ import * as Classes from '../../-private/common/classes';
 @layout(template)
 export default class DbDrawer extends Component {
   @readOnly('backdropClassName') backdropClass!: string;
-  
+
   @attribute('style') style: any = Ember.String.htmlSafe(this.style);
-  
-  DRAWER:string=Classes.DRAWER +' '+ Classes.OVERLAY_CONTENT;
-  PORTAL:string=Classes.PORTAL;
-  OVERLAY_CONTENT:string=Classes.OVERLAY_CONTENT;
-  OVERLAY:string=Classes.OVERLAY;
-  OVERLAY_OPEN:string=Classes.OVERLAY_OPEN;
-  OVERLAY_BACKDROP:string=Classes.OVERLAY_BACKDROP;
-  OVERLAY_INLINE:string=Classes.OVERLAY_INLINE;
+
+  DRAWER: string = Classes.DRAWER + ' ' + Classes.OVERLAY_CONTENT;
+  PORTAL: string = Classes.PORTAL;
+  OVERLAY_CONTAINER: string = Classes.OVERLAY_CONTAINER;
+  OVERLAY: string = Classes.OVERLAY;
+  OVERLAY_OPEN: string = Classes.OVERLAY_OPEN;
+  OVERLAY_BACKDROP: string = Classes.OVERLAY_BACKDROP;
+  OVERLAY_INLINE: string = Classes.OVERLAY_INLINE;
   drawerId: string = '';
   backDropId: string = '';
   portalClassName!: string;
@@ -34,13 +34,13 @@ export default class DbDrawer extends Component {
   vertical: boolean = false;
   onClose!: (e: any) => void;
   isLeft: boolean = false;
-  
+
   init() {
     super.init();
     this.enforceFocusFun = this.enforceFocusFun.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
-  
+
   didReceiveAttrs() {
     super.init();
     if (this.get('usePortal')) {
@@ -48,14 +48,14 @@ export default class DbDrawer extends Component {
     }
     this.set('isInterval', true);
   }
-  
+
   didInsertElement() {
     super.init();
     this.set('drawerId', 'drawer' + this.elementId);
     this.set('backDropId', 'backDrop' + this.elementId);
 
   }
-  
+
   didRender() {
 
     if (this.drawerId != '' && this.get('isOpen') && this.get('isInterval')) {
@@ -87,7 +87,7 @@ export default class DbDrawer extends Component {
     }
 
   }
-  
+
   @action
   async outerClickToClose(e: any) {
     if (!this.get('canOutsideClickClose'))
@@ -152,7 +152,7 @@ export default class DbDrawer extends Component {
       e.stopImmediatePropagation();
     }
   }
-  
+
   handleKeyDown(e: any) {
     if (this.isDestroyed || this.isDestroying)
       return;
