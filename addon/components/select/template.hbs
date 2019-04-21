@@ -16,10 +16,10 @@
     @minimal={{BMINIMAL}}
     @rightIcon={{BRIGHTICON}}
     @small={{BSMALL}}
-    @text={{selected}}
     @onClick={{action "togglePopover"}}
-   />
-
+  >
+    {{selected}}
+  </Button>
 {{else}}
   <InputGroup
     @onClick={{action "togglePopover"}}
