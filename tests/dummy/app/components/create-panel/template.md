@@ -1,7 +1,7 @@
 {{! BEGIN-SNIPPET docs-example-basic-create-panel.hbs }}
 
 <div>
-    <Button @text='Open new panel' @onClick={{action 'openNewpanel'}} @primary=true/>
+    <Button @onClick={{action 'openNewpanel'}} @primary=true>Open new panel</Button>
 
 </div>
 {{! END-SNIPPET }}

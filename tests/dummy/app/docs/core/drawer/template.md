@@ -9,7 +9,7 @@
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-drawer.hbs }}
             <Button @onClick={{action 'openDrawerComponent'}} @primary=true 
-            @text='Show Drawer'></Button>
+            >Show Drawer</Button>
             <DbDrawer @isOpen={{isOpenDrawer}} @size={{size}} 
             @vertical={{vertical}} @autoFocus={{autoFocus}} @enforceFocus={{enforceFocus}}
             @hasBackdrop={{hasBackdrop}} @usePortal={{usePortal}} 

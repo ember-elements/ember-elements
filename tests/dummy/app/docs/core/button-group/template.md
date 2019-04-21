@@ -10,11 +10,14 @@
   <div class="docs-example-frame docs-example-frame-row">
     <div class="docs-example">
       {{! BEGIN-SNIPPET docs-example-basic-button-group.hbs }}
-      <ButtonGroup @minimal={{minimal}} @large={{large}} @vertical={{vertical}} 
-         @fill={{fill}} @alignText={{alignText}} @style="min-width:200px">
-        <Button @icon='database' @type='button' @text='Queries'> </Button>
-        <Button @icon='function' @type='button' @text='Fun'> </Button>
-        <Button @icon='cog' @type='button' @text='Settings'> </Button>
+      <ButtonGroup 
+       @minimal={{minimal}} 
+       @large={{large}} @vertical={{vertical}} 
+       @fill={{fill}} @alignText={{alignText}} 
+       @style="min-width:200px">
+       <Button @icon='database' @type='button' > Queries </Button>
+       <Button @icon='function' @type='button' >Fun </Button>
+       <Button @icon='cog' @type='button' >Settings</Button>
       </ButtonGroup>
       {{! END-SNIPPET }}
     </div>
@@ -30,9 +33,9 @@
           class="bp3-control-indicator"></span>Vertical</label>
       <div style="margin-top: 5px;"> Align text
         <ButtonGroup @fill=true @style="margin-top: 5px;">
-          <Button @text="Left" @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} ></Button>
-          <Button @text="Center" @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} ></Button>
-          <Button @text="Right" @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} ></Button>
+          <Button  @active={{leftActive}} @onClick={{action "onTextAlign" "left"}} >Left</Button>
+          <Button  @active={{centerActive}} @onClick={{action "onTextAlign" "center"}} >Center</Button>
+          <Button  @active={{rightActive}} @onClick={{action "onTextAlign" "right"}} >Right</Button>
         </ButtonGroup>
       </div>
     </div>

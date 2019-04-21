@@ -19,8 +19,8 @@
             <h5 class="bp3-heading">Confirm deletion</h5>
             <p>Are you sure you want to delete these items? You won't be able to recover them.</p>
             <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-              <Button @text="Cancel" onClick={{action 'onClose'}} @style="margin-right: 10px;"></Button>
-              <Button @text="Delete" onClick={{action 'onClose'}} @intent="danger"></Button>
+              <Button  onClick={{action 'onClose'}} @style="margin-right: 10px;">Cancel</Button>
+              <Button  onClick={{action 'onClose'}} @intent="danger">Delete</Button>
             </div>
            </div>
         </PopOver>
