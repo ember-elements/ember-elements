@@ -13,7 +13,7 @@
                 <p>User interfaces that enable people to interact smoothly with data, 
                    ask better questions, and make better decisions.
                 </p>
-                <Button @text='Explore products'> </Button>
+                <Button >Explore products</Button>
             </Card>
             {{! END-SNIPPET }}
         </div>

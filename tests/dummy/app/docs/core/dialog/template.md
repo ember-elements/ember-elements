@@ -9,7 +9,7 @@
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-dialog-box.hbs }}
             <Button @onClick={{action 'openDialogBox'}} @primary=true 
-             @text='Show Dialog'></Button>
+            >Show Dialog</Button>
             <Dialog @isOpenDialog={{isOpenDialog}} @isEscapeToClose=true 
              @isoutClickCloseDialog=true>
              <p>
@@ -35,8 +35,8 @@
              </p>
              <p>Start the revolution. Unleash the power of data integration with Palantir Foundry.</p>
                 <div class="bp3-dialog-footer">
-                 <Button @type='button' @text="Cancel" @onClick={{action 'cancel'}}> </Button>
-                 <Button @primary=true @type='button' @text='Save Somthing' @onClick={{action 'save'}}> </Button>
+                 <Button @type='button'  @onClick={{action 'cancel'}}>Cancel </Button>
+                 <Button @primary=true @type='button' @onClick={{action 'save'}}>Save Somthing </Button>
                 </div>
              </Dialog>
             {{! END-SNIPPET }}

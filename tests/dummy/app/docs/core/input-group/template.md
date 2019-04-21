@@ -1,4 +1,4 @@
-# Text inputs
+# Input Group
 <div class='bp3-running-text bp3-text-large'>
   An <code>InputGroup</code> component allows you to add icons and buttons within a text input to expand its functionality. For example, you might use an input group to build a visibility toggle for a password field. The <code>Input</code> tag specifies an input field where the user can enter data.
 </div>

@@ -15,6 +15,7 @@ export default class DocsCoreButton extends Controller {
   icon = 'floppy-disk';
   rightIcon = '';
   fill = false;
+  iconOnly = false;
   @action
   doFuction(type) {
     if (type == 'active')
@@ -32,7 +33,7 @@ export default class DocsCoreButton extends Controller {
     else if (type == 'fill')
       this.set('fill', !this.fill);
     else if (type == 'iconsonly')
-    this.set('text', this.text != '' ? '' : 'sample button');
+      this.set('iconOnly', !this.iconOnly);
   }
   @action
   selectIntent(e) {

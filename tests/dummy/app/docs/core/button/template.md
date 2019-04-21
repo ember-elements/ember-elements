@@ -8,10 +8,19 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="ButtonsExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
-            <Button @minimal={{minimal}} @active={{active}} @disabled={{disabled}} 
-              @intent={{intent}} @small={{small}} @large={{large}} @icon={{icon}} 
-              @rightIcon={{rightIcon}} @fill={{fill}} @type='button' @text={{text}}
-              @onClick={{action 'onClickButton'}}>
+            <Button 
+             @minimal={{minimal}} 
+             @active={{active}} 
+             @disabled={{disabled}} 
+             @intent={{intent}} 
+             @small={{small}} 
+             @large={{large}} 
+             @icon='lock' 
+             @rightIcon={{rightIcon}} 
+             @fill={{fill}} @type='button' 
+             @onClick={{action 'onClickButton'}}
+            >
+            {{#if iconOnly}}  {{else}} {{text}} {{/if}}
             </Button>
             {{! END-SNIPPET }}
         </div>
@@ -302,25 +311,6 @@
                             </div>
                         </div>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="docs-prop-name"><code>type</code></td>
-                <td class="docs-prop-details">
-                    <code
-                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted">"button"</em></code>
-                    <div class="docs-prop-description">
-                        <div class="docs-section">
-                            <div class="bp3-running-text">
-                                <p>HTML <code>type</code> attribute of button. Common values are
-                                    <code>"clear"</code>
-                                    <code>"button"</code>
-                                    and <code>"submit"</code>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="docs-prop-tags"></div>
                 </td>
             </tr>
         </tbody>
