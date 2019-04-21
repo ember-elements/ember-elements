@@ -439,64 +439,62 @@ module('Integration | Component | db-drawer', function (hooks) {
 
   //test on portal =false
 
-  // test('usePortal=false it renders', async function (assert) {
-  //   // Set any properties with this.set('myProperty', 'value');
-  //   // Handle any actions with this.set('myAction', function(val) { ... });
+  test('usePortal=false it renders', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-  //   let that = this;
-  //   this.set('open', false);
-  //   this.set('buttonAction', function () {
-  //     that.set('open', true);
-  //   });
+    let that = this;
+    this.set('open', false);
+    this.set('buttonAction', function () {
+      that.set('open', true);
+    });
 
-  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
-  //     {{#db-drawer isOpen=this.open usePortal=false}}
-  //     {{#db-drawer/body}}
-  //       template block text
-  //       {{/db-drawer/body}}
-  //     {{/db-drawer}}
-  //     <div id="destination"></div>
-  //   `);
-  //   await click('button');
-  //   var element: any = element;
-  //   assert.equal(element.textContent.trim(), 'template block text');
-  // });
-  // test('render Header component | usePortal=false', async function (assert) {
-  //   let that = this;
-  //   this.set('open', false);
-  //   this.set('buttonAction', function () {
-  //     that.set('open', true);
-  //   });
-  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
-  //     {{#db-drawer isOpen=this.open usePortal=false}}
-  //     {{#db-drawer/header}}
-  //       template block text
-  //       {{/db-drawer/header}}
-  //     {{/db-drawer}}
-  //     <div id="destination"></div>
-  //   `);
-  //   await click('button');
-  //   var element: any = element;
-  //   assert.equal(element.textContent.trim(), 'template block text');
-  // });
-  // test('render Footer component | usePortal=false', async function (assert) {
-  //   let that = this;
-  //   this.set('open', false);
-  //   this.set('buttonAction', function () {
-  //     that.set('open', true);
-  //   });
-  //   await render(hbs` <Button @onClick={{action  buttonAction  }} />
-  //     {{#db-drawer isOpen=this.open}}
-  //     {{#db-drawer/footer}}
-  //       template block text
-  //       {{/db-drawer/footer}}
-  //     {{/db-drawer}}
-  //     <div id="destination"></div>
-  //   `);
-  //   await click('button');
-  //   var element: any = element;
-  //   assert.equal(element.textContent.trim(), 'template block text');
-  // });
+    await render(hbs` <Button @onClick={{action  buttonAction  }} />
+      {{#db-drawer isOpen=open usePortal=false}}
+      {{#db-drawer/body}}
+        template block text
+        {{/db-drawer/body}}
+      {{/db-drawer}}
+      <div id="destination"></div>
+    `);
+    await click('button');
+    assert.ok(document.querySelector('.bp3-overlay-inline'));
+  });
+  test('render Header component | usePortal=false', async function (assert) {
+    let that = this;
+    this.set('open', false);
+    this.set('buttonAction', function () {
+      that.set('open', true);
+    });
+    await render(hbs` <Button @onClick={{action  buttonAction  }} />
+      {{#db-drawer isOpen=open usePortal=false}}
+      {{#db-drawer/header}}
+        template block text
+        {{/db-drawer/header}}
+      {{/db-drawer}}
+      <div id="destination"></div>
+    `);
+    await click('button');
+    assert.ok(document.querySelector('.bp3-overlay-inline .bp3-drawer-header'));
+  });
+  test('render Footer component | usePortal=false', async function (assert) {
+    let that = this;
+    this.set('open', false);
+    this.set('buttonAction', function () {
+      that.set('open', true);
+    });
+    await render(hbs` <Button @onClick={{action  buttonAction  }} />
+      {{#db-drawer isOpen=open usePortal=false}}
+      {{#db-drawer/footer}}
+        template block text
+        {{/db-drawer/footer}}
+      {{/db-drawer}}
+      <div id="destination"></div>
+    `);
+    await click('button');
+    var element: any = element;
+    assert.ok(document.querySelector('.bp3-overlay-inline .bp3-drawer-footer'));
+  });
   test('Default size for drawer | usePortal=false', async function (assert) {
     let that = this;
     this.set('open', false);

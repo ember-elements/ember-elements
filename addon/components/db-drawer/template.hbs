@@ -3,7 +3,11 @@
     {{#dom-outer-render destinationElementId="destination"}}
       <div class="{{PORTAL}} {{portalClassName}}">
         <div
-          class="{{OVERLAY}} {{OVERLAY_CONTENT}} {{if isOpen OVERLAY_OPEN ""}}"
+          class="{{OVERLAY}}
+
+            {{OVERLAY_CONTAINER}}
+
+            {{if isOpen OVERLAY_OPEN ""}}"
         >
           <div
             id={{backDropId}}
@@ -23,13 +27,13 @@
     {{/dom-outer-render}}
   {{else}}
     <div
-      class="{{OVERLAY_INLINE}}
+      class="{{OVERLAY}}
 
-        {{OVERLAY}}
+        {{OVERLAY_CONTAINER}}
 
-        {{if isOpen OVERLAY_OPEN ""}}
+        {{OVERLAY_INLINE}}
 
-        {{OVERLAY_CONTENT}}"
+        {{if isOpen OVERLAY_OPEN ""}}"
     >
       <div
         id={{backDropId}}
