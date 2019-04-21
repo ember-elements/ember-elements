@@ -6,7 +6,31 @@ import { click } from '@ember/test-helpers';
 
 module('Integration | Component | button', function (hooks) {
   setupRenderingTest(hooks);
-
+  test('button is rendering', async function (assert) {
+    await render(hbs`<Button >hello</Button>`);
+    let element = this.element;
+    assert.equal(element.querySelectorAll('.bp3-button-text').length, 1);
+  });
+  test('svg margin-right for null text', async function (assert) {
+    await render(hbs`<Button @icon='lock' ></Button>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('.bp3-icon').style.marginRight, "0px");
+  });
+  test('svg margin-right for icon only', async function (assert) {
+    await render(hbs`<Button @icon='lock' @rightIcon="lock" ></Button>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('.bp3-icon').style.marginRight, "0px");
+  });
+  test('svg margin-left for left icon ', async function (assert) {
+    await render(hbs`<Button @rightIcon='lock'  ></Button>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('.bp3-icon').style.marginLeft, "-7px");
+  });
+  test('large button svg margin-left for left icon ', async function (assert) {
+    await render(hbs`<Button @rightIcon='lock' @large=true  ></Button>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('.bp3-icon').style.marginLeft, "-10px");
+  });
   test('disabled is true', async function (assert) {
     await render(hbs`<Button @disabled={{true}} />`);
     let element = this.element;
@@ -220,13 +244,11 @@ module('Integration | Component | button', function (hooks) {
     this.set('result', '');
     let that = this;
     this.set('buttonAction', function (a: any, b: any) {
-      console.log(a, b)
       that.set('result', a + ' ' + b);
     });
     await render(hbs`<Button onClick={{action  buttonAction 'Hello' 'World'  }} />  <div id="result">{{ this.result }}</div>`);
     await click('button');
     var findResult: any = await document.getElementById('result');
-    console.log(findResult)
     assert.equal(findResult.textContent.trim(), 'Hello World');
   });
   test('prevent action when  button disabled  ', async function (assert) {
@@ -238,8 +260,6 @@ module('Integration | Component | button', function (hooks) {
     await render(hbs`<Button @onClick={{action  buttonAction 'Hello' 'World' }} @disabled={{true}}/>  <div id="result">{{ result }}</div>`);
     await click('button');
     var findResult: any = await document.getElementById('result');
-    console.log(findResult)
-
     assert.equal(findResult.innerText, '');
   });
 });
