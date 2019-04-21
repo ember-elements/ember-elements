@@ -4,14 +4,14 @@
   </a>
 {{else if (eq type "button")}}
   <Button
-    @text={{selected}}
     @minimal={{buttonMinimal}}
     @active={{active}}
     @onClick={{action "togglePopover"}}
     @icon={{icon}}
     @rightIcon={{rightIcon}}
-   />
-
+  >
+    {{selected}}
+  </Button>
 {{else}}
   <InputGroup
     @onClick={{action "togglePopover"}}

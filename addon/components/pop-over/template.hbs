@@ -1,13 +1,13 @@
 <Button
-  @text={{btnTitle}}
   @minimal={{minimal}}
   @active={{active}}
   @intent={{intent}}
   @onClick={{action "togglePopover"}}
   @icon={{icon}}
   @rightIcon={{rightIcon}}
- />
-
+>
+  {{btnTitle}}
+</Button>
 {{#if open}}
   <EmberPopper
     @class={{popperClass}}
