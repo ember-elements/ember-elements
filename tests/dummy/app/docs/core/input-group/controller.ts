@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
+import Ember from 'ember';
 
 export default class DocsCoreInputGroup extends Controller {
   // normal class body definition here
@@ -14,8 +15,10 @@ export default class DocsCoreInputGroup extends Controller {
   data: Array<string> = ['can edit', 'can view'];
   selected: string = 'can edit';
   tagValueChange: number = Math.floor(10000 / Math.max(1, Math.pow(this.tagValue.length, 2)));
-  buttonprops: object = {
+  ButtonProps: any = {
     minimal: true,
+    rightIcon: 'caret-down',
+    disabled: this.isDisabled
   }
   // BEGIN-SNIPPET docs-example-basic-input-group.ts
   @action
@@ -51,6 +54,7 @@ export default class DocsCoreInputGroup extends Controller {
   @action
   disableFun() {
     this.toggleProperty('isDisabled');
+    Ember.set(this.ButtonProps, 'disabled', this.isDisabled);
   }
   @action
   smallFun() {

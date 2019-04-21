@@ -5,7 +5,7 @@ import Ember from 'ember';
 import { action, computed } from '@ember-decorators/object';
 import { get, set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly } from '@ember-decorators/object/computed';
+import { readOnly, alias } from '@ember-decorators/object/computed';
 import * as Classes from '../../-private/common/classes';
 @layout(template)
 @tagName('span')
@@ -16,6 +16,29 @@ export default class DatePicker extends Component {
   @readOnly('open') Open?: boolean;
 
   @readOnly('format') Format!: string;
+
+  @alias('InputGroupProps.class') IGCLASS?: string;
+
+  @alias('InputGroupProps.style') IGSTYLE?: string;
+
+  @alias('InputGroupProps.disabled') IGDISABLED?: boolean;
+
+  @alias('InputGroupProps.intent') IGINTENT?: string;
+
+  @alias('InputGroupProps.large') IGLARGE?: boolean;
+
+  @alias('InputGroupProps.leftIcon') IGLEFTICON?: string;
+
+  @alias('InputGroupProps.rightIcon') IGRIGHTICON?: string;
+
+  @alias('InputGroupProps.iconSize') IGICONSIZE?: number;
+
+  @alias('InputGroupProps.round') IGROUND?: boolean;
+
+  @alias('InputGroupProps.small') IGSMALL?: boolean;
+
+  @alias('InputGroupProps.placeholder') IGPLACEHOLDER?: string;
+
 
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
@@ -44,6 +67,7 @@ export default class DatePicker extends Component {
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
+  onClick!: (open: boolean) => void;
 
   init() {
     super.init();
@@ -103,6 +127,9 @@ export default class DatePicker extends Component {
 
   @action
   async togglePopover() {
+    if (this.get('onClick')) {
+      this.get('onClick')(this.open);
+    }
     await this.toggleProperty('open');
   }
 

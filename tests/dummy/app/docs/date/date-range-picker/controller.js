@@ -1,16 +1,20 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import moment from 'moment';
-export default class DocsDateDateRangePicker extends Controller{
+export default class DocsDateDateRangePicker extends Controller {
   // normal class body definition here
   // BEGIN-SNIPPET docs-example-basic-date-range-picker.ts
   minimal: boolean = false;
-  placement:string='auto';
+  placement: string = 'auto';
   range: object = {
     start: new Date('3/1/2018'),
     end: new Date('3/20/2018')
   };
   format: string = 'DD-MM-YYYY'; //this is default date format 
+  InputGroupProps: object = {
+    leftIcon: 'timeline-events',
+    placeholder: this.format
+  };
   @action
   selectDate(date: object) {
     console.log('start date is ', moment(date.start).format(this.format));// date convertion
@@ -25,6 +29,10 @@ export default class DocsDateDateRangePicker extends Controller{
     this.set('placement', e.target.value);
   }
   // END-SNIPPET
+  @action
+  openInputGroupProps() {
+    this.set('isOpenDrawer', true);
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your controllers.

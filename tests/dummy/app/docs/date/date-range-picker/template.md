@@ -11,7 +11,8 @@
             {{! BEGIN-SNIPPET docs-example-basic-date-range-picker.hbs }}
             <DateRangePicker @format={{format}} @range={{this.range}}
              @minimal={{minimal}} @placement={{placement}}
-             @onSelect={{action 'selectDate' }} @leftIcon="timeline-events">
+             @onSelect={{action 'selectDate' }}
+             @InputGroupProps={{InputGroupProps}} >
             </DateRangePicker>
             {{! END-SNIPPET }}
         </div>
@@ -193,7 +194,194 @@
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
+             <tr>
+                <td class="docs-prop-name"><code>InputGroupProps</code></td>
+                <td class="docs-prop-details"><code class="docs-prop-type"><strong>Partial&lt;<a {{action 'openInputGroupProps'}}>InputGroupProps</a>&gt; &amp; object</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                    <div class="docs-prop-description">
+                        <div class="docs-section">
+                            <div class="bp3-running-text">
+                                <p> InputGroupProps for <code>InputGroup</code> component. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="docs-prop-tags"></div>
+                </td>
+            </tr>
+       <tr>
+        <td class="docs-prop-name"><code>onkeyDown</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>(data:string, event: MouseEvent&lt;HTMLElement&gt;) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p> When a user is pressing/holding down a key on input.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+       <tr>
+        <td class="docs-prop-name"><code>onClick</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>(open:boolean) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Input click event handler.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
         </tbody>
     </table>
     <br>
 </div>
+<DbDrawer @isOpen={{isOpenDrawer}} 
+ @autoFocus=true @enforceFocus=true
+@hasBackdrop=true @usePortal=true 
+@canOutsideClickClose=true
+@canEscapeKeyClose=true >
+
+{{#db-drawer/body}}
+   <div class="docs-modifiers-table bp3-running-text">
+  <table class="bp3-html-table">
+    <thead>
+      <tr>
+        <th>Props</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="docs-prop-name"><code>class</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>A space-delimited list of class names to pass along to a child element.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>style</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Inline html style to parent element.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>disabled</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Whether the input is non-interactive.
+                   Note that <code>rightElement</code> must be disabled separately; this prop will not affect it.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>intent</code></td>
+        <td class="docs-prop-details">
+          <code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Visual intent color to apply to element. Options are
+                  <code>primary,success,warning,danger,none.</code></p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr><td class="docs-prop-name"><code>large</code></td><td class="docs-prop-details"><code class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code><div class="docs-prop-description"><div class="docs-section"><div class="bp3-running-text"><p>Whether this input should use large styles.</p>
+</div></div></div><div class="docs-prop-tags"></div></td></tr>
+      <tr>
+        <td class="docs-prop-name"><code>leftIcon</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>IconName </strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Name of a Blueprint UI icon to left side of input.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal"><span
+                class="bp3-text-overflow-ellipsis bp3-fill">
+                Default icon position is right</span></span></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>iconSize</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>number</strong><em class="docs-prop-default bp3-text-muted">16</em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Assign Icon size.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>round</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Whether this input should use round styles.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-prop-tags"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>rightIcon</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>IconName</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Name of a Blueprint UI icon to render after the text.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-prop-tags"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs-prop-name"><code>small</code></td>
+        <td class="docs-prop-details"><code
+            class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+          <div class="docs-prop-description">
+            <div class="docs-section">
+              <div class="bp3-running-text">
+                <p>Whether this input should use small styles.</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ {{/db-drawer/body}}
+</DbDrawer>

@@ -5,7 +5,7 @@ import Ember from 'ember';
 import { action, computed } from '@ember-decorators/object';
 import { get, set } from '@ember/object';
 import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly } from '@ember-decorators/object/computed';
+import { readOnly, alias } from '@ember-decorators/object/computed';
 import moment from 'moment';
 import * as Classes from '../../-private/common/classes';
 @tagName('span')
@@ -20,11 +20,33 @@ export default class DateRangePicker extends Component {
   open: boolean = false;
 
   @attribute('style') style: any = Ember.String.htmlSafe(this.style);
- 
+
   @computed('Format')
   get dateFormat() {
     return this.Format ? this.Format : this.defaultFormat;
   }
+
+  @alias('InputGroupProps.class') IGCLASS?: string;
+
+  @alias('InputGroupProps.style') IGSTYLE?: string;
+
+  @alias('InputGroupProps.disabled') IGDISABLED?: boolean;
+
+  @alias('InputGroupProps.intent') IGINTENT?: string;
+
+  @alias('InputGroupProps.large') IGLARGE?: boolean;
+
+  @alias('InputGroupProps.leftIcon') IGLEFTICON?: string;
+
+  @alias('InputGroupProps.rightIcon') IGRIGHTICON?: string;
+
+  @alias('InputGroupProps.iconSize') IGICONSIZE?: number;
+
+  @alias('InputGroupProps.round') IGROUND?: boolean;
+
+  @alias('InputGroupProps.small') IGSMALL?: boolean;
+
+  @alias('InputGroupProps.placeholder') IGPLACEHOLDER?: string;
 
   _popperTarget: any;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
@@ -53,6 +75,7 @@ export default class DateRangePicker extends Component {
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
+  onClick!: (open: boolean) => void;
 
   init() {
     super.init();
@@ -62,7 +85,7 @@ export default class DateRangePicker extends Component {
       set(this, 'range2', new Date(this.range.start.getFullYear(), this.range.start.getMonth() + 1, this.range.start.getDate()));
     }
   }
-  
+
   didInsertElement() {
     set(this, '_popperTarget', this.element);
     this.set('currentWindow', this.$(window));
@@ -94,7 +117,7 @@ export default class DateRangePicker extends Component {
       }
     }
   }
-  
+
   @action
   changeCenter(unit: any, calendar: any, e: any) {
     let newCenter;
@@ -114,6 +137,9 @@ export default class DateRangePicker extends Component {
 
   @action
   togglePopover() {
+    if (this.get('onClick')) {
+      this.get('onClick')(this.open);
+    }
     this.toggleProperty('open');
   }
 
@@ -167,14 +193,14 @@ export default class DateRangePicker extends Component {
 
   _closeOnClickOut(e: any) {
     const clickIsInside = document.querySelector('.bp3-transition-container');
-    const clickIsInsideFound =clickIsInside?clickIsInside.contains(e.target):false
+    const clickIsInsideFound = clickIsInside ? clickIsInside.contains(e.target) : false
     if (!clickIsInsideFound) { this._close(); }
   }
 
   _closeOnEsc(e: any) {
     if (e.keyCode === this.ESC) { this._close(); }
   }
-  
+
   _close() {
     if (this.isDestroyed || this.isDestroying)
       return;
