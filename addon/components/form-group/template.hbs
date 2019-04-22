@@ -1,0 +1,16 @@
+{{#if label}}
+  <label class={{LABEL}} htmlFor={{labelFor}}>
+    {{{label}}}
+    <span class={{TEXT_MUTED}}>
+      {{{labelInfo}}}
+    </span>
+  </label>
+{{/if}}
+<div class="{{FORM_CONTENT}} {{contentClassName}}">
+  {{yield}}
+  {{#if helperText}}
+    <div class={{FORM_HELPER_TEXT}}>
+      {{{helperText}}}
+    </div>
+  {{/if}}
+</div>
