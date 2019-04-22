@@ -26,6 +26,13 @@
     {{nav.item 'Tree' 'docs.core.db-tree'}}
 {{/nav.subnav}}
 <div class="subnav-section">
+    {{nav.section 'FORM CONTROLS' style='large'}}
+</div>
+{{#nav.subnav as |nav|}}
+    {{nav.item 'Form Group' 'docs.core.form-group'}}
+{{/nav.subnav}}
+
+<div class="subnav-section">
     {{nav.section 'FORM INPUTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}

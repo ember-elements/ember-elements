@@ -7,5 +7,6 @@ module.exports = {
     'no-invalid-interactive': false,
     'no-unbound': false,
     'self-closing-void-elements': false,
+    'no-triple-curlies': false
   }
 };

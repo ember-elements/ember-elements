@@ -23,6 +23,7 @@ Router.map(function () {
       this.route('overflowList');
       this.route('tag');
       this.route('input-group');
+      this.route('form-group');
 
     });
     this.route('date', function () {
