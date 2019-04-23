@@ -66,6 +66,12 @@ module('Integration | Component | input-group', function (hooks) {
     `);
     assert.ok((this.element as any).querySelector('input').placeholder);
   });
+  test('default placeholder null', async function (assert) {
+    await render(hbs`
+      <InputGroup  />
+    `);
+    assert.notOk((this.element as any).querySelector('input').placeholder);
+  });
   test('leftIcon', async function (assert) {
     await render(hbs`
       <InputGroup @leftIcon='lock' />
