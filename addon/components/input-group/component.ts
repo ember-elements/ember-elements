@@ -44,7 +44,7 @@ export default class InputGroup extends Component {
   MINIMAL: string = (Classes.MINIMAL);
   INPUT: string = (Classes.INPUT);
   INPUT_ACTION: string = (Classes.INPUT_ACTION);
-  placeholder: string = (this.placeholder == undefined ? 'Any text...' : this.placeholder);
+  placeholder?: string;
   onClick!: (value: any, event: any) => void;
   onkeyUp!: (value: any, event: any) => void;
   onkeyDown!: (value: any, event: any) => void;
