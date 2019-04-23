@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerKeyEvent, click, doubleClick } from '@ember/test-helpers';
+import { render, triggerKeyEvent, click, doubleClick, blur } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | input-group', function (hooks) {
@@ -166,6 +166,19 @@ module('Integration | Component | input-group', function (hooks) {
       <InputGroup @value='hellow' @onkeyDown={{action keyDown}} />
     `);
     await triggerKeyEvent('input', 'keydown', "Enter")
+    assert.equal((this.element as any).querySelector('input').value, this.get('value'));
+  });
+  test(' onChnage event', async function (assert) {
+    var that = this;
+    this.set('onChnage', function (value: string) {
+      that.set('value', value);
+    });
+    await render(hbs`
+      <InputGroup @value='hellow' @onChange={{action onChnage}} />
+    `);
+    await this.set('value', "hellow");
+    await triggerKeyEvent('input', 'keydown', "Enter")
+
     assert.equal((this.element as any).querySelector('input').value, this.get('value'));
   });
 
