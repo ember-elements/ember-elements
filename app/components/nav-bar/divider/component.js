@@ -1,0 +1,1 @@
+export { default } from 'ember-elements/components/nav-bar/divider/component';
