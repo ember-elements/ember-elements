@@ -20,6 +20,7 @@
     {{nav.item 'Card' 'docs.core.card'}}
     {{nav.item 'Icon' 'docs.core.icon'}}
     {{nav.item 'Overflow List' 'docs.core.overflowList'}}
+    {{nav.item 'NavBar' 'docs.core.nav-bar'}}
     {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
     {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
     {{nav.item 'Tag' 'docs.core.tag'}}
