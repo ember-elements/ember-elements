@@ -24,7 +24,7 @@ Router.map(function () {
       this.route('tag');
       this.route('input-group');
       this.route('form-group');
-
+      this.route('nav-bar');
     });
     this.route('date', function () {
       this.route('date-range-picker');
@@ -46,10 +46,6 @@ Router.map(function () {
     // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
-
-
-
-
 });
 
 export default Router;
