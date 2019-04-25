@@ -168,5 +168,18 @@ module('Integration | Component | input-group', function (hooks) {
     await triggerKeyEvent('input', 'keydown', "Enter")
     assert.equal((this.element as any).querySelector('input').value, this.get('value'));
   });
+  test(' onChnage event', async function (assert) {
+    var that = this;
+    this.set('onChnage', function (value: string) {
+      that.set('value', value);
+    });
+    await render(hbs`
+      <InputGroup @value='hellow' @onChange={{action onChnage}} />
+    `);
+    await this.set('value', "hellow");
+    await triggerKeyEvent('input', 'keydown', "Enter")
+
+    assert.equal((this.element as any).querySelector('input').value, this.get('value'));
+  });
 
 });

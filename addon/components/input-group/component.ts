@@ -50,6 +50,7 @@ export default class InputGroup extends Component {
   onkeyDown!: (value: any, event: any) => void;
   onDoubleClick!: (value: any, event: any) => void;
   onBlur!: (value: any, event: any) => void;
+  onChange!: (value: any, event: any) => void;
   rightIconClick!: (event: any) => void;
   leftIconClick!: (event: any) => void;
 
@@ -84,6 +85,12 @@ export default class InputGroup extends Component {
   keyDown(event: any) {
     if (get(this, 'onkeyDown'))
       get(this, 'onkeyDown')(event.target.value, event);
+  }
+
+  @action
+  onInputChange(event: any) {
+    if (get(this, 'onChange'))
+      get(this, 'onChange')(event.target.value, event);
   }
 
   @action
