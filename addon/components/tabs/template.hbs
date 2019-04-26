@@ -1,0 +1,36 @@
+<div
+  class="{{TAB_LIST}} {{if large LARGE ""}}"
+  onKeyDown={{action "handleKeyDown"}}
+  onKeyPress={{action "handleKeyPress"}}
+  role="tablist"
+>
+  {{#if animate}}
+    <div class={{TAB_INDICATOR_WRAPPER}} style={{indicatorWrapperStyle}}>
+      <div className={{TAB_INDICATOR}}></div>
+    </div>
+  {{/if}}
+  {{#each TabsItems as |item index|}}
+    {{tabs/tab-title
+      title=item.title
+      titleTabId=item.titleTabId
+      tabElementId=item.elementId
+      selected=(eq selectedTabId item.elementId)
+      index=index
+      titleClassName=item.titleClassName
+      disabled=item.disabled
+      onClick=(action "handleTabClick")
+    }}
+  {{/each}}
+  {{yield (hash expander=(component "tabs.expander"))}}
+  {{yield (hash content=(component "tabs.content"))}}
+</div>
+{{yield
+  (hash
+    tab=(component
+      "tabs.tab"
+      parent=this
+      selectedTabId=selectedTabId
+      renderActiveTabPanelOnly=renderActiveTabPanelOnly
+    )
+  )
+}}

@@ -1,0 +1,55 @@
+<Tabs
+  @renderActiveTabPanelOnly={{true}}
+  @vertical={{true}}
+  @onChange={{action "onChange"}} as |T|
+>
+  {{! <input className="bp3-input" type="text" placeholder="Search..." /> }}
+  <T.tab @titleClassName="hii" @title="Ember" class="hellow">
+    <div>
+      <h3 class="bp3-heading">
+        Example panel: Angular
+      </h3>
+      <p class="bp3-running-text">
+        HTML is great for declaring static documents, but it falters when we try to use it for
+            declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application.
+            The resulting environment is extraordinarily expressive, readable, and quick to develop.
+      </p>
+    </div>
+  </T.tab>
+  <T.tab @title="Angular">
+    <div>
+      <h3 class="bp3-heading">
+        Example panel: Angular
+      </h3>
+      <p class="bp3-running-text">
+        HTML is great for declaring static documents, but it falters when we try to use it for
+        declaring dynamic views in web-applications. AngularJS lets you extend HTML vocabulary for your application.
+        The resulting environment is extraordinarily expressive, readable, and quick to develop.
+      </p>
+    </div>
+  </T.tab>
+  <T.tab @title="React">
+    <div>
+      <h3 class="bp3-heading">
+        Example panel: React
+      </h3>
+      <p class="bp3-running-text">
+        Lots of people use React as the V in MVC. Since React makes no assumptions about the
+            rest of your technology stack, it's easy to try it out on a small feature in an existing project.
+      </p>
+    </div>
+  </T.tab>
+  <T.tab @title="Backbone" @disabled={{true}}>
+    <div>
+      <h3 class="bp3-heading">
+        Backbone
+      </h3>
+    </div>
+  </T.tab>
+  <T.content>
+    <InputGroup @fill="true" type="text" placeholder="Search..." />
+  </T.content>
+  <T.expander />
+  sdsd
+  <T.expander />
+</Tabs>

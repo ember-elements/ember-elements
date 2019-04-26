@@ -25,6 +25,8 @@ Router.map(function () {
       this.route('input-group');
       this.route('form-group');
       this.route('nav-bar');
+      this.route('tabs');
+
     });
     this.route('date', function () {
       this.route('date-range-picker');
@@ -46,6 +48,14 @@ Router.map(function () {
     // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> feature_Tabs_component
 });
 
 export default Router;
