@@ -110,6 +110,9 @@ export default class Tabs extends Component.extend(TabsMixins, {
     else {
       this.set('selectedTabIndex', 1);
     }
+    if (this.animate) {
+      this.moveSelectionIndicator();
+    }
   }
 
   async didUpdate() {
