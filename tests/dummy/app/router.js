@@ -24,6 +24,7 @@ Router.map(function () {
       this.route('tag');
       this.route('input-group');
       this.route('form-group');
+      this.route('tabs');
 
     });
     this.route('date', function () {
@@ -46,6 +47,7 @@ Router.map(function () {
     // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
+
 
 
 

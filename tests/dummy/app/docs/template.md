@@ -23,6 +23,7 @@
     {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
     {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
     {{nav.item 'Tag' 'docs.core.tag'}}
+    {{nav.item 'Tabs' 'docs.core.tabs'}}
     {{nav.item 'Tree' 'docs.core.db-tree'}}
 {{/nav.subnav}}
 <div class="subnav-section">

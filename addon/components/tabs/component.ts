@@ -3,7 +3,7 @@ import Component from '@ember/component';
 import layout from './template';
 import TabsMixins from '../../mixins/tabs';
 import TabsTemplate from './tab/component';
-import { className, classNames, attribute } from '@ember-decorators/component';
+import { classNames, attribute } from '@ember-decorators/component';
 import * as Classes from '../../-private/common/classes';
 import * as Keys from '../../-private/common/keys';
 import Ember from 'ember';
