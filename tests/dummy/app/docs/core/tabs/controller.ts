@@ -6,6 +6,7 @@ export default class DocsCoreTabs extends Controller.extend({
 }) {
   animate: boolean = false;
   vertical: boolean = false;
+  heading: string = "Home";
   renderActiveTabPanelOnly: boolean = false;
   @action
   onAnimate() {
@@ -19,6 +20,19 @@ export default class DocsCoreTabs extends Controller.extend({
   onActivePanel() {
     this.set('renderActiveTabPanelOnly', !this.renderActiveTabPanelOnly);
   }
+  @action
+  onChange(newTabIndex: number) {
+    if (newTabIndex == 1)
+      this.set('heading', "Home");
+    else if (newTabIndex == 2)
+      this.set('heading', "Files");
+    else
+      this.set('heading', "Builds");
+
+
+
+  }
+
 
   // normal class body definition here
 }

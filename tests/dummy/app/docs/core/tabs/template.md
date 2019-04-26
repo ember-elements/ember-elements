@@ -10,6 +10,22 @@ default <code>SelectedTabIndex</code> and <code>onChange</code>.
 <div class="demo-container">
     <div class="docs-example-frame docs-example-frame-row" data-example-id="TabsExample">
         <div class="docs-example">
+        <NavBar>
+         {{#nav-bar/group align="left" }}
+            {{#nav-bar/heading}} Current page: <strong>{{heading}}</strong> {{/nav-bar/heading}}
+         {{/nav-bar/group}}
+          {{#nav-bar/group align="right" }}
+            <Tabs 
+         @animate=true 
+         @large=true  @style="height:32px"
+         @onChange={{action "onChange" }}
+          as |T|>
+            <T.tab @title="Home"/>
+            <T.tab @title="Files"/>
+            <T.tab @title="Builds"/>
+        </Tabs>
+         {{/nav-bar/group}}
+        </NavBar>
             {{! BEGIN-SNIPPET docs-example-basic-tabs.hbs }}
         <Tabs 
          @animate={{animate}} 
@@ -81,7 +97,7 @@ default <code>SelectedTabIndex</code> and <code>onChange</code>.
 ## Tabs
 
 <div class="bp3-running-text bp3-text-large">
-<p>The <code>Tabs</code> are rendered in order of  tab list, which is a flex container. <code>Tab</code> sub components  are managed by the main component (<code>Tabs</code>); clicking one will change selection. Arbitrary other children are simply rendered in order; interactions are your responsibility.
+<p>The <code>Tabs</code> rendered in order in the tab list, which is a flex container. <code>Tab</code> sub components  are managed by the main component (<code>Tabs</code>); clicking one will change selection. Arbitrary other children are simply rendered in order; interactions are your responsibility.
 Here we avoid manual <code>ID</code>  generation of each <code>tab</code>. We know that ember component is generating unique <code>ID</code>. 
 </p>
 <p>
