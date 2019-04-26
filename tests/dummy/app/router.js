@@ -48,14 +48,11 @@ Router.map(function () {
     // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
-<<<<<<< HEAD
-=======
 
 
 
 
 
->>>>>>> feature_Tabs_component
 });
 
 export default Router;
