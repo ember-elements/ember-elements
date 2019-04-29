@@ -170,6 +170,25 @@
           </div>
         </td>
       </tr>
+         <tr>
+                <td class="docs-prop-name"><code>iconSize</code></td>
+                <td class="docs-prop-details">
+                    <code
+                        class="docs-prop-type"><strong>number</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                    <div class="docs-prop-description">
+                        <div class="docs-section">
+                            <div class="bp3-running-text">
+                                <p>Size of the icon.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="docs-prop-tags"><span class="bp3-tag bp3-minimal">
+                            <span class="bp3-text-overflow-ellipsis bp3-fill">
+                                Default icon size is 16</span>
+                        </span>
+                    </div>
+                </td>
+            </tr>
       <tr>
         <td class="docs-prop-name"><code>placement</code></td>
         <td class="docs-prop-details"><code
