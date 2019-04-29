@@ -11,7 +11,7 @@
             <Button @onClick={{action 'openDialogBox'}} @primary=true 
             >Show Dialog</Button>
             <Dialog @isOpenDialog={{isOpenDialog}} @isEscapeToClose=true 
-             @isoutClickCloseDialog=true>
+             @isOutClickCloseDialog=true>
              <p>
                <strong>
                 Data integration is the seminal problem of the digital age. For over ten years, we’ve helped
@@ -90,7 +90,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="docs-prop-name"><code>isoutClickCloseDialog</code></td>
+                <td class="docs-prop-name"><code>isOutClickCloseDialog</code></td>
                 <td class="docs-prop-details"><code
                         class="docs-prop-type"><strong>boolean</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
