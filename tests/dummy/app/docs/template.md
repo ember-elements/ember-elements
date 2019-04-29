@@ -32,6 +32,7 @@
 </div>
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
+    {{nav.item 'Checkbox' 'docs.core.check-box'}}
 {{/nav.subnav}}
 
 <div class="subnav-section">

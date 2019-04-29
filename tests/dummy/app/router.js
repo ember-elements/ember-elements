@@ -26,6 +26,7 @@ Router.map(function () {
       this.route('form-group');
       this.route('nav-bar');
       this.route('tabs');
+      this.route('check-box');
 
     });
     this.route('date', function () {
