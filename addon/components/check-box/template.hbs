@@ -1,0 +1,15 @@
+<input
+  type="checkbox"
+  onchange={{action "onChangeCheckBox"}}
+  checked={{checked}}
+  id={{checkBoxId}}
+  disabled={{disabled}}
+ />
+
+<span class={{CONTROL_INDICATOR}}></span>
+{{#if labelElement}}
+  {{{labelElement}}}
+{{else}}
+  {{label}}
+{{/if}}
+{{yield}}
