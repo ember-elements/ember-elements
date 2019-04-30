@@ -10,13 +10,13 @@ export default class Dialog extends Component {
   @readOnly('width') Width!: string;
 
   @readOnly('height') Height!: string;
-  
+
   @readOnly('marginTop') Top!: string;
-  
+
   @readOnly('marginLeft') Left!: string;
-  
+
   @readOnly('marginRight') Right!: string;
-  
+
   OVERLAY: string = Classes.OVERLAY;
   OVERLAY_OPEN: string = Classes.OVERLAY_OPEN;
   OVERLAY_SCROLL_CONTAINER: string = Classes.OVERLAY_SCROLL_CONTAINER;
@@ -24,13 +24,13 @@ export default class Dialog extends Component {
   OVERLAY_CONTENT: string = Classes.OVERLAY_CONTENT;
   DIALOG: string = Classes.DIALOG;
   DIALOG_CONTAINER: string = Classes.DIALOG_CONTAINER;
-  isoutClickCloseDialog!: boolean;
+  isOutClickCloseDialog!: boolean;
   isOpenDialog!: boolean;
   ESC: number = 27;
   dbId!: string;
   isEscapeToClose!: boolean;
   currentWindow: any;
-  
+
   init() {
     super.init();
     this._closeOnEsc = this._closeOnEsc.bind(this);
@@ -68,14 +68,14 @@ export default class Dialog extends Component {
 
   @action
   outerClickCloseDialog() {
-    if (this.isoutClickCloseDialog)
+    if (this.isOutClickCloseDialog)
       this.set('isOpenDialog', false);
   }
 
   _closeOnEsc(e: any) {
     if (e.keyCode === this.ESC) { this.set('isOpenDialog', false); }
   }
-  
+
   enforceFocusFun(e: any) {
     var focus: any = document.getElementById(this.dbId);
     if (focus != null && !focus.contains(e.target)) {
