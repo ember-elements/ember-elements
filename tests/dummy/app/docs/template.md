@@ -33,7 +33,8 @@
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
-    {{nav.item 'Switch' 'docs.core.switch'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag" style="float:right"><span class="bp3-text-overflow-ellipsis bp3-fill">new</span></span>
+    {{nav.item 'Switch' 'docs.core.switch'}} 
 {{/nav.subnav}}
 
 <div class="subnav-section">
