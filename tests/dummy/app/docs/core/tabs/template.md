@@ -135,7 +135,7 @@ Removed <code>children</code> option from <code>Tab</code> . (children:  rendere
         </td>
       </tr>
       <tr>
-        <td class="docs-prop-name"><code>defaultSelectedTabId</code></td>
+        <td class="docs-prop-name"><code>defaultSelectedTabIndex</code></td>
         <td class="docs-prop-details"><code class="docs-prop-type"><strong>number</strong><em class="docs-prop-default bp3-text-muted">1</em></code>
           <div class="docs-prop-description">
             <div class="docs-section">
@@ -192,7 +192,7 @@ Removed <code>children</code> option from <code>Tab</code> . (children:  rendere
         </td>
       </tr>
       <tr>
-        <td class="docs-prop-name"><code>selectedTabId</code></td>
+        <td class="docs-prop-name"><code>selectedTabIndex</code></td>
         <td class="docs-prop-details"><code class="docs-prop-type"><strong>number</strong><em class="docs-prop-default bp3-text-muted"></em></code>
           <div class="docs-prop-description">
             <div class="docs-section">
