@@ -32,13 +32,21 @@
 </div>
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
+      <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Radio' 'docs.core.radio'}}
     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new feature</span>
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
     </span>
     {{nav.item 'Control Group' 'docs.core.control-group'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag" style="float:right"><span class="bp3-text-overflow-ellipsis bp3-fill">new</span></span>
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Switch' 'docs.core.switch'}} 
 {{/nav.subnav}}
 
