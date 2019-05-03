@@ -27,6 +27,7 @@ Router.map(function () {
       this.route('nav-bar');
       this.route('tabs');
       this.route('check-box');
+      this.route('radio');
       this.route('control-group');
       this.route('switch');
     });
@@ -50,10 +51,6 @@ Router.map(function () {
     // this.route('accessibility');
   });
   this.route('not-found', { path: '/*path' });
-
-
-
-
 
 });
 

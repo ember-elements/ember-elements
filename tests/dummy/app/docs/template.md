@@ -33,6 +33,7 @@
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
+    {{nav.item 'Radio' 'docs.core.radio'}}
     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
     <span class="bp3-text-overflow-ellipsis bp3-fill">new feature</span>
     </span>
