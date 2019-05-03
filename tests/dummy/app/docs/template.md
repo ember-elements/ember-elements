@@ -33,6 +33,7 @@
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
+    {{nav.item 'Radio' 'docs.core.radio'}}
 {{/nav.subnav}}
 
 <div class="subnav-section">
