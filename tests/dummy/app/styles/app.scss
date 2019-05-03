@@ -3,7 +3,7 @@
 @import "docs-app.scss";
 .bp3-popover {
   background-color: #fff;
-  z-index: 10;
+  z-index: 15;
 }
 
 .bp3-select-popover ul .bp3-active {
@@ -11,7 +11,7 @@
 }
 
 .popper{
-  z-index: 10;
+  z-index: 15;
 }
 .bp3-collapse-expanded {
   height: auto;

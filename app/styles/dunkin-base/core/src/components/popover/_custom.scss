@@ -1,3 +1,6 @@
+.popper{
+  z-index: 15;
+}
 .popper[x-placement^="top"] {
   &.popper-arrow-active {
     top: -12px !important;
