@@ -1,6 +1,3 @@
-// Copyright 2015 Palantir Technologies, Inc. All rights reserved.
-// Licensed under the terms of the LICENSE file distributed with this project.
-
 @import "../../common/mixins";
 @import "../../common/variables";
 @import "../button/common";
@@ -183,21 +180,18 @@ $control-indicator-spacing: $pt-grid-size !default;
 
   /*
   Checkbox
-
   Markup:
   <label class="#{$ns}-control #{$ns}-checkbox {{.modifier}}">
     <input type="checkbox" {{:modifier}} />
     <span class="#{$ns}-control-indicator"></span>
     Checkbox
   </label>
-
   :checked  - Checked
   :disabled - Disabled. Also add <code>.#{$ns}-disabled</code> to <code>.#{$ns}-control</code> to change text color (not shown below).
   :indeterminate - Indeterminate. Note that this style can only be achieved via JavaScript
                    <code>input.indeterminate = true</code>.
   .#{$ns}-align-right - Right-aligned indicator
   .#{$ns}-large - Large
-
   Styleguide checkbox
   */
 
@@ -206,7 +200,7 @@ $control-indicator-spacing: $pt-grid-size !default;
       &::before {
         // embed SVG icon image as backgroud-image above gradient.
         // the SVG image content is inlined into the CSS, so use this sparingly.
-        // background-image: svg-icon("16px/#{$icon}.svg", (path: (fill: $white)));
+      //  background-image: svg-icon("16px/#{$icon}.svg", (path: (fill: $white)));
       }
     }
 
@@ -228,19 +222,16 @@ $control-indicator-spacing: $pt-grid-size !default;
 
   /*
   Radio
-
   Markup:
   <label class="#{$ns}-control #{$ns}-radio {{.modifier}}">
     <input type="radio" name="docs-radio-regular" {{:modifier}} />
     <span class="#{$ns}-control-indicator"></span>
     Radio
   </label>
-
   :checked  - Selected
   :disabled - Disabled. Also add <code>.#{$ns}-disabled</code> to <code>.#{$ns}-control</code> to change text color (not shown below).
   .#{$ns}-align-right - Right-aligned indicator
   .#{$ns}-large - Large
-
   Styleguide radio
   */
 
@@ -264,19 +255,16 @@ $control-indicator-spacing: $pt-grid-size !default;
 
   /*
   Switch
-
   Markup:
   <label class="#{$ns}-control #{$ns}-switch {{.modifier}}">
     <input type="checkbox" {{:modifier}} />
     <span class="#{$ns}-control-indicator"></span>
     Switch
   </label>
-
   :checked  - Selected
   :disabled - Disabled. Also add <code>.#{$ns}-disabled</code> to <code>.#{$ns}-control</code> to change text color (not shown below).
   .#{$ns}-align-right - Right-aligned indicator
   .#{$ns}-large - Large
-
   Styleguide switch
   */
 
@@ -284,6 +272,12 @@ $control-indicator-spacing: $pt-grid-size !default;
   $switch-width: 1.75em !default;
   $switch-indicator-margin: 2px !default;
   $switch-indicator-size: calc(1em - #{$switch-indicator-margin * 2});
+
+  $switch-indicator-child-height: 1em;
+  $switch-indicator-child-outside-margin: 0.5em;
+  $switch-indicator-child-inside-margin: 1.2em;
+
+  $switch-indicator-text-font-size: 0.7em;
 
   $switch-background-color: rgba($gray4, 0.5) !default;
   $switch-background-color-hover: rgba($gray2, 0.5) !default;
@@ -350,7 +344,8 @@ $control-indicator-spacing: $pt-grid-size !default;
       // override default button styles, never have a box-shadow here.
       // stylelint-disable-next-line declaration-no-important
       box-shadow: none !important;
-      width: $switch-width;
+      width: auto;
+      min-width: $switch-width;
       transition: background-color $pt-transition-duration $pt-transition-ease;
 
       &::before {
@@ -368,7 +363,7 @@ $control-indicator-spacing: $pt-grid-size !default;
 
     input:checked ~ .#{$ns}-control-indicator::before {
       // 1em is size of indicator
-      left: $switch-width - 1em;
+      left: calc(100% - 1em);
     }
 
     &.#{$ns}-large {
@@ -399,6 +394,39 @@ $control-indicator-spacing: $pt-grid-size !default;
       input:checked ~ .#{$ns}-control-indicator::before {
         // inset shadow so it forms a dark line instead of blurring into the blue
         box-shadow: inset $dark-button-box-shadow;
+      }
+    }
+
+    .#{$ns}-switch-inner-text {
+      text-align: center;
+      font-size: $switch-indicator-text-font-size;
+    }
+
+    .#{$ns}-control-indicator-child {
+      &:first-child {
+        visibility: hidden;
+        margin-right: $switch-indicator-child-inside-margin;
+        margin-left: $switch-indicator-child-outside-margin;
+        line-height: 0;
+      }
+
+      &:last-child {
+        visibility: visible;
+        margin-right: $switch-indicator-child-outside-margin;
+        margin-left: $switch-indicator-child-inside-margin;
+        line-height: $switch-indicator-child-height;
+      }
+    }
+
+    input:checked ~ .#{$ns}-control-indicator .#{$ns}-control-indicator-child {
+      &:first-child {
+        visibility: visible;
+        line-height: $switch-indicator-child-height;
+      }
+
+      &:last-child {
+        visibility: hidden;
+        line-height: 0;
       }
     }
   }
@@ -443,7 +471,6 @@ $control-indicator-spacing: $pt-grid-size !default;
 
   /*
   Inline labels
-
   Markup:
   <div>
     <label class="#{$ns}-label">A group of related options</label>
@@ -463,7 +490,6 @@ $control-indicator-spacing: $pt-grid-size !default;
       Third
     </label>
   </div>
-
   Styleguide checkbox-inline
   */
 }

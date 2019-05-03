@@ -28,7 +28,7 @@ Router.map(function () {
       this.route('tabs');
       this.route('check-box');
       this.route('control-group');
-
+      this.route('switch');
     });
     this.route('date', function () {
       this.route('date-range-picker');
