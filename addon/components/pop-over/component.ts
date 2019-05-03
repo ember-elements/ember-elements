@@ -40,6 +40,11 @@ export default class PopOver extends Component {
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
   popperClass: string = 'popper';
   iconSize?: number;
+  popperContentId!: string;
+  popperClientWidth!: number;
+  popperClientHeight!: number;
+  MAX_RE_RENDER_LIMIT: number = 30;
+  START_RE_RENDER: number = 0;
 
   init() {
     super.init();
@@ -49,6 +54,7 @@ export default class PopOver extends Component {
 
   didInsertElement() {
     set(this, '_popperTarget', this.element);
+    set(this, 'popperContentId', this.elementId + "popper");
     this.set('currentWindow', this.$(window));
   }
 
@@ -68,6 +74,18 @@ export default class PopOver extends Component {
     Ember.run.next(this, this.detachClickHandler);
   }
 
+  async didUpdate() {
+    if (document.getElementById(this.popperContentId) && this.open && (this.START_RE_RENDER <= this.MAX_RE_RENDER_LIMIT)) {
+      if (this.get('popperClientWidth') != (document.getElementById(this.popperContentId) as HTMLElement).clientWidth || this.get('popperClientHeight') != (document.getElementById(this.popperContentId) as HTMLElement).clientHeight) {
+        set(this, 'popperClientWidth', (document.getElementById(this.popperContentId) as HTMLElement).clientWidth);
+        set(this, 'popperClientHeight', (document.getElementById(this.popperContentId) as HTMLElement).clientHeight);
+        await this.toggleProperty('open');
+        this.toggleProperty('open');
+        this.incrementProperty('START_RE_RENDER');
+      }
+    }
+  }
+
   @action
   close() {
     if (get(this, 'popCloseClickFun'))
@@ -80,6 +98,12 @@ export default class PopOver extends Component {
     this.toggleProperty('open');
     if (get(this, 'popOpenClickFun'))
       get(this, 'popOpenClickFun')();
+
+    if (this.open && document.getElementById(this.popperContentId)) {
+      set(this, 'START_RE_RENDER', 0);
+      set(this, 'popperClientWidth', (document.getElementById(this.popperContentId) as HTMLElement).clientWidth);
+      set(this, 'popperClientHeight', (document.getElementById(this.popperContentId) as HTMLElement).clientHeight);
+    }
   }
 
   detachClickHandler() {
