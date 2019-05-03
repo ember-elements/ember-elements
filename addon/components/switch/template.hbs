@@ -1,0 +1,29 @@
+<input
+  type="checkbox"
+  onchange={{action "onChangeSwitch"}}
+  checked={{checked}}
+  id={{switchId}}
+  disabled={{disabled}}
+ />
+
+<span class={{CONTROL_INDICATOR}}>
+  {{#if (or innerLabel innerLabelChecked)}}
+    <div key="checked" class={{CONTROL_INDICATOR_CHILD}}>
+      <div class={{SWITCH_INNER_TEXT}}>
+        {{#if innerLabelChecked}}
+          {{innerLabelChecked}}
+        {{else}}
+          {{innerLabel}}
+        {{/if}}
+      </div>
+    </div>
+    <div key="unchecked" class={{CONTROL_INDICATOR_CHILD}}>
+      <div class={{SWITCH_INNER_TEXT}}>
+        {{innerLabel}}
+      </div>
+    </div>
+  {{/if}}
+</span>
+{{label}}
+{{{labelElement}}}
+{{yield}}
