@@ -3290,7 +3290,7 @@ a.bp3-button.bp3-disabled {
   border-radius: 1.75em;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  width: 1.75em;
+  width: auto;
   -webkit-transition: background-color .1s cubic-bezier(.4, 1, .75, .9);
   transition: background-color .1s cubic-bezier(.4, 1, .75, .9)
 }
@@ -3310,7 +3310,8 @@ a.bp3-button.bp3-disabled {
 }
 
 .bp3-control.bp3-switch input:checked~.bp3-control-indicator:before {
-  left: .75em
+      left: calc(100% - 1em);
+
 }
 
 .bp3-control.bp3-switch.bp3-large:not(.bp3-align-right) {
