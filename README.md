@@ -3,6 +3,11 @@
 
 **Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.  
 
+[![Build Status](https://travis-ci.org/dunkinbase/ember-elements.svg?branch=master)](https://travis-ci.org/dunkinbase/ember-elements)
+[![minified](https://badgen.net/bundlephobia/min/ember-elements)](https://bundlephobia.com/result?p=ember-elements)
+[![minified + gzip](https://badgen.net/bundlephobia/minzip/ember-elements)](https://bundlephobia.com/result?p=ember-elements)
+[![license](https://badgen.net/github/license/dunkinbase/ember-elements)](https://github.com/dunkinbase/ember-elements/blob/master/LICENSE)
+[![release](https://badgen.net/github/release/dunkinbase/ember-elements)](https://github.com/dunkinbase/ember-elements/releases)
 
 ## **The Whys**
 
@@ -67,19 +72,19 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
   - [x] Resize sensor
   - [ ] Skeleton
   - [ ] Spinner
-  - [ ] Tabs
+  - [x] Tabs
   - [x] Tag
   - [ ] Text
   - [x] Tree
 
 - [ ] Form Controls
-  - [ ] Form group
-  - [ ] Control group
+  - [x] Form group
+  - [x] Control group
   - [ ] Label
-  - [ ] Checkbox
-  - [ ] Radio
+  - [x] Checkbox
+  - [x] Radio
   - [ ] Slider
-  - [ ] Switch
+  - [x] Switch
 
 - [ ] Form Inputs
   - [ ] File input

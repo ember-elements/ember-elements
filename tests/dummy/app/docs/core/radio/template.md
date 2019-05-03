@@ -18,7 +18,7 @@
     <div class="demo-container">
       <div
         class="docs-example-frame docs-example-frame-row"
-        data-example-id="CheckboxExample"
+        data-example-id="RadioExample"
       >
         <div class="docs-example">
           {{! BEGIN-SNIPPET docs-example-basic-radio.hbs }}
