@@ -7,7 +7,7 @@ A checkbox allows the user to toggle between checked, unchecked, and (rarely) in
     <div class="demo-container">
       <div class="docs-example-frame docs-example-frame-row" data-example-id="CheckboxExample">
         <div class="docs-example">
-          {{! BEGIN-SNIPPET docs-example-basic-check-box.hbs }}
+          {{! BEGIN-SNIPPET docs-example-basic-check-box-example.hbs }}
           <div>
           <label class="bp3-label">Assign responsibility</label>
           <CheckBox
@@ -15,23 +15,26 @@ A checkbox allows the user to toggle between checked, unchecked, and (rarely) in
             @inline={{inline}}
             @large={{large}}
             @alignIndicator={{alignIndicator}}
-            @label="Gilad Gray"
             @defaultIndeterminate={{true}}
-           />
+           >
+           Gilad Gray
+           </CheckBox>
           <CheckBox
             @disabled={{disabled}}
             @inline={{inline}}
             @large={{large}}
             @alignIndicator={{alignIndicator}}
-            @label="Jason Killian"
-           />
+            >
+           Jason Killian
+           </CheckBox>
           <CheckBox
             @disabled={{disabled}}
             @inline={{inline}}
             @large={{large}}
             @alignIndicator={{alignIndicator}}
-            @label="Antoine Llorca"
-           />
+           >
+           Antoine Llorca
+           </CheckBox>
            </div>
           {{! END-SNIPPET }}
         </div>
@@ -78,9 +81,9 @@ A checkbox allows the user to toggle between checked, unchecked, and (rarely) in
       </div>
     </div>
   {{/demo.example}}
-  {{demo.snippet label="template.hbs" name="docs-example-basic-check-box.hbs"
+  {{demo.snippet label="template.hbs" name="docs-example-basic-check-box-example.hbs"
   }}
-  {{demo.snippet label="component.ts" name="docs-example-basic-check-box.ts"
+  {{demo.snippet label="component.ts" name="docs-example-basic-check-box-example.ts"
   }}
 {{/docs-demo}}
 
