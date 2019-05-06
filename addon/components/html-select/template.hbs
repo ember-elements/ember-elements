@@ -19,10 +19,10 @@
         (if optionItem.label optionItem.label optionItem)
       }}
     >
-      {{#if optionItem.value}}
-        {{optionItem.value}}
-      {{else if optionItem.label}}
+      {{#if optionItem.label}}
         {{optionItem.label}}
+      {{else if optionItem.value}}
+        {{optionItem.value}}
       {{else}}
         {{optionItem}}
       {{/if}}
