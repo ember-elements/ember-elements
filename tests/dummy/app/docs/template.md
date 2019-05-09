@@ -40,6 +40,7 @@
     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
     </span>
     {{nav.item 'Radio' 'docs.core.radio'}}
+    {{nav.item 'HTML select' 'docs.core.html-select'}}
     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
     </span>
@@ -54,6 +55,7 @@
     {{nav.section 'FORM INPUTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
+    {{nav.item 'File Input' 'docs.core.file-input'}}
     {{nav.item 'Input Group' 'docs.core.input-group'}}
     {{nav.item 'Tag Input' 'docs.core.tag-input'}}
 {{/nav.subnav}}

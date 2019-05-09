@@ -30,6 +30,8 @@ Router.map(function () {
       this.route('radio');
       this.route('control-group');
       this.route('switch');
+      this.route('file-input');
+      this.route('html-select');
     });
     this.route('date', function () {
       this.route('date-range-picker');
