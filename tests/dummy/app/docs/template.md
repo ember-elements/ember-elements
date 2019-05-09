@@ -40,6 +40,7 @@
     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
     </span>
     {{nav.item 'Radio' 'docs.core.radio'}}
+    {{nav.item 'HTML select' 'docs.core.html-select'}}
     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
     </span>

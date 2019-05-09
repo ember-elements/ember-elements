@@ -1,0 +1,41 @@
+<select
+  disabled={{disabled}}
+  multiple={{false}}
+  onchange={{action "onSelectOption"}}
+>
+  {{#each options as |optionItem|}}
+    <option
+      class={{optionItem.class}}
+      disabled={{optionItem.disabled}}
+      selected={{optionItem.selected}}
+      key={{if
+        optionItem.value
+        optionItem.value
+        (if optionItem.label optionItem.label optionItem)
+      }}
+      value={{if
+        optionItem.value
+        optionItem.value
+        (if optionItem.label optionItem.label optionItem)
+      }}
+    >
+      {{#if optionItem.label}}
+        {{optionItem.label}}
+      {{else if optionItem.value}}
+        {{optionItem.value}}
+      {{else}}
+        {{optionItem}}
+      {{/if}}
+    </option>
+  {{/each}}
+  {{yield}}
+</select>
+<Icon
+  @icon="double-caret-vertical"
+  @class={{iconProps.class}}
+  @style={{iconProps.style}}
+  @intent={{iconProps.intent}}
+  @iconSize={{iconProps.iconSize}}
+  @title={{iconProps.title}}
+  @color={{iconProps.color}}
+ />
