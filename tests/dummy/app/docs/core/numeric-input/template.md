@@ -129,14 +129,30 @@
         custom <code>onKeyDown</code> callback) and when the field loses focus (via a custom
         <code>onBlur</code> callback). If the input is invalid when either of these callbacks is
         trigged, the field will be cleared.</p>
-    <div class="bp3-callout bp3-intent-primary bp3-icon-info-sign">
+    <div class="bp3-callout bp3-intent-primary">
+    <Icon @icon='info-sign' @iconSize=16 ></Icon>
         This example contains non-core functionality that is meant to demonstrate
         the extensibility of the `NumericInput` component. The correctness of the
         custom evaluation code has not been tested robustly.
     </div>
 
 </div>
-
+      <div
+        class="docs-example-frame docs-example-frame-row"
+        data-example-id="NumericInputBasicExample"
+      >
+        <div class="docs-example">
+         <NumericInput
+          @allowNumericCharactersOnly={{false}}
+          onChange={{action "handleBlur"}}
+          onKeyDown={{action "handleKeyDown"}}
+          @onValueChange={{action "handleValueChange"}}
+          @placeholder="Enter a number or expression..."
+          @value={{value}}
+         >
+        </NumericInput>
+        </div>
+      </div>
 
 ## Props
 <div class="docs-modifiers">

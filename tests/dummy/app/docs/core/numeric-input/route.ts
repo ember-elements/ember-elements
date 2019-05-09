@@ -8,9 +8,9 @@ export default class DocsCoreNumericInput extends Route.extend({
       controller.set('fill', false);
       controller.set('large', false);
       controller.set('intent', "none");
-      controller.set('leftIcon', "dollar");
+      controller.set('leftIcon', "");
       controller.set('allowNumericCharactersOnly', true);
-
+      controller.set('value', "");
       controller.set('selectAllOnFocus', false);
       controller.set('selectAllOnIncrement', false);
       controller.set('min', 0);
