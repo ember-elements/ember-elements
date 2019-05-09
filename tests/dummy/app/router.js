@@ -32,6 +32,7 @@ Router.map(function () {
       this.route('switch');
       this.route('file-input');
       this.route('html-select');
+      this.route('numeric-input');
     });
     this.route('date', function () {
       this.route('date-range-picker');
