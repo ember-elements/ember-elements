@@ -121,6 +121,8 @@ export default class NumericInput extends Component {
   NUMERIC_INPUT = NUMERIC_INPUT;
   LARGE = LARGE;
 
+  valueDidChange!: string | number;
+
   // updating these flags need not trigger re-renders, so don't include them in this.state.
   private globTimeout!: any;
   private didPasteEventJustOccur = false;
@@ -150,12 +152,23 @@ export default class NumericInput extends Component {
     // outside of the new bounds, then clamp the value to the new valid range.
     if (didBoundsChange && sanitizedValue !== this.get('value')) {
       this.set('stepMaxPrecision', stepMaxPrecision);
-      this.set('value', sanitizedValue);
+      this.set('valueDidChange', sanitizedValue);
     } else {
       this.set('stepMaxPrecision', stepMaxPrecision);
-      this.set('value', value);
     }
   }
+
+  didRender() {
+    if (this.valueDidChange && this.value != this.valueDidChange) {
+      this.set('value', this.valueDidChange);
+
+      if (this.get('onValueChange'))
+        this.get('onValueChange')(+(this.value as string), this.value as string)
+
+      this.set('valueDidChange', undefined);
+    }
+  }
+
   didUpdate() {
     if (this.shouldSelectAfterUpdate) {
       let numericCompDoc: any = document.getElementById(this.elementId);
