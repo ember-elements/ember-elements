@@ -1,0 +1,21 @@
+<input
+  onChange={{action "handleInputChange"}}
+  type="file"
+  class={{inputProps.class}}
+  style={{inputProps.style}}
+  autofocus={{inputProps.autofocus}}
+  name={{inputProps.name}}
+  readonly={{inputProps.readonly}}
+  required={{inputProps.required}}
+  tabIndex={{if disabled -1 inputProps.tabIndex}}
+  id={{inputProps.fileInputId}}
+  disabled={{if disabled disabled inputProps.disabled}}
+ />
+
+<span class={{FILE_UPLOAD_INPUT}}>
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    {{{text}}}
+  {{/if}}
+</span>
