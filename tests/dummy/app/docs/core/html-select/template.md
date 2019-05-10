@@ -23,7 +23,7 @@
             @fill={{fill}}
             @large={{large}}
             @minimal={{minimal}}
-            onChange={{action 'onChange'}}
+            @onChange={{action 'onChange'}}
            >
           </HtmlSelect>
           {{! END-SNIPPET }}

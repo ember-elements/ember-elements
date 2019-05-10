@@ -32,22 +32,13 @@
 </div>
 {{#nav.subnav as |nav|}}
     {{nav.item 'Form Group' 'docs.core.form-group'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
-      <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Radio' 'docs.core.radio'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'HTML select' 'docs.core.html-select'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Control Group' 'docs.core.control-group'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Switch' 'docs.core.switch'}} 
 {{/nav.subnav}}
 
@@ -55,10 +46,19 @@
     {{nav.section 'FORM INPUTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
+     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'File Input' 'docs.core.file-input'}}
     {{nav.item 'Input Group' 'docs.core.input-group'}}
+     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Numeric input' 'docs.core.numeric-input'}}
     {{nav.item 'Tag Input' 'docs.core.tag-input'}}
+     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Text Area' 'docs.core.text-area'}}
 {{/nav.subnav}}
 <div class="subnav-section">

@@ -1,5 +1,7 @@
 # Text area
-
+<div class="bp3-running-text bp3-text-large">
+ <p>Apply <code>Classes.INPUT</code> on a <code>&lt;textarea&gt;</code>, or use the <code>TextArea</code> component.</p>
+</div>
 {{#docs-demo as |demo|}}
   {{#demo.example}}
     <div class="demo-container">
@@ -53,7 +55,7 @@
   {{demo.snippet label="component.ts" name="docs-example-basic-text-area.ts"}}
 {{/docs-demo}}
 
-# Props
+## Props
 <div class="docs-modifiers">
   <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
