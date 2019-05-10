@@ -75,7 +75,7 @@ module('Integration | Component | tool-tip', function (hooks) {
   test('placement', async function (assert) {
     await render(hbs`{{#tool-tip class='bp3-tooltip-indicator'  placement='top' content="it is tooltip"}}it is tooltip{{/tool-tip}}`);
     await triggerEvent('.bp3-tooltip-indicator', 'mouseover');
-    assert.ok($('.tooltip-popper').attr('x-placement'));
+    assert.ok((document.querySelector('.tooltip-popper') as HTMLInputElement).getAttribute('x-placement'));
 
   });
   test('intent=primary', async function (assert) {

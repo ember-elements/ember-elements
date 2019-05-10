@@ -22,7 +22,10 @@
     @popperTarget={{_popperTarget}}
     @placement={{placement}}
   >
-    <div class="popper-margin-height {{TRANSITION_CONTAINER}}">
+    <div
+      id={{popperContainerId}}
+      class="popper-margin-height {{TRANSITION_CONTAINER}}"
+    >
       <div class="{{POPOVER}} bp3-select-popover">
         {{#if popOverArrow}}
           <div class="popper-arrow bp3-popover-arrow" x-arrow>

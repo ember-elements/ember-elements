@@ -41,6 +41,7 @@ export default class PopOver extends Component {
   popperClass: string = 'popper';
   iconSize?: number;
   popperContentId!: string;
+  popperContainerId!: string;
   popperClientWidth!: number;
   popperClientHeight!: number;
   MAX_RE_RENDER_LIMIT: number = 30;
@@ -55,7 +56,7 @@ export default class PopOver extends Component {
   didInsertElement() {
     set(this, '_popperTarget', this.element);
     set(this, 'popperContentId', this.elementId + "popper");
-    this.set('currentWindow', this.$(window));
+    set(this, 'popperContainerId', this.elementId + "popper-container");
   }
 
   didReceiveAttrs() {
@@ -108,21 +109,20 @@ export default class PopOver extends Component {
 
   detachClickHandler() {
     const method = this.get('open') ? 'on' : 'off';
-    this.set('popelement', $('.bp3-transition-container'));
-
+    this.set('popelement', document.querySelector('#' + this.popperContainerId));
     if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
+      window.addEventListener('click', this._closeOnClickOut);
+      window.addEventListener('keyup', this._closeOnEsc);
     }
     else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
+      window.removeEventListener('click', this._closeOnClickOut);
+      window.removeEventListener('keyup', this._closeOnEsc);
     }
   }
 
   async  _closeOnClickOut(e: any) {
-    const clickIsInside = await $(this.popelement[this.popelement.length - 1]).find(e.target).length > 0;
-    if (!clickIsInside && !$(e.target).hasClass(this.FILL)) { this._close(); }
+    const clickIsInside = await this.popelement.contains(e.target);
+    if (!clickIsInside && !e.target.classList.contains(this.FILL)) { this._close(); }
   }
 
   _closeOnEsc(e: any) {

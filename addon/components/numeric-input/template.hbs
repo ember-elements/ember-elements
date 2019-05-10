@@ -1,0 +1,66 @@
+<ControlGroup @class="{{NUMERIC_INPUT}} {{if large LARGE}}" @fill={{fill}}>
+  {{#if (eq buttonPosition buttonPositionLeft)}}
+    <ButtonGroup @class={{FIXED}} key="button-group" @vertical={{true}}>
+      <Button
+        @disabled={{if disabled disabled readOnly}}
+        @icon="chevron-up"
+        @intent={{intent}}
+        @mouseDown={{action "incrementButtonHandlers"}}
+        onkeydown={{action "incrementButtonHandlers"}}
+       />
+
+      <Button
+        @disabled={{if disabled disabled readOnly}}
+        @icon="chevron-down"
+        @intent={{intent}}
+        @mouseDown={{action "decrementButtonHandlers"}}
+        onkeydown={{action "decrementButtonHandlers"}}
+       />
+
+    </ButtonGroup>
+  {{/if}}
+  <InputGroup
+    @autocomplete="off"
+    @intent={{intent}}
+    @large={{large}}
+    @leftIcon={{leftIcon}}
+    @readOnly={{readOnly}}
+    @max={{max}}
+    @min={{min}}
+    @focusIn={{action "handleInputFocus"}}
+    onChange={{action "handleInputBlur"}}
+    @keyUp={{action "handleInputChange"}}
+    @keyDown={{action "handleInputKeyDown"}}
+    @keyPress={{action "handleInputKeyPress"}}
+    onPaste={{action "handleInputPaste"}}
+    @value={{value}}
+    @disabled={{disabled}}
+    @placeholder={{placeholder}}
+    @iconSize={{iconSize}}
+    @Round={{Round}}
+    @rightIcon={{rightIcon}}
+    @small={{small}}
+  >
+    {{yield}}
+  </InputGroup>
+  {{#if (eq buttonPosition buttonPositionRight)}}
+    <ButtonGroup @class={{FIXED}} key="button-group" @vertical={{true}}>
+      <Button
+        @disabled={{if disabled disabled readOnly}}
+        @icon="chevron-up"
+        @intent={{intent}}
+        @mouseDown={{action "incrementButtonHandlers"}}
+        onkeydown={{action "incrementButtonHandlers"}}
+       />
+
+      <Button
+        @disabled={{if disabled disabled readOnly}}
+        @icon="chevron-down"
+        @intent={{intent}}
+        @mouseDown={{action "decrementButtonHandlers"}}
+        onkeydown={{action "decrementButtonHandlers"}}
+       />
+
+    </ButtonGroup>
+  {{/if}}
+</ControlGroup>

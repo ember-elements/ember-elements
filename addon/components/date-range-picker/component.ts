@@ -76,6 +76,7 @@ export default class DateRangePicker extends Component {
   popOverArrow!: boolean;
   minimal: boolean = false;
   onClick!: (open: boolean) => void;
+  popperContainerId!: string;
 
   init() {
     super.init();
@@ -88,7 +89,7 @@ export default class DateRangePicker extends Component {
 
   didInsertElement() {
     set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
+    set(this, 'popperContainerId', this.elementId + "popper-container");
   }
 
   didRender() {
@@ -182,17 +183,17 @@ export default class DateRangePicker extends Component {
   detachClickHandler() {
     const method = this.get('open') ? 'on' : 'off';
     if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
+      window.addEventListener('click', this._closeOnClickOut);
+      window.addEventListener('keyup', this._closeOnEsc);
     }
     else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
+      window.removeEventListener('click', this._closeOnClickOut);
+      window.removeEventListener('keyup', this._closeOnEsc);
     }
   }
 
   _closeOnClickOut(e: any) {
-    const clickIsInside = document.querySelector('.bp3-transition-container');
+    const clickIsInside = document.querySelector('#' + this.popperContainerId);
     const clickIsInsideFound = clickIsInside ? clickIsInside.contains(e.target) : false
     if (!clickIsInsideFound) { this._close(); }
   }
