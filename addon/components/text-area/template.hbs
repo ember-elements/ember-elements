@@ -1,0 +1,23 @@
+<textarea
+  class={{classBind}}
+  style={{textAreaHeight}}
+  id={{textAreaId}}
+  autofocus={{autofocus}}
+  cols={{cols}}
+  rows={{rows}}
+  dir={{dir}}
+  dirname={{dirname}}
+  disabled={{disabled}}
+  form={{form}}
+  maxlength={{maxlength}}
+  name={{name}}
+  placeholder={{placeholder}}
+  readonly={{readOnly}}
+  required={{required}}
+  tabindex={{if disabled -1 tabindex}}
+  spellcheck={{spellcheck}}
+  selectionEnd={{selectionEnd}}
+  oninput={{action "onChangeArea"}}
+>
+  {{yield}}
+</textarea>
