@@ -54,6 +54,13 @@ export default class TextArea extends Component {
     this.set('classBind', [`${this.INPUT} ${this.fill ? this.FILL : ''} ${this.large ? this.LARGE : ''}  ${this.small ? this.SMALL : ''} ${this.INTENT ? this.INTENT : ''} ${this.className ? this.className : ''}`]);
   }
 
+  didInsertElement() {
+    if (this.element) {
+      var textAreaComp = (this.element.querySelector('textarea') || {}) as HTMLInputElement;
+      textAreaComp.value = textAreaComp.value.trim();
+    }
+  }
+
   @action
   onChangeArea(e: any) {
     if (this.growVertically) {
