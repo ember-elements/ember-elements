@@ -34,19 +34,24 @@ export default class TextArea extends Component {
   /**Intent style */
   intent?: Intent;
 
-  FILL = this.fill ? Classes.FILL : '';
-  LARGE = this.large ? Classes.LARGE : '';
-  SMALL = this.small ? Classes.SMALL : '';
+  className?: string;
+
+  FILL = Classes.FILL;
+  LARGE = Classes.LARGE;
+  SMALL = Classes.SMALL;
   INPUT = Classes.INPUT;
   INTENT = Classes.intentClass('none');
 
   onChange!: (event: any) => void;
   textAreaHeight!: any;
   height!: number;
+  classBind: string = this.INPUT;
 
   didReceiveAttrs() {
     this._super(...arguments);
-    this.set('INTENT', Classes.intentClass(this.intent))
+    this.set('INTENT', Classes.intentClass(this.intent));
+
+    this.set('classBind', [`${this.INPUT} ${this.fill ? this.FILL : ''} ${this.large ? this.LARGE : ''}  ${this.small ? this.SMALL : ''} ${this.INTENT ? this.INTENT : ''} ${this.className ? this.className : ''}`]);
   }
 
   @action
