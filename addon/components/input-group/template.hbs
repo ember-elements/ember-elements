@@ -6,25 +6,30 @@
    />
 
 {{/if}}
-<input
-  style={{rightElementWidth}}
-  value={{value}}
-  autofocus={{autofocus}}
-  placeholder={{placeholder}}
-  size={{size}}
-  tabindex={{tabindex}}
-  maxlength={{maxlength}}
-  name={{name}}
-  min={{min}}
-  max={{max}}
-  pattern={{pattern}}
-  autocomplete={{autocomplete}}
-  type={{type}}
-  class={{INPUT}}
-  disabled={{disabled}}
-  onchange={{action "onInputChange"}}
- />
-
+{{input
+  style=rightElementWidth
+  value=value
+  autofocus=autofocus
+  placeholder=placeholder
+  size=size
+  tabindex=tabindex
+  maxlength=maxlength
+  name=name
+  min=min
+  max=max
+  pattern=pattern
+  autocomplete=autocomplete
+  type=type
+  class=INPUT
+  disabled=disabled
+  input=(action "onInputChange")
+  readonly=readOnly
+  required=required
+  height=height
+  multiple=multiple
+  step=step
+  width=width
+}}
 {{#if hasBlock}}
   <span class={{INPUT_ACTION}}>
     {{yield}}
