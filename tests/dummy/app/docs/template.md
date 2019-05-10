@@ -59,6 +59,7 @@
     {{nav.item 'Input Group' 'docs.core.input-group'}}
     {{nav.item 'Numeric input' 'docs.core.numeric-input'}}
     {{nav.item 'Tag Input' 'docs.core.tag-input'}}
+    {{nav.item 'Text Area' 'docs.core.text-area'}}
 {{/nav.subnav}}
 <div class="subnav-section">
     {{nav.section 'OVERLAYS' style='large'}}
