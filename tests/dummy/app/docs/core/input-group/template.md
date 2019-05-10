@@ -45,7 +45,7 @@
         @large={{isLarge}} 
         @small={{isSmall}} 
         @intent={{intent}}  
-        @onkeyDown={{action 'onkeyDown'}}>
+        >
         <Select @data={{data}} @type='button'    
          @selected={{selected}} 
          @minimal={{false}}
