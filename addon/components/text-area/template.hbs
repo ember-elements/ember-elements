@@ -1,0 +1,22 @@
+<textarea
+  class="{{INPUT}} {{INTENT}} {{FILL}} {{LARGE}} {{SMALL}} {{className}}"
+  style={{textAreaHeight}}
+  id={{textAreaId}}
+  autofocus={{autofocus}}
+  cols={{cols}}
+  dir={{dir}}
+  dirname={{dirname}}
+  disabled={{disabled}}
+  form={{form}}
+  maxlength={{maxlength}}
+  name={{name}}
+  placeholder={{placeholder}}
+  readonly={{readonly}}
+  required={{required}}
+  tabindex={{if disabled -1 tabindex}}
+  spellcheck={{spellcheck}}
+  selectionEnd={{selectionEnd}}
+  oninput={{action "onChangeArea"}}
+>
+  {{yield}}
+</textarea>
