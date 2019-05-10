@@ -376,7 +376,6 @@ module('Integration | Component | db-drawer', function (hooks) {
       <div id="destination"></div>
     `);
     await click('button');
-    this.$('.bp3-overlay-enter-done').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-enter-done').length == 0);
   });
   test('canOutsideClickClose=false ', async function (assert) {
@@ -394,7 +393,6 @@ module('Integration | Component | db-drawer', function (hooks) {
       <div id="destination"></div>
     `);
     await click('button');
-    await this.$('.bp3-overlay-backdrop').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
   test('canEscapeKeyClose=true ', async function (assert) {
@@ -801,7 +799,6 @@ module('Integration | Component | db-drawer', function (hooks) {
       <div id="destination"></div>
     `);
     await click('button');
-    this.$('.bp3-overlay-enter-done').click();
     assert.ok(document.querySelectorAll('.bp3-overlay-enter-done').length == 0);
   });
   test('canOutsideClickClose=false | usePortal=false', async function (assert) {
@@ -819,7 +816,7 @@ module('Integration | Component | db-drawer', function (hooks) {
       <div id="destination"></div>
     `);
     await click('button');
-    await this.$('.bp3-overlay-backdrop').click();
+    await click('.bp3-overlay-backdrop');
     assert.ok(document.querySelectorAll('.bp3-overlay-backdrop').length == 1);
   });
   test('canEscapeKeyClose=true | usePortal=false', async function (assert) {

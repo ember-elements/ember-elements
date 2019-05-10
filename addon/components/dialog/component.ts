@@ -29,7 +29,6 @@ export default class Dialog extends Component {
   ESC: number = 27;
   dbId!: string;
   isEscapeToClose!: boolean;
-  currentWindow: any;
 
   init() {
     super.init();
@@ -51,19 +50,19 @@ export default class Dialog extends Component {
   }
 
   didRender() {
-    if (this.get('isEscapeToClose'))
-      this.currentWindow.on('keyup', this._closeOnEsc);
     if (this.isOpenDialog) {
       var focus: any = document.getElementById(this.dbId);
       if (focus) {
         focus.focus();
         document.addEventListener('focus', this.enforceFocusFun, true);
       }
+      if (this.get('isEscapeToClose'))
+        window.addEventListener('keyup', this._closeOnEsc);
     }
-  }
-
-  didInsertElement() {
-    this.set('currentWindow', this.$(window));
+    else {
+      window.removeEventListener('keyup', this._closeOnEsc);
+      document.removeEventListener('focus', this.enforceFocusFun, true);
+    }
   }
 
   @action

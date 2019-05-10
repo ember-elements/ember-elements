@@ -25,7 +25,7 @@ export default class DocsCoreHtmlSelect extends Controller.extend({
   isOpenOptionDrawer = false;
 
   @action
-  onChange(e: HTMLSelectElement) {
+  onChange(e: any) {
     console.log(e.target.value);
   }
 

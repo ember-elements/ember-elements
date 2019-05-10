@@ -18,7 +18,7 @@ export default class MultiSelect extends Component {
   @attribute('style') style: any = Ember.String.htmlSafe((this.style));
 
   @readOnly('open') Open!: boolean;
-  
+
   _popperTarget: any;
   ESC: number = 27;
   selectedKey: number = -1;
@@ -27,7 +27,6 @@ export default class MultiSelect extends Component {
   classNameAssigned: string = `${Classes.TEXT_OVERFLOW_ELLIPSIS} ${Classes.FILL}`;
   select: any[] = this.selected || [];
   isDBrequired!: boolean;
-  currentWindow: any;
   tagInput: string = Classes.TAG_INPUT_VALUES;
   INPUT_GHOST: string = Classes.INPUT_GHOST;
   BUTTON: string = Classes.BUTTON;
@@ -48,6 +47,7 @@ export default class MultiSelect extends Component {
   defaultSelected: string = '';
   filteredList: any[] = [];
   isDefaultOpen!: boolean;
+  popperContainerId!: string;
   data: any;
   onSelect!: (item: object[]) => void;
   onDelete!: (item: object[]) => void;
@@ -59,7 +59,7 @@ export default class MultiSelect extends Component {
 
   didInsertElement() {
     set(this, '_popperTarget', this.element);
-    this.set('currentWindow', this.$(window));
+    set(this, 'popperContainerId', this.elementId + "popper-container");
   }
 
   async didReceiveAttrs() {
@@ -136,7 +136,7 @@ export default class MultiSelect extends Component {
 
   @action
   delete(value: string, index: any) {
-    value=value;
+    value = value;
     Ember.A(this.get('select'));
     if (index != null) {
       let removeObj = this.get('select')[index];
@@ -282,12 +282,12 @@ export default class MultiSelect extends Component {
   detachClickHandler() {
     const method = this.get('open') ? 'on' : 'off';
     if (method == 'on') {
-      this.currentWindow.on('click', this._closeOnClickOut);
-      this.currentWindow.on('keyup', this._closeOnEsc);
+      window.addEventListener('click', this._closeOnClickOut);
+      window.addEventListener('keyup', this._closeOnEsc);
     }
     else {
-      this.currentWindow.off('click', this._closeOnClickOut);
-      this.currentWindow.off('keyup', this._closeOnEsc);
+      window.removeEventListener('click', this._closeOnClickOut);
+      window.removeEventListener('keyup', this._closeOnEsc);
     }
   }
   _closeOnClickOut(e: any) {
