@@ -83,13 +83,15 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
   - [ ] Label
   - [x] Checkbox
   - [x] Radio
+  - [x] Html select
   - [ ] Slider
   - [x] Switch
 
 - [ ] Form Inputs
-  - [ ] File input
-  - [ ] Numeric input
+  - [x] File input
+  - [x] Numeric input
   - [x] Text input
+  - [x] Text area
   - [x] Tag input
 
 - [ ] Overlays
