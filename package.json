@@ -1,6 +1,6 @@
 {
   "name": "ember-elements",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**",
   "keywords": [
     "ui-components",
@@ -26,6 +26,7 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
+    "prepublishOnly": "ember ts:precompile",
     "postpublish": "ember ts:clean"
   },
   "dependencies": {

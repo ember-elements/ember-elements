@@ -27,3 +27,16 @@
        IE 10 and below are unsupported due to their lack of support for CSS Flexbox Layout.
     </p>
 </div>
+
+## Others
+<div style="visibility:hidden">
+{{! BEGIN-SNIPPET  Accessibility.hbs }}
+  <Accessibility @isFocusOnTabs={{true}} />
+{{! END-SNIPPET }}
+</div>
+ {{docs-snippet   title="app/templates/application.hbs" name='Accessibility.hbs'}}
+ <div class="bp3-running-text bp3-text-large">
+   <p>The Accessibility component manages the appearance of focus styles. When enabled, focus styles
+    will be hidden while the user interacts using the mouse and will appear when the
+    <kbd>tab</kbd> key is pressed to begin keyboard navigation.</p>
+</div>
