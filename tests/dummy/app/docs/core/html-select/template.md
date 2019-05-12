@@ -178,7 +178,7 @@
             <div class="docs-prop-description">
                 <div class="docs-section">
                     <div class="bp3-running-text">
-                        <p>Change event handler. Use <code>event.currentTarget.value</code> to access the new value.</p>
+                        <p>Change event handler. Use <code>event.target.value</code> to access the new value.</p>
                     </div>
                 </div>
             </div>
