@@ -39,6 +39,8 @@ export default class Select extends Component {
 
   @alias('ButtonProps.small') BSMALL?: boolean;
 
+  @alias('ButtonProps.type') BTYPE?: string;
+
   @className(Classes.POPOVER_OPEN)
   open: boolean = false;
 
