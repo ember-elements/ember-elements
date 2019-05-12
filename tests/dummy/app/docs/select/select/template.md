@@ -635,6 +635,20 @@
                     </div>
                 </td>
             </tr>
+             <tr>
+                <td class="docs-prop-name"><code>type</code></td>
+                <td class="docs-prop-details">
+                    <code
+                        class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                    <div class="docs-prop-description">
+                        <div class="docs-section">
+                            <div class="bp3-running-text">
+                                <p>The type property specifies the type of button.</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
     <br>

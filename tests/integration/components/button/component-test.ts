@@ -234,6 +234,16 @@ module('Integration | Component | button', function (hooks) {
     let element: any = this.element;
     assert.equal(element.querySelector('button').type, "submit");
   });
+  test('set button type as button ', async function (assert) {
+    await render(hbs`<Button @type="button"/>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('button').type, "button");
+  });
+  test('set button type as reset ', async function (assert) {
+    await render(hbs`<Button @type="reset"/>`);
+    let element: any = this.element;
+    assert.equal(element.querySelector('button').type, "reset");
+  });
   test('inline style ', async function (assert) {
     await render(hbs`<Button @style='color:red' />`);
     let element: any = this.element;
