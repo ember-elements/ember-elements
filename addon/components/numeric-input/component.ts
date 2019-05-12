@@ -136,9 +136,16 @@ export default class NumericInput extends Component {
   didReceiveAttrs() {
     super.init();
     const value = getValueOrEmptyValue(this.get('value'));
+    let min, max;
+    let numericCompElement: any = document.getElementById(this.elementId);
+    if (numericCompElement) {
+      let inputElement = numericCompElement.querySelector('input');
+      min = inputElement.min;
+      max = inputElement.max;
+    }
 
-    const didMinChange = this.get('min') != undefined ? true : false;
-    const didMaxChange = this.get('max') != undefined ? true : false;
+    const didMinChange = this.get('min') != min ? true : false;
+    const didMaxChange = this.get('max') != max ? true : false;
     const didBoundsChange = didMinChange || didMaxChange;
 
     const sanitizedValue =
@@ -153,20 +160,15 @@ export default class NumericInput extends Component {
     if (didBoundsChange && sanitizedValue !== this.get('value')) {
       this.set('stepMaxPrecision', stepMaxPrecision);
       this.set('valueDidChange', sanitizedValue);
+      let numericCompDoc: any = document.getElementById(this.elementId);
+      if (numericCompDoc) {
+        let inputElement = numericCompDoc.querySelector('input');
+        inputElement.value = sanitizedValue;
+      }
     } else {
       this.set('stepMaxPrecision', stepMaxPrecision);
     }
-  }
 
-  didRender() {
-    if (this.valueDidChange && this.value != this.valueDidChange) {
-      this.set('value', this.valueDidChange);
-
-      if (this.get('onValueChange'))
-        this.get('onValueChange')(+(this.value as string), this.value as string)
-
-      this.set('valueDidChange', undefined);
-    }
   }
 
   didUpdate() {
@@ -242,8 +244,6 @@ export default class NumericInput extends Component {
       const sanitizedValue = sanitizedValueChars.join("");
       nextValue = sanitizedValue;
       this.didPasteEventJustOccur = false;
-
-
     }
     this.set('shouldSelectAfterUpdate', false);
     this.set('value', nextValue);

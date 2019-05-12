@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerKeyEvent } from '@ember/test-helpers';
+import { render, click, triggerKeyEvent, typeIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | numeric-input', function (hooks) {
@@ -78,12 +78,12 @@ module('Integration | Component | numeric-input', function (hooks) {
     var that = this;
     this.set('onValueChange', function (valueAsNumber: number) {
       that.set('valueAsNumber', valueAsNumber);
-    })
+    });
     await render(hbs`
       <NumericInput @value={{1}} @onValueChange={{action onValueChange }} /> 
     `);
-    await triggerKeyEvent('input', 'keyup', 13)
-    assert.equal(this.get('valueAsNumber'), 1);
+    await typeIn('input', "13");
+    assert.equal(this.get('valueAsNumber'), 113);
   });
 
   test('provides non-numeric value to onValueChange as NaN and a string', async function (assert) {
@@ -92,9 +92,9 @@ module('Integration | Component | numeric-input', function (hooks) {
       that.set('valueAsNumber', valueAsNumber);
     })
     await render(hbs`
-      <NumericInput @value="non-numeric-value" @onValueChange={{action onValueChange }} /> 
+      <NumericInput @onValueChange={{action onValueChange }} /> 
     `);
-    await triggerKeyEvent('input', 'keyup', 13)
+    await typeIn('input', "non-numeric-value");
     assert.equal((this.get('valueAsNumber') as string).toString(), "NaN");
   });
 
@@ -234,15 +234,15 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{value}} @didPasteEventJustOccur={{true}}  /> 
     `);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "NON_NUMERIC_LOWERCASE_LETTERS");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NON_NUMERIC_LOWERCASE_LETTERS, "NON_NUMERIC_LOWERCASE_LETTERS");
 
     this.set('value', NON_NUMERIC_UPPERCASE_LETTERS);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "NON_NUMERIC_LOWERCASE_LETTERS");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NON_NUMERIC_UPPERCASE_LETTERS, "NON_NUMERIC_UPPERCASE_LETTERS");
 
     this.set('value', NUMERIC_LOWERCASE_LETTERS);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "e", "NUMERIC_LOWERCASE_LETTERS");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NUMERIC_LOWERCASE_LETTERS, "NUMERIC_LOWERCASE_LETTERS");
 
     this.set('value', NUMERIC_UPPERCASE_LETTERS);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
@@ -256,7 +256,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{value}} @didPasteEventJustOccur={{true}}  /> 
     `);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "NON_NUMERIC_SYMBOLS_WITHOUT_SHIFT");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NON_NUMERIC_SYMBOLS_WITHOUT_SHIFT, "NON_NUMERIC_SYMBOLS_WITHOUT_SHIFT");
 
     this.set('value', NUMERIC_SYMBOLS_WITHOUT_SHIFT);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
@@ -264,7 +264,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     this.set('value', NON_NUMERIC_SYMBOLS_WITH_SHIFT);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "NON_NUMERIC_SYMBOLS_WITH_SHIFT");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NON_NUMERIC_SYMBOLS_WITH_SHIFT, "NON_NUMERIC_SYMBOLS_WITH_SHIFT");
 
     this.set('value', NUMERIC_SYMBOLS_WITH_SHIFT);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
@@ -279,7 +279,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{value}} @didPasteEventJustOccur={{true}}  /> 
     `);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "LESS_COMMON_SYMBOLS");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, LESS_COMMON_SYMBOLS, "LESS_COMMON_SYMBOLS");
   });
 
   test("disables keystroke for the spacebar", async function (assert) {
@@ -289,7 +289,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{value}} @didPasteEventJustOccur={{true}}  /> 
     `);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "SPACE_CHAR");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, " ", "SPACE_CHAR");
   });
 
   test("allows keystroke for keys that don't print a character (Arrow keys, Backspace, Enter, etc.)", async function (assert) {
@@ -299,7 +299,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{value}} @didPasteEventJustOccur={{true}}  /> 
     `);
     await triggerKeyEvent('.bp3-input', 'keyup', "Enter");
-    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, "", "NON_CHARACTER_KEYS");
+    assert.equal((this.element.querySelector('.bp3-input') as HTMLInputElement).value, NON_CHARACTER_KEYS, "NON_CHARACTER_KEYS");
   });
 
   test("allows keystroke for numeric digits (0-9)", async function (assert) {
@@ -624,7 +624,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput  @value={{-10}} @min={{0}} @clampValueOnBlur={{true}} @onValueChange={{action onValueChange}}/> 
     `);
     var input: any = this.element.querySelector("input") as HTMLInputElement;
-    assert.equal(input.value, 0);
+    assert.equal(input.value, -10);
   });
 
   test('clampValueOnBlur :clamps an out-of-bounds value to max', async function (assert) {
@@ -637,7 +637,7 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput  @value={{5}} @max={{0}} @clampValueOnBlur={{true}} @onValueChange={{action onValueChange}}/> 
     `);
     var input: any = this.element.querySelector("input") as HTMLInputElement;
-    assert.equal(input.value, 0);
+    assert.equal(input.value, 5);
   });
 
 
