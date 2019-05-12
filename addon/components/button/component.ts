@@ -42,7 +42,7 @@ export default class Button extends Component {
     return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
   }
   style?: any = Ember.String.htmlSafe(this.style);
-  attributeBindings = ['disabled:disabled', 'style:style'];
+  attributeBindings = ['disabled:disabled', 'style:style', 'type:type'];
   BUTTON_TEXT: string = Classes.BUTTON_TEXT;
   marginRight?: any;
   marginRightChange?: number = -1;
