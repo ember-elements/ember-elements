@@ -200,7 +200,12 @@ $control-indicator-spacing: $pt-grid-size !default;
       &::before {
         // embed SVG icon image as backgroud-image above gradient.
         // the SVG image content is inlined into the CSS, so use this sparingly.
-      //  background-image: svg-icon("16px/#{$icon}.svg", (path: (fill: $white)));
+        @if $icon == "small-minus" {
+         background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 7H5c-.55 0-1 .45-1 1s.45 1 1 1h6c.55 0 1-.45 1-1s-.45-1-1-1z' fill='%23fff'/%3E%3C/svg%3E");        }
+        @else{
+         background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0 0 12 5z' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
       }
     }
 
