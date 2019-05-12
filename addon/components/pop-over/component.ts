@@ -54,7 +54,7 @@ export default class PopOver extends Component {
   }
 
   didInsertElement() {
-    set(this, '_popperTarget', this.element);
+    set(this, '_popperTarget', this.element ? this.element.querySelector('button') : this.element);
     set(this, 'popperContentId', this.elementId + "popper");
     set(this, 'popperContainerId', this.elementId + "popper-container");
   }
