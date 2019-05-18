@@ -34,6 +34,7 @@ Router.map(function () {
       this.route('html-select');
       this.route('numeric-input');
       this.route('text-area');
+      this.route('collapse');
     });
     this.route('date', function () {
       this.route('date-range-picker');
