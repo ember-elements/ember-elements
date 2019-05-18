@@ -48,7 +48,6 @@
     "babel-eslint": "^8.2.6"
   },
   "devDependencies": {
-    "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.6.4",
     "@types/ember": "^3.1.0",
     "@types/ember-qunit": "^3.4.6",
