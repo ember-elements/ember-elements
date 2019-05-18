@@ -2294,15 +2294,15 @@ a.bp3-button.bp3-disabled {
 .bp3-collapse {
   height: 0;
   overflow-y: hidden;
-  -webkit-transition: height .2s cubic-bezier(.4, 1, .75, .9);
-  transition: height .2s cubic-bezier(.4, 1, .75, .9)
+  -webkit-transition: height .3s cubic-bezier(.4, 1, .75, .9);
+  transition: height .3s cubic-bezier(.4, 1, .75, .9)
 }
 
 .bp3-collapse .bp3-collapse-body {
   -webkit-transition: -webkit-transform .2s cubic-bezier(.4, 1, .75, .9);
   transition: -webkit-transform .2s cubic-bezier(.4, 1, .75, .9);
-  transition: transform .2s cubic-bezier(.4, 1, .75, .9);
-  transition: transform .2s cubic-bezier(.4, 1, .75, .9), -webkit-transform .2s cubic-bezier(.4, 1, .75, .9)
+  transition: transform .3s cubic-bezier(.4, 1, .75, .9);
+  transition: transform .3s cubic-bezier(.4, 1, .75, .9), -webkit-transform .3s cubic-bezier(.4, 1, .75, .9)
 }
 
 .bp3-collapse .bp3-collapse-body[aria-hidden=true] {

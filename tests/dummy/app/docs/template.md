@@ -18,6 +18,7 @@
     {{nav.item 'Button' 'docs.core.button'}}
     {{nav.item 'Button Group' 'docs.core.button-group'}}
     {{nav.item 'Card' 'docs.core.card'}}
+    {{nav.item 'Collapse' 'docs.core.collapse'}}
     {{nav.item 'Icon' 'docs.core.icon'}}
     {{nav.item 'Overflow List' 'docs.core.overflowList'}}
     {{nav.item 'NavBar' 'docs.core.nav-bar'}}
