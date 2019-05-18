@@ -1,0 +1,13 @@
+<div
+  class={{COLLAPSE_BODY}}
+  style={{contentsStyle}}
+  aria-hidden={{if
+    (and (not isContentVisible) keepChildrenMounted)
+    "true"
+    "false"
+  }}
+>
+  {{#if shouldRenderChildren}}
+    {{yield}}
+  {{/if}}
+</div>
