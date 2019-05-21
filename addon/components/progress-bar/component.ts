@@ -16,13 +16,13 @@ export default class ProgressBar extends Component {
      * Whether the background should animate.
      * @default true
   */
-  animate?: boolean;
+  animate: boolean = true;
 
   /**
    * Whether the background should be striped.
    * @default true
   */
-  stripes?: boolean;
+  stripes: boolean = true;
 
   /**
    * A value between 0 and 1 (inclusive) representing how far along the operation is.
@@ -49,12 +49,9 @@ export default class ProgressBar extends Component {
     const width = this.get('value') == null ? null : 100 * clamp(this.value as number, 0, 1) + "%"
     this.set('width', htmlSafe(`width:${width}`));
 
-    // set theses values based on props if not assigned a default value then it consider false value(to maintain state value ) to animate or stripes
-    this.set('animate', this.animate == false ? true : false);
-    this.set('stripes', this.stripes == false ? true : false);
   }
 
   PROGRESS_METER = Classes.PROGRESS_METER;
 
-  classNameBindings = [`intentStyle`, `animate:${Classes.PROGRESS_NO_ANIMATION}`, `stripes:${Classes.PROGRESS_NO_STRIPES}`];
+  classNameBindings = [`intentStyle`, `animate:-:${Classes.PROGRESS_NO_ANIMATION}`, `stripes:-:${Classes.PROGRESS_NO_STRIPES}`];
 };
