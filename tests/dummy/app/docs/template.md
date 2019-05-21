@@ -23,6 +23,7 @@
     {{nav.item 'Overflow List' 'docs.core.overflowList'}}
     {{nav.item 'NavBar' 'docs.core.nav-bar'}}
     {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
+    {{nav.item 'Progress Bar' 'docs.core.progress-bar'}}
     {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
     {{nav.item 'Tag' 'docs.core.tag'}}
     {{nav.item 'Tabs' 'docs.core.tabs'}}
