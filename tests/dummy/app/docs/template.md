@@ -17,6 +17,7 @@
 {{#nav.subnav as |nav|}}
     {{nav.item 'Button' 'docs.core.button'}}
     {{nav.item 'Button Group' 'docs.core.button-group'}}
+    {{nav.item 'Callout' 'docs.core.callout'}}
     {{nav.item 'Card' 'docs.core.card'}}
     {{nav.item 'Collapse' 'docs.core.collapse'}}
     {{nav.item 'Icon' 'docs.core.icon'}}

@@ -35,6 +35,7 @@ Router.map(function () {
       this.route('numeric-input');
       this.route('text-area');
       this.route('collapse');
+      this.route('callout');
     });
     this.route('date', function () {
       this.route('date-range-picker');
