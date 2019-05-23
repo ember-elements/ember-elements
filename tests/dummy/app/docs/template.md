@@ -15,15 +15,27 @@
     {{nav.section 'COMPONENTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Button' 'docs.core.button'}}
     {{nav.item 'Button Group' 'docs.core.button-group'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Callout' 'docs.core.callout'}}
     {{nav.item 'Card' 'docs.core.card'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Collapse' 'docs.core.collapse'}}
     {{nav.item 'Icon' 'docs.core.icon'}}
     {{nav.item 'Overflow List' 'docs.core.overflowList'}}
     {{nav.item 'NavBar' 'docs.core.nav-bar'}}
     {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Progress Bar' 'docs.core.progress-bar'}}
     {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
     {{nav.item 'Tag' 'docs.core.tag'}}
@@ -37,9 +49,6 @@
     {{nav.item 'Form Group' 'docs.core.form-group'}}
     {{nav.item 'Checkbox' 'docs.core.check-box'}}
     {{nav.item 'Radio' 'docs.core.radio'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'HTML select' 'docs.core.html-select'}}
     {{nav.item 'Control Group' 'docs.core.control-group'}}
     {{nav.item 'Switch' 'docs.core.switch'}} 
@@ -49,19 +58,10 @@
     {{nav.section 'FORM INPUTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
-     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'File Input' 'docs.core.file-input'}}
     {{nav.item 'Input Group' 'docs.core.input-group'}}
-     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Numeric input' 'docs.core.numeric-input'}}
     {{nav.item 'Tag Input' 'docs.core.tag-input'}}
-     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Text Area' 'docs.core.text-area'}}
 {{/nav.subnav}}
 <div class="subnav-section">
