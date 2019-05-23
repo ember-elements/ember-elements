@@ -36,6 +36,7 @@ Router.map(function () {
       this.route('text-area');
       this.route('collapse');
       this.route('callout');
+      this.route('progress-bar');
     });
     this.route('date', function () {
       this.route('date-range-picker');
