@@ -8,6 +8,8 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="ButtonsExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-button.hbs }}
+           <div>
+            <p> <code class="bp3-code">Button</code></p>
             <Button 
              @minimal={{minimal}} 
              @active={{active}} 
@@ -22,6 +24,25 @@
             >
             {{#if iconOnly}}  {{else}} {{text}} {{/if}}
             </Button>
+           </div>
+           <div>
+            <p> <code class="bp3-code">AnchorButton</code></p>
+            <AnchorButton 
+             @href="button"
+             @icon="duplicate"
+             @rightIcon="share"
+             @target="_blank"
+             @minimal={{minimal}} 
+             @active={{active}} 
+             @disabled={{disabled}} 
+             @intent={{intent}} 
+             @small={{small}} 
+             @large={{large}}
+             @fill={{fill}}
+            >
+            {{#if iconOnly}}  {{else}}Duplicate this page{{/if}}
+            </AnchorButton>
+           </div>
             {{! END-SNIPPET }}
         </div>
         <div class="docs-example-options">
@@ -88,6 +109,11 @@
 
 ## Props
 
+<div class="bp3-running-text bp3-text-large"><p>The two button components each support arbitrary HTML props for their underlying
+DOM element (<code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> respectively). Specifying an HTML prop will
+override the component's default for it, such as <code>role</code> on <code>&lt;AnchorButton&gt;</code>.</p>
+</div>
+
 <div class="docs-modifiers-table bp3-running-text">
     <table class="bp3-html-table">
         <thead>
@@ -116,6 +142,22 @@
                     <div class="docs-prop-tags"></div>
                 </td>
             </tr>
+            <tr>
+    <td class="docs-prop-name"><code>alignText</code></td>
+    <td class="docs-prop-details"><code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted">center</em></code>
+        <div class="docs-prop-description">
+            <div class="docs-section">
+                <div class="bp3-running-text">
+                    <p>Text alignment within button. By default, icons and text will be centered
+                        within the button. Passing <code>"left"</code> or <code>"right"</code> will align the button
+                        text to that side and push <code>icon</code> and <code>rightIcon</code> to either edge. Passing
+                        <code>"center"</code> will center the text and icons together.</p>
+                </div>
+            </div>
+        </div>
+        <div class="docs-prop-tags"></div>
+    </td>
+</tr>
             <tr>
                 <td class="docs-prop-name"><code>class</code></td>
                 <td class="docs-prop-details">
