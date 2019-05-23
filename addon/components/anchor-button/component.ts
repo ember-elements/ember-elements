@@ -33,7 +33,7 @@ export default class AnchorButton extends Component {
 
   iconSize?: number;
 
-  @computed('intents')
+  @computed('intent')
   get intentStyle() {
     return this.intent ? Classes.intentClass(this.intent) : Classes.intentClass('none');
   }
