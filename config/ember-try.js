@@ -12,37 +12,10 @@ module.exports = function () {
       useYarn: true,
       scenarios: [
         {
-          name: 'ember-lts-2.18',
-          env: {
-            EMBER_OPTIONAL_FEATURES: JSON.stringify({ 'jquery-integration': false })
-          },
-          npm: {
-            devDependencies: {
-              'ember-source': '~2.18.0'
-            }
-          }
-        },
-        {
-          name: 'ember-lts-3.4',
-          npm: {
-            devDependencies: {
-              'ember-source': '~3.4.0'
-            }
-          }
-        },
-        {
           name: 'ember-lts-3.8',
           npm: {
             devDependencies: {
-              'ember-source': '~3.8.0'
-            }
-          }
-        },
-        {
-          name: 'ember-lts-3.9',
-          npm: {
-            devDependencies: {
-              'ember-source': '~3.9.0'
+              'ember-source': '~2.18.0'
             }
           }
         },
