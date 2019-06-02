@@ -2,16 +2,16 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
-import { classNames, tagName, layout } from '@ember-decorators/component';
-import { action } from '@ember-decorators/object';
 import Ember from 'ember';
 import { selectedTree } from '../storeSelectedIndex';
 import * as Classes from '../../../-private/common/classes';
-
-@layout(template)
-@tagName('ul')
-@classNames(Classes.TREE_NODE_LIST)
+import { action } from '@ember/object';
 export default class DbTreeDbMainNode extends Component {
+  layout = template;
+  tagName = 'ul';
+  classNameBindings = [`TREE_NODE_LIST`];
+
+  TREE_NODE_LIST = Classes.TREE_NODE_LIST;
   TREE_NODE: string = Classes.TREE_NODE;
   TREE_NODE_EXPANDED: string = Classes.TREE_NODE_EXPANDED;
   TREE_NODE_CONTENT: string = Classes.TREE_NODE_CONTENT;
@@ -19,8 +19,10 @@ export default class DbTreeDbMainNode extends Component {
   TREE_NODE_CARET_OPEN: string = Classes.TREE_NODE_CARET_OPEN;
   TREE_NODE_CARET_CLOSED: string = Classes.TREE_NODE_CARET_CLOSED;
   TREE_NODE_LABEL: string = Classes.TREE_NODE_LABEL;
+
   ICON: string = Classes.ICON + ' ' + Classes.TREE_NODE_ICON + ' bp3-icon-folder-close';
   content!: Array<object>;
+
   onNodeCollapse!: (item: any, event: object) => void;
   onNodeClick!: (item: any, event: object) => void;
   onNodeDoubleClick!: (item: any, event: object) => void;

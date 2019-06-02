@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 
-export default class DocsCoreDialog extends Controller{
+export default class DocsCoreDialog extends Controller {
   // normal class body definition here
   // BEGIN-SNIPPET docs-example-basic-dialog-box.js
 

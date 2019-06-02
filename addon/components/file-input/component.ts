@@ -1,14 +1,12 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { classNames, tagName } from '@ember-decorators/component';
 import { FILE_INPUT, FILE_INPUT_HAS_SELECTION, FILE_UPLOAD_INPUT, DISABLED, FILL, LARGE } from '../../-private/common/classes'
-import { action, computed } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/string';
-@tagName('label')
-@classNames(FILE_INPUT)
+import { computed, action } from '@ember/object';
 export default class FileInput extends Component {
   layout = layout;
+  tagName = 'label';
 
   /**
     * Whether the file input is non-interactive.
@@ -55,12 +53,13 @@ export default class FileInput extends Component {
   style?: any;
 
   @computed('style')
-  get Style() {
-    return htmlSafe(this.get('style'))
+  get inlineStyle() {
+    return htmlSafe(this.style)
   }
 
-  classNameBindings = [`hasSelection:${FILE_INPUT_HAS_SELECTION}`, `disabled:${DISABLED}`, `fill:${FILL}`, `large:${LARGE}`];
-  attributeBindings = ['Style'];
+  FILE_INPUT = FILE_INPUT;
+  classNameBindings = [`FILE_INPUT`, `hasSelection:${FILE_INPUT_HAS_SELECTION}`, `disabled:${DISABLED}`, `fill:${FILL}`, `large:${LARGE}`];
+  attributeBindings = ['inlineStyle:style'];
   FILE_UPLOAD_INPUT = FILE_UPLOAD_INPUT;
 
   @action

@@ -1,16 +1,20 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
-import { action } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
-import { attribute, layout } from '@ember-decorators/component';
-import Ember from 'ember';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
+import { readOnly } from '@ember/object/computed';
+import { computed, action } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class DbDrawer extends Component {
+  layout = template;
+  attributeBindings = [`inlineStyle:style`];
+
   @readOnly('backdropClassName') backdropClass!: string;
 
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
   DRAWER: string = Classes.DRAWER + ' ' + Classes.OVERLAY_CONTENT;
   PORTAL: string = Classes.PORTAL;
@@ -19,6 +23,8 @@ export default class DbDrawer extends Component {
   OVERLAY_OPEN: string = Classes.OVERLAY_OPEN;
   OVERLAY_BACKDROP: string = Classes.OVERLAY_BACKDROP;
   OVERLAY_INLINE: string = Classes.OVERLAY_INLINE;
+
+  style?: any;
   drawerId: string = '';
   backDropId: string = '';
   portalClassName!: string;
@@ -32,8 +38,9 @@ export default class DbDrawer extends Component {
   usePortal: boolean = true;
   isInterval: boolean = true;
   vertical: boolean = false;
-  onClose!: (e: any) => void;
   isLeft: boolean = false;
+
+  onClose!: (e: any) => void;
 
   init() {
     super.init();

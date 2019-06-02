@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
+
 import moment from 'moment';
 export default class DocsDateDatePicker extends Controller {
   // normal class body definition here

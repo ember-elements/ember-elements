@@ -2,29 +2,33 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { get, set } from '@ember/object';
-import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly, alias } from '@ember-decorators/object/computed';
+import { get, set, computed, action } from '@ember/object';
 import moment from 'moment';
 import * as Classes from '../../-private/common/classes';
-@tagName('span')
-@layout(template)
-@classNames('date-range-pckr bp3-popover-target')
+import { readOnly, alias } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class DateRangePicker extends Component {
+  layout = template;
+  tagName = 'span';
+
+  classNameBindings = ['basicClass:date-range-pckr', 'basicClass:bp3-popover-target', `open:${Classes.POPOVER_OPEN}`];
+  attributeBindings = [`inlineStyle:style`];
+
   @readOnly('format') Format?: string;
 
   @readOnly('open') Open?: boolean;
-
-  @className(Classes.POPOVER_OPEN)
-  open: boolean = false;
-
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
 
   @computed('Format')
   get dateFormat() {
     return this.Format ? this.Format : this.defaultFormat;
   }
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  style?: any;
 
   @alias('InputGroupProps.class') IGCLASS?: string;
 
@@ -48,7 +52,6 @@ export default class DateRangePicker extends Component {
 
   @alias('InputGroupProps.placeholder') IGPLACEHOLDER?: string;
 
-  _popperTarget: any;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
   POPOVER: string = Classes.POPOVER;
   POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
@@ -58,7 +61,10 @@ export default class DateRangePicker extends Component {
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
   POPOVERDISMISS: string = Classes.POPOVER_DISMISS
   MENU: string = Classes.MENU;
-  onSelect!: (event: any) => void;
+
+  open: boolean = false;
+  basicClass: boolean = true;
+  _popperTarget: any;
   date!: Date;
   range2!: Date;
   range1!: Date;
@@ -71,12 +77,15 @@ export default class DateRangePicker extends Component {
   currentWindow: any;
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years = Array(...Array(40)).map((_, i) => `${i + 1990}`);
-  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  placement: string = get(this, 'placement') == undefined ? 'bottom' : get(this, 'placement');
+
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
-  onClick!: (open: boolean) => void;
   popperContainerId!: string;
+
+  onClick!: (open: boolean) => void;
+  onSelect!: (event: any) => void;
 
   init() {
     super.init();

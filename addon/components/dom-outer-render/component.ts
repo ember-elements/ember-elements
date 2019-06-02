@@ -3,17 +3,18 @@ import Component from '@ember/component';
 import layout from './template';
 import * as demo from './demo';
 import { run } from '@ember/runloop';
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 
-export default class DomOuterRender extends Component{
+export default class DomOuterRender extends Component {
   layout = layout;
+
   destinationElementId: any;
   destinationElement: any = null;
   renderInPlace: boolean = false;
-  _dom:any;
-  _element:any;
-  _wormholeHeadNode:any;
-  _wormholeTailNode:any;
+  _dom: any;
+  _element: any;
+  _wormholeHeadNode: any;
+  _wormholeTailNode: any;
 
   @computed('destinationElementId')
   get to() {
@@ -38,9 +39,9 @@ export default class DomOuterRender extends Component{
     // no element found
     return null;
   }
-    /*
-   * Lifecycle
-   */
+  /*
+ * Lifecycle
+ */
   init() {
     super.init();
     this._dom = demo.getDOM(this);
@@ -49,7 +50,7 @@ export default class DomOuterRender extends Component{
     this._wormholeHeadNode = this._dom.createTextNode('');
     this._wormholeTailNode = this._dom.createTextNode('');
 
-   
+
     run.schedule('afterRender', () => {
       if (this.isDestroyed) { return; }
       this._element = this._wormholeHeadNode.parentNode;
@@ -66,7 +67,7 @@ export default class DomOuterRender extends Component{
       this._removeRange(_wormholeHeadNode, _wormholeTailNode);
     });
   }
-  
+
   _appendToDestination() {
     var destinationElement = this.get('_destination');
     if (!destinationElement) {
@@ -77,22 +78,22 @@ export default class DomOuterRender extends Component{
       throw new Error('ember-wormhole failed to render content because the destinationElementId was set to an undefined or falsy value.');
     }
 
-    let startingActiveElement:any = demo.getActiveElement();
+    let startingActiveElement: any = demo.getActiveElement();
     this._appendRange(destinationElement, this._wormholeHeadNode, this._wormholeTailNode);
-    let resultingActiveElement:any = demo.getActiveElement();
+    let resultingActiveElement: any = demo.getActiveElement();
     if (startingActiveElement && resultingActiveElement !== startingActiveElement) {
       startingActiveElement.focus();
     }
   }
 
-  _appendRange(destinationElement:any, firstNode:any, lastNode:any) {
-    while(firstNode) {
+  _appendRange(destinationElement: any, firstNode: any, lastNode: any) {
+    while (firstNode) {
       destinationElement.insertBefore(firstNode, null);
       firstNode = firstNode !== lastNode ? lastNode.parentNode.firstChild : null;
     }
   }
 
-  _removeRange(firstNode:any, lastNode:any) {
+  _removeRange(firstNode: any, lastNode: any) {
     var node = lastNode;
     do {
       var next = node.previousSibling;

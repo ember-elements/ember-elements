@@ -5,15 +5,12 @@ import * as Classes from '../../-private/common/classes';
 import { Intent } from '../../-private/common/intent';
 import { Alignment } from '../../-private/common/alignment';
 import * as Keys from '../../-private/common/keys';
-import { tagName, classNames } from '@ember-decorators/component';
-import { computed } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/string';
-import { get } from '@ember/object';
-
-@tagName('a')
-@classNames(Classes.BUTTON)
+import { get, computed } from '@ember/object';
 export default class AnchorButton extends Component {
+
   layout = layout;
+  tagName = 'a';
 
   active?: boolean;
 
@@ -53,7 +50,7 @@ export default class AnchorButton extends Component {
   /** Set -1 for disabled tab other case 0 */
   tabIndex: number = 0;
 
-  href: string | undefined = this.disabled ? undefined : this.href;
+  href: string | undefined = this.disabled ? undefined : get(this, 'href');
 
   isActive: boolean = false;
 
@@ -71,6 +68,7 @@ export default class AnchorButton extends Component {
   role: string = "button";
 
   BUTTON_TEXT: string = Classes.BUTTON_TEXT;
+  BUTTON: string = Classes.BUTTON;
 
   onClick!: (event: any) => void;
   onKeyDown!: (event: any) => void;
@@ -78,7 +76,7 @@ export default class AnchorButton extends Component {
 
   private currentKeyDown = null;
 
-  classNameBindings = [`active:${Classes.ACTIVE}`, `isActive:${Classes.ACTIVE}`, `disabled:${Classes.DISABLED}`, `intentStyle`, `minimal:${Classes.MINIMAL}`, `large:${Classes.LARGE}`, `small:${Classes.SMALL}`, `fill:${Classes.FILL}`, `alignTextClass`];
+  classNameBindings = [`BUTTON`, `active:${Classes.ACTIVE}`, `isActive:${Classes.ACTIVE}`, `disabled:${Classes.DISABLED}`, `intentStyle`, `minimal:${Classes.MINIMAL}`, `large:${Classes.LARGE}`, `small:${Classes.SMALL}`, `fill:${Classes.FILL}`, `alignTextClass`];
   attributeBindings = ['disabled:disabled', `inlineStyle:style`, 'type:type', `role`, `href:href`, `tabIndex:tabIndex`, `target:target`];
 
   didReceiveAttrs() {

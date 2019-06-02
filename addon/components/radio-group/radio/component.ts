@@ -3,15 +3,13 @@ import Component from '@ember/component';
 import layout from './template';
 import * as Classes from '../../../-private/common/classes';
 import { Alignment } from '../../../-private/common/alignment';
-import { classNames, tagName } from '@ember-decorators/component';
-import { computed, action } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
-import Ember from 'ember';
-
-@classNames(Classes.CONTROL, Classes.RADIO)
-@tagName('label')
+import { readOnly } from '@ember/object/computed';
+import { computed, action } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class RadioGroupRadio extends Component {
   layout = layout;
+  tagName = 'label';
+  attributeBindings = [`inlineStyle:style`];
 
   /**
     * Alignment of the indicator within container.
@@ -56,12 +54,17 @@ export default class RadioGroupRadio extends Component {
   onChange!: (event: any) => void;
 
   CONTROL_INDICATOR: string = Classes.CONTROL_INDICATOR;
-
-  name?: string;
+  CONTROL = Classes.CONTROL;
+  RADIO = Classes.RADIO;
 
   @computed('alignText')
   get aligntextStyle() {
     return this.alignText ? Classes.alignmentClass(this.alignText) : Classes.ALIGN_LEFT;
+  }
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
   }
 
   didReceiveAttrs() {
@@ -70,11 +73,10 @@ export default class RadioGroupRadio extends Component {
       this.set('checked', true);
   }
 
-  style?: any = Ember.String.htmlSafe(this.style);
+  style?: any;
+  name?: string;
 
-  classNameBindings = [`disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
-
-  attributeBindings = ['style:style'];
+  classNameBindings = [`CONTROL`, `RADIO`, `disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
 
   @action
   onChangeRadio(e: HTMLInputElement) {

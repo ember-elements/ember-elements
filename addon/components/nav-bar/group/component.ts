@@ -1,15 +1,16 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { classNames, attribute } from '@ember-decorators/component';
 import { Alignment } from "../../../-private/common/alignment";
 import * as Classes from '../../../-private/common/classes';
-import { readOnly } from '@ember-decorators/object/computed';
-import { computed } from '@ember-decorators/object';
-import Ember from 'ember';
-
-@classNames(Classes.NAVBAR_GROUP)
+import { readOnly } from '@ember/object/computed';
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class NavBarGroup extends Component {
+  layout = layout;
+  classNameBindings = [`NAVBAR_GROUP`, `aligntextStyle`];
+  attributeBindings = [`inlineStyle:style`];
+
   /**
      * The side of the navbar on which the group should appear.
      * The `Alignment` enum provides constants for these values.
@@ -18,15 +19,18 @@ export default class NavBarGroup extends Component {
 
   @readOnly('align') aligntext?: Alignment;
 
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
-
-
   @computed('aligntext')
   get aligntextStyle() {
     return this.aligntext ? Classes.alignmentClass(this.aligntext) : '';
   }
 
-  classNameBindings = [`aligntextStyle`];
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
-  layout = layout;
+  style?: any;
+
+  NAVBAR_GROUP = Classes.NAVBAR_GROUP;
+
 };

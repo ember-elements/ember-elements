@@ -3,22 +3,24 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action } from '@ember-decorators/object';
-import { set } from '@ember/object';
-import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly } from '@ember-decorators/object/computed';
+import { set, action, computed, get } from '@ember/object';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
-@tagName('span')
-@classNames(`${Classes.INPUT} ${Classes.TAG_INPUT}`)
+import { readOnly } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class MultiSelect extends Component {
-  @className(Classes.POPOVER_OPEN)
-  open: boolean = false;
-
-  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+  layout = template;
+  tagName = 'span';
+  classNameBindings = [`INPUT`, `TAG_INPUT`, `open:${Classes.POPOVER_OPEN}`];
+  attributeBindings = [`inlineStyle:style`];
 
   @readOnly('open') Open!: boolean;
 
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  open = false;
   _popperTarget: any;
   ESC: number = 27;
   selectedKey: number = -1;
@@ -27,6 +29,7 @@ export default class MultiSelect extends Component {
   classNameAssigned: string = `${Classes.TEXT_OVERFLOW_ELLIPSIS} ${Classes.FILL}`;
   select: any[] = this.selected || [];
   isDBrequired!: boolean;
+
   tagInput: string = Classes.TAG_INPUT_VALUES;
   INPUT_GHOST: string = Classes.INPUT_GHOST;
   BUTTON: string = Classes.BUTTON;
@@ -40,7 +43,10 @@ export default class MultiSelect extends Component {
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
   TAG: string = Classes.TAG;
   FILL: string = Classes.FILL;
-  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  INPUT = Classes.INPUT;
+  TAG_INPUT = Classes.TAG_INPUT;
+
+  placement: string = get(this, 'placement') == undefined ? 'bottom' : get(this, 'placement');
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimalPopover: boolean = false;
@@ -49,8 +55,11 @@ export default class MultiSelect extends Component {
   isDefaultOpen!: boolean;
   popperContainerId!: string;
   data: any;
+  style?: any;
+
   onSelect!: (item: object[]) => void;
   onDelete!: (item: object[]) => void;
+
   init() {
     super.init();
     this._closeOnClickOut = this._closeOnClickOut.bind(this);

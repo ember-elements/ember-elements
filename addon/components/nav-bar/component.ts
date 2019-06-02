@@ -2,18 +2,26 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
 import * as Classes from '../../-private/common/classes';
-import { classNames, attribute } from '@ember-decorators/component';
-import Ember from 'ember';
-@classNames(Classes.NAVBAR)
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class NavBar extends Component {
+  layout = layout;
+
   /**
    * Whether this navbar should be fixed to the top of the viewport (using CSS `position: fixed`).
   */
   fixedToTop?: boolean;
 
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
-  classNameBindings = [`fixedToTop:${Classes.FIXED_TOP}`]
+  style?: any;
 
-  layout = layout;
+  classNameBindings = [`NAVBAR`, `fixedToTop:${Classes.FIXED_TOP}`];
+  attributeBindings = ['inlineStyle:style'];
+
+  NAVBAR = Classes.NAVBAR;
+
 };

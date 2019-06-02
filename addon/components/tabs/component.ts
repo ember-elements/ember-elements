@@ -3,15 +3,13 @@ import Component from '@ember/component';
 import layout from './template';
 import TabsMixins from '../../mixins/tabs';
 import TabsTemplate from './tab/component';
-import { classNames, attribute } from '@ember-decorators/component';
 import * as Classes from '../../-private/common/classes';
 import * as Keys from '../../-private/common/keys';
 import Ember from 'ember';
-import { action } from '@ember-decorators/object';
 import { filter } from '@ember/object/computed';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 
-@classNames(Classes.TABS)
 export default class Tabs extends Component.extend(TabsMixins, {
   /** Get all children on tabs from tab component*/
   childTabs: filter('children', function (view) {
@@ -39,6 +37,8 @@ export default class Tabs extends Component.extend(TabsMixins, {
   }),
 
 }) {
+  attributeBindings = [`inlineStyle:style`];
+
   /**
     * Whether the selected tab indicator should animate its movement.
     * @default true
@@ -73,8 +73,6 @@ export default class Tabs extends Component.extend(TabsMixins, {
   */
   selectedTabIndex?: number;
 
-  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
-
   /**
   * Whether to show tabs stacked vertically on the left side.
   * @default false
@@ -86,19 +84,29 @@ export default class Tabs extends Component.extend(TabsMixins, {
   */
   onChange!: (newTabIndex: number, prevTabIndex: number, event: MouseEvent) => void;
 
-  classNameBindings = [`vertical:${Classes.VERTICAL}`];
+  classNameBindings = [`TABS`, `vertical:${Classes.VERTICAL}`];
 
   selectedTabId?: string;
   tabTitleId?: string;
   indicatorWrapperStyle?: string;
+
   TAB_LIST = Classes.TAB_LIST;
   LARGE = Classes.LARGE;
   TAB_INDICATOR_WRAPPER = Classes.TAB_INDICATOR_WRAPPER;
   TAB_INDICATOR = Classes.TAB_INDICATOR;
   TAB_SELECTOR = `.${Classes.TAB}`;
+  TABS = Classes.TABS;
+
   firstTabAnimate: boolean = true;
 
   layout = layout;
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  style?: any;
 
   didReceiveAttrs() {
     if (this.defaultSelectedTabIndex) {

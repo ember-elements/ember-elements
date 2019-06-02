@@ -1,15 +1,13 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { tagName } from '@ember-decorators/component';
-import { action } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/string';
 import { Intent } from '../../-private/common/intent';
 import * as Classes from "../../-private/common/classes";
-
-@tagName('span')
+import { action } from '@ember/object';
 export default class TextArea extends Component {
   layout = layout;
+  tagName = 'span';
 
   /**
     * Whether the text area should take up the full width of its container.

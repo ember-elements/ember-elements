@@ -1,7 +1,8 @@
 import Controller from '@ember/controller';
 import iconsJosn from './icons';
 import Ember from 'ember';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
+
 // let  iconJson= require('../../../styles/dunki')
 export default class DocsIconIcons extends Controller {
   // normal class body definition here

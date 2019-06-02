@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
+
 
 export default class DocsCoreRadio extends Controller.extend({
   // anything which *must* be merged to prototype here

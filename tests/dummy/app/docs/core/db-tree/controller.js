@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 
 export default class DocsCoreDbTree extends Controller {
   // BEGIN-SNIPPET docs-example-basic-tree.js

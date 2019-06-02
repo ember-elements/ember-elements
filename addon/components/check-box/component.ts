@@ -3,13 +3,12 @@ import Component from '@ember/component';
 import layout from './template';
 import * as Classes from '../../-private/common/classes';
 import { Alignment } from '../../-private/common/alignment';
-import { classNames, tagName } from '@ember-decorators/component';
-import { action, computed } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
-@tagName('label')
-@classNames(Classes.CONTROL, Classes.CHECKBOX)
+import { readOnly } from '@ember/object/computed';
+import { computed, action } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class CheckBox extends Component {
   layout = layout;
+  tagName = 'label';
 
   /** Whether this checkbox is initially indeterminate (uncontrolled mode). */
   defaultIndeterminate?: boolean;
@@ -51,10 +50,20 @@ export default class CheckBox extends Component {
     return this.alignText ? Classes.alignmentClass(this.alignText) : '';
   }
 
-  classNameBindings = [`disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
-  attributeBindings = ['style:style'];
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
-  CONTROL_INDICATOR: string = Classes.CONTROL_INDICATOR;
+  style?: any;
+
+  classNameBindings = [`CONTROL`, `CHECKBOX`, `disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
+  attributeBindings = ['inlineStyle:style'];
+
+  CONTROL = Classes.CONTROL;
+  CHECKBOX = Classes.CHECKBOX;
+  CONTROL_INDICATOR = Classes.CONTROL_INDICATOR;
+
   onChange!: (event: any, checked: boolean | undefined) => void;
 
   didReceiveAttrs() {

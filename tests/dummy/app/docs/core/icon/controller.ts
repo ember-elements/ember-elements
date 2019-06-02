@@ -1,12 +1,12 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 
 export default class DocsCoreIcon extends Controller {
   value: number = 16;
-  intent:string="none";
+  intent: string = "none";
 
   @action
-  selectIntent(e:any) {
+  selectIntent(e: any) {
     this.set('intent', e.target.value);
   }
   @action

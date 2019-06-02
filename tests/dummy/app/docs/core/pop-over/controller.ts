@@ -1,13 +1,14 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
+
 
 export default class DocsCorePopOver extends Controller {
   // normal class body definition here
   placement: string = 'auto';
   arrow: boolean = true;
   canOutsideClickClose: boolean = true;
-  canEscapeKeyClose:boolean=true;
-  open:boolean=false;
+  canEscapeKeyClose: boolean = true;
+  open: boolean = false;
   @action
   selectPositon(e: any) {
     this.set('placement', e.target.value);
@@ -25,10 +26,10 @@ export default class DocsCorePopOver extends Controller {
     this.set('arrow', !this.arrow);
   }
   @action
-  onClose(){
-    this.set('open',false);
+  onClose() {
+    this.set('open', false);
   }
-  
+
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your controllers.

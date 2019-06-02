@@ -1,7 +1,5 @@
 import Controller from '@ember/controller';
-import {
-  action
-} from '@ember-decorators/object';
+import { action } from '@ember/object';
 
 export default class DocsSelectMultiSelect extends Controller {
   // normal class body definition here
@@ -9,18 +7,18 @@ export default class DocsSelectMultiSelect extends Controller {
   minimal: boolean = false;
   minimalPopover: boolean = false;
   placement: string = 'auto';
-  selected: Array < string > = ['January', 'April', 'May'];
-  data: Array < string > = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  selected2: Array < string > = ['February', 'March', 'April'];
-  data2: Array < string > = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  selected3: Array < string > = ['July', 'August'];
-  data3: Array < string > = ["July", "August", "September", "October", "November", "December", ];
+  selected: Array<string> = ['January', 'April', 'May'];
+  data: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  selected2: Array<string> = ['February', 'March', 'April'];
+  data2: Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  selected3: Array<string> = ['July', 'August'];
+  data3: Array<string> = ["July", "August", "September", "October", "November", "December",];
   @action
-  optionSelected(options: Array < string > ) {
+  optionSelected(options: Array<string>) {
 
   }
   @action
-  onDelete(options: Array < string > ) {
+  onDelete(options: Array<string>) {
 
   }
   @action
@@ -32,7 +30,7 @@ export default class DocsSelectMultiSelect extends Controller {
     this.set('placement', e.target.value);
   }
   @action
-  onMinimalTag(){
+  onMinimalTag() {
     this.set('minimal', !this.minimal);
 
   }

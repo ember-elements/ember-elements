@@ -1,10 +1,8 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { classNames } from '@ember-decorators/component';
 import * as Classes from '../../../-private/common/classes';
 
-@classNames(Classes.TAB)
 export default class TabsTabTitle extends Component.extend({
 }) {
   /** Handler invoked when this tab is clicked. */
@@ -28,9 +26,11 @@ export default class TabsTabTitle extends Component.extend({
 
   titleClassName?: string;
 
-  classNameBindings = ['titleClassName'];
+  classNameBindings = [`TAB`, 'titleClassName'];
 
   attributeBindings = ['aria-disabled', 'aria-expanded', 'aria-selected', 'role', 'tabIndex:tabIndex', 'title-tab-id']
+
+  TAB = Classes.TAB;
 
   role: string = "tab";
   'aria-disabled': string;

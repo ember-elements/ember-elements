@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
-
+import { action } from '@ember/object';
 export default class DocsCoreFormGroup extends Controller {
   // normal class body definition here
   helperText: string = "";

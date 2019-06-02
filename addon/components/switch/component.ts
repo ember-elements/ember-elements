@@ -1,15 +1,14 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { computed, action } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
 import * as Classes from '../../-private/common/classes';
 import { Alignment } from '../../-private/common/alignment';
-import { tagName, classNames } from '@ember-decorators/component';
-@tagName('label')
-@classNames(Classes.CONTROL, Classes.SWITCH)
+import { readOnly } from '@ember/object/computed';
+import { computed, action } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class Switch extends Component {
   layout = layout;
+  tagName = 'label';
 
   /**Alignment of the indicator within container. */
   @readOnly('alignIndicator') alignText?: Alignment;
@@ -56,14 +55,23 @@ export default class Switch extends Component {
   /** Required class names are bind with ember @classNameBindings property.
    * TODO ember octane blueprint should used.
     */
-  classNameBindings = [`disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
+  classNameBindings = [`CONTROL`, `SWITCH`, `disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`, `large:${Classes.LARGE}`, 'aligntextStyle'];
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  style?: any;
 
   /**External styles are rendered in @attributeBindings ember property */
-  attributeBindings = ['style:style'];
+  attributeBindings = [`inlineStyle:style`];
 
   CONTROL_INDICATOR: string = Classes.CONTROL_INDICATOR;
   CONTROL_INDICATOR_CHILD: string = Classes.CONTROL_INDICATOR_CHILD;
   SWITCH_INNER_TEXT: string = Classes.SWITCH_INNER_TEXT;
+  CONTROL = Classes.CONTROL;
+  SWITCH = Classes.SWITCH;
 
 
   didReceiveAttrs() {

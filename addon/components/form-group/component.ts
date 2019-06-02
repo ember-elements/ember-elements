@@ -1,15 +1,14 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { classNames } from '@ember-decorators/component';
 import * as Classes from '../../-private/common/classes';
 import { Intent } from '../../-private/common/intent';
-import { readOnly } from '@ember-decorators/object/computed';
-import { computed } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/string';
-@classNames(Classes.FORM_GROUP)
+import { readOnly } from '@ember/object/computed';
+import { computed } from '@ember/object';
 export default class FormGroup extends Component {
   layout = layout;
+
   /**
      * A space-delimited list of class names to pass along to the
      * `Classes.FORM_CONTENT` element that contains `children`.
@@ -47,7 +46,7 @@ export default class FormGroup extends Component {
   labelInfo?: string | HTMLElement;
 
   /** CSS properties to apply to the root element. */
-  style?: any = htmlSafe(this.style);
+  style?: any;
 
   @readOnly('intent') Intents?: Intent;
 
@@ -56,9 +55,15 @@ export default class FormGroup extends Component {
     return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
   }
 
-  classNameBindings = ['intentStyle', `disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`];
-  attributeBindings = ['style:style'];
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
+  classNameBindings = [`FORM_GROUP`, 'intentStyle', `disabled:${Classes.DISABLED}`, `inline:${Classes.INLINE}`];
+  attributeBindings = ['inlineStyle:style'];
+
+  FORM_GROUP = Classes.FORM_GROUP;
   LABEL: string = Classes.LABEL;
   TEXT_MUTED: string = Classes.TEXT_MUTED;
   FORM_CONTENT: string = Classes.FORM_CONTENT;

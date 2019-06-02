@@ -1,19 +1,18 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { tagName } from '@ember-decorators/component';
-import { action } from '@ember-decorators/object';
-
 import { Position } from '../../-private/common/position';
 import { NUMERIC_INPUT, LARGE, FIXED } from '../../-private/common/classes';
 import { isKeyboardClick, ARROW_UP, ARROW_DOWN } from '../../-private/common/keys';
 import { countDecimalPlaces } from '../../-private/common/utils';
 import * as Errors from "../../-private/common/errors";
 import { isValueNumeric, toMaxPrecision, clampValue, getValueOrEmptyValue, isFloatingPointNumericCharacter, isValidNumericKeyboardEvent } from './numericInputUtils'
+import { action, get } from '@ember/object';
 
-@tagName('span')
 export default class NumericInput extends Component {
   layout = layout;
+  tagName = 'span';
+
   VALUE_EMPTY = "";
   VALUE_ZERO = "0";
   CONTINUOUS_CHANGE_DELAY = 300;
@@ -107,7 +106,7 @@ export default class NumericInput extends Component {
   stepSize: number = 1;
 
   /** The value to display in the input field. */
-  value?: number | string = getValueOrEmptyValue(this.value);
+  value?: number | string = getValueOrEmptyValue(get(this, 'value'));
 
   /** The callback invoked when the value changes due to a button click. */
   onButtonClick!: (valueAsNumber: number, valueAsString: string) => void;

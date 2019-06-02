@@ -1,59 +1,63 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
-import Ember from 'ember';
-import { classNames, tagName, className, layout } from '@ember-decorators/component';
-import { attribute } from '@ember-decorators/component';
-import { set } from '@ember/object';
-import { computed } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
+import { set, computed } from '@ember/object';
 import { IconSvgPaths16, IconSvgPaths20 } from '../../-private/icons/iconSvgPaths';
 import * as Classes from '../../-private/common/classes';
-import {Intent} from '../../-private/common/intent';
-@layout(template)
-@tagName('span')
-@classNames(Classes.ICON)
+import { Intent } from '../../-private/common/intent';
+import { readOnly } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class Icon extends Component {
+
+  layout = template;
+  tagName = 'span';
+  attributeBindings = [`inlineStyle:style`];
+  classNameBindings = [`ICON`, `intentStyle`];
+
   @readOnly('iconSize') iconsize?: number;
- 
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
- 
+
   @readOnly('intent') Intent?: Intent;
- 
+
   @readOnly('icon') Icon!: string;
- 
+
   @readOnly('color') Color!: string;
- 
+
   @readOnly('title') Title!: string;
- 
-  @className
+
+  @readOnly('style') Style!: string;
+
   @computed('Intent')
   get intentStyle() {
     return this.Intent ? Classes.intentClass(this.Intent) : ``;
   }
- 
+
   @computed('Icon')
   get titleValue() {
     return this.Title || this.Icon;
   }
- 
+
   @computed('iconsize')
   get viewBox() {
     return (this.iconsize as number) > this.SIZE_STANDARD ? '0 0 20 20' : '0 0 16 16';
   }
- 
+
   @computed('iconsize')
   get heightWidth() {
     return this.iconsize == undefined ? 16 : this.iconsize;
   }
- 
+
   @computed('Color')
   get getColor() {
     return this.Color ? `${this.Color}` : 'currentColor';
   }
- 
-  SIZE_STANDARD: number = 16;
-  SIZE_LARGE: number = 20;
+
+  @computed('Style')
+  get inlineStyle() {
+    return htmlSafe(this.Style);
+  }
+
+  ICON = Classes.ICON;
+  private SIZE_STANDARD: number = 16;
   paths!: any;
 
   didReceiveAttrs() {
@@ -63,16 +67,18 @@ export default class Icon extends Component {
     } else
       set(this, 'paths', pathStrings);
   }
-  
+
   svgPaths(pathsSize: number, iconName: string) {
     if (pathsSize == undefined)
-      pathsSize = 16;
+      pathsSize = this.SIZE_STANDARD;
 
-    const svgPathsRecord:any = pathsSize <= this.SIZE_STANDARD ? IconSvgPaths16 : IconSvgPaths20;
+    const svgPathsRecord: any = pathsSize <= this.SIZE_STANDARD ? IconSvgPaths16 : IconSvgPaths20;
     const pathStrings = svgPathsRecord[iconName];
+
     if (pathStrings == null) {
       return null;
     }
-    return pathStrings.map((d:any) => d);
+
+    return pathStrings.map((d: any) => d);
   }
 };

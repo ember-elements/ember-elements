@@ -2,16 +2,13 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action, computed } from '@ember-decorators/object';
-import { get, set } from '@ember/object';
-import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly, alias } from '@ember-decorators/object/computed';
+import { get, set, computed, action } from '@ember/object';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
-@tagName('span')
-@classNames(Classes.POPOVER_TARGET)
+import { readOnly, alias } from '@ember/object/computed';
 export default class DatePicker extends Component {
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  layout = template;
+  tagName = 'span';
+  classNameBindings = [`POPOVER_TARGET`, `open:${Classes.POPOVER_OPEN}`];
 
   @readOnly('open') Open?: boolean;
 
@@ -39,10 +36,6 @@ export default class DatePicker extends Component {
 
   @alias('InputGroupProps.placeholder') IGPLACEHOLDER?: string;
 
-
-  @className(Classes.POPOVER_OPEN)
-  open: boolean = false;
-
   @computed('Format')
   get dateFormat() {
     return this.Format ? this.Format : 'DD/MM/YYYY';
@@ -52,8 +45,10 @@ export default class DatePicker extends Component {
   POPOVER: string = Classes.POPOVER;
   POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
   DIVIDER: string = Classes.DIVIDER;
+  POPOVER_TARGET = Classes.POPOVER_TARGET;
+
   _popperTarget: any;
-  onSelect!: (event: any) => void;
+  open: boolean = false;
   selected: Date = new Date();
   date: any;
   isDefaultOpen!: boolean;
@@ -63,12 +58,14 @@ export default class DatePicker extends Component {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years = Array(...Array(40)).map((_, i) => `${i + 1990}`);
   currentWindow: any;
-  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  placement: string = get(this, 'placement') == undefined ? 'bottom' : get(this, 'placement');
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
-  onClick!: (open: boolean) => void;
   popperContainerId!: string;
+
+  onClick!: (open: boolean) => void;
+  onSelect!: (event: any) => void;
 
   init() {
     super.init();

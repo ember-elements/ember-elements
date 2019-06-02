@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
+
 
 export default class DocsCoreOverflowList extends Controller {
 
@@ -27,22 +28,21 @@ export default class DocsCoreOverflowList extends Controller {
     this.findWidth(data);
   }
   @action
-  onKeyDown(e:any){
+  onKeyDown(e: any) {
     if (e.keyCode == 38)
-    this.findWidth(true);
-  else if (e.keyCode == 40)
-    this.findWidth(false);
+      this.findWidth(true);
+    else if (e.keyCode == 40)
+      this.findWidth(false);
   }
   @action
   onKeyUp(e: any) {
-  
-      if(e.target.value<=100 && e.target.value>0)
-      {
-        this.set('value',parseInt(e.target.value));
-        document.getElementById('overflowWidthInput').value = this.value;
-        document.getElementById('overflowListCard1').style.width = this.value + '%';
 
-      }
+    if (e.target.value <= 100 && e.target.value > 0) {
+      this.set('value', parseInt(e.target.value));
+      document.getElementById('overflowWidthInput').value = this.value;
+      document.getElementById('overflowListCard1').style.width = this.value + '%';
+
+    }
   }
   findWidth(data: boolean) {
     if (data) {

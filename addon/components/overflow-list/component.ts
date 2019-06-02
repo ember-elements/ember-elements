@@ -3,8 +3,8 @@ import Component from '@ember/component';
 import layout from './template';
 import { Boundary } from '../../-private/common/boundary';
 import * as Classes from '../../-private/common/classes';
-import { action } from '@ember-decorators/object';
 import Ember from 'ember';
+import { action } from '@ember/object';
 interface IResizeEntry {
   contentRect: DOMRectReadOnly;
   target: Element;
@@ -122,7 +122,7 @@ export default class OverflowList extends Component {
 
       const next = collapseFromStart ? visible.shift() : visible.pop();
       if (next === undefined) {
-        return ;
+        return;
       }
       const overflow = collapseFromStart ? [...this.overflow, next] : [next, ...this.overflow];
 
@@ -137,7 +137,7 @@ export default class OverflowList extends Component {
     this.set('breadcrumb', this.visible.map(this.visibleItemRenderer));
     this.overflowRenderer();
   }
-  
+
   private visibleItemRenderer = (props: any, index: number) => {
     const isCurrent = this.items[this.items.length - 1] === props;
     return { index: index, renderBreadcrumb: this.renderBreadcrumb(props, isCurrent) }
@@ -203,18 +203,18 @@ export default class OverflowList extends Component {
       document.addEventListener('keyup', this._closeOnEsc);
     }
   }
-  
+
   async  _closeOnClickOut(e: any) {
     var popper: any = document.getElementsByClassName('overflow-list-popper');
     if (popper.length && !(popper[0].contains(e.target)) && !e.target.classList.contains(this.BREADCRUMBS_COLLAPSED)) {
       this._close();
     }
   }
-  
+
   _closeOnEsc(e: any) {
     if (e.keyCode === 27) { this._close(); }
   }
-  
+
   _close() {
     if (this.isDestroyed || this.isDestroying)
       return;

@@ -3,11 +3,11 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { action } from '@ember-decorators/object';
 import Ember from 'ember';
 import { selectedTree } from '../storeSelectedIndex';
 
 import * as Classes from '../../../-private/common/classes';
+import { action } from '@ember/object';
 export default class DbTreeDbChildNode extends Component {
   layout = layout;
   iteration!: number;
@@ -18,22 +18,22 @@ export default class DbTreeDbChildNode extends Component {
   onNodeExpand!: (item: any, event: object) => void;
   onNodeMouseEnter!: (item: any, event: object) => void;
   onNodeMouseLeave!: (item: any, event: object) => void;
-  COLLAPSE:string=Classes.COLLAPSE;
-  COLLAPSE_BODY:string=Classes.COLLAPSE_BODY;
-  TREE_NODE:string=Classes.TREE_NODE;
-  TREE_NODE_EXPANDED:string=Classes.TREE_NODE_EXPANDED;
-  TREE_NODE_CONTENT:string=Classes.TREE_NODE_CONTENT;
-  TREE_NODE_CARET:string=Classes.TREE_NODE_CARET;
-  TREE_NODE_CARET_OPEN:string=Classes.TREE_NODE_CARET_OPEN;
-  TREE_NODE_CARET_CLOSED:string=Classes.TREE_NODE_CARET_CLOSED;
-  TREE_NODE_CARET_NONE:string=Classes.TREE_NODE_CARET_NONE;
-  TREE_NODE_SECONDARY_LABEL:string=Classes.TREE_NODE_SECONDARY_LABEL;
-  POPOVER_WRAPPER:string=Classes.POPOVER_WRAPPER;
-  POPOVER_TARGET:string=Classes.POPOVER_TARGET;
-  TREE_NODE_LABEL:string=Classes.TREE_NODE_LABEL;
-  TREE_NODE_SELECTED:string=Classes.TREE_NODE_SELECTED;
-  TREE_NODE_LIST:string=Classes.TREE_NODE_LIST;
-  ICON:string=Classes.ICON+' '+ Classes.TREE_NODE_ICON+' bp3-icon-folder-close';
+  COLLAPSE: string = Classes.COLLAPSE;
+  COLLAPSE_BODY: string = Classes.COLLAPSE_BODY;
+  TREE_NODE: string = Classes.TREE_NODE;
+  TREE_NODE_EXPANDED: string = Classes.TREE_NODE_EXPANDED;
+  TREE_NODE_CONTENT: string = Classes.TREE_NODE_CONTENT;
+  TREE_NODE_CARET: string = Classes.TREE_NODE_CARET;
+  TREE_NODE_CARET_OPEN: string = Classes.TREE_NODE_CARET_OPEN;
+  TREE_NODE_CARET_CLOSED: string = Classes.TREE_NODE_CARET_CLOSED;
+  TREE_NODE_CARET_NONE: string = Classes.TREE_NODE_CARET_NONE;
+  TREE_NODE_SECONDARY_LABEL: string = Classes.TREE_NODE_SECONDARY_LABEL;
+  POPOVER_WRAPPER: string = Classes.POPOVER_WRAPPER;
+  POPOVER_TARGET: string = Classes.POPOVER_TARGET;
+  TREE_NODE_LABEL: string = Classes.TREE_NODE_LABEL;
+  TREE_NODE_SELECTED: string = Classes.TREE_NODE_SELECTED;
+  TREE_NODE_LIST: string = Classes.TREE_NODE_LIST;
+  ICON: string = Classes.ICON + ' ' + Classes.TREE_NODE_ICON + ' bp3-icon-folder-close';
 
   didReceiveAttrs() {
     this.iteration += 1
@@ -50,9 +50,9 @@ export default class DbTreeDbChildNode extends Component {
       if (selectedTree.selectedChildIndex == item.id) {
         let node: any = document.getElementById('bp3-tree-node2' + item.id);
         if (node.classList.contains(Classes.TREE_NODE_SELECTED))
-        node.classList.remove(Classes.TREE_NODE_SELECTED);
-      else
-        node.classList.add(Classes.TREE_NODE_SELECTED);
+          node.classList.remove(Classes.TREE_NODE_SELECTED);
+        else
+          node.classList.add(Classes.TREE_NODE_SELECTED);
       }
       else {
         let node: any = document.getElementById('bp3-tree-node2' + selectedTree.selectedChildIndex);

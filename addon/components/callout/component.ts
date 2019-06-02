@@ -3,10 +3,7 @@ import Component from '@ember/component';
 import layout from './template';
 import * as Classes from '../../-private/common/classes';
 import { Intent } from '../../-private/common/intent';
-import { classNames } from '@ember-decorators/component';
-import { computed } from '@ember-decorators/object';
-
-@classNames(Classes.CALLOUT)
+import { computed } from '@ember/object';
 export default class Callout extends Component {
   layout = layout;
 
@@ -35,6 +32,8 @@ export default class Callout extends Component {
    */
   title?: string;
 
+  CALLOUT = Classes.CALLOUT;
+
   @computed('intent')
   get intentStyle() {
     return Classes.intentClass(this.intent);
@@ -45,7 +44,7 @@ export default class Callout extends Component {
     return this.getIconName();
   }
 
-  classNameBindings = [`intentStyle`, `iconName:${Classes.CALLOUT_ICON}`];
+  classNameBindings = [`CALLOUT`, `intentStyle`, `iconName:${Classes.CALLOUT_ICON}`];
 
   HEADING = Classes.HEADING;
 

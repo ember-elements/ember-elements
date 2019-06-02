@@ -2,9 +2,8 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
 import * as Classes from '../../-private/common/classes';
-import { classNames } from '@ember-decorators/component';
-import Ember from 'ember';
-@classNames(Classes.CONTROL_GROUP)
+import { htmlSafe } from '@ember/string';
+import { computed } from '@ember/object';
 export default class ControlGroup extends Component {
   layout = layout;
 
@@ -20,9 +19,16 @@ export default class ControlGroup extends Component {
    */
   vertical?: boolean;
 
-  style: any = Ember.String.htmlSafe(this.style);
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
-  classNameBindings = [`fill:${Classes.FILL}`, `vertical:${Classes.VERTICAL}`];
+  style?: any;
 
-  attributeBindings = ['style:style'];
+  classNameBindings = [`CONTROL_GROUP`, `fill:${Classes.FILL}`, `vertical:${Classes.VERTICAL}`];
+
+  attributeBindings = ['inlineStyle:style'];
+
+  CONTROL_GROUP = Classes.CONTROL_GROUP;
 };

@@ -3,12 +3,9 @@ import Component from '@ember/component';
 import layout from './template';
 import * as Classes from '../../-private/common/classes';
 import { Intent } from '../../-private/common/intent';
-import { classNames } from '@ember-decorators/component';
 import { clamp } from '../../-private/common/utils';
 import { htmlSafe } from '@ember/string';
-import { computed } from '@ember-decorators/object';
-
-@classNames(Classes.PROGRESS_BAR)
+import { computed } from '@ember/object';
 export default class ProgressBar extends Component {
   layout = layout;
 
@@ -52,6 +49,7 @@ export default class ProgressBar extends Component {
   }
 
   PROGRESS_METER = Classes.PROGRESS_METER;
+  PROGRESS_BAR = Classes.PROGRESS_BAR;
 
-  classNameBindings = [`intentStyle`, `animate:-:${Classes.PROGRESS_NO_ANIMATION}`, `stripes:-:${Classes.PROGRESS_NO_STRIPES}`];
+  classNameBindings = [`PROGRESS_BAR`, `intentStyle`, `animate:-:${Classes.PROGRESS_NO_ANIMATION}`, `stripes:-:${Classes.PROGRESS_NO_STRIPES}`];
 };

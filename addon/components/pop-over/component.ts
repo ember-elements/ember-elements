@@ -2,42 +2,46 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action } from '@ember-decorators/object';
-import { get, set } from '@ember/object';
-import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { readOnly } from '@ember-decorators/object/computed';
+import { get, set, action, computed } from '@ember/object';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
-@tagName('span')
-@classNames(Classes.POPOVER_TARGET)
+import { readOnly } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class PopOver extends Component {
-  @attribute('style') style: any = Ember.String.htmlSafe(this.style);
+  layout = template;
+  tagName = 'span';
+  classNameBindings = ['POPOVER_TARGET', `open:${Classes.POPOVER_OPEN}`];
+  attributeBindings = [`inlineStyle:style`];
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
 
   @readOnly('open') Open!: boolean;
 
-  @className(Classes.POPOVER_OPEN)
   open: boolean = false;
-
+  style: any;
   _popperTarget: any;
   popelement: any;
   currentWindow: any;
+
   ICON: string = Classes.ICON;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
   POPOVER: string = Classes.POPOVER;
   POPOVER_CONTENT: string = Classes.POPOVER_CONTENT;
   POPOVER_CONTENT_SIZING: string = Classes.POPOVER_CONTENT_SIZING;
+  POPOVER_TARGET = Classes.POPOVER_TARGET;
   FILL: string = Classes.FILL;
+
   popOverArrow!: boolean;
   arrow: boolean = true;
   canEscapeKeyClose: boolean = true;
-  popCloseClickFun!: () => void;
-  popOpenClickFun!: () => void;
   child: boolean = false;
   ESC: number = 27;
   hasParent: boolean = false;
   parent: boolean = false;
-  isOutClickClose: boolean = this.isOutClickClose == undefined ? true : this.isOutClickClose;
-  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  isOutClickClose: boolean = get(this, 'isOutClickClose') == undefined ? true : get(this, 'isOutClickClose');
+  placement: string = get(this, 'placement') == undefined ? 'bottom' : get(this, 'placement');
   popperClass: string = 'popper';
   iconSize?: number;
   popperContentId!: string;
@@ -46,6 +50,9 @@ export default class PopOver extends Component {
   popperClientHeight!: number;
   MAX_RE_RENDER_LIMIT: number = 30;
   START_RE_RENDER: number = 0;
+
+  popCloseClickFun!: () => void;
+  popOpenClickFun!: () => void;
 
   init() {
     super.init();

@@ -1,14 +1,12 @@
 import Controller from '@ember/controller';
-import {
-  action
-} from '@ember-decorators/object';
 import Ember from 'ember';
+import { action } from '@ember/object';
 
 export default class DocsCoreTagInput extends Controller {
   // normal class body definition here
   // BEGIN-SNIPPET docs-example-basic-tag-input.js
 
-  data: Array < string > = ['sku1', 'sku2'];
+  data: Array<string> = ['sku1', 'sku2'];
   @action
   saveTag(text: string) {
     Ember.A(this.data);

@@ -1,17 +1,19 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
-import { tagName, layout } from '@ember-decorators/component';
-import { action, computed } from '@ember-decorators/object';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
-@tagName('span')
+import { computed, action } from '@ember/object';
 export default class DbPanelStack extends Component {
+  layout = template;
+  tagName = 'span';
+
   panelList!: any[];
   isPopPanel!: boolean;
   title!: string;
   prevTitle!: string;
   currentPanelId!: number;
+  contentId!: string;
+
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
   HEADING: string = Classes.HEADING;
   BUTTON: string = Classes.BUTTON;
@@ -19,7 +21,7 @@ export default class DbPanelStack extends Component {
   SMALL: string = Classes.SMALL;
   PANEL_STACK_HEADER_BACK: string = Classes.PANEL_STACK_HEADER_BACK;
   BUTTON_TEXT: string = Classes.BUTTON_TEXT;
-  contentId!: string;
+
   closePanel!: (currentPanelId: number) => void;
 
   @computed('panelList.[]')
@@ -28,7 +30,7 @@ export default class DbPanelStack extends Component {
       this.set('isPopPanel', false);
       this.set('currentPanelId', 1);
       var title = this.get('panelList')[0];
-      this.set('title',(title as any).title);
+      this.set('title', (title as any).title);
       var documents: any = document.querySelector('#' + this.elementId);
       let node: any = documents.querySelector('.' + Classes.PANEL_STACK);
       node.classList.remove('bp3-panel-stack-push');
@@ -57,7 +59,7 @@ export default class DbPanelStack extends Component {
     this.set('contentId', this.elementId);
   }
 
-  animation(element:string, animationName:string) {
+  animation(element: string, animationName: string) {
     if (document.getElementById('panel-stack-contents' + this.contentId)) {
       var documents: any = document.querySelector('#' + this.elementId);
       const node = documents.querySelector(element)
@@ -70,7 +72,7 @@ export default class DbPanelStack extends Component {
       node.addEventListener('animationend', handleAnimationEnd)
     }
   }
-  
+
   @action
   closeCurrentPanel() {
     if (this.get('closePanel'))

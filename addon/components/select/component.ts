@@ -2,16 +2,15 @@ import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
 import Ember from 'ember';
-import { action } from '@ember-decorators/object';
-import { set } from '@ember/object';
-import { classNames, tagName, attribute, layout, className } from '@ember-decorators/component';
-import { reads, alias } from '@ember-decorators/object/computed';
+import { set, action, computed, get } from '@ember/object';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
-@tagName('span')
-@classNames(Classes.POPOVER_TARGET)
+import { reads, alias } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class Select extends Component {
-  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+  layout = template;
+  tagName = 'span';
+  classNameBindings = [`POPOVER_TARGET`, `open:${Classes.POPOVER_OPEN}`]
+  attributeBindings = [`inlineStyle:style`];
 
   @reads('open') Open!: boolean;
 
@@ -41,9 +40,6 @@ export default class Select extends Component {
 
   @alias('ButtonProps.type') BTYPE?: string;
 
-  @className(Classes.POPOVER_OPEN)
-  open: boolean = false;
-
   @alias('InputGroupProps.class') IGCLASS?: string;
 
   @alias('InputGroupProps.style') IGSTYLE?: string;
@@ -68,8 +64,16 @@ export default class Select extends Component {
 
   @alias('InputGroupProps.autofocus') IGAUTOFOCUS?: string;
 
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  style?: any;
   currentWindow: any;
   _popperTarget: any;
+  open: boolean = false;
+
   ICON: string = Classes.ICON;
   TRANSITION_CONTAINER: string = Classes.TRANSITION_CONTAINER;
   POPOVER: string = Classes.POPOVER;
@@ -83,8 +87,9 @@ export default class Select extends Component {
   MINIMAL: string = Classes.MINIMAL;
   INTENT_PRIMARY: string | undefined = Classes.INTENT_PRIMARY;
   TEXT_OVERFLOW_ELLIPSIS: string = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  POPOVER_TARGET = Classes.POPOVER_TARGET;
+
   intentactive: string = Classes.INTENT_PRIMARY + ' ' + Classes.ACTIVE;
-  onSelect!: (data: any, index: number) => void;
   selected: any;
   date!: string;
   isDefaultOpen!: boolean;
@@ -92,12 +97,14 @@ export default class Select extends Component {
   data: any;
   selectedKey: number = -1;
   filteredList: Array<string> = [];
-  placement: string = this.placement == undefined ? 'bottom' : this.placement;
+  placement: string = get(this, 'placement') == undefined ? 'bottom' : get(this, 'placement');
   popperClass: string = 'popper';
   popOverArrow!: boolean;
   minimal: boolean = false;
   defaultSelected: number = -1;
   popperContainerId!: string;
+
+  onSelect!: (data: any, index: number) => void;
   onClick!: (open: boolean) => void;
 
   init() {

@@ -1,12 +1,12 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import template from './template';
-import { action } from '@ember-decorators/object';
-import { readOnly } from '@ember-decorators/object/computed';
-import { layout } from '@ember-decorators/component';
 import * as Classes from '../../-private/common/classes';
-@layout(template)
+import { readOnly } from '@ember/object/computed';
+import { action } from '@ember/object';
 export default class Dialog extends Component {
+  layout = template;
+
   @readOnly('width') Width!: string;
 
   @readOnly('height') Height!: string;
@@ -24,6 +24,7 @@ export default class Dialog extends Component {
   OVERLAY_CONTENT: string = Classes.OVERLAY_CONTENT;
   DIALOG: string = Classes.DIALOG;
   DIALOG_CONTAINER: string = Classes.DIALOG_CONTAINER;
+
   isOutClickCloseDialog!: boolean;
   isOpenDialog!: boolean;
   ESC: number = 27;

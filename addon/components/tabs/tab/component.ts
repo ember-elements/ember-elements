@@ -3,11 +3,11 @@ import Component from '@ember/component';
 import layout from './template';
 import childMixins from '../../../mixins/tab';
 import * as Classes from '../../../-private/common/classes';
-import { classNames, attribute } from '@ember-decorators/component';
-import Ember from 'ember';
-@classNames(Classes.TAB_PANEL)
+import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/string';
 export default class TabsTab extends Component.extend(childMixins, {
 }) {
+  classNameBindings = [`TAB_PANEL`];
   /**
      * Whether the tab is disabled.
      * @default false
@@ -18,14 +18,21 @@ export default class TabsTab extends Component.extend(childMixins, {
   "aria-hidden": string = "true";
 
   /**append required Attributes  */
-  attributeBindings = ['role', 'aria-hidden']
+  attributeBindings = ['role', 'aria-hidden', `inlineStyle:style`];
 
   role: string = "tablist";
 
   /**Get selected panel id from tab title onClick function */
   selectedTabId?: string;
 
-  @attribute('style') style: any = Ember.String.htmlSafe((this.style));
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  style?: any;
+
+  TAB_PANEL = Classes.TAB_PANEL;
 
   didReceiveAttrs() {
     if (this.elementId && this.elementId == this.selectedTabId)

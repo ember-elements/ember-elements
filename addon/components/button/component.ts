@@ -1,49 +1,41 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
-import template from './template';
+import layout from './template';
 import Ember from 'ember';
-import { classNames, tagName, layout, className } from '@ember-decorators/component';
-import { readOnly } from '@ember-decorators/object/computed';
-import { get } from '@ember/object';
+import { get, computed } from '@ember/object';
 import * as Classes from '../../-private/common/classes';
 import { Intent } from '../../-private/common/intent';
-import { computed } from '@ember-decorators/object';
-
-@layout(template)
-@tagName('button')
-@classNames(Classes.BUTTON)
+import { readOnly } from '@ember/object/computed';
+import { htmlSafe } from '@ember/string';
 export default class Button extends Component {
+  layout = layout;
+  tagName = 'button';
+
+  @readOnly('disabled') Disabled?: boolean;
+
   @readOnly('iconSize') IconSize?: number;
 
-  @className(Classes.ACTIVE)
-  active: boolean = false;
-
-  @className(Classes.DISABLED)
-  disabled: boolean = false;
+  @readOnly('large') Large?: boolean;
 
   @readOnly('intent') Intents?: Intent;
-  danger: boolean = false;
 
-  @className(Classes.MINIMAL)
-  minimal: boolean = false;
-
-  @className(Classes.LARGE)
-  large: boolean = false;
-
-  @className(Classes.SMALL)
-  small: boolean = false;
-
-  @className(Classes.FILL)
-  fill: boolean = false;
-
-  @className
   @computed('Intents')
   get intentStyle() {
     return this.Intents ? Classes.intentClass(this.Intents) : Classes.intentClass('none');
   }
-  style?: any = Ember.String.htmlSafe(this.style);
-  attributeBindings = ['disabled:disabled', 'style:style', 'type:type'];
-  BUTTON_TEXT: string = Classes.BUTTON_TEXT;
+
+  @computed('style')
+  get inlineStyle() {
+    return htmlSafe(this.style);
+  }
+
+  attributeBindings = ['disabled:Disabled', `inlineStyle:style`, 'type:type'];
+  classNameBindings = [`BUTTON`, `active:${Classes.ACTIVE}`, `isActive:${Classes.ACTIVE}`, `Disabled:${Classes.DISABLED}`, `intentStyle`, `minimal:${Classes.MINIMAL}`, `Large:${Classes.LARGE}`, `small:${Classes.SMALL}`, `fill:${Classes.FILL}`, `alignTextClass`];
+
+  BUTTON_TEXT = Classes.BUTTON_TEXT;
+  BUTTON = Classes.BUTTON;
+
+  style?: any;
   marginRight?: any;
   marginRightChange?: number = -1;
   marginLeft?: any;
@@ -53,6 +45,7 @@ export default class Button extends Component {
   DEFAULT_MARGIN_RIGHT: number = 0;
   DEFAULT_SMALL_MARGIN_LEFT: number = -7;
   DEFAULT_LARGE_MARGIN_LEFT: number = -10;
+
   onClick!: (event: any) => void;
 
   didRender() {
@@ -60,7 +53,7 @@ export default class Button extends Component {
   }
 
   click(event: any) {
-    if (this.disabled)
+    if (this.Disabled)
       return;
     if (get(this, 'onClick'))
       get(this, 'onClick')(event);
@@ -70,6 +63,7 @@ export default class Button extends Component {
     if (this.element && (this.icon || this.rightIcon)) {
       var getCurrentComp: any = document.getElementById(this.elementId);
       var textSpanTag = getCurrentComp.querySelector('.' + this.BUTTON_TEXT);
+
       if (this.icon) {
         if (textSpanTag && textSpanTag.innerHTML.trim() == '' && this.marginRightChange != this.DEFAULT_MARGIN_RIGHT) {
           this.set('marginRight', Ember.String.htmlSafe(`margin-right:${this.DEFAULT_MARGIN_RIGHT}`));
@@ -82,12 +76,13 @@ export default class Button extends Component {
           }
         }
       }
+
       if (this.rightIcon) {
-        if (textSpanTag && textSpanTag.innerHTML.trim() == '' && this.marginLeftChange != this.DEFAULT_SMALL_MARGIN_LEFT && !this.large && !this.icon) {
+        if (textSpanTag && textSpanTag.innerHTML.trim() == '' && this.marginLeftChange != this.DEFAULT_SMALL_MARGIN_LEFT && !this.Large && !this.icon) {
           this.set('marginLeft', Ember.String.htmlSafe(`margin-left:${this.DEFAULT_SMALL_MARGIN_LEFT}px`));
           this.set('marginLeftChange', this.DEFAULT_SMALL_MARGIN_LEFT);
         }
-        else if (textSpanTag && textSpanTag.innerHTML.trim() == '' && this.marginLeftChange != this.DEFAULT_LARGE_MARGIN_LEFT && this.large && !this.icon) {
+        else if (textSpanTag && textSpanTag.innerHTML.trim() == '' && this.marginLeftChange != this.DEFAULT_LARGE_MARGIN_LEFT && this.Large && !this.icon) {
           this.set('marginLeft', Ember.String.htmlSafe(`margin-left:${this.DEFAULT_LARGE_MARGIN_LEFT}px`));
           this.set('marginLeftChange', this.DEFAULT_LARGE_MARGIN_LEFT);
         } else {
@@ -97,6 +92,7 @@ export default class Button extends Component {
           }
         }
       }
+
     }
   }
 };

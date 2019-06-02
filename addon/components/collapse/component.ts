@@ -1,16 +1,15 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { classNames } from '@ember-decorators/component';
 import { htmlSafe } from '@ember/string';
-import { computed } from '@ember-decorators/object';
 
 import * as Classes from "../../-private/common/classes";
 import { AnimationStates } from './animationSates';
+import { computed } from '@ember/object';
 
-@classNames(Classes.COLLAPSE)
 export default class Collapse extends Component {
   layout = layout;
+  classNameBindings = [`COLLAPSE`];
 
   /**
      * Whether the component is open or closed.
@@ -46,6 +45,7 @@ export default class Collapse extends Component {
   contentsStyle?: string;
 
   COLLAPSE_BODY = Classes.COLLAPSE_BODY;
+  COLLAPSE = Classes.COLLAPSE;
 
   isContentVisible!: boolean;
 

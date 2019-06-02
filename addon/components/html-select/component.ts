@@ -4,12 +4,9 @@ import layout from './template';
 
 import { DISABLED, FILL, HTML_SELECT, LARGE, MINIMAL } from '../../-private/common/classes';
 import { IIconProps } from '../../-private/icons/IIconProps';
-import { classNames } from '@ember-decorators/component';
 import { IOptionProps } from '../../-private/common/props'
-import { computed, action } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/string';
-
-@classNames(HTML_SELECT)
+import { computed, action } from '@ember/object';
 export default class HTMLSelect extends Component {
   layout = layout;
 
@@ -51,8 +48,7 @@ export default class HTMLSelect extends Component {
     return htmlSafe(this.get('style'))
   }
 
-
-  classNameBindings = [`disabled:${DISABLED}`, `fill:${FILL}`, `large:${LARGE}`, `minimal:${MINIMAL}`];
+  classNameBindings = [`HTML_SELECT`, `disabled:${DISABLED}`, `fill:${FILL}`, `large:${LARGE}`, `minimal:${MINIMAL}`];
 
   attributeBindings = ['Style'];
 
@@ -61,4 +57,5 @@ export default class HTMLSelect extends Component {
     if (this.get('onChange'))
       this.get('onChange')(e);
   }
+  HTML_SELECT = HTML_SELECT;
 };

@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember-decorators/object';
+import { action } from '@ember/object';
 import Ember from 'ember';
 
 export default class DocsCoreInputGroup extends Controller {
