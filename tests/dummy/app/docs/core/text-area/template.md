@@ -18,6 +18,8 @@
             @fill={{fill}}
             @small={{small}}
             @intent={{intent}}
+            @value={{value}}
+            @onChange={{action (mut this.value) value="target.value"}}
           ></TextArea>
           {{! END-SNIPPET }}
         </div>
