@@ -1,15 +1,13 @@
 import Component from '@ember/component';
 // @ts-ignore: Ignore import of compiled template
 import layout from './template';
-import { tagName } from '@ember-decorators/component';
 import { action } from '@ember-decorators/object';
-import { htmlSafe } from '@ember/string';
 import { Intent } from '../../-private/common/intent';
 import * as Classes from "../../-private/common/classes";
-
-@tagName('span')
 export default class TextArea extends Component {
   layout = layout;
+  tagName = 'span';
+  classNameBindings = [`fill:${Classes.FILL}`];
 
   /**
     * Whether the text area should take up the full width of its container.
@@ -43,29 +41,23 @@ export default class TextArea extends Component {
   INTENT = Classes.intentClass('none');
 
   onChange!: (event: any) => void;
-  textAreaHeight!: any;
+
   height!: number;
   classBind: string = this.INPUT;
 
   didReceiveAttrs() {
     this._super(...arguments);
+
     this.set('INTENT', Classes.intentClass(this.intent));
 
-    this.set('classBind', [`${this.INPUT} ${this.fill ? this.FILL : ''} ${this.large ? this.LARGE : ''}  ${this.small ? this.SMALL : ''} ${this.INTENT ? this.INTENT : ''} ${this.className ? this.className : ''}`]);
-  }
-
-  didInsertElement() {
-    if (this.element) {
-      var textAreaComp = (this.element.querySelector('textarea') || {}) as HTMLInputElement;
-      textAreaComp.value = textAreaComp.value.trim();
-    }
+    this.set('classBind', [(`${this.INPUT} ${this.fill ? this.FILL : ''} ${this.large ? this.LARGE : ''}  ${this.small ? this.SMALL : ''} ${this.INTENT ? this.INTENT : ''} ${this.className ? this.className : ''}`).trim()]);
   }
 
   @action
   onChangeArea(e: any) {
     if (this.growVertically) {
       this.set('height', e.target.scrollHeight)
-      this.set('textAreaHeight', htmlSafe(`height:${this.height}`));
+        (this.element.querySelector('textarea') as HTMLElement || {}).style.height = this.height + "px";
     }
     if (this.get('onChange'))
       this.get('onChange')(e);
