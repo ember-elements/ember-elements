@@ -15,3 +15,6 @@ export interface IOptionProps extends IProps {
     /** Value of this option. */
     value: string | number;
 }
+export interface HTMLInputProps {
+    readonly placeholder?: string;
+}
