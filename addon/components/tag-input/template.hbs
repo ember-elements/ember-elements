@@ -1,62 +1,54 @@
-<div
-  class={{TAG_INPUT_VALUES}}
-  onclick={{action "onFocus"}}
-  onkeydown={{action "handleKeydown"}}
->
-  {{#each data as |item index|}}
-    <Tag
-      @large={{large}}
-      @minimal={{minimal}}
-      @params={{index}}
-      @interactive={{interactive}}
-      @round={{round}}
-      @icon={{icon}}
-      @rightIcon={{rightIcon}}
-      @intent={{intent}}
-      @value={{item}}
-      @removable={{removable}}
-      @bgColor={{defaultBgcolor}}
-      @fgColor={{defaultFgcolor}}
-      @onRemove={{action "Delete"}}
-      @disabled={{disabled}}
-     />
+{{#if leftIcon}}
+  <Icon
+    @class={{TAG_INPUT_ICON}}
+    @icon={{leftIcon}}
+    @iconSize={{if large 20 16}}
+   />
 
-  {{/each}}
-  <form autocomplete="off" {{action "savetag" on="submit"}}>
-    {{#if disabled}}
-      {{input
-        class=INPUT_GHOST
-        disabled=true
-        value=tag
-        focusOut=(action "onBlur")
-      }}
-    {{else}}
-      {{input
-        class=INPUT_GHOST
-        value=tag
-        placeholder=placeholder
-        focusOut=(action "onBlur")
-      }}
-    {{/if}}
-  </form>
-</div>
-{{#if (and (not disabled) (not isCloseNotRequired))}}
-  <button type="button" class="{{BUTTON}} {{MINIMAL}}" {{action "DeleteAll"}}>
-    <svg
-      class={{ICON}}
-      data-icon="cross"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-    >
-      <desc>
-        cross
-      </desc>
-      <path
-        d="M9.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-3.29-3.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 3.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l3.29 3.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z"
-        fill-rule="evenodd"
-      ></path>
-    </svg>
-  </button>
 {{/if}}
+<div class={{TAG_INPUT_VALUES}}>
+  {{#each values as |tag index|}}
+    {{#if tag}}
+      <Tag
+        @active={{if (eq index activeIndex) true false}}
+        @key="{{tag}}__{{index}}"
+        @data-tag-index={{index}}
+        @large={{large}}
+        @removable={{if disabled false true}}
+        @onRemove={{action "handleRemoveTag"}}
+        @class={{tagProps.class}}
+        @fill={{tagProps.fill}}
+        @icon={{tagProps.icon}}
+        @iconSize={{tagProps.iconSize}}
+        @intent={{tagProps.intent}}
+        @interactive={{tagProps.interactive}}
+        @minimal={{tagProps.minimal}}
+        @rightIcon={{tagProps.rightIcon}}
+        @round={{tagProps.round}}
+      >
+        {{{tag}}}
+      </Tag>
+    {{/if}}
+  {{/each}}
+  <input
+    onFocus={{action "handleInputFocus"}}
+    onKeyDown={{action "handleInputKeyDown"}}
+    onKeyUp={{action "handleInputKeyUp"}}
+    onPaste={{action "handleInputPaste"}}
+    oninput={{action "handleInputChange"}}
+    value={{inputValue}}
+    placeholder={{resolvedPlaceholder}}
+    class="{{INPUT_GHOST}} {{inputProps.class}} {{inputProps.class}}"
+    disabled={{disabled}}
+    autofocus={{inputProps.autofocus}}
+    readonly={{inputProps.readonly}}
+    tabindex={{inputProps.tabindex}}
+    maxlength={{inputProps.maxlength}}
+    name={{inputProps.name}}
+    min={{inputProps.min}}
+    max={{inputProps.max}}
+    type={{inputProps.type}}
+   />
+
+</div>
 {{yield}}

@@ -13,43 +13,43 @@ import Ember from 'ember';
 @classNames(Classes.TAG)
 export default class Tag extends Component {
   @readOnly('bgColor') BgColor!: string;
-  
+
   @readOnly('fgColor') FgColor!: string;
-  style!:string;
-  
-  @attribute('style') 
-  
+  style!: string;
+
+  @attribute('style')
+
   @computed('BgColor')
-  get bgcolorStyle(){
+  get bgcolorStyle() {
     return Ember.String.htmlSafe(`background:${this.BgColor};color:${this.FgColor};${this.style}`);
   }
-  
+
   @readOnly('disabled') Disabled!: boolean;
-  
+
   @readOnly('removable') Removable!: boolean;
-  
+
   @readOnly('large') Large!: boolean;
-  
+
   @readOnly('intent') Intent!: Intent;
-  
+
   @className(Classes.ACTIVE)
   active: boolean = false;
-  
+
   @className(Classes.FILL)
   fill: boolean = false;
-  
+
   @className(Classes.LARGE)
   large: boolean = false;
-  
+
   @className(Classes.MINIMAL)
   minimal: boolean = false;
-  
+
   @className(Classes.INTERACTIVE)
   interactive: boolean = false;
-  
+
   @className(Classes.ROUND)
   round: boolean = false;
-  
+
   @className(Classes.DISABLED)
   disabled: boolean = false;
 
@@ -63,14 +63,14 @@ export default class Tag extends Component {
   get removeIconSize() {
     return this.Large == true ? 20 : 16;
   }
-  
+
   TEXT_OVERFLOW_ELLIPSIS_Fill: string = Classes.TEXT_OVERFLOW_ELLIPSIS + ' ' + Classes.FILL;
   TAG_REMOVE: string = Classes.TAG_REMOVE;
   onClick!: (event: MouseEvent) => void;
   onRemove!: (value: string, params: any, event: MouseEvent) => void;
   value!: string;
   params?: any;
- 
+
   click(event: any) {
     if (this.Disabled)
       return;
@@ -85,5 +85,6 @@ export default class Tag extends Component {
     if (get(this, 'onRemove'))
       get(this, 'onRemove')(this.get('value'), this.get('params'), e);
   }
+  attributeBindings = [`data-tag-index`];
   // normal class body definition here
 };
