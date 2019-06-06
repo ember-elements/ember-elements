@@ -22,6 +22,10 @@ Markup:
 
 Styleguide input
 */
+span.#{$ns}-fill {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 
 .#{$ns}-input {
   @include pt-input();
