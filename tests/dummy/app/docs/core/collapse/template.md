@@ -12,7 +12,7 @@ that can be expanded and collapsed.</p>
             <div style="width: 100%; height: 100%; margin: 0px;">
                 {{! BEGIN-SNIPPET docs-example-basic-collapse.hbs }}
                 <Button @onClick={{action 'onClickButton'}}>
-                    {{#if isOpen}} Show{{else}} Hide{{/if}} build logs
+                    {{#if isOpen}} Hide{{else}} Show{{/if}} build logs
                 </Button>
                 <Collapse @isOpen={{isOpen}} @keepChildrenMounted={{keepChildrenMounted}}>
                     <pre class="bp3-code-block">[11:53:30] Finished 'typescript-bundle-blueprint' after 769 ms<br>[11:53:30] Starting 'typescript-typings-blueprint'...<br>[11:53:30] Finished 'typescript-typings-blueprint' after 198 ms<br>[11:53:30] write ./blueprint.css<br>[11:53:30] Finished 'sass-compile-blueprint' after 2.84 s</pre>
