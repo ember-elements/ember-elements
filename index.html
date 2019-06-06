@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ember-elements</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-<meta name="dummy/config/environment" content="%7B%22modulePrefix%22%3A%22dummy%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22%2Fember-elements%2F%22%2C%22locationType%22%3A%22auto%22%2C%22historySupportMiddleware%22%3Atrue%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%2C%22_JQUERY_INTEGRATION%22%3Afalse%7D%2C%22APP%22%3A%7B%7D%2C%22ember-component-css%22%3A%7B%22namespacing%22%3Afalse%7D%2C%22ember-cli-addon-docs%22%3A%7B%22projectName%22%3A%22ember-elements%22%2C%22projectDescription%22%3A%22**Ember%20Elements**%20is%20a%20UI%20toolkit%20built%20with%20Typescript%20and%20made%20available%20as%20an%20**Ember%20addon**.%20It%20is%20based%20on%20the%20awesome%20**%5BBlueprint%20design%20system%5D(https%3A%2F%2Fblueprintjs.com%2Fdocs)**%22%2C%22projectTag%22%3A%220.5.0%22%2C%22projectHref%22%3A%22https%3A%2F%2Fgithub.com%2Fdunkinbase%2Fember-elements%22%2C%22projectPathInRepo%22%3A%22%22%2C%22primaryBranch%22%3A%22master%22%2C%22latestVersionName%22%3A%22-latest%22%2C%22deployVersion%22%3A%7B%22path%22%3A%22%22%2C%22name%22%3A%22Latest%22%2C%22sha%22%3A%22b737423a7c869608372cd82880743300fb8b1357%22%2C%22tag%22%3A%22v0.5.0%22%2C%22key%22%3A%22-latest%22%7D%2C%22searchTokenSeparator%22%3A%22%5C%5Cs%2B%22%7D%2C%22ember-cli-tailwind%22%3A%7B%22shouldIncludeStyleguide%22%3Afalse%2C%22shouldBuildTailwind%22%3Afalse%7D%2C%22ember-modal-dialog%22%3A%7B%22hasEmberTether%22%3A%221.0.0%22%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ember-elements – A Ember-based UI toolkit for the web</title>
+  <meta name="description" content="A Ember-based UI toolkit for the web">
+  <meta name="keywords" content="Ember,popover,button,icon,blueprintjs,date-picker,input,drawer,select,multi-select,ember-typescript, typescript addons,ember-elements,ember elements,emberjs,tooltip,svg icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link integrity="" rel="stylesheet" href="/ember-elements/assets/vendor-6ee8d14779f8d75451561b451981591e.css">
-    <link integrity="" rel="stylesheet" href="/ember-elements/assets/dummy-c925d9cb224111a2c56e6ec07f9be49c.css">
+  
+<meta name="dummy/config/environment" content="%7B%22modulePrefix%22%3A%22dummy%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22%2Fember-elements%2F%22%2C%22locationType%22%3A%22auto%22%2C%22historySupportMiddleware%22%3Atrue%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%2C%22_JQUERY_INTEGRATION%22%3Afalse%7D%2C%22APP%22%3A%7B%7D%2C%22ember-component-css%22%3A%7B%22namespacing%22%3Afalse%7D%2C%22ember-cli-addon-docs%22%3A%7B%22projectName%22%3A%22ember-elements%22%2C%22projectDescription%22%3A%22**Ember%20Elements**%20is%20a%20UI%20toolkit%20built%20with%20Typescript%20and%20made%20available%20as%20an%20**Ember%20addon**.%20It%20is%20based%20on%20the%20awesome%20**%5BBlueprint%20design%20system%5D(https%3A%2F%2Fblueprintjs.com%2Fdocs)**%22%2C%22projectTag%22%3A%220.5.1%22%2C%22projectHref%22%3A%22https%3A%2F%2Fgithub.com%2Fdunkinbase%2Fember-elements%22%2C%22projectPathInRepo%22%3A%22%22%2C%22primaryBranch%22%3A%22master%22%2C%22latestVersionName%22%3A%22-latest%22%2C%22deployVersion%22%3A%7B%22path%22%3A%22%22%2C%22name%22%3A%22Latest%22%2C%22sha%22%3A%2288d3ec7e9f5fac15acb3aa9d6e2cd1c277dd0b96%22%2C%22tag%22%3A%22v0.5.1%22%2C%22key%22%3A%22-latest%22%7D%2C%22searchTokenSeparator%22%3A%22%5C%5Cs%2B%22%7D%2C%22ember-cli-tailwind%22%3A%7B%22shouldIncludeStyleguide%22%3Afalse%2C%22shouldBuildTailwind%22%3Afalse%7D%2C%22ember-modal-dialog%22%3A%7B%22hasEmberTether%22%3A%221.0.0%22%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
 
-    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Start Single Page Apps for GitHub Pages -->
+  <link integrity="" rel="stylesheet" href="/ember-elements/assets/vendor-6ee8d14779f8d75451561b451981591e.css">
+  <link integrity="" rel="stylesheet" href="/ember-elements/assets/dummy-4873bd375e3b308f42dfea48518af591.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Start Single Page Apps for GitHub Pages -->
 <script type="text/javascript">
   // Single Page Apps for GitHub Pages
   // https://github.com/rafrex/spa-github-pages
@@ -49,9 +52,10 @@
 <!-- End Single Page Apps for GitHub Pages -->
 
 
-    <script src="/ember-elements/assets/vendor-b936d8d76671a508c73378ce7baeac02.js"></script>
-    <script src="/ember-elements/assets/dummy-d740d1988895b1f1a5d859de0219d8d4.js"></script>
+  <script src="/ember-elements/assets/vendor-d4980a114ae9cb44c01ea6bd5c2cc14d.js"></script>
+  <script src="/ember-elements/assets/dummy-57ea7a88bd75662a66fc59f336f34891.js"></script>
 
-    
-  </body>
+  
+</body>
+
 </html>
