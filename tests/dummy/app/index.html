@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ember-elements</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ember-elements – A Ember-based UI toolkit for the web</title>
+  <meta name="description" content="A Ember-based UI toolkit for the web">
+  <meta name="keywords" content="Ember,popover,button,icon,blueprintjs,date-picker,input,drawer,select,multi-select,ember-typescript, typescript addons,ember-elements,ember elements,emberjs,tooltip,svg icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/dummy.css">
+  {{content-for "head"}}
 
-    {{content-for "head-footer"}}
-  </head>
-  <body>
-    {{content-for "body"}}
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/dummy.css">
 
-    <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/dummy.js"></script>
+  {{content-for "head-footer"}}
+</head>
 
-    {{content-for "body-footer"}}
-  </body>
+<body>
+  {{content-for "body"}}
+
+  <script src="{{rootURL}}assets/vendor.js"></script>
+  <script src="{{rootURL}}assets/dummy.js"></script>
+
+  {{content-for "body-footer"}}
+</body>
+
 </html>
