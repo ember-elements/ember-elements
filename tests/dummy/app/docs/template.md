@@ -15,27 +15,15 @@
     {{nav.section 'COMPONENTS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Button' 'docs.core.button'}}
     {{nav.item 'Button Group' 'docs.core.button-group'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Callout' 'docs.core.callout'}}
     {{nav.item 'Card' 'docs.core.card'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Collapse' 'docs.core.collapse'}}
     {{nav.item 'Icon' 'docs.core.icon'}}
     {{nav.item 'Overflow List' 'docs.core.overflowList'}}
     {{nav.item 'NavBar' 'docs.core.nav-bar'}}
     {{nav.item 'Panel Stack' 'docs.core.panel-stack'}}
-    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
-    <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
-    </span>
     {{nav.item 'Progress Bar' 'docs.core.progress-bar'}}
     {{nav.item 'Resize Sensor' 'docs.core.resizesensor'}}
     {{nav.item 'Tag' 'docs.core.tag'}}
