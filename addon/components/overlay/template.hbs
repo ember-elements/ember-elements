@@ -1,0 +1,40 @@
+{{#if (and lazy hasEverOpened)}}
+  <DomOuterRender
+    @tagName={{portalTagName}}
+    @destinationElementId={{if
+      (not destinationElement)
+      destinationElementId
+      null
+    }}
+    @renderInPlace={{if usePortal false true}}
+    @destinationElement={{destinationElement}}
+  >
+    <span class={{portalClassName}} id={{overLayCustomId}}>
+      <div class={{mainContainerClasses}} onKeyDown={{action "handleKeyDown"}}>
+        {{#if isShowContentAnimation}}
+          {{#if hasBackdrop}}
+            <span
+              tabIndex={{if canOutsideClickClose 0 null}}
+              onMouseDown={{action "handleBackdropMouseDown"}}
+            >
+              {{#transition-group
+                tagName=backdropProps.tagName
+                class=backdropClassNames
+                transitionClass=transitionName
+              }}{{/transition-group}}
+            </span>
+          {{/if}}
+          {{#transition-group
+            tagName=backdropProps.tagName
+            class=containerClasses
+            transitionClass=transitionName
+          }}
+            {{#if hasBlock}}
+              {{yield}}
+            {{/if}}
+          {{/transition-group}}
+        {{/if}}
+      </div>
+    </span>
+  </DomOuterRender>
+{{/if}}
