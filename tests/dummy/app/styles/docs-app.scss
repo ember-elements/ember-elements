@@ -15166,12 +15166,12 @@ label.docs-color-scheme-label {
   transition-delay: 0
 }
 
-.docs-overlay-example-transition.bp3-overlay-exit {
+.docs-overlay-example-transition.bp3-overlay-leave {
   -webkit-transform: translateY(0) rotate(0deg);
   transform: translateY(0) rotate(0deg)
 }
 
-.docs-overlay-example-transition.bp3-overlay-exit-active {
+.docs-overlay-example-transition.bp3-overlay-leave-active {
   -webkit-transform: translateY(150vh) rotate(-20deg);
   transform: translateY(150vh) rotate(-20deg);
   -webkit-transition-property: -webkit-transform;
