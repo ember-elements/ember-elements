@@ -6,6 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 let index = 0;
 const BACKDROP = ".bp3-overlay-backdrop";
 const OVERLAY_OPEN = "bp3-overlay-open";
+const OVERLAY_CONTENT = "bp3-overlay-content";
 module('Integration | Component | overlay', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -178,7 +179,7 @@ module('Integration | Component | overlay', function (hooks) {
   test('brings focus to overlay if autoFocus=true', async function (assert) {
 
     await render(hbs`<div id="destination"/> <Overlay @isOpen={{true}} @autoFocus=true ><input type="text" /></Overlay>`);
-    assert.ok((document.activeElement as any).querySelector(BACKDROP));
+    assert.ok((document.activeElement as any).classList.contains(OVERLAY_CONTENT));
   });
 
   test('does not bring focus to overlay if autoFocus=false', async function (assert) {
@@ -198,8 +199,7 @@ module('Integration | Component | overlay', function (hooks) {
     await render(hbs`<div id="destination"/> <Overlay @isOpen={{true}} @canOutsideClickClose={{false}} @usePortal={{false}} @enforceFocus={{true}} ><input tabIndex="0" type="text" /></Overlay>`);
     await click(BACKDROP);
     await triggerKeyEvent(BACKDROP, 'keydown', 9);
-
-    assert.equal((document.activeElement as any), this.element.querySelector('input'));
+    assert.ok((document.activeElement as any).classList.contains(OVERLAY_CONTENT));
   });
 
   // Background scrolling

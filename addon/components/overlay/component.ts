@@ -72,6 +72,7 @@ export default class Overlay extends Component.extend({
 
   // custom id for overlay and attached with current elementId
   overLayCustomId = "";
+  containerTransitionId = "";
 
   //ember css transition state handling
   isShowContentAnimation = true;
@@ -80,6 +81,7 @@ export default class Overlay extends Component.extend({
   private static openStack: Overlay[] = [];
   private static getLastOpened = () => Overlay.openStack[Overlay.openStack.length - 1];
   private OverlayId = "overlay_id_";
+  private containerId = "transition_id_";
 
   @computed('className', 'hasEverOpened', 'usePortal')
   get mainContainerClasses() {
@@ -98,8 +100,7 @@ export default class Overlay extends Component.extend({
   //life cycle 
   async didReceiveAttrs() {
 
-    console.log(this.prevPropsIsOpen, this.isOpen);
-    if (this.prevPropsIsOpen) {
+    if (this.prevPropsIsOpen && !this.isOpen) {
       await set(this, 'isShowContentAnimation', false);
       setTimeout(() => {
         if (!this.isDestroyed)
@@ -127,6 +128,9 @@ export default class Overlay extends Component.extend({
 
   didRender() {
     this.getRefElement();
+    if (document.getElementById(this.containerTransitionId)) {
+      (document.getElementById(this.containerTransitionId) as HTMLElement).tabIndex = 0;
+    }
   }
 
   didInsertElement() {
@@ -134,6 +138,7 @@ export default class Overlay extends Component.extend({
       this.overlayWillOpen();
     }
     set(this, 'overLayCustomId', this.OverlayId + this.elementId);
+    set(this, 'containerTransitionId', this.containerId + this.elementId);
   }
 
   willDestroyElement() {
@@ -188,7 +193,7 @@ export default class Overlay extends Component.extend({
       if (isFocusOutsideModal) {
         // element marked autofocus has higher priority than the other clowns
         const autofocusElement = this.containerElement.querySelector("[autofocus]") as HTMLElement;
-        const wrapperElement = this.containerElement.querySelector("[tabindex]") as HTMLElement;
+        const wrapperElement = this.containerElement;
         if (autofocusElement != null) {
           autofocusElement.focus();
         } else if (wrapperElement != null) {
@@ -280,7 +285,7 @@ export default class Overlay extends Component.extend({
   }
 
   private getRefElement() {
-    const ref = document.getElementById(this.overLayCustomId);
+    const ref = document.getElementById(this.containerTransitionId);
 
     if (ref)
       set(this, 'containerElement', ref);
