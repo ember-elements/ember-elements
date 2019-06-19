@@ -2,6 +2,8 @@
 {{outlet}}
 
 {{docs-keyboard-shortcuts}}
-<div id="destination">
-</div>
+{{! BEGIN-SNIPPET docs-example-basic-portal-destination-id.hbs }}
+<!-- see Portal Component -->
+<div id="destination"/>
+{{! END-SNIPPET }}
 <Accessibility @isFocusOnTabs=true />

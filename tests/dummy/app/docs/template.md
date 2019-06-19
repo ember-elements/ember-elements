@@ -56,6 +56,7 @@
     {{nav.section 'OVERLAYS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
+    {{nav.item 'Overlay' 'docs.core.overlay'}}
     {{nav.item 'Portal' 'docs.core.portal'}}
     {{nav.item 'Dialog' 'docs.core.dialog'}}
     {{nav.item 'Drawer' 'docs.core.drawer'}}
