@@ -38,6 +38,7 @@ Router.map( function () {
       this.route( 'callout' );
       this.route( 'progress-bar' );
       this.route( 'portal' );
+      this.route( 'overlay' );
     } );
     this.route( 'date', function () {
       this.route( 'date-range-picker' );
