@@ -18,3 +18,9 @@ export const NUMERIC_INPUT_STEP_SIZE_NULL = ns + ` <NumericInput> requires stepS
 export const DIALOG_WARN_NO_HEADER_ICON = ns + ` <Dialog> iconName is ignored if title is omitted.`;
 export const DIALOG_WARN_NO_HEADER_CLOSE_BUTTON =
     ns + ` <Dialog> isCloseButtonShown prop is ignored if title is omitted.`;
+
+export const ALERT_WARN_CANCEL_PROPS = ns + ` <Alert> cancelButtonText and onCancel should be set together.`;
+export const ALERT_WARN_CANCEL_ESCAPE_KEY =
+    ns + ` <Alert> canEscapeKeyCancel enabled without onCancel or onClose handler.`;
+export const ALERT_WARN_CANCEL_OUTSIDE_CLICK =
+    ns + ` <Alert> canOutsideClickCancel enbaled without onCancel or onClose handler.`;
