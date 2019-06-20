@@ -1,24 +1,50 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
+import { set } from '@ember/object';
 
-export default class DocsCoreDialog extends Controller{
+export default class DocsCoreDialog extends Controller {
   // normal class body definition here
-  // BEGIN-SNIPPET docs-example-basic-dialog-box.js
+  // BEGIN-SNIPPET docs-example-basic-dialog.js
 
-  isOpenDialog: boolean = false;
+  isOpen: boolean = false;
+  autoFocus: boolean = true;
+  enforceFocus: boolean = true;
+  canEscapeKeyClose: boolean = true;
+  usePortal: boolean = true;
+  canOutsideClickClose: boolean = true;
+
   @action
-  openDialogBox() {
-    this.set('isOpenDialog', true);
+  onDialogToggle() {
+    set( this, 'isOpen', !this.isOpen );
   }
+
   @action
-  save() {
-    this.set('isOpenDialog', false);
-  }
-  @action
-  cancel() {
-    this.set('isOpenDialog', false);
+  onClose() {
+    set( this, 'isOpen', false );
   }
   // END-SNIPPET
+  @action
+  onPropsChangeEvent( type: string ) {
+    if ( type == "autoFoucs" ) {
+      set( this, 'autoFocus', !this.autoFocus );
+    }
+    else if ( type == "enforceFocus" ) {
+      set( this, 'enforceFocus', !this.enforceFocus );
+    }
+    else if ( type == "usePortal" ) {
+      set( this, 'usePortal', !this.usePortal );
+    }
+    else if ( type == "canOutsideClickClose" ) {
+      set( this, 'canOutsideClickClose', !this.canOutsideClickClose );
+    }
+    else if ( type == "canOutsideClickClose" ) {
+      set( this, 'canOutsideClickClose', !this.canOutsideClickClose );
+    }
+    else if ( type == "canEscapeKeyClose" ) {
+      set( this, 'canEscapeKeyClose', !this.canEscapeKeyClose );
+    }
+  }
+
 
 }
 
