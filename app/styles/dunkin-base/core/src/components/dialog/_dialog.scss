@@ -1,9 +1,6 @@
-// Copyright 2015 Palantir Technologies, Inc. All rights reserved.
-// Licensed under the terms of the LICENSE file distributed with this project.
-
 @import "../../../../icons/src/icons";
 @import "../../common/mixins";
-@import "../../common/react-transition";
+@import "./react-transition";
 @import "../../common/variables";
 
 /*
@@ -42,6 +39,15 @@ $dialog-padding: $pt-grid-size * 2 !default;
   $dialog-transition-props: (
     opacity: (0, 1),
     transform: (scale(0.5), scale(1))
+  );
+  $dialog-transition-props1: (
+    opacity: (0, 1)  
+  );
+   @include react-transition(
+    "#{$ns}-overlay",
+    $dialog-transition-props1,
+    $duration: $pt-transition-duration * 3,
+    $before: "&",
   );
 
   @include react-transition(

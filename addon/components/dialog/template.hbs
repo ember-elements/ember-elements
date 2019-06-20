@@ -1,18 +1,41 @@
-{{#if isOpenDialog}}
-  <DomOuterRender @destinationElementId="destination">
-    <div class="{{OVERLAY}} {{OVERLAY_OPEN}} {{OVERLAY_SCROLL_CONTAINER}}">
-      <div
-        class={{OVERLAY_BACKDROP}}
-        tabindex="0"
-        {{action "outerClickCloseDialog"}}
-      ></div>
-      <div class="{{DIALOG_CONTAINER}} {{OVERLAY_CONTENT}}" tabindex="0">
-        <div id={{dbId}} class={{DIALOG}} tabindex="0">
-          <div style="padding: 12px;">
-            {{yield}}
-          </div>
-        </div>
+<Overlay
+  @className={{overlayClassName}}
+  @hasBackdrop={{true}}
+  @isOpen={{isOpen}}
+  @autoFocus={{autoFocus}}
+  @backdropClassName={{backdropClassName}}
+  @backdropProps={{backdropProps}}
+  @canEscapeKeyClose={{canEscapeKeyClose}}
+  @canOutsideClickClose={{canOutsideClickClose}}
+  @enforceFocus={{enforceFocus}}
+  @lazy={{lazy}}
+  @onClose={{action "onIconClick"}}
+  @portalClassName={{setPortalClassName}}
+  @transitionName={{transitionName}}
+  @usePortal={{usePortal}}
+  @containerClassName={{containerClassName}}
+>
+  <div class={{dialogClassNames}} style={{dialogStyle}}>
+    {{#if title}}
+      <div class={{DIALOG_HEADER}}>
+        <Icon @icon={{icon}} @iconSize={{20}} />
+        <h4 class={{HEADING}}>
+          {{{title}}}
+        </h4>
+        {{#if isCloseButtonShown}}
+          <Button
+            @ariaLabel="close"
+            @class={{DIALOG_CLOSE_BUTTON}}
+            @icon="small-cross"
+            @iconSize={{20}}
+            @minimal={{true}}
+            @onClick={{action "onIconClick"}}
+            @type="button"
+           />
+
+        {{/if}}
       </div>
-    </div>
-  </DomOuterRender>
-{{/if}}
+    {{/if}}
+    {{yield}}
+  </div>
+</Overlay>
