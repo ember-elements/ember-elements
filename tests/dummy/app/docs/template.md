@@ -58,6 +58,7 @@
 {{#nav.subnav as |nav|}}
     {{nav.item 'Overlay' 'docs.core.overlay'}}
     {{nav.item 'Portal' 'docs.core.portal'}}
+    {{nav.item 'Alert' 'docs.core.alert'}}
     {{nav.item 'Dialog' 'docs.core.dialog'}}
     {{nav.item 'Drawer' 'docs.core.drawer'}}
     {{nav.item 'Pop Over' 'docs.core.pop-over'}}
