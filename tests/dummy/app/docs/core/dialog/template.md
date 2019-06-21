@@ -232,7 +232,7 @@ Dialogs present content overlaid over other parts of the UI.
                 </tr>
                 <tr>
                     <td class="docs-prop-name"><code>icon</code></td>
-                    <td class="docs-prop-details"><code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted">true</em></code>
+                    <td class="docs-prop-details"><code class="docs-prop-type"><strong>string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                         <div class="docs-prop-description">
                             <div class="docs-section">
                                 <div class="bp3-running-text">
