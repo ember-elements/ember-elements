@@ -56,9 +56,21 @@
     {{nav.section 'OVERLAYS' style='large'}}
 </div>
 {{#nav.subnav as |nav|}}
+     <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Overlay' 'docs.core.overlay'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Portal' 'docs.core.portal'}}
+    <span class="bp3-tag bp3-intent-success bp3-minimal docs-nav-tag float-right">
+     <span class="bp3-text-overflow-ellipsis bp3-fill">new  </span>
+    </span>
     {{nav.item 'Alert' 'docs.core.alert'}}
+    <span class="bp3-tag bp3-intent-primary bp3-minimal docs-nav-tag float-right">
+     <span class="bp3-text-overflow-ellipsis bp3-fill">Update </span>
+    </span>
     {{nav.item 'Dialog' 'docs.core.dialog'}}
     {{nav.item 'Drawer' 'docs.core.drawer'}}
     {{nav.item 'Pop Over' 'docs.core.pop-over'}}
