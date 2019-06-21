@@ -55,20 +55,20 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
   - [ ] Breadcrumbs
   - [x] Button
   - [x] Button group
-  - [ ] Callout
+  - [x] Callout
   - [x] Card
-  - [ ] Collapse
+  - [x] Collapse
   - [ ] Collapsible list
   - [ ] Divider
   - [ ] Editable text
   - [ ] Hotkeys
   - [x] Icon
   - [ ] Menu
-  - [ ] Navbar
+  - [x] Navbar
   - [ ] Non-ideal state
   - [x] Overflow list
   - [x] Panel stack
-  - [ ] Progress bar
+  - [x] Progress bar
   - [x] Resize sensor
   - [ ] Skeleton
   - [ ] Spinner
@@ -95,9 +95,9 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
   - [x] Tag input
 
 - [ ] Overlays
-  - [ ] Overlay
-  - [ ] Portal
-  - [ ] Alert
+  - [x] Overlay
+  - [x] Portal
+  - [x] Alert
   - [ ] Context menu
   - [x] Dialog
   - [x] Drawer
