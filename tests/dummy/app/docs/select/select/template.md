@@ -10,18 +10,27 @@
     <div class="docs-example-frame docs-example-frame-row" data-example-id="SelectExample">
         <div class="docs-example">
             {{! BEGIN-SNIPPET docs-example-basic-select-box.hbs }}
-             <Select @data={{data}} @selected={{selected}} 
+             <Select @data={{TOP_100_FILMS}} @selected={{selected}} 
                @placement={{placement}}
                @minimal={{minimal}}  
                @onSelect={{action 'optionSelected'}} 
-               @InputGroupProps={{InputGroupProps}}>
+               @style="width:300px"
+               @InputGroupProps={{InputGroupProps}} as |item index isNotFound|>
+               {{#if isNotFound}}
+                  no result!
+               {{else}}
+               <div class="bp3-text-overflow-ellipsis bp3-fill"> {{item.rank}}. {{item.title}} </div>
+               <span class="bp3-menu-item-label">{{item.year}}</span>                
+               {{/if}}
             </Select>
-            <Select @data={{data2}} @type='button' 
+            <Select @data={{TOP_100_FILMS}} @type='button' 
                @selected={{selected2}} 
                @rightIcon="caret-down"
                @ButtonProps={{ButtonProps}} 
                @minimal={{minimal}}
-               @onSelect={{action 'optionSelected' }}>
+               @onSelect={{action 'optionSelected' }} as |item index isNotFound|>
+               <div class="bp3-text-overflow-ellipsis bp3-fill"> {{item.rank}} {{item.title}} </div>
+               <span class="bp3-menu-item-label">{{item.year}}</span>     
             </Select>
             {{! END-SNIPPET }}
         </div>
@@ -96,11 +105,11 @@
             <tr>
                 <td class="docs-prop-name"><code>data</code></td>
                 <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>Array &lt;string&gt;</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                        class="docs-prop-type"><strong>Array &lt;object&gt;</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
-                                <p>It is an array of string which contains options for select box</p>
+                                <p>It is an array of object which contains options for select box, <code> title </code> is mandatory key element </p>
                             </div>
                         </div>
                     </div>
@@ -109,7 +118,7 @@
             <tr>
                 <td class="docs-prop-name"><code>selected</code></td>
                 <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>Array &lt;string&gt;</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                        class="docs-prop-type"><strong> string</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">
@@ -163,7 +172,7 @@
             <tr>
                 <td class="docs-prop-name"><code>onSelect</code></td>
                 <td class="docs-prop-details"><code
-                        class="docs-prop-type"><strong>(value:string ,index: number) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
+                        class="docs-prop-type"><strong>(value:object ,index: number) =&gt; void</strong><em class="docs-prop-default bp3-text-muted"></em></code>
                     <div class="docs-prop-description">
                         <div class="docs-section">
                             <div class="bp3-running-text">

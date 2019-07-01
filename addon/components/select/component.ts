@@ -91,7 +91,7 @@ export default class Select extends Component {
   ESC: number = 27;
   data: any;
   selectedKey: number = -1;
-  filteredList: Array<string> = [];
+  filteredList: Array<any> = [];
   placement: string = this.placement == undefined ? 'bottom' : this.placement;
   popperClass: string = 'popper';
   popOverArrow!: boolean;
@@ -122,7 +122,6 @@ export default class Select extends Component {
     if (this.get('isDefaultOpen')) {
       this.set('open', this.get('isDefaultOpen'));
       let data: Array<string> = JSON.parse(JSON.stringify(this.get('data') || []));
-      this.findDefaultSelect(data);
       set(this, 'filteredList', data);
     }
     if (this.get('minimal')) {
@@ -174,7 +173,7 @@ export default class Select extends Component {
     var selectDiv: any = await document.getElementById('select' + index);
     selectDiv.className += ' ' + this.INTENT_PRIMARY + ' ' + this.ACTIVE;
 
-    this.set('selected', data);
+    this.set('selected', data.title);
     if (this.get('onSelect')) {
       this.get('onSelect')(data, index);
     }
@@ -195,7 +194,7 @@ export default class Select extends Component {
   findDefaultSelect(data: any) {
     var flag = false;
     for (let index = 0; index < data.length; index++) {
-      const element = data[index];
+      const element = data[index].title;
       if (element == this.selected) {
         flag = true;
         this.set('selectedKey', index);
@@ -245,9 +244,15 @@ export default class Select extends Component {
       }
     } else if (e.keyCode == 13) {
       if (this.selectedKey > -1) {
-        this.set('selected', this.filteredList[this.selectedKey]);
+        this.set('selected', (this.filteredList[this.selectedKey]).title);
         if (this.get('onSelect')) {
-          let index: number = this.filteredList[this.selectedKey].indexOf(this.get('selected'));
+          let index: number = 0;
+          for (var i = 0; i < this.data.length; i++) {
+            if (this.data[i].title == this.selected) {
+              index = i;
+              break;
+            }
+          }
           this.get('onSelect')(this.filteredList[this.selectedKey], index);
         }
 
@@ -257,22 +262,23 @@ export default class Select extends Component {
   }
 
   @action
-  onSearchElement(keyword: string, e: any) {
+  async onSearchElement(keyword: string, e: any) {
     if (keyword === '') this.set('filteredList', this.get('data'));
     if (e.keyCode !== 38 && e.keyCode !== 40) {
+      await this.set('open', false);
       let arr = [];
       let data = this.get('data');
       for (var i = 0; i < data.length; i++) {
-        let txt = data[i];
+        let txt = data[i].title;
         if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== '') {
         } else {
           this.selectedKey = -1;
           this.set('defaultSelected', -1);
-          arr.push(txt);
+          arr.push(data[i]);
         }
       }
       this.set('filteredList', arr);
     }
-
+    this.set('open', true)
   }
 };
