@@ -16,8 +16,8 @@
     @minimal={{BMINIMAL}}
     @rightIcon={{BRIGHTICON}}
     @small={{BSMALL}}
-    @type={{BTYPE}}
     @onClick={{action "togglePopover"}}
+    @type="button"
   >
     {{selected}}
   </Button>
@@ -74,26 +74,28 @@
           <div>
             <ul class={{MENU}}>
               {{#each filteredList as |item index|}}
-                <li class="">
-                  <a
-                    id="select{{index}}"
-                    class="{{MENU_ITEM}}
+                <li>
+                  {{#if hasBlock}}
+                    <a
+                      id="select{{index}}"
+                      class="{{MENU_ITEM}}
 
-                      {{POPOVER_DISMISS}}
+                        {{POPOVER_DISMISS}}
 
-                      {{if (eq defaultSelected index) intentactive}}"
-                    onclick={{action "onMouseSelect" item index}}
-                  >
-                    <div class="{{TEXT_OVERFLOW_ELLIPSIS}} {{FILL}}">
-                      {{item}}
-                    </div>
-                  </a>
+                        {{if (eq defaultSelected index) intentactive}}"
+                      onclick={{action "onMouseSelect" item index}}
+                    >
+                      {{yield item index}}
+                    </a>
+                  {{/if}}
                 </li>
               {{/each}}
               {{#if (eq filteredList.length 0)}}
-                <li>
-                  no result!
-                </li>
+                {{#if hasBlock}}
+                  <li>
+                    {{yield null null true}}
+                  </li>
+                {{/if}}
               {{/if}}
             </ul>
           </div>
@@ -102,4 +104,3 @@
     </div>
   </EmberPopper>
 {{/if}}
-{{yield}}
