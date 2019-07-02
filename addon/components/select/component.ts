@@ -277,8 +277,9 @@ export default class Select extends Component {
           arr.push(data[i]);
         }
       }
+      if (e.keyCode !== 13)
+        this.set('open', true)
       this.set('filteredList', arr);
     }
-    this.set('open', true)
   }
 };
