@@ -1,0 +1,32 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist/
+/tmp/
+
+# Node
+node_modules
+npm-debug.log*
+lerna-debug.log
+package-lock.json
+yarn-error.log
+
+# dependencies
+/bower_components/
+/node_modules/
+
+# misc
+/.env*
+/.pnp*
+/.sass-cache
+/connect.lock
+/coverage/
+/libpeerconnection.log
+/npm-debug.log*
+/testem.log
+/yarn-error.log
+
+# ember-try
+/.node_modules.ember-try/
+/bower.json.ember-try
+/package.json.ember-try
