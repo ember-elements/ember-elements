@@ -1,1 +1,0 @@
-export { default } from 'ember-elements/components/check-box/component';
