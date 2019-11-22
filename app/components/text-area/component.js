@@ -1,1 +1,0 @@
-export { default } from 'ember-elements/components/text-area/component';
