@@ -29,10 +29,10 @@
         "app/*"
       ],
       "core": [
-        "addon"
+        "node_modules/core/addon"
       ],
       "core/*": [
-        "addon/*"
+        "node_modules/core/addon/*"
       ],
       "core/test-support": [
         "addon-test-support"
