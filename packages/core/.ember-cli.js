@@ -1,3 +1,3 @@
-const { setEdition } = require("@ember/edition-utils");
+const { setEdition } = require('@ember/edition-utils');
 
-setEdition("octane");
+setEdition('octane');

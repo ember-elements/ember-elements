@@ -2,15 +2,19 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     postcssOptions: {
       compile: {
-        plugins: [
-          require('tailwindcss')('./_private/tailwind.config.js')
-        ]
-      }
-    }
+        plugins: [require('tailwindcss')('./_private/tailwind.config.js')],
+      },
+    },
+    eslint: {
+      testGenerator: 'qunit',
+      group: true,
+      rulesDir: 'eslint-rules',
+      extensions: ['js', 'ts'],
+    },
   });
 
   /*
