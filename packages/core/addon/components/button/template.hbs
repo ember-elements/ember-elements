@@ -1,0 +1,14 @@
+<button
+  type={{this.type}}
+  class={{rw this.BUTTON this.active this.alignText this.disabled this.fill this.large this.loading this.minimal this.small this.intent this.className}}
+  tabIndex={{if this.disabled -1 this.tabIndex}}
+  onkeydown={{action this.handleKeyDown}}
+  onkeyup={{action this.handleKeyUp}}
+	disabled ={{this.disabled}}
+  {{on 'click' this.onClick}}
+  ...attributes
+>
+  <span class={{this.BUTTON_TEXT}}>
+    {{yield}}
+  </span>
+</button>

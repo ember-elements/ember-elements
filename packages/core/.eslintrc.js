@@ -1,13 +1,6 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true,
-    },
-  },
   plugins: ['ember', 'prettier', 'qunit', '@typescript-eslint'],
   extends: [
     'eslint:recommended',
@@ -29,7 +22,9 @@ module.exports = {
     'prefer-const': 'off', // const has misleading safety implications
     'no-console': [
       'error',
-      { allow: ['debug', 'warn', 'error', 'info', 'group', 'groupEnd', 'groupCollapsed'] },
+      {
+        allow: ['debug', 'warn', 'error', 'info', 'group', 'groupEnd', 'groupCollapsed']
+      },
     ],
     'no-cond-assign': 'off',
     'no-useless-escape': 'off',
@@ -42,10 +37,13 @@ module.exports = {
 
     // typescript
     //
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': ['error', {
+      argsIgnorePattern: '^_'
+    }],
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
     // this one has to be disabled, because not all of my deps use real types
     // ... or, my custom type defs are incorrect
     '@typescript-eslint/interface-name-prefix': 'off', // ['error', 'always'],
@@ -54,7 +52,20 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off', // implicit return types are fine
 
     // prettier
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        'singleQuote': true,
+        'trailingComma': 'es5',
+        'printWidth': 100,
+        'semi': true,
+        'bracketSpacing': true,
+        'endOfLine': 'lf',
+        'tabs': false,
+        'tabWidth': 2,
+
+      }
+    ],
 
     // better handled by prettier:
     '@typescript-eslint/indent': 'off',

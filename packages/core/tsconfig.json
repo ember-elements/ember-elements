@@ -51,6 +51,6 @@
     "tests/**/*",
     "types/**/*",
     "test-support/**/*",
-    "addon-test-support/**/*"
+    "addon-test-support/**/*", "_private/common"
   ]
 }
