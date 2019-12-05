@@ -8,7 +8,7 @@ export default class Test extends Component<TestArgs> {
     active: true,
     large: true,
     fill: true,
-    intent: 'primary'
+    intent: 'primary',
   };
   text = 'button';
   @action
@@ -18,10 +18,10 @@ export default class Test extends Component<TestArgs> {
   }
   @action
   onKeyDown() {
-    console.log('onKeyDown');
+    // console.log('onKeyDown');
   }
   @action
   onKeyUp() {
-    console.log('onKeyUp');
+    // console.log('onKeyUp');
   }
 }

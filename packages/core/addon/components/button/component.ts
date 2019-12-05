@@ -22,7 +22,7 @@ interface ButtonArgs extends IButtonProps {
 
 class Button extends Component<ButtonArgs> {
   props = this.args.props || {};
-  @tracked isActive: boolean = false;
+  @tracked isActive = false;
   @tracked currentKeyDown: number | null = null;
 
   // Classes init

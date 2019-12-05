@@ -52,7 +52,7 @@ export interface IButtonProps extends IActionProps {
   alignText?: Alignment;
 
   /** A ref handler that receives the native HTML element backing this component. */
-  elementRef?: (ref: HTMLElement | null) => any;
+  elementRef?: (ref: HTMLElement | null) => void;
 
   /** Whether this button should expand to fill its container. */
   fill?: boolean;

@@ -19,3 +19,7 @@
 /.node_modules.ember-try/
 /bower.json.ember-try
 /package.json.ember-try
+
+#other files
+tailwind.config.js
+environment.d.ts

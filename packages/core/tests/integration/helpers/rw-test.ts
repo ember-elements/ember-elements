@@ -12,6 +12,6 @@ module('Integration | Helper | rw', function(hooks) {
 
     await render(hbs`{{rw this.inputValue}}`);
 
-    assert.equal((this.element as any).textContent.trim(), '1234');
+    assert.equal((this.element as HTMLElement).innerHTML, '1234');
   });
 });

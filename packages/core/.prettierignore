@@ -1,1 +1,5 @@
 /components/*/component.js
+.eslintrc.js
+tailwind.config.js
+.prettierrc.js
+global.d.ts

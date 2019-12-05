@@ -12,18 +12,6 @@ module('Integration | Component | button', function(hooks) {
 
     await render(hbs`<Button/>`);
 
-    assert.equal((this.element as any).textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#button}}
-        template block text
-      {{/button}}
-    `);
-
-    assert.equal(
-      (this.element as any).textContent.trim(),
-      'template block text'
-    );
+    assert.equal((this.element as HTMLElement).innerHTML, '');
   });
 });
