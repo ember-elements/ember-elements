@@ -6,7 +6,8 @@
 	],
 	"scripts": {
 		"lint:js": "eslint .",
-		"start": "yarn workspace @ember-elements/core start",
+		"startCore": "yarn workspace @ember-elements/core start",
+		"startIcons": "yarn workspace @ember-elements/icons start",
 		"test": "yarn workspace @ember-elements/core test",
 		"dtslint": "lerna run dtslint",
 		"node-test": "lerna run node-test",

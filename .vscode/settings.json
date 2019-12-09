@@ -45,8 +45,6 @@
     "docs": true,
     "site/docs": true
   },
-  "editor.insertSpaces": true,
-  "editor.tabSize": 2,
   "[scss]": {
     "editor.tabSize": 2
   }

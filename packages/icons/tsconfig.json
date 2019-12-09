@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "es2017",
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -28,16 +28,18 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "core": [
-        "node_modules/core/addon"
+      "@ember-elements/icons": [
+        "addon",
+        "node_modules/@ember-elements/icons/addon"
       ],
-      "core/*": [
-        "node_modules/core/addon/*"
+      "@ember-elements/icons/*": [
+        "addon/*",
+        "node_modules/@ember-elements/icons/addon/*"
       ],
-      "core/test-support": [
+      "@ember-elements/icons/test-support": [
         "addon-test-support"
       ],
-      "core/test-support/*": [
+      "@ember-elements/icons/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [
@@ -51,6 +53,7 @@
     "tests/**/*",
     "types/**/*",
     "test-support/**/*",
-    "addon-test-support/**/*", "_private/common"
+    "addon-test-support/**/*",
+    "iconName.ts"
   ]
 }

@@ -1,4 +1,4 @@
-import Application from '../app';
+import Application from '../addon';
 import config from '../config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
