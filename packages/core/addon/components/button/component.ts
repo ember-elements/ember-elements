@@ -30,7 +30,7 @@ class Button extends Component<ButtonArgs> {
   BUTTON = Classes.BUTTON;
 
   /*
-	  In each component there is 2 option for passing args values 
+	  In each component there is 2 option for passing args values
 		1. default ember args with @argName
 		2. @props is a user defined object vars and it accept all props and expect @actions
 	 */

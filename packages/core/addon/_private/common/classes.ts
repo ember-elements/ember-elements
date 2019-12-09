@@ -21,6 +21,10 @@ export const SMALL = `${NS}-small`;
 export const BUTTON = `${NS}-button`;
 export const BUTTON_TEXT = `${BUTTON}-text`;
 
+export const ICON = `${NS}-icon`;
+export const ICON_STANDARD = `${ICON}-standard`;
+export const ICON_LARGE = `${ICON}-large`;
+
 /** Return CSS class for alignment. */
 export function alignmentClass(alignment: Alignment) {
   switch (alignment) {
@@ -39,4 +43,13 @@ export function intentClass(intent?: Intent) {
     return undefined;
   }
   return `${NS}-intent-${intent.toLowerCase()}`;
+}
+
+/** Returns CSS class for icon name. */
+export function iconClass(iconName?: string) {
+  if (iconName == null) {
+    return undefined;
+  }
+  // prettier-ignore
+  return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
 }
