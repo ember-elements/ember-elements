@@ -182,6 +182,32 @@ class Button extends Component<ButtonArgs> {
     return type;
   }
 
+  @computed('args.icon', 'props.icon')
+  get icon() {
+    let icon;
+
+    if (this.args.icon != undefined) {
+      icon = this.args.icon;
+    } else if (this.props.icon != undefined) {
+      icon = this.props.icon;
+    }
+
+    return icon;
+  }
+
+  @computed('args.rightIcon', 'props.rightIcon')
+  get rightIcon() {
+    let rightIcon;
+
+    if (this.args.rightIcon != undefined) {
+      rightIcon = this.args.rightIcon;
+    } else if (this.props.rightIcon != undefined) {
+      rightIcon = this.props.rightIcon;
+    }
+
+    return rightIcon;
+  }
+
   @action
   onClick(event: MouseEvent) {
     if (this.args.onClick) {
@@ -244,6 +270,13 @@ class Button extends Component<ButtonArgs> {
       if (!this.disabled && this.args.onKeyUp) {
         this.args.onKeyUp(event);
       }
+    }
+  }
+
+  onUpdate() {
+    const textSpanTag: HTMLElement | null = document.querySelector('.' + Classes.BUTTON_TEXT);
+    if (textSpanTag && textSpanTag.innerHTML.trim() == '') {
+      textSpanTag.remove();
     }
   }
 }

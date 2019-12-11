@@ -7,8 +7,10 @@ export default class Test extends Component<TestArgs> {
   propsObject = {
     active: true,
     large: true,
-    fill: true,
+    fill: false,
     intent: 'primary',
+    icon: 'calendar',
+    rightIcon: 'add',
   };
   text = 'button';
   @action
