@@ -3,6 +3,13 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
+const NS = 'ee';
+const BUTTON = `${NS}-button-group`;
+const FILL = `${NS}-fill`;
+const LARGE = `${NS}-large`;
+const MINIMAL = `${NS}-minimal`;
+const VERTICAL = `${NS}-vertical`;
+
 module('Integration | Component | button-group', function(hooks) {
   setupRenderingTest(hooks);
 
@@ -10,17 +17,39 @@ module('Integration | Component | button-group', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{button-group}}`);
+    await render(hbs`<ButtonGroup />`);
+    assert.dom('div').exists();
+    assert.dom('div').hasClass(BUTTON);
+  });
 
-    assert.equal(this.element.textContent.trim(), '');
+  test('className renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-    // Template block usage:
-    await render(hbs`
-      {{#button-group}}
-        template block text
-      {{/button-group}}
-    `);
+    await render(hbs`<ButtonGroup @className='foo' />`);
+    assert.dom('div').hasClass('foo');
+  });
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+  test('fill renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+
+    await render(hbs`<ButtonGroup @fill={{true}} />`);
+    assert.dom('div').hasClass(FILL);
+  });
+
+  test('minimal renders', async function(assert) {
+    await render(hbs`<ButtonGroup @minimal={{true}} />`);
+    assert.dom('div').hasClass(MINIMAL);
+  });
+
+  test('vertical renders', async function(assert) {
+    await render(hbs`<ButtonGroup @vertical={{true}} />`);
+    assert.dom('div').hasClass(VERTICAL);
+  });
+
+  test('large renders', async function(assert) {
+    await render(hbs`<ButtonGroup @large={{true}} />`);
+    assert.dom('div').hasClass(LARGE);
   });
 });
