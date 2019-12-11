@@ -15,10 +15,12 @@ export const LARGE = `${NS}-large`;
 export const LOADING = `${NS}-loading`;
 export const MINIMAL = `${NS}-minimal`;
 export const SMALL = `${NS}-small`;
+export const VERTICAL = `${NS}-vertical`;
 
 // components
 
 export const BUTTON = `${NS}-button`;
+export const BUTTON_GROUP = `${BUTTON}-group`;
 export const BUTTON_TEXT = `${BUTTON}-text`;
 
 export const ICON = `${NS}-icon`;

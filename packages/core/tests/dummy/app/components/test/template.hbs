@@ -13,3 +13,16 @@
   @color='green'
   @title='calendar'
 />
+
+<ButtonGroup
+  @minimal={{this.minimal}}
+  @large={{this.large}}
+  @vertical={{this.vertical}}
+  @fill={{this.fill}}
+  @alignText={{this.alignText}}
+  style='min-width:200px'
+>
+  <Button @icon='database' @type='button' />
+  <Button @icon='function' @type='button' />
+  <Button @icon='cog' @type='button' />
+</ButtonGroup>
