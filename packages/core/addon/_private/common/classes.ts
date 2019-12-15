@@ -27,6 +27,12 @@ export const ICON = `${NS}-icon`;
 export const ICON_STANDARD = `${ICON}-standard`;
 export const ICON_LARGE = `${ICON}-large`;
 
+export const CALLOUT = `${NS}-callout`;
+export const CALLOUT_ICON = `${CALLOUT}-icon`;
+
+// textual elements
+export const HEADING = `${NS}-heading`;
+
 /** Return CSS class for alignment. */
 export function alignmentClass(alignment: Alignment) {
   switch (alignment) {
