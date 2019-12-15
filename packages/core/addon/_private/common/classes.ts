@@ -1,5 +1,6 @@
 import { Alignment } from './alignment';
 import { Intent } from './intent';
+import { Elevation } from './elevation';
 
 const NS = 'ee';
 
@@ -11,6 +12,7 @@ export const ALIGN_RIGHT = `${NS}-align-right`;
 
 export const DISABLED = `${NS}-disabled`;
 export const FILL = `${NS}-fill`;
+export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
 export const LOADING = `${NS}-loading`;
 export const MINIMAL = `${NS}-minimal`;
@@ -29,6 +31,8 @@ export const ICON_LARGE = `${ICON}-large`;
 
 export const CALLOUT = `${NS}-callout`;
 export const CALLOUT_ICON = `${CALLOUT}-icon`;
+
+export const CARD = `${NS}-card`;
 
 // textual elements
 export const HEADING = `${NS}-heading`;
@@ -60,4 +64,11 @@ export function iconClass(iconName?: string) {
   }
   // prettier-ignore
   return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
+}
+
+export function elevationClass(elevation: Elevation) {
+  if (elevation == null) {
+    return undefined;
+  }
+  return `${NS}-elevation-${elevation}`;
 }
