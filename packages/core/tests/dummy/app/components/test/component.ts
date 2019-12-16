@@ -20,12 +20,15 @@ export default class Test extends Component<TestArgs> {
     icon: 'tick',
   };
   calloutText = `The component is a simple wrapper around the CSS API that provides props for modifiers and optional title element. Any additional HTML props will be spread to the rendered `;
+  elevationText = 'elevationText';
+  elevation = 4;
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);
     set(this.propsObject, 'intent', 'success');
     set(this, 'className', '123');
     set(this.propsValue, 'icon', 'add');
+    set(this, 'elevation', 2);
   }
   @action
   onKeyDown() {
