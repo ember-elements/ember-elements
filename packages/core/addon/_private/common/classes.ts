@@ -42,6 +42,11 @@ export const PROGRESS_NO_ANIMATION = `${NS}-no-animation`;
 // textual elements
 export const HEADING = `${NS}-heading`;
 
+export const HTML_TABLE = `${NS}-html-table`;
+export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
+export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
+export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
+
 /** Return CSS class for alignment. */
 export function alignmentClass(alignment: Alignment) {
   switch (alignment) {
