@@ -12,12 +12,16 @@ export const ALIGN_RIGHT = `${NS}-align-right`;
 
 export const DISABLED = `${NS}-disabled`;
 export const FILL = `${NS}-fill`;
+export const INLINE = `${NS}-inline`;
 export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
 export const LOADING = `${NS}-loading`;
 export const MINIMAL = `${NS}-minimal`;
 export const SMALL = `${NS}-small`;
 export const VERTICAL = `${NS}-vertical`;
+
+// text utilities
+export const TEXT_MUTED = `${NS}-text-muted`;
 
 // components
 
@@ -46,6 +50,11 @@ export const HTML_TABLE = `${NS}-html-table`;
 export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
+
+export const LABEL = `${NS}-label`;
+export const FORM_GROUP = `${NS}-form-group`;
+export const FORM_CONTENT = `${NS}-form-content`;
+export const FORM_HELPER_TEXT = `${NS}-form-helper-text`;
 
 export const SPINNER = `${NS}-spinner`;
 export const SPINNER_ANIMATION = `${SPINNER}-animation`;
