@@ -1,7 +1,3 @@
-import { Alignment } from './alignment';
-import { Intent } from './intent';
-import { Elevation } from './elevation';
-
 const NS = 'ee';
 
 // modifiers
@@ -52,39 +48,3 @@ export const SPINNER_ANIMATION = `${SPINNER}-animation`;
 export const SPINNER_HEAD = `${SPINNER}-head`;
 export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
-
-/** Return CSS class for alignment. */
-export function alignmentClass(alignment: Alignment) {
-  switch (alignment) {
-    case Alignment.LEFT:
-      return ALIGN_LEFT;
-    case Alignment.RIGHT:
-      return ALIGN_RIGHT;
-    default:
-      return undefined;
-  }
-}
-
-/** Return CSS class for intent. */
-export function intentClass(intent?: Intent) {
-  if (intent == null || intent === Intent.NONE) {
-    return undefined;
-  }
-  return `${NS}-intent-${intent.toLowerCase()}`;
-}
-
-/** Returns CSS class for icon name. */
-export function iconClass(iconName?: string) {
-  if (iconName == null) {
-    return undefined;
-  }
-  // prettier-ignore
-  return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
-}
-
-export function elevationClass(elevation: Elevation) {
-  if (elevation == null) {
-    return undefined;
-  }
-  return `${NS}-elevation-${elevation}`;
-}
