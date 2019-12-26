@@ -1,6 +1,8 @@
 // for best visual results, button group and control group elements should be
 // stacked in the following order to ensure sharp edges in all cases and states:
 
+$control-indicator-size: $pt-icon-size-standard !default;
+
 $control-group-stack: (
   // lowest z-index
     'input-disabled',

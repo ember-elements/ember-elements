@@ -49,5 +49,8 @@
 	"[scss]": {
 		"editor.tabSize": 2
 	},
-	"yaml.format.printWidth": 120
+	"yaml.format.printWidth": 120,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
 }

@@ -1,4 +1,5 @@
 const NS = 'ee';
+import { Intent } from './intent';
 
 // modifiers
 
@@ -43,8 +44,23 @@ export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
 
+export const LABEL = `${NS}-label`;
+export const FORM_GROUP = `${NS}-form-group`;
+export const FORM_CONTENT = `${NS}-form-content`;
+export const FORM_HELPER_TEXT = `${NS}-form-helper-text`;
+
 export const SPINNER = `${NS}-spinner`;
 export const SPINNER_ANIMATION = `${SPINNER}-animation`;
 export const SPINNER_HEAD = `${SPINNER}-head`;
 export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
+
+export const INTENT_SUCCESS = intentClass(Intent.SUCCESS);
+
+/** Return CSS class for intent. */
+export function intentClass(intent?: Intent) {
+  if (intent == null || intent === Intent.NONE) {
+    return undefined;
+  }
+  return `${NS}-intent-${intent.toLowerCase()}`;
+}

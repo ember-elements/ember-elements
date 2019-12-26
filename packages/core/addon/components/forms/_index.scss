@@ -1,0 +1,7 @@
+// NOTE: this partial file is imported once here so form components can just use it.
+@import './common';
+@import './form-group/form-group';
+
+form {
+  display: block;
+}
