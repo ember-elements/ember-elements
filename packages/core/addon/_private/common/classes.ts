@@ -38,6 +38,8 @@ export const CALLOUT_ICON = `${CALLOUT}-icon`;
 
 export const CARD = `${NS}-card`;
 
+export const CONTROL_GROUP = `${NS}-control-group`;
+
 export const PROGRESS_BAR = `${NS}-progress-bar`;
 export const PROGRESS_METER = `${NS}-progress-meter`;
 export const PROGRESS_NO_STRIPES = `${NS}-no-stripes`;
