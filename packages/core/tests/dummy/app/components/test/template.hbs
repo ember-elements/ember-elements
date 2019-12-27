@@ -117,3 +117,22 @@
 </RadioGroup>
 
 <HtmlSelect @options={{this.options}} />
+
+<div>
+  <Label>
+    {{this.switchLabel}}
+  </Label>
+  <Switch @labelElement='<strong>Enabled</strong>' @inline={{true}} />
+  <Switch @labelElement='<em>Public</em>' @inline={{true}} />
+  <Switch
+    @labelElement='<u>Cooperative</u>'
+    defaultChecked={{true}}
+    @inline={{true}}
+  />
+  <Switch
+    @labelElement='Containing Text'
+    @innerLabelChecked='on'
+    @innerLabel='off'
+    @inline={{true}}
+  />
+</div>

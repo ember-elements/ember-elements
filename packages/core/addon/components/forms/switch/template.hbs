@@ -1,0 +1,39 @@
+{{! template-lint-disable no-triple-curlies }}
+<label
+  class={{rw
+    this.SWITCH
+    this.CONTROL
+    this.getAlignIndicator
+    this.getClassName
+    this.getDisabled
+    this.getInline
+    this.getLarge
+  }}
+>
+  <input
+    type='checkbox'
+    disabled={{this.getDisabled}}
+    onchange={{action 'handleChange'}}
+    ...attributes
+  >
+  <sapn class={{this.CONTROL_INDICATOR}}>
+    {{#if this.getInnerLabels}}
+      <div key='checked' class={{this.CONTROL_INDICATOR_CHILD}}>
+        <div class={{this.SWITCH_INNER_TEXT}}>
+          {{this.getInnerLabels}}
+        </div>
+      </div>
+      <div key='unchecked' class={{this.CONTROL_INDICATOR_CHILD}}>
+        <div class={{this.SWITCH_INNER_TEXT}}>
+          {{this.getInnerLabel}}
+        </div>
+      </div>
+    {{/if}}
+  </sapn>
+  {{#if this.getLabel}}
+    {{this.getLabel}}
+  {{else}}
+    {{{this.getLabelElement}}}
+  {{/if}}
+  {{yield}}
+</label>

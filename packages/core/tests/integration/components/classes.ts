@@ -10,12 +10,16 @@ export const ALIGN_RIGHT = `${NS}-align-right`;
 
 export const DISABLED = `${NS}-disabled`;
 export const FILL = `${NS}-fill`;
+export const INLINE = `${NS}-inline`;
 export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
 export const LOADING = `${NS}-loading`;
 export const MINIMAL = `${NS}-minimal`;
 export const SMALL = `${NS}-small`;
 export const VERTICAL = `${NS}-vertical`;
+
+// text utilities
+export const TEXT_MUTED = `${NS}-text-muted`;
 
 // components
 
@@ -42,6 +46,8 @@ export const PROGRESS_NO_ANIMATION = `${NS}-no-animation`;
 // textual elements
 export const HEADING = `${NS}-heading`;
 
+export const HTML_SELECT = `${NS}-html-select`;
+
 export const HTML_TABLE = `${NS}-html-table`;
 export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
@@ -52,6 +58,8 @@ export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
 export const CONTROL_INDICATOR_CHILD = `${CONTROL_INDICATOR}-child`;
 export const CHECKBOX = `${NS}-checkbox`;
 export const RADIO = `${NS}-radio`;
+export const SWITCH = `${NS}-switch`;
+export const SWITCH_INNER_TEXT = `${SWITCH}-inner-text`;
 
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
