@@ -1,5 +1,6 @@
 const NS = 'ee';
 import { Intent } from './intent';
+import { Alignment } from './alignment';
 
 // modifiers
 
@@ -46,6 +47,11 @@ export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
 
+export const CONTROL = `${NS}-control`;
+export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
+export const CONTROL_INDICATOR_CHILD = `${CONTROL_INDICATOR}-child`;
+export const CHECKBOX = `${NS}-checkbox`;
+
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
 export const FORM_CONTENT = `${NS}-form-content`;
@@ -58,6 +64,18 @@ export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
 
 export const INTENT_SUCCESS = intentClass(Intent.SUCCESS);
+
+/** Return CSS class for alignment. */
+export function alignmentClass(alignment: Alignment) {
+  switch (alignment) {
+    case Alignment.LEFT:
+      return ALIGN_LEFT;
+    case Alignment.RIGHT:
+      return ALIGN_RIGHT;
+    default:
+      return undefined;
+  }
+}
 
 /** Return CSS class for intent. */
 export function intentClass(intent?: Intent) {

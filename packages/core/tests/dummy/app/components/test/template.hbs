@@ -103,3 +103,8 @@
   <Button @icon='filter' />
   <Button @icon='filter' />
 </ControlGroup>
+<Checkbox
+  @label='Enabled'
+  @onChange={{action this.handleEnabledChange}}
+  @defaultIndeterminate={{true}}
+/>
