@@ -243,4 +243,40 @@ $control-indicator-spacing: $pt-grid-size !default;
       }
     }
   }
+
+  /*
+  Radio
+
+  Markup:
+  <label class="#{$ns}-control #{$ns}-radio {{.modifier}}">
+    <input type="radio" name="docs-radio-regular" {{:modifier}} />
+    <span class="#{$ns}-control-indicator"></span>
+    Radio
+  </label>
+
+  :checked  - Selected
+  :disabled - Disabled. Also add <code>.#{$ns}-disabled</code> to <code>.#{$ns}-control</code> to change text color (not shown below).
+  .#{$ns}-align-right - Right-aligned indicator
+  .#{$ns}-large - Large
+
+  Styleguide radio
+  */
+
+  &.#{$ns}-radio {
+    .#{$ns}-control-indicator {
+      border-radius: 50%;
+    }
+
+    input:checked ~ .#{$ns}-control-indicator::before {
+      background-image: radial-gradient($white, $white 28%, transparent 32%);
+    }
+
+    input:checked:disabled ~ .#{$ns}-control-indicator::before {
+      opacity: 0.5;
+    }
+
+    input:focus ~ .#{$ns}-control-indicator {
+      -moz-outline-radius: $control-indicator-size;
+    }
+  }
 }
