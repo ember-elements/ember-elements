@@ -24,6 +24,13 @@ export default class Test extends Component<TestArgs> {
   elevationText = 'elevationText';
   elevation = 4;
   value = 0.4;
+  options = [
+    { value: 'a' },
+    { value: 'b', className: 'foo' },
+    { value: 'c', disabled: true },
+    { label: 'Dog' },
+  ];
+
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);

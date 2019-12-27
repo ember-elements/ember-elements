@@ -1,0 +1,45 @@
+<div
+  class={{rw
+    this.HTML_SELECT
+    this.getClassName
+    this.getDisabled
+    this.getFill
+    this.getLarge
+    this.getMinimal
+  }}
+>
+  <select
+    disabled={{if this.getDisabled true false}}
+    multiple={{false}}
+    onchange={{action 'handleChange'}}
+    ...attributes
+  >
+    {{#each this.getOptions as |optionItem|}}
+      <option
+        class={{optionItem.className}}
+        disabled={{optionItem.disabled}}
+        selected={{optionItem.selected}}
+        key={{if
+          optionItem.value
+          optionItem.value
+          (if optionItem.label optionItem.label optionItem)
+        }}
+        value={{if
+          optionItem.value
+          optionItem.value
+          (if optionItem.label optionItem.label optionItem)
+        }}
+      >
+        {{#if optionItem.label}}
+          {{optionItem.label}}
+        {{else if optionItem.value}}
+          {{optionItem.value}}
+        {{else}}
+          {{optionItem}}
+        {{/if}}
+      </option>
+    {{/each}}
+    {{yield}}
+  </select>
+  <Icon @icon='double-caret-vertical' @props={{this.getIconProps}} />
+</div>

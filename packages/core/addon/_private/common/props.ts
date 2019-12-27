@@ -23,3 +23,18 @@ export interface IActionProps extends IIntentProps, IProps {
   /** Action text. will update later */
   text?: string | HTMLElement;
 }
+
+/**
+ * An interface for an option in a list, such as in a `<select>` or `RadioGroup`.
+ * These props can be spread directly to an `<option>` or `<Radio>` element.
+ */
+export interface IOptionProps extends IProps {
+  /** Whether this option is non-interactive. */
+  disabled?: boolean;
+
+  /** Label text for this option. If omitted, `value` is used as the label. */
+  label?: string;
+
+  /** Value of this option. */
+  value: string | number;
+}
