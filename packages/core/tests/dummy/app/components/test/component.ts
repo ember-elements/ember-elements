@@ -42,4 +42,8 @@ export default class Test extends Component<TestArgs> {
   onKeyUp() {
     // console.log('onKeyUp');
   }
+  @action
+  handleEnabledChange() {
+    // console.log('hii');
+  }
 }

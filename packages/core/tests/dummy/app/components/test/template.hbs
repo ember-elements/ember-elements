@@ -105,3 +105,10 @@
 </ControlGroup>
 
 <Label />
+
+<Checkbox
+  @label='Enabled'
+  @onChange={{action this.handleEnabledChange}}
+  @defaultIndeterminate={{true}}
+/>
+

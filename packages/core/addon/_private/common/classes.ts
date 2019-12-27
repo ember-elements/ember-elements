@@ -53,6 +53,11 @@ export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
 
+export const CONTROL = `${NS}-control`;
+export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
+export const CONTROL_INDICATOR_CHILD = `${CONTROL_INDICATOR}-child`;
+export const CHECKBOX = `${NS}-checkbox`;
+
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
 export const FORM_CONTENT = `${NS}-form-content`;
