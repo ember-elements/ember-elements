@@ -30,7 +30,7 @@ export default class Test extends Component<TestArgs> {
     { value: 'c', disabled: true },
     { label: 'Dog' },
   ];
-
+  switchLabel = 'Privacy setting';
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);
