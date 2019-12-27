@@ -62,6 +62,10 @@ export const CHECKBOX = `${NS}-checkbox`;
 export const RADIO = `${NS}-radio`;
 export const SWITCH = `${NS}-switch`;
 export const SWITCH_INNER_TEXT = `${SWITCH}-inner-text`;
+export const FILE_INPUT = `${NS}-file-input`;
+export const FILE_INPUT_HAS_SELECTION = `${NS}-file-input-has-selection`;
+export const FILE_UPLOAD_INPUT = `${NS}-file-upload-input`;
+export const FILE_UPLOAD_INPUT_CUSTOM_TEXT = `${NS}-file-upload-input-custom-text`;
 
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
@@ -73,6 +77,14 @@ export const SPINNER_ANIMATION = `${SPINNER}-animation`;
 export const SPINNER_HEAD = `${SPINNER}-head`;
 export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
+
+/**
+ * Returns the namespace prefix for all Blueprint CSS classes.
+ * Customize this namespace at build time with the `process.env.BLUEPRINT_NAMESPACE` environment variable.
+ */
+export function getClassNamespace() {
+  return NS;
+}
 
 /** Return CSS class for alignment. */
 export function alignmentClass(alignment: Alignment) {

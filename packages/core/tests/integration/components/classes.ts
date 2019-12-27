@@ -1,6 +1,7 @@
-const NS = 'ee';
 import { Intent } from './intent';
 import { Alignment } from './alignment';
+
+const NS = 'ee';
 
 // modifiers
 
@@ -60,6 +61,10 @@ export const CHECKBOX = `${NS}-checkbox`;
 export const RADIO = `${NS}-radio`;
 export const SWITCH = `${NS}-switch`;
 export const SWITCH_INNER_TEXT = `${SWITCH}-inner-text`;
+export const FILE_INPUT = `${NS}-file-input`;
+export const FILE_INPUT_HAS_SELECTION = `${NS}-file-input-has-selection`;
+export const FILE_UPLOAD_INPUT = `${NS}-file-upload-input`;
+export const FILE_UPLOAD_INPUT_CUSTOM_TEXT = `${NS}-file-upload-input-custom-text`;
 
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
