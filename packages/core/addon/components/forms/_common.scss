@@ -1,6 +1,11 @@
 // for best visual results, button group and control group elements should be
 // stacked in the following order to ensure sharp edges in all cases and states:
 
+$input-padding-horizontal: $pt-grid-size !default;
+$input-small-padding: $pt-input-height-small - $pt-icon-size-standard !default;
+$input-font-weight: 400 !default;
+$input-transition: box-shadow $pt-transition-duration $pt-transition-ease;
+
 $control-indicator-size: $pt-icon-size-standard !default;
 
 $control-group-stack: (
