@@ -57,6 +57,7 @@ export const CONTROL = `${NS}-control`;
 export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
 export const CONTROL_INDICATOR_CHILD = `${CONTROL_INDICATOR}-child`;
 export const CHECKBOX = `${NS}-checkbox`;
+export const RADIO = `${NS}-radio`;
 
 export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
