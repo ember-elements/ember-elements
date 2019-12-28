@@ -1,0 +1,56 @@
+@import '../../_private/common/variables';
+
+/*
+Text inputs
+
+Markup:
+<input class="#{$ns}-input {{.modifier}}" {{:modifier}} type="text" placeholder="Text input" dir="auto" />
+
+:disabled - Disabled
+:readonly - Readonly
+.#{$ns}-round - Rounded ends
+.#{$ns}-large - Larger size
+.#{$ns}-small - Small size
+.#{$ns}-intent-primary - Primary intent
+.#{$ns}-intent-success - Success intent
+.#{$ns}-intent-warning - Warning intent
+.#{$ns}-intent-danger - Danger intent
+.#{$ns}-fill - Take up full width of parent element
+
+Styleguide input
+*/
+
+.#{$ns}-input {
+  @include pt-input();
+
+  &.#{$ns}-large {
+    @include pt-input-large();
+  }
+
+  &.#{$ns}-small {
+    @include pt-input-small();
+  }
+
+  &.#{$ns}-fill {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .#{$ns}-dark & {
+    @include pt-dark-input();
+  }
+
+  @each $intent, $color in $pt-intent-colors {
+    &.#{$ns}-intent-#{$intent} {
+      @include pt-input-intent($color);
+
+      .#{$ns}-dark & {
+        @include pt-dark-input-intent($color);
+      }
+    }
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}

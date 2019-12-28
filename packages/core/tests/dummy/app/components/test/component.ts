@@ -31,6 +31,7 @@ export default class Test extends Component<TestArgs> {
     { label: 'Dog' },
   ];
   switchLabel = 'Privacy setting';
+  textIG = 'hi';
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);
@@ -40,6 +41,7 @@ export default class Test extends Component<TestArgs> {
     set(this, 'elevation', 2);
     set(this, 'size', 200);
     set(this, 'value', 0.8);
+    set(this, 'textIG', 'hii1212');
   }
   @action
   onKeyDown() {

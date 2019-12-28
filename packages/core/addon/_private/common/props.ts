@@ -38,3 +38,15 @@ export interface IOptionProps extends IProps {
   /** Value of this option. */
   value: string | number;
 }
+
+/** Interface for a controlled input. */
+export interface IControlledProps {
+  /** Initial value of the input, for uncontrolled usage. */
+  defaultValue?: string;
+
+  /** Change event handler. Use `event.target.value` for new value. */
+  onChange?: (event: HTMLElement) => void;
+
+  /** Form value of the input, for controlled usage. */
+  value?: string;
+}
