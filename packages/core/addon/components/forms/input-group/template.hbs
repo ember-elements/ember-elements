@@ -1,0 +1,33 @@
+<div
+  class={{rw
+    this.INPUT_GROUP
+    this.getClassName
+    this.getDisabled
+    this.getFill
+    this.getLarge
+    this.getSmall
+    this.getRound
+    this.getIntent
+  }}
+>
+  {{#if this.getLeftIcon}}
+    <Icon @icon={{this.getLeftIcon}} />
+  {{/if}}
+  <input
+    type='text'
+    class={{this.INPUT}}
+    onchange={{action 'handleChange'}}
+    ...attributes
+    {{did-insert this.updatePadding}}
+    {{did-update this.updatePadding}}
+  >
+  {{#if hasBlock}}
+    <span
+      class={{this.INPUT_ACTION}}
+      {{did-insert this.updateWidth}}
+      {{did-update this.updateWidth}}
+    >
+      {{yield}}
+    </span>
+  {{/if}}
+</div>

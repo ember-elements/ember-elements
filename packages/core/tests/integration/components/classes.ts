@@ -16,6 +16,7 @@ export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
 export const LOADING = `${NS}-loading`;
 export const MINIMAL = `${NS}-minimal`;
+export const ROUND = `${NS}-round`;
 export const SMALL = `${NS}-small`;
 export const VERTICAL = `${NS}-vertical`;
 
@@ -53,6 +54,11 @@ export const HTML_TABLE = `${NS}-html-table`;
 export const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 export const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 export const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
+
+export const INPUT = `${NS}-input`;
+export const INPUT_GHOST = `${INPUT}-ghost`;
+export const INPUT_GROUP = `${INPUT}-group`;
+export const INPUT_ACTION = `${INPUT}-action`;
 
 export const CONTROL = `${NS}-control`;
 export const CONTROL_INDICATOR = `${CONTROL}-indicator`;
