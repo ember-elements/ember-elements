@@ -54,3 +54,43 @@ Styleguide input
     display: none;
   }
 }
+
+/*
+Textareas
+
+Markup:
+<textarea class="#{$ns}-input {{.modifier}}" {{:modifier}} dir="auto"></textarea>
+
+:disabled - Disabled
+:readonly - Readonly
+.#{$ns}-large - Larger font size
+.#{$ns}-small - Small font size
+.#{$ns}-intent-primary - Primary intent
+.#{$ns}-intent-danger  - Danger intent
+.#{$ns}-fill  - Take up full width of parent element
+
+Styleguide textarea
+*/
+
+// stylelint-disable-next-line selector-no-qualifying-type
+textarea.#{$ns}-input {
+  max-width: 100%;
+  padding: $input-padding-horizontal;
+
+  &,
+  &.#{$ns}-large,
+  &.#{$ns}-small {
+    // override input styles for these modifiers.
+    // line-height is needed to center text on <input> but not on multiline <textarea>
+    height: auto;
+    line-height: inherit;
+  }
+
+  &.#{$ns}-small {
+    padding: $input-small-padding;
+  }
+
+  .#{$ns}-dark & {
+    @include pt-dark-input();
+  }
+}
