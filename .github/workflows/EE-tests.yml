@@ -1,0 +1,38 @@
+name: ember-elements-core-tests
+on:
+  pull_request:
+    branches: [octane]
+    # paths:
+    #   - 'packages/core/*'
+jobs:
+  tests:
+    name: Tests
+    strategy:
+      matrix:
+        # os: [ubuntu-latest, macOS-latest, windows-latest]
+        # browsers: [chrome, firefox, safari, edge]
+        ci_browser: [Chrome, Firefox]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Install
+      run: |
+        cd packages/core
+        yarn install
+    - name: Test
+      env:
+        CI_BROWSER: ${{ matrix.ci_browser }}
+      run: |
+        cd packages/core
+        yarn test
+    - name: Upload Coverage to Coveralls
+      uses: coverallsapp/github-action@v1.0.1
+      with:
+        github-token: ${{ secrets.github_token }}
+        path-to-lcov: ./packages/core/coverage/lcov.info
+
