@@ -1,7 +1,6 @@
-
 ![Logo](/tests/dummy/public/ember-elements.png)
 
-**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.  
+**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.
 
 [![Build Status](https://travis-ci.org/dunkinbase/ember-elements.svg?branch=master)](https://travis-ci.org/dunkinbase/ember-elements)
 [![minified](https://badgen.net/bundlephobia/min/ember-elements)](https://bundlephobia.com/result?p=ember-elements)
@@ -19,7 +18,7 @@ We chose **[EmberJS](https://emberjs.com/)** framework for the productivity and 
 
 1. We just loved the design 😍. Moreover, it has been designed with accessibility in mind.
 2. The project is mature and had been in production use for quite some time.
-3. It is *optimized for building complex, data-dense web interfaces for desktop applications*. This means, it is not a mobile-first UI toolkit. It reinforces our belief that design system should be contextual.
+3. It is _optimized for building complex, data-dense web interfaces for desktop applications_. This means, it is not a mobile-first UI toolkit. It reinforces our belief that design system should be contextual.
 4. Known for its quality in the React ecosystem.
 5. Lacked an Ember equivalent.
 
@@ -29,10 +28,9 @@ PS: Still confused about the need? Watch [Frédéric Soumaré talk @ EmberConf, 
 
 ### Why Typescript?
 
-1. Well who doesnt love it. 
+1. Well who doesnt love it.
 2. Increased adoption in Ember ecosystem.
 3. Moreover, BlueprintJS(React) is also written in Typescript.
-
 
 ## **Community**
 
@@ -48,6 +46,7 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
+<!--
 ## Current Status
 
 ### Core
@@ -112,12 +111,12 @@ For any other contributions, read [CONTRIBUTING.md](CONTRIBUTING.md)
   - [ ] Date time picker
   - [ ] Date input
   - [ ] Date range input
-  
+
 - [ ] Select
   - [x] Select
   - [ ] Suggest
   - [x] MultiSelect
   - [ ] Omnibar
-  - [ ] Querylist 
+  - [ ] Querylist
 
-- [ ] Table 
+- [ ] Table  -->

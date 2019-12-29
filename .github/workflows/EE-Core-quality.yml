@@ -1,0 +1,70 @@
+name: Ember-Elements Core Quality
+on:
+  pull_request:
+    branches: [octane]
+    # paths:
+    #   - 'packages/core/*'
+
+jobs:
+  security:
+    name: Dependency Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install
+        run: npm install -g snyk
+      - name: Snyk
+        if: github.event == 'pull_request'
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: cd packages/core && snyk test --severity-threshold=high
+
+  lint_js:
+    name: 'Lint JS/TS'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install
+        run: cd packages/core && yarn install
+      - name: 'Lint JS/TS'
+        run: cd packages/core && yarn lint:js
+
+  lint_templates:
+    name: 'Lint Templates'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install
+        run: cd packages/core && yarn install
+      - name: Lint Templates
+        run: cd packages/core && yarn lint:hbs
+
+  lint_types:
+    name: 'Check Type Correctness'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install
+        run: cd packages/core && yarn install
+      # Types on Canary are a mess right now :(
+      - name: Type Checking
+        run: cd packages/core && yarn lint:types

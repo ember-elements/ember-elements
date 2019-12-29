@@ -152,7 +152,9 @@ class Checkbox extends Component<CheckboxArgs> {
 
   @action
   handleChange(e: HTMLInputElement) {
-    const { indeterminate } = e.target.indeterminate;
+    // @ts-ignore
+    const indeterminate = e.target.indeterminate;
+
     // update state immediately only if uncontrolled
     if (this.ICheckboxState == null) {
       this.indeterminateValue = indeterminate;
