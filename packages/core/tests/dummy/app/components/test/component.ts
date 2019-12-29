@@ -32,6 +32,7 @@ export default class Test extends Component<TestArgs> {
   ];
   switchLabel = 'Privacy setting';
   textIG = 'hi';
+  value1 = 'asdfsdafasdfsdfsdfsdfsdfsdafasdfdsafasdfdsfadsfadsfdsfdsfdsfdsfsdfsdfdsfsdfsdfsd';
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);

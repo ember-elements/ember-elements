@@ -1,0 +1,15 @@
+<Textarea
+  class={{rw
+    this.INPUT
+    this.getClassName
+    this.getFill
+    this.getLarge
+    this.getSmall
+    this.getIntent
+  }}
+  @value={{@value}}
+  oninput={{action 'handleChange'}}
+  ...attributes
+  {{did-insert this.scrollHeight this.getGrowVertical}}
+  {{did-update this.scrollHeight this.getGrowVertical @value}}
+/>
