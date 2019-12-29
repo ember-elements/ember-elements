@@ -34,9 +34,9 @@ jobs:
         with:
           node-version: '10.x'
       - name: Install
-        run: ./run yarn install
+        run: yarn install
       - name: 'Lint JS/TS'
-        run: ./run yarn lint:js
+        run: yarn lint:js
 
   lint_templates:
     name: 'Lint Templates'
@@ -49,9 +49,9 @@ jobs:
         with:
           node-version: '10.x'
       - name: Install
-        run: ./run yarn install
+        run: yarn install
       - name: Lint Templates
-        run: ./run yarn lint:hbs
+        run: yarn lint:hbs
 
   lint_types:
     name: 'Check Type Correctness'
@@ -64,7 +64,7 @@ jobs:
         with:
           node-version: '10.x'
       - name: Install
-        run: ./run yarn install
+        run: yarn install
       # Types on Canary are a mess right now :(
       - name: Type Checking
-        run: ./run yarn lint:types
+        run: yarn lint:types
