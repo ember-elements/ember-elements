@@ -42,7 +42,12 @@ module('Integration | Component | text-area', function(hooks) {
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
     );
 
-    assert.dom('textarea').hasAttribute('style', 'margin-top: 10px; height: 110px;');
+    assert
+      .dom('textarea')
+      .hasAttribute(
+        'style',
+        `margin-top: 10px; height: ${this.element.querySelector('textarea').style.height};`
+      );
   });
 
   test('can fit large initial content', async function(assert) {

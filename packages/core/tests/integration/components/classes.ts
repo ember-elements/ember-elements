@@ -83,6 +83,12 @@ export const SPINNER_HEAD = `${SPINNER}-head`;
 export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
 
+export const TAG = `${NS}-tag`;
+export const TAG_REMOVE = `${TAG}-remove`;
+
+// text utilities
+export const TEXT_OVERFLOW_ELLIPSIS = `${NS}-text-overflow-ellipsis`;
+
 export const INTENT_SUCCESS = intentClass(Intent.SUCCESS);
 
 /** Return CSS class for alignment. */

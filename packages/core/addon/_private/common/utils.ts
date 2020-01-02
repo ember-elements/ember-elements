@@ -13,3 +13,9 @@ export function clamp(val: number, min: number, max: number) {
   }
   return Math.min(Math.max(val, min), max);
 }
+
+/** Returns whether the value is a function. Acts as a type guard. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isFunction(value: any): value is Function {
+  return typeof value === 'function';
+}
