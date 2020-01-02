@@ -5,13 +5,13 @@ import { action } from '@ember/object';
 // @ts-ignore
 import { setComponentTemplate } from '@ember/component';
 // @ts-ignore
-import layout from './template';
+import tagLayout from './template';
 
 // @ts-ignore
-import { IconName } from '@ember-elements/icons';
+import { IconName } from '@ember-elements/icons'; // import icons package
 
-import * as Classes from '../../_private/common/classes';
-import { IProps, IIntentProps, Intent } from '../../_private/common';
+import * as tagClasses from '../../_private/common/classes';
+import { IProps, Intent, IIntentProps } from '../../_private/common';
 
 /**
  * TODO
@@ -110,11 +110,11 @@ class Tag extends Component<TagArgs> {
   public static readonly SIZE_STANDARD = 16;
   public static readonly SIZE_LARGE = 20;
 
-  TAG = Classes.TAG;
-  TAG_REMOVE = Classes.TAG_REMOVE;
-  TEXT_OVERFLOW_ELLIPSIS = Classes.TEXT_OVERFLOW_ELLIPSIS;
+  TAG = tagClasses.TAG;
+  TAG_REMOVE = tagClasses.TAG_REMOVE;
+  TEXT_OVERFLOW_ELLIPSIS = tagClasses.TEXT_OVERFLOW_ELLIPSIS;
 
-  FILL = Classes.FILL;
+  FILL = tagClasses.FILL;
 
   get getActive() {
     let active;
@@ -125,102 +125,102 @@ class Tag extends Component<TagArgs> {
       active = this.active;
     }
 
-    return active ? Classes.ACTIVE : '';
+    return active ? tagClasses.ACTIVE : '';
   }
 
-  get getClassName() {
-    let className;
+  get getTagClassName() {
+    let tagClassName;
     if (this.args.className != undefined) {
-      className = this.args.className;
+      tagClassName = this.args.className;
     } else if (this.className != undefined) {
-      return (className = this.className);
+      tagClassName = this.className;
     }
 
-    return className;
+    return tagClassName;
   }
 
-  get getFill() {
-    let fill;
+  get getTagFill() {
+    let tagFill;
 
     if (this.args.fill != undefined) {
-      fill = this.args.fill;
+      tagFill = this.args.fill;
     } else if (this.fill != undefined) {
-      fill = this.fill;
+      tagFill = this.fill;
     }
 
-    return fill ? Classes.FILL : '';
+    return tagFill ? tagClasses.FILL : '';
   }
 
-  get getIcon() {
-    let icon;
+  get getTagIcon() {
+    let tagIcon;
 
     if (this.args.icon != undefined) {
-      icon = this.args.icon;
+      tagIcon = this.args.icon;
     } else if (this.icon != undefined) {
-      icon = this.icon;
+      tagIcon = this.icon;
     }
 
-    return icon;
+    return tagIcon;
   }
 
   get getIntent() {
-    let intent: Intent = 'none';
+    let tagIntent: Intent = 'none';
 
     if (this.args.intent != undefined) {
-      intent = this.args.intent;
+      tagIntent = this.args.intent;
     } else if (this.intent != undefined) {
-      intent = this.intent;
+      tagIntent = this.intent;
     }
 
-    return Classes.intentClass(intent) as Intent;
+    return tagClasses.intentClass(tagIntent) as Intent;
   }
 
   get getInteractive() {
-    let interactive;
+    let tagInteractive;
 
     if (this.args.interactive != undefined) {
-      interactive = this.args.interactive;
+      tagInteractive = this.args.interactive;
     } else if (this.interactive != undefined) {
-      interactive = this.interactive;
+      tagInteractive = this.interactive;
     }
 
-    return interactive ? Classes.INTERACTIVE : '';
+    return tagInteractive ? tagClasses.INTERACTIVE : '';
   }
 
   get getLarge() {
-    let large;
+    let tagLarge;
 
     if (this.args.large != undefined) {
-      large = this.args.large;
+      tagLarge = this.args.large;
     } else if (this.large != undefined) {
-      large = this.large;
+      tagLarge = this.large;
     }
 
-    return large ? Classes.LARGE : '';
+    return tagLarge ? tagClasses.LARGE : '';
   }
 
   get getMinimal() {
-    let minimal;
+    let tagMinimal;
 
     if (this.args.minimal != undefined) {
-      minimal = this.args.minimal;
+      tagMinimal = this.args.minimal;
     } else if (this.minimal != undefined) {
-      minimal = this.minimal;
+      tagMinimal = this.minimal;
     }
 
-    return minimal ? Classes.MINIMAL : '';
+    return tagMinimal ? tagClasses.MINIMAL : '';
   }
 
   get getRound() {
-    let round;
+    let tagRound;
 
     if (this.args.round != undefined) {
-      round = this.args.round;
+      tagRound = this.args.round;
     } else if (this.round != undefined) {
-      round = this.round;
+      tagRound = this.round;
     }
 
-    return round ? Classes.ROUND : '';
+    return tagRound ? tagClasses.ROUND : '';
   }
 
   get getTabIndex() {
@@ -236,15 +236,15 @@ class Tag extends Component<TagArgs> {
   }
 
   get getRightIcon() {
-    let rightIcon;
+    let tagRightIcon;
 
     if (this.args.rightIcon != undefined) {
-      rightIcon = this.args.rightIcon;
+      tagRightIcon = this.args.rightIcon;
     } else if (this.rightIcon != undefined) {
-      rightIcon = this.rightIcon;
+      tagRightIcon = this.rightIcon;
     }
 
-    return rightIcon;
+    return tagRightIcon;
   }
 
   get isRemovable() {
@@ -259,4 +259,4 @@ class Tag extends Component<TagArgs> {
   }
 }
 
-export default setComponentTemplate(layout, Tag);
+export default setComponentTemplate(tagLayout, Tag);
