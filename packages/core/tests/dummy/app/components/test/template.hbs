@@ -152,3 +152,11 @@
 <Tag @icon='home' @large={{true}}>
   {{this.tagText}}
 </Tag>
+
+   <TagInput
+                    {{!-- @leftIcon='user' --}}
+                    @onChange={{action this.handleChange}}
+                    {{!-- @placeholder='Separate values with commas...' --}}
+                    @values={{this.values}}
+                    @inputValue='a'
+/>

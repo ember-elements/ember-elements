@@ -34,6 +34,7 @@ export default class Test extends Component<TestArgs> {
   textIG = 'hi';
   value1 = 'asdfsdafasdfsdfsdfsdfsdfsdafasdfdsafasdfdsfadsfadsfdsfdsfdsfdsfsdfsdfdsfsdfsdfsd';
   tagText = 'hii';
+  values = ['hii', 'hii2'];
   @action
   onClick() {
     set(this.propsObject, 'active', !this.propsObject.active);
@@ -56,5 +57,11 @@ export default class Test extends Component<TestArgs> {
   @action
   handleEnabledChange() {
     // console.log('hii');
+  }
+
+  @action
+  handleChange(values: Array<string>) {
+    // console.log(values);
+    set(this, 'values', values);
   }
 }
