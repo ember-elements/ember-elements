@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Component from '@glimmer/component';
 import { reads } from '@ember/object/computed';
 import { action } from '@ember/object';
