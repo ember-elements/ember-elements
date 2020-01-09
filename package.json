@@ -7,12 +7,13 @@
 	"scripts": {
 		"lint:js": "eslint .",
 		"startCore": "yarn workspace @ember-elements/core start",
+		"startCoreTest": "yarn workspace @ember-elements/core test",
 		"startIcons": "yarn workspace @ember-elements/icons start",
 		"lintallCore": "yarn workspace @ember-elements/core lint:all",
 		"test": "yarn workspace @ember-elements/core test",
 		"dtslint": "lerna run dtslint",
 		"node-test": "lerna run node-test",
-		"try": "ember try:one"
+		"try": "ember try:one",
 	},
 	"devDependencies": {
 		"lerna": "^3.19.0"

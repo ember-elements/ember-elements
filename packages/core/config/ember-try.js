@@ -6,18 +6,10 @@ module.exports = async function() {
   return {
     scenarios: [
       {
-        name: 'ember-lts-3.4',
+        name: 'ember-3.15.0',
         npm: {
           devDependencies: {
-            'ember-source': '~3.4.0',
-          },
-        },
-      },
-      {
-        name: 'ember-lts-3.8',
-        npm: {
-          devDependencies: {
-            'ember-source': '~3.8.0',
+            'ember-source': '~3.14.1',
           },
         },
       },
@@ -53,19 +45,6 @@ module.exports = async function() {
         name: 'ember-default',
         npm: {
           devDependencies: {},
-        },
-      },
-      {
-        name: 'ember-default-with-jquery',
-        env: {
-          EMBER_OPTIONAL_FEATURES: JSON.stringify({
-            'jquery-integration': true,
-          }),
-        },
-        npm: {
-          devDependencies: {
-            '@ember/jquery': '^0.5.1',
-          },
         },
       },
     ],
