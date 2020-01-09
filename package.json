@@ -13,7 +13,7 @@
 		"test": "yarn workspace @ember-elements/core test",
 		"dtslint": "lerna run dtslint",
 		"node-test": "lerna run node-test",
-		"try": "ember try:one",
+		"try": "ember try:one"
 	},
 	"devDependencies": {
 		"lerna": "^3.19.0"
