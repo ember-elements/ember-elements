@@ -436,7 +436,7 @@ class TagInput extends Component<TagInputArgs> {
 
   private addTags = (value: string, method: TagInputAddMethod = 'default') => {
     const newValues = this.getValues(value);
-    let shouldClearInput = this.args.inputValue === undefined;
+    let shouldClearInput: boolean = this.args.inputValue === undefined;
     if (this.args.onAdd) {
       this.args.onAdd(newValues, method);
     }
@@ -446,7 +446,7 @@ class TagInput extends Component<TagInputArgs> {
     }
 
     // avoid a potentially expensive computation if this prop is omitted
-    shouldClearInput = (this.args.onChange && shouldClearInput) as boolean;
+    shouldClearInput = (this.args.onChange ? true : false) && shouldClearInput;
 
     // only explicit return false cancels text clearing
     if (shouldClearInput) {
