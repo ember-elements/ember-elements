@@ -3,7 +3,7 @@ language: node_js
 node_js:
   # we recommend testing addons with the same minimum supported node version as Ember CLI
   # so that your addon works for all apps
-  - '8'
+  - "8"
 
 sudo: false
 dist: trusty
@@ -22,7 +22,8 @@ env:
 
 branches:
   only:
-    - octane
+    - master
+    # hide atm due to icons package import error
     # npm version tags
     - /^v\d+\.\d+\.\d+/
 
@@ -34,14 +35,14 @@ jobs:
   include:
     # runs linting and tests with current locked deps
 
-    - stage: 'Tests'
-      name: 'Tests'
+    - stage: "Tests"
+      name: "Tests"
       script:
         - yarn startCoreTest
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
-    - stage: 'Additional Ember Version Tests'
+    - stage: "Additional Ember Version Tests"
       env: EMBER_TRY_SCENARIO=ember-3.15.0
     - env: EMBER_TRY_SCENARIO=ember-release
     - env: EMBER_TRY_SCENARIO=ember-beta
