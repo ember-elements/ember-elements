@@ -12,7 +12,8 @@ addons:
   chrome: stable
 
 cache:
-  yarn: true
+  directories:
+    - $HOME/.npm
 
 env:
   global:
@@ -22,6 +23,7 @@ env:
 branches:
   only:
     - master
+    # hide atm due to icons package import error
     # npm version tags
     - /^v\d+\.\d+\.\d+/
 
@@ -29,41 +31,21 @@ jobs:
   fail_fast: true
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
-    - env: EMBER_TRY_SCENARIO=ember-beta
-    - env: EMBER_TRY_SCENARIO=ember-release
 
   include:
     # runs linting and tests with current locked deps
 
     - stage: "Tests"
-      name: "Lint Tests"
+      name: "Tests"
       script:
-        - yarn lint:hbs
-        - yarn lint:js
-        - yarn test
-    - name: "Floating Dependencies"
-      script:
-        - yarn test
+        - yarn startCoreTest
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
     - stage: "Additional Ember Version Tests"
-      # env: EMBER_TRY_SCENARIO=ember-lts-2.18
-      env: EMBER_TRY_SCENARIO=ember-lts-3.8
-    # - env: EMBER_TRY_SCENARIO=ember-lts-3.4
-    - env: EMBER_TRY_SCENARIO=ember-lts-3.9
-    - env: EMBER_TRY_SCENARIO=ember-default
+      env: EMBER_TRY_SCENARIO=ember-3.15.0
     - env: EMBER_TRY_SCENARIO=ember-release
     - env: EMBER_TRY_SCENARIO=ember-beta
     - env: EMBER_TRY_SCENARIO=ember-canary
-
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-
-install:
-  - yarn install --no-lockfile --non-interactive
-
-
 script:
-  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+  - cd packages/core && node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO

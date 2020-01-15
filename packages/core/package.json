@@ -22,7 +22,7 @@
     "lint:hbs": "ember-template-lint .",
     "lint:types": "tsc --skipLibCheck",
     "lint:js": "yarn eslint . --ext .ts --ext .js",
-    "lint:all": "yarn lint:hbs && yarn lint:js",
+    "lint:all": "yarn lint:hbs && yarn lint:js && yarn lint:types",
     "clean": "rm -rf dist tmp node_modules coverage*"
   },
   "dependencies": {

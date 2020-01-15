@@ -87,6 +87,10 @@ export const SPINNER_TRACK = `${SPINNER}-track`;
 export const TAG = `${NS}-tag`;
 export const TAG_REMOVE = `${TAG}-remove`;
 
+export const TAG_INPUT = `${NS}-tag-input`;
+export const TAG_INPUT_ICON = `${TAG_INPUT}-icon`;
+export const TAG_INPUT_VALUES = `${TAG_INPUT}-values`;
+
 // text utilities
 export const TEXT_OVERFLOW_ELLIPSIS = `${NS}-text-overflow-ellipsis`;
 
