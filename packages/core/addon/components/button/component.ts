@@ -273,8 +273,9 @@ class Button extends Component<ButtonArgs> {
     }
   }
 
-  onUpdate() {
-    const textSpanTag: HTMLElement | null = document.querySelector('.' + Classes.BUTTON_TEXT);
+  @action
+  onUpdate(element: HTMLElement) {
+    const textSpanTag: HTMLElement | null = element.querySelector('.' + Classes.BUTTON_TEXT);
     if (textSpanTag && textSpanTag.innerHTML.trim() == '') {
       textSpanTag.remove();
     }

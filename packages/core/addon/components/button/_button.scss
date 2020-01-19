@@ -1,5 +1,6 @@
 @import '../../_private/common/variables';
 @import './common';
+@import '../../../../icons/addon/icons';
 
 /*
 Button
@@ -101,19 +102,18 @@ Styleguide button
   // icons
   &[class*='#{$ns}-icon-'] {
     &::before {
-      //Error occurred
-      // @include pt-icon();
+      @include pt-icon();
       color: $pt-icon-color;
     }
   }
-  //Error occurred
-  // #{$icon-classes} {
-  //   color: $pt-icon-color;
 
-  //   &.#{$ns}-align-right {
-  //     margin-left: $button-icon-spacing;
-  //   }
-  // }
+  #{$icon-classes} {
+    color: $pt-icon-color;
+
+    &.#{$ns}-align-right {
+      margin-left: $button-icon-spacing;
+    }
+  }
 
   // button with SVG icon only (no text or children)
   .#{$ns}-icon:first-child:last-child,
@@ -131,32 +131,31 @@ Styleguide button
       &[class*='#{$ns}-icon-']::before {
         color: $pt-dark-icon-color;
       }
-      //Error occurred
-      // #{$icon-classes} {
-      //   color: $pt-dark-icon-color;
-      // }
+
+      #{$icon-classes} {
+        color: $pt-dark-icon-color;
+      }
     }
 
     &[class*='#{$ns}-intent-'] {
       @include pt-dark-button-intent();
-      //Error occurred
-      // .#{$ns}-button-spinner .#{$ns}-spinner-head {
-      //   stroke: $dark-progress-head-color;
-      // }
+
+      .#{$ns}-button-spinner .#{$ns}-spinner-head {
+        stroke: $dark-progress-head-color;
+      }
     }
   }
 
   // disabled and intent button icon should use same color as text
-  //Error occurred
-  // &:disabled,
-  // &.#{$ns}-disabled,
-  // &[class*='#{$ns}-intent-'] {
-  //   &::before,
-  //   #{$icon-classes} {
-  //     // stylelint-disable-next-line declaration-no-important
-  //     color: inherit !important;
-  //   }
-  // }
+  &:disabled,
+  &.#{$ns}-disabled,
+  &[class*='#{$ns}-intent-'] {
+    &::before,
+    #{$icon-classes} {
+      // stylelint-disable-next-line declaration-no-important
+      color: inherit !important;
+    }
+  }
 
   // minimal must come last to override all default styles
   &.#{$ns}-minimal {
