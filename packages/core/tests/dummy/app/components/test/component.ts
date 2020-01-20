@@ -45,6 +45,7 @@ export default class Test extends Component<TestArgs> {
     set(this, 'size', 200);
     set(this, 'value', 0.8);
     set(this, 'textIG', 'hii1212');
+    set(this, 'valueNI', 'eee');
   }
   @action
   onKeyDown() {
@@ -64,4 +65,18 @@ export default class Test extends Component<TestArgs> {
     // console.log(values);
     set(this, 'values', values);
   }
+
+  //numeric input
+  disabled = true;
+  fill = false;
+  large = false;
+  leftIcon = '';
+  allowNumericCharactersOnly = true;
+  selectAllOnFocus = false;
+  selectAllOnIncrement = false;
+  min = 0;
+  intent = 'none';
+  max = 100;
+  valueNI = '';
+  buttonPosition = 'right';
 }

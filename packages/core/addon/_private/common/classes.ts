@@ -12,6 +12,7 @@ export const ALIGN_RIGHT = `${NS}-align-right`;
 
 export const DISABLED = `${NS}-disabled`;
 export const FILL = `${NS}-fill`;
+export const FIXED = `${NS}-fixed`;
 export const INLINE = `${NS}-inline`;
 export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
@@ -77,6 +78,8 @@ export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
 export const FORM_CONTENT = `${NS}-form-content`;
 export const FORM_HELPER_TEXT = `${NS}-form-helper-text`;
+
+export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
 export const SPINNER = `${NS}-spinner`;
 export const SPINNER_ANIMATION = `${SPINNER}-animation`;

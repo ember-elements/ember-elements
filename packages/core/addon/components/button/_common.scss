@@ -1,6 +1,6 @@
 @import '../../_private/common/mixins';
 @import '../../_private/common/variables';
-// @import '../progress-bar/common';
+@import '../progress-bar/common';
 
 $button-border-width: 1px !default;
 $button-padding: ($pt-grid-size / 2) $pt-grid-size !default;
@@ -256,11 +256,10 @@ $button-intents: (
   &.#{$ns}-disabled {
     @include pt-dark-button-disabled();
   }
-  //Error occurred
-  // .#{$ns}-button-spinner .#{$ns}-spinner-head {
-  //   background: $dark-progress-track-color;
-  //   stroke: $dark-progress-head-color;
-  // }
+  .#{$ns}-button-spinner .#{$ns}-spinner-head {
+    background: $dark-progress-track-color;
+    stroke: $dark-progress-head-color;
+  }
 }
 
 @mixin pt-dark-button-hover() {
