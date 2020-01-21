@@ -40,6 +40,11 @@ export const CALLOUT_ICON = `${CALLOUT}-icon`;
 
 export const CARD = `${NS}-card`;
 
+export const COLLAPSE = `${NS}-collapse`;
+export const COLLAPSE_BODY = `${COLLAPSE}-body`;
+
+export const COLLAPSIBLE_LIST = `${NS}-collapse-list`;
+
 export const CONTROL_GROUP = `${NS}-control-group`;
 
 export const PROGRESS_BAR = `${NS}-progress-bar`;

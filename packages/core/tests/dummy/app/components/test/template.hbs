@@ -1,3 +1,20 @@
+<Button @onClick={{action 'onClickButton'}}>
+  {{#if this.isOpen}}
+    {{this.hide}}
+  {{else}}
+    {{this.show}}
+  {{/if}}
+  {{this.build}}
+</Button>
+<Collapse
+  @isOpen={{this.isOpen}}
+  @keepChildrenMounted={{this.keepChildrenMounted}}
+>
+  <pre class='bp3-code-block'>
+    {{this.collapseText}}
+  </pre>
+</Collapse>
+
 <Button
   @props={{this.propsObject}}
   @onClick={{action 'onClick'}}
@@ -149,16 +166,17 @@
   </Button>
 </InputGroup>
 <TextArea @growVertically={{true}} @value={{this.value1}} @intent='primary' />
+
 <Tag @icon='home' @large={{true}}>
   {{this.tagText}}
 </Tag>
 
-   <TagInput
-                    {{!-- @leftIcon='user' --}}
-                    @onChange={{action this.handleChange}}
-                    {{!-- @placeholder='Separate values with commas...' --}}
-                    @values={{this.values}}
-                    @inputValue='a'
+<TagInput
+  @onChange={{action this.handleChange}}
+  @values={{this.values}}
+  @inputValue='a'
+  {{! @leftIcon='user' }}
+  {{! @placeholder='Separate values with commas...' }}
 />
 
 <NumericInput
@@ -176,4 +194,3 @@
   @value={{this.valueNI}}
   @didPasteEventJustOccur={{true}}
 />
-{{this.valueNI}}
