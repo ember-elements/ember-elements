@@ -46,6 +46,8 @@ export const COLLAPSIBLE_LIST = `${NS}-collapse-list`;
 
 export const CONTROL_GROUP = `${NS}-control-group`;
 
+export const DIVIDER = `${NS}-divider`;
+
 export const PROGRESS_BAR = `${NS}-progress-bar`;
 export const PROGRESS_METER = `${NS}-progress-meter`;
 export const PROGRESS_NO_STRIPES = `${NS}-no-stripes`;
