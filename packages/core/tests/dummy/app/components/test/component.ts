@@ -79,4 +79,29 @@ export default class Test extends Component<TestArgs> {
   max = 100;
   valueNI = '';
   buttonPosition = 'right';
+
+  isOpen = false;
+  keepChildrenMounted = false;
+  collapseText = `[11:53:30] Finished 'typescript-bundle-blueprint' after 769 ms
+    <br />
+    [11:53:30] Starting 'typescript-typings-blueprint'...
+    <br />
+    [11:53:30] Finished 'typescript-typings-blueprint' after 198 ms
+    <br />
+    [11:53:30] write ./blueprint.css
+    <br />
+    [11:53:30] Finished 'sass-compile-blueprint' after 2.84 s`;
+  show = 'Show';
+  hide = 'Hide';
+  build = 'build logs';
+  @action
+  onClickButton() {
+    //mouse event action
+    set(this, 'isOpen', !this.isOpen);
+  }
+
+  @action
+  doFuction() {
+    set(this, 'keepChildrenMounted', !this.keepChildrenMounted);
+  }
 }
