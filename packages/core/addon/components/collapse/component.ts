@@ -116,34 +116,7 @@ class Collapse extends Component<CollapseArgs> {
       isOpen = this.isOpenProps;
     }
 
-    const isContentVisible = this.animationState !== AnimationStates.CLOSED;
-    const shouldRenderChildren = isContentVisible || this.getKeepChildrenMounted();
-    const displayWithTransform =
-      isContentVisible && this.animationState !== AnimationStates.CLOSING;
-    const isAutoHeight = this.height === 'auto';
-
-    this.shouldRenderChildren = shouldRenderChildren;
-
-    const containerStyle = {
-      height: isContentVisible ? this.height : undefined,
-      overflowY: (isAutoHeight ? 'visible' : undefined) as 'visible' | undefined,
-      transition: isAutoHeight ? 'none' : undefined,
-    };
-
-    this.containerStyle = `${
-      containerStyle.height != undefined ? `height:` + containerStyle.height + `;` : ''
-    } ${
-      containerStyle.overflowY != undefined ? `overflow-y:` + containerStyle.overflowY + `;` : ''
-    } ${
-      containerStyle.transition != undefined ? `transition:` + containerStyle.transition + `;` : ''
-    } `.trim();
-
-    // @ts-ignore
-    this.contentsStyle = htmlSafe(
-      `transform: ${displayWithTransform ? 'translateY(0)' : `translateY(-${this.height})`};  ${
-        isAutoHeight ? 'transition:none ' : ''
-      } `
-    );
+    this.willRenderComp();
 
     this.isOpen = isOpen;
 
@@ -157,7 +130,7 @@ class Collapse extends Component<CollapseArgs> {
       }
 
       // current isOpen state
-      this.isOpenState = this.isOpen as boolean;
+      this.isOpenState = this.isOpen;
     }
 
     // init yield first
@@ -225,7 +198,7 @@ class Collapse extends Component<CollapseArgs> {
 
     const containerStyle = {
       height: isContentVisible ? this.height : undefined,
-      overflowY: (isAutoHeight ? 'visible' : undefined) as 'visible' | undefined,
+      overflowY: isAutoHeight ? 'visible' : undefined,
       transition: isAutoHeight ? 'none' : undefined,
     };
 
