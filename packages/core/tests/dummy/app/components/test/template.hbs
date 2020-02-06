@@ -1,3 +1,4 @@
+{{! template-lint-disable}}
 <Button @onClick={{action 'onClickButton'}}>
   {{#if this.isOpen}}
     {{this.hide}}
@@ -113,7 +114,7 @@
   @inline={{true}}
   style='color:red'
 >
-  <input placeholder='Placeholder text' >
+  <input placeholder='Placeholder text' />
 </FormGroup>
 
 <ControlGroup @fill={{true}} @vertical={{false}}>
@@ -205,3 +206,61 @@
   <Button @icon='add' />
   <Button @icon='remove' />
 </ButtonGroup>
+<Button @onClick={{action 'onOverlayToggle'}} @primary={{true}}>
+  Show overlay
+</Button>
+<Overlay
+  @className='ee-overlay-scroll-container'
+  @isOpen={{this.isOpenOverlay}}
+  class="ee-card ee-elevation-4 docs-overlay-example-transition
+
+    {{if this.useTallContent 'docs-overlay-example-tall'}}"
+  @autoFocus={{this.autoFocus}}
+  @enforceFocus={{this.enforceFocus}}
+  @usePortal={{this.usePortal}}
+  @canEscapeKeyClose={{this.canEscapeKeyClose}}
+  @canOutsideClickClose={{this.canOutsideClickClose}}
+  @onClose={{action 'onClose'}}
+>
+  <div>
+    <h3 class='bp3-heading'>
+      I'm an Overlay!
+    </h3>
+    <p>
+      This is a simple container with some inline styles to position it on the screen. Its CSS
+                    transitions are customized for this example only to demonstrate how easily custom
+                    transitions can be implemented.
+    </p>
+    <p>
+      Click the "Focus button" below to transfer focus to the "Show overlay" trigger button
+                    outside of this overlay. If persistent focus is enabled, focus will be constrained to the
+                    overlay. Use the
+      <code class='bp3-code'>
+        tab
+      </code>
+      key to move to the next focusable element to illustrate
+                    this effect.
+    </p>
+    <p>
+      Click the "Make me scroll" button below to make this overlay's content really tall, which
+                    will make the overlay's container (but not the page) scrollable
+    </p>
+    <br />
+    <div class='bp3-dialog-footer-actions'>
+      <Button @intent='danger' @onClick={{action 'handleClose'}}>
+        Close
+      </Button>
+      <Button @onClick={{action 'focusButton'}} @class='focus-button'>
+        Focus button
+      </Button>
+      <Button
+        @onClick={{action 'toggleScrollButton'}}
+        @icon='double-chevron-down'
+        @rightIcon='double-chevron-down'
+        @active={{this.useTallContent}}
+      >
+        Make me scroll
+      </Button>
+    </div>
+  </div>
+</Overlay>

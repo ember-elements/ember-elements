@@ -31,6 +31,8 @@
     "ember-cli-htmlbars": "^4.0.5",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-typescript": "^3.1.1",
+    "ember-css-transitions": "^1.0.0",
+    "ember-maybe-in-element": "^0.4.0",
     "sass": "^1.23.7"
   },
   "devDependencies": {
