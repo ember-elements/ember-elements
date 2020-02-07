@@ -145,8 +145,6 @@ export default class Test extends Component<TestArgs> {
       set(this, 'usePortal', !this.usePortal);
     } else if (type == 'canOutsideClickClose') {
       set(this, 'canOutsideClickClose', !this.canOutsideClickClose);
-    } else if (type == 'canOutsideClickClose') {
-      set(this, 'canOutsideClickClose', !this.canOutsideClickClose);
     } else if (type == 'canEscapeKeyClose') {
       set(this, 'canEscapeKeyClose', !this.canEscapeKeyClose);
     } else if (type == 'hasBackdrop') {

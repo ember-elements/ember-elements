@@ -396,10 +396,10 @@ class Overlay extends Component<OverlayArgs> {
   private static openStack: Overlay[] = [];
   private static getLastOpened = () => Overlay.openStack[Overlay.openStack.length - 1];
 
-  async didReceiveAttributes() {
+  didReceiveAttributes() {
     if (this.prevPropsIsOpen && !this.getIsOpen()) {
       this.getHasBackdropState = false;
-      await (this.isShowContentAnimation = false);
+      this.isShowContentAnimation = false;
 
       setTimeout(() => {
         if (!this.isDestroyed) this.hasEverOpened = this.getIsOpen() ? true : false;
@@ -409,13 +409,13 @@ class Overlay extends Component<OverlayArgs> {
         }
       }, this.getTransitionDuration());
     } else {
-      await (this.isShowContentAnimation = true);
+      this.isShowContentAnimation = true;
       this.hasEverOpened = this.getIsOpen() ? true : false;
     }
 
     if (!this.prevPropsIsOpen && this.getIsOpen()) {
       this.getHasBackdropState = this.getHasBackdrop();
-      this.prevPropsIsOpen = this.getIsOpen() as boolean;
+      this.prevPropsIsOpen = this.getIsOpen();
       this.overlayWillOpen();
     }
   }
