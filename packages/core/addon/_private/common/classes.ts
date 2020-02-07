@@ -13,6 +13,7 @@ export const ALIGN_RIGHT = `${NS}-align-right`;
 export const DISABLED = `${NS}-disabled`;
 export const FILL = `${NS}-fill`;
 export const FIXED = `${NS}-fixed`;
+export const FIXED_TOP = `${NS}-fixed-top`;
 export const INLINE = `${NS}-inline`;
 export const INTERACTIVE = `${NS}-interactive`;
 export const LARGE = `${NS}-large`;
@@ -85,6 +86,11 @@ export const LABEL = `${NS}-label`;
 export const FORM_GROUP = `${NS}-form-group`;
 export const FORM_CONTENT = `${NS}-form-content`;
 export const FORM_HELPER_TEXT = `${NS}-form-helper-text`;
+
+export const NAVBAR = `${NS}-navbar`;
+export const NAVBAR_GROUP = `${NAVBAR}-group`;
+export const NAVBAR_HEADING = `${NAVBAR}-heading`;
+export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
 
 export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
