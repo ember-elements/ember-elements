@@ -1,0 +1,43 @@
+<span isOpen={{this.getIsOpenProp}}></span>
+{{#if (and this.getLazyProp this.hasEverOpened)}}
+  {{#maybe-in-element this._overlayContainer this.renderInPlace}}
+    <div class={{rw this.PORTAL this.portalClassName}}>
+      <div
+        class={{rw
+          this.OVERLAY
+          (if this.hasEverOpened this.OVERLAY_OPEN)
+          (if this.getUserPortalPro '' this.OVERLAY_INLINE)
+          this.getClassName
+        }}
+        onKeyDown={{action 'handleKeyDown'}}
+        {{! template-lint-disable}}
+      >
+        {{#if this.isShowContentAnimation}}
+          {{#if (and this.getHasBackdropProp this.getHasBackdropState)}}
+            <div
+              class={{rw this.OVERLAY_BACKDROP this.getBackdropClassName}}
+              tabIndex={{if this.getCanOutsideClickCloseProp 0 null}}
+              onMouseDown={{action 'handleBackdropMouseDown'}}
+              {{css-transition this.getTransitionName}}
+              {{! template-lint-disable}}
+            >
+            </div>
+          {{/if}}
+
+          <div
+            class={{rw this.OVERLAY_CONTENT}}
+            ...attributes
+            {{did-insert this.getRefElement}}
+            {{did-update this.didUpdateElement this.getIsOpenProp}}
+            {{will-destroy this.willDestroyElement}}
+            {{css-transition this.getTransitionName}}
+          >
+            {{#if hasBlock}}
+              {{yield}}
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/maybe-in-element}}
+{{/if}}

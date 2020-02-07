@@ -104,4 +104,51 @@ export default class Test extends Component<TestArgs> {
   doFuction() {
     set(this, 'keepChildrenMounted', !this.keepChildrenMounted);
   }
+
+  isOpenOverlay = true;
+  hasBackdrop = true;
+  autoFocus = true;
+  enforceFocus = true;
+  canEscapeKeyClose = true;
+  usePortal = true;
+  canOutsideClickClose = true;
+  useTallContent = false;
+  @action
+  onOverlayToggle() {
+    set(this, 'isOpenOverlay', !this.isOpenOverlay);
+  }
+  @action
+  onClose() {
+    set(this, 'isOpenOverlay', false);
+  }
+
+  @action
+  handleClose() {
+    set(this, 'isOpenOverlay', false);
+    set(this, 'useTallContent', false);
+  }
+  @action
+  focusButton() {
+    (document.querySelector('.focus-button') as HTMLElement).focus();
+  }
+  @action
+  toggleScrollButton() {
+    set(this, 'useTallContent', !this.useTallContent);
+  }
+  @action
+  onPropsChangeEvent(type: string) {
+    if (type == 'autoFoucs') {
+      set(this, 'autoFocus', !this.autoFocus);
+    } else if (type == 'enforceFocus') {
+      set(this, 'enforceFocus', !this.enforceFocus);
+    } else if (type == 'usePortal') {
+      set(this, 'usePortal', !this.usePortal);
+    } else if (type == 'canOutsideClickClose') {
+      set(this, 'canOutsideClickClose', !this.canOutsideClickClose);
+    } else if (type == 'canEscapeKeyClose') {
+      set(this, 'canEscapeKeyClose', !this.canEscapeKeyClose);
+    } else if (type == 'hasBackdrop') {
+      set(this, 'hasBackdrop', !this.hasBackdrop);
+    }
+  }
 }

@@ -94,11 +94,21 @@ export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
 
 export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
+export const OVERLAY = `${NS}-overlay`;
+export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
+export const OVERLAY_CONTAINER = `${OVERLAY}-container`;
+export const OVERLAY_CONTENT = `${OVERLAY}-content`;
+export const OVERLAY_INLINE = `${OVERLAY}-inline`;
+export const OVERLAY_OPEN = `${OVERLAY}-open`;
+export const OVERLAY_SCROLL_CONTAINER = `${OVERLAY}-scroll-container`;
+
 export const SPINNER = `${NS}-spinner`;
 export const SPINNER_ANIMATION = `${SPINNER}-animation`;
 export const SPINNER_HEAD = `${SPINNER}-head`;
 export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
+
+export const PORTAL = `${NS}-portal`;
 
 export const TAG = `${NS}-tag`;
 export const TAG_REMOVE = `${TAG}-remove`;
