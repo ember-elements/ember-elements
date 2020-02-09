@@ -47,6 +47,14 @@ export const COLLAPSIBLE_LIST = `${NS}-collapse-list`;
 
 export const CONTROL_GROUP = `${NS}-control-group`;
 
+export const DIALOG = `${NS}-dialog`;
+export const DIALOG_CONTAINER = `${DIALOG}-container`;
+export const DIALOG_BODY = `${DIALOG}-body`;
+export const DIALOG_CLOSE_BUTTON = `${DIALOG}-close-button`;
+export const DIALOG_FOOTER = `${DIALOG}-footer`;
+export const DIALOG_FOOTER_ACTIONS = `${DIALOG}-footer-actions`;
+export const DIALOG_HEADER = `${DIALOG}-header`;
+
 export const DIVIDER = `${NS}-divider`;
 
 export const PROGRESS_BAR = `${NS}-progress-bar`;

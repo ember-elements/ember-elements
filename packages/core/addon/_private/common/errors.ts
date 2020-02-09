@@ -15,3 +15,7 @@ export const NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE =
 export const NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE =
   ns + ` <NumericInput> requires stepSize to be strictly greater than zero.`;
 export const NUMERIC_INPUT_STEP_SIZE_NULL = ns + ` <NumericInput> requires stepSize to be defined.`;
+
+export const DIALOG_WARN_NO_HEADER_ICON = ns + ` <Dialog> iconName is ignored if title is omitted.`;
+export const DIALOG_WARN_NO_HEADER_CLOSE_BUTTON =
+  ns + ` <Dialog> isCloseButtonShown prop is ignored if title is omitted.`;

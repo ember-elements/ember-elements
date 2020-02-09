@@ -1,7 +1,7 @@
 <span isOpen={{this.getIsOpenProp}}></span>
 {{#if (and this.getLazyProp this.hasEverOpened)}}
   {{#maybe-in-element this._overlayContainer this.renderInPlace}}
-    <div class={{rw this.PORTAL this.portalClassName}}>
+    <div class={{rw this.PORTAL this.getPortalClassName}}>
       <div
         class={{rw
           this.OVERLAY

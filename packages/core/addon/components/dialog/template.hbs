@@ -1,0 +1,41 @@
+<Overlay
+  @className={{this.OVERLAY_SCROLL_CONTAINER}}
+  @isOpen={{@this.isOpen}}
+  @hasBackdrop={{true}}
+  @autoFocus={{@autoFocus}}
+  @canEscapeKeyClose={{@canEscapeKeyClose}}
+  @canOutsideClickClose={{@canOutsideClickClose}}
+  @enforceFocus={{@enforceFocus}}
+  @lazy={{@lazy}}
+  @transitionDuration={{@transitionDuration}}
+  @usePortal={{@usePortal}}
+  @portalClassName={{@portalClassName}}
+  @transitionName={{@transitionName}}
+  @onClose={{@onClose}}
+  @props={{@props}}
+  class={{this.DIALOG_CONTAINER}}
+>
+  <div class={{rw this.DIALOG this.getClassName}} style={{this.getStyles}}>
+    {{#if this.getTitleProp}}
+      <div class={{this.DIALOG_HEADER}}>
+        {{#if this.getIconProp}}
+          <Icon @icon={{this.getIconProp}} @iconSize={{this.SIZE_LARGE}} />
+        {{/if}}
+        <h4 class={{this.HEADING}}>
+          {{this.getTitleProp}}
+        </h4>
+        {{#if this.getIsCloseButtonShownProp}}
+          <Button
+            aria-label='Close'
+            class={{this.DIALOG_CLOSE_BUTTON}}
+            @icon='small-cross'
+            @iconSize={{this.SIZE_LARGE}}
+            @minimal={{true}}
+            @onClick={{@onClose}}
+          />
+        {{/if}}
+      </div>
+    {{/if}}
+    {{yield}}
+  </div>
+</Overlay>
