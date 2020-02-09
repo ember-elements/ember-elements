@@ -105,7 +105,7 @@ export default class Test extends Component<TestArgs> {
     set(this, 'keepChildrenMounted', !this.keepChildrenMounted);
   }
 
-  isOpenOverlay = true;
+  isOpenOverlay = false;
   hasBackdrop = true;
   autoFocus = true;
   enforceFocus = true;
@@ -120,6 +120,7 @@ export default class Test extends Component<TestArgs> {
   @action
   onClose() {
     set(this, 'isOpenOverlay', false);
+    set(this, 'isOpenDialog', !this.isOpenDialog);
   }
 
   @action
@@ -150,5 +151,11 @@ export default class Test extends Component<TestArgs> {
     } else if (type == 'hasBackdrop') {
       set(this, 'hasBackdrop', !this.hasBackdrop);
     }
+  }
+
+  isOpenDialog = false;
+  @action
+  onDialogToggle() {
+    set(this, 'isOpenDialog', !this.isOpenDialog);
   }
 }
