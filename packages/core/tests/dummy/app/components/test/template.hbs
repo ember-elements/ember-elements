@@ -205,6 +205,7 @@
   <Button @icon='add' />
   <Button @icon='remove' />
 </ButtonGroup>
+<Navbar/>
 <Button @onClick={{action 'onOverlayToggle'}} @primary={{true}}>
   Show overlay
 </Button>
@@ -212,8 +213,6 @@
   @className='ee-overlay-scroll-container'
   @isOpen={{this.isOpenOverlay}}
   class="ee-card ee-elevation-4 docs-overlay-example-transition
-
-
     {{if this.useTallContent 'docs-overlay-example-tall'}}"
   @autoFocus={{this.autoFocus}}
   @enforceFocus={{this.enforceFocus}}
@@ -265,6 +264,7 @@
   </div>
 </Overlay>
 
+
 <Button @onClick={{action 'onDialogToggle'}}>
   Show dialog
 </Button>
@@ -315,3 +315,4 @@
     </div>
   </div>
 </Dialog>
+
