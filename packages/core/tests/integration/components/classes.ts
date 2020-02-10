@@ -109,6 +109,18 @@ export const OVERLAY_INLINE = `${OVERLAY}-inline`;
 export const OVERLAY_OPEN = `${OVERLAY}-open`;
 export const OVERLAY_SCROLL_CONTAINER = `${OVERLAY}-scroll-container`;
 
+export const POPOVER = `${NS}-popover`;
+export const POPOVER_ARROW = `${POPOVER}-arrow`;
+export const POPOVER_BACKDROP = `${POPOVER}-backdrop`;
+export const POPOVER_CONTENT = `${POPOVER}-content`;
+export const POPOVER_CONTENT_SIZING = `${POPOVER_CONTENT}-sizing`;
+export const POPOVER_DISMISS = `${POPOVER}-dismiss`;
+export const POPOVER_DISMISS_OVERRIDE = `${POPOVER_DISMISS}-override`;
+export const POPOVER_OPEN = `${POPOVER}-open`;
+export const POPOVER_TARGET = `${POPOVER}-target`;
+export const POPOVER_WRAPPER = `${POPOVER}-wrapper`;
+export const TRANSITION_CONTAINER = `${NS}-transition-container`;
+
 export const SPINNER = `${NS}-spinner`;
 export const SPINNER_ANIMATION = `${SPINNER}-animation`;
 export const SPINNER_HEAD = `${SPINNER}-head`;

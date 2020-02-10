@@ -33,6 +33,7 @@
     "ember-cli-typescript": "^3.1.1",
     "ember-css-transitions": "^1.0.0",
     "ember-maybe-in-element": "^0.4.0",
+    "ember-popper": "^0.10.3",
     "sass": "^1.23.7"
   },
   "devDependencies": {

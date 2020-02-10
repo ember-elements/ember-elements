@@ -1,17 +1,19 @@
-<span isOpen={{this.getIsOpenProp}}></span>
-{{#if (and this.getLazyProp this.hasEverOpened)}}
-  {{#maybe-in-element this._overlayContainer this.renderInPlace}}
-    <div class={{rw this.PORTAL this.getPortalClassName}}>
-      <div
-        class={{rw
-          this.OVERLAY
-          (if this.hasEverOpened this.OVERLAY_OPEN)
-          (if this.getUserPortalPro '' this.OVERLAY_INLINE)
-          this.getClassName
-        }}
-        onKeyDown={{action 'handleKeyDown'}}
-        {{! template-lint-disable}}
-      >
+<span isOpen={{this.getIsOpenProp}} hasever={{this.hasEverOpenedProp}}>
+</span>
+{{#maybe-in-element this._overlayContainer this.renderInPlace}}
+  <div class={{rw this.PORTAL this.getPortalClassName}}>
+    <div
+      class={{rw
+        this.OVERLAY
+        this.hasEverOpenedProp
+        (if this.getUserPortalPro '' this.OVERLAY_INLINE)
+        this.getClassName
+      }}
+      {{did-insert this.getRefElement}}
+      onKeyDown={{action 'handleKeyDown'}}
+      {{! template-lint-disable}}
+    >
+      {{#if (and this.getLazyProp this.hasEverOpened)}}
         {{#if this.isShowContentAnimation}}
           {{#if (and this.getHasBackdropProp this.getHasBackdropState)}}
             <div
@@ -27,7 +29,6 @@
           <div
             class={{rw this.OVERLAY_CONTENT}}
             ...attributes
-            {{did-insert this.getRefElement}}
             {{did-update this.didUpdateElement this.getIsOpenProp}}
             {{will-destroy this.willDestroyElement}}
             {{css-transition this.getTransitionName}}
@@ -37,7 +38,11 @@
             {{/if}}
           </div>
         {{/if}}
-      </div>
+      {{else}}
+        {{#if this.getIsOpenProp}}
+          {{yield}}
+        {{/if}}
+      {{/if}}
     </div>
-  {{/maybe-in-element}}
-{{/if}}
+  </div>
+{{/maybe-in-element}}

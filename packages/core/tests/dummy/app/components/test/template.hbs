@@ -1,4 +1,47 @@
 {{! template-lint-disable}}
+
+<Popover
+  @popperTarget={{this.popperTargetValue}}
+  @isOpen={{this.isOpenPopper}}
+  @hasBackdrop={{false}}
+  @onClose={{action 'onClose'}}
+  @popoverClassName='ee-popover-content-sizing'
+>
+  <div>
+    <h5 class='ee-heading'>
+      Confirm deletion
+    </h5>
+    <p>
+      Are you sure you want to delete these items? You won't be able to recover them.
+    </p>
+    <div style='display: flex; justify-content: flex-end; margin-top: 15px;'>
+      <button
+        type='button'
+        class='ee-button ee-popover-dismiss'
+        style='margin-right: 10px;'
+      >
+        <span class='ee-button-text'>
+          Cancel
+        </span>
+      </button>
+      <button
+        type='button'
+        class='ee-button ee-intent-danger ee-popover-dismiss'
+      >
+        <span class='ee-button-text'>
+          Delete
+        </span>
+      </button>
+    </div>
+  </div>
+</Popover>
+<Button
+  @onClick={{action 'onOverlayToggle1'}}
+  @primary={{true}}
+  {{did-insert this.didInsertPopper}}
+>
+  Popover
+</Button>
 <Button @onClick={{action 'onClickButton'}}>
   {{#if this.isOpen}}
     {{this.hide}}
@@ -205,7 +248,7 @@
   <Button @icon='add' />
   <Button @icon='remove' />
 </ButtonGroup>
-<Navbar/>
+<Navbar />
 <Button @onClick={{action 'onOverlayToggle'}} @primary={{true}}>
   Show overlay
 </Button>
@@ -213,6 +256,8 @@
   @className='ee-overlay-scroll-container'
   @isOpen={{this.isOpenOverlay}}
   class="ee-card ee-elevation-4 docs-overlay-example-transition
+
+
     {{if this.useTallContent 'docs-overlay-example-tall'}}"
   @autoFocus={{this.autoFocus}}
   @enforceFocus={{this.enforceFocus}}
@@ -264,7 +309,6 @@
   </div>
 </Overlay>
 
-
 <Button @onClick={{action 'onDialogToggle'}}>
   Show dialog
 </Button>
@@ -275,7 +319,6 @@
   @canOutsideClickClose={{this.canOutsideClickClose}}
   @onClose={{action 'onClose'}}
   @icon='info-sign'
-
   @title='Palantir Foundry'
 >
   <div class='ee-dialog-body'>
@@ -315,4 +358,3 @@
     </div>
   </div>
 </Dialog>
-

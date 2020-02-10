@@ -4,6 +4,7 @@ import { action, set } from '@ember/object';
 interface TestArgs {}
 
 export default class Test extends Component<TestArgs> {
+  popperTargetValue!: HTMLElement;
   propsObject = {
     active: true,
     large: true,
@@ -113,13 +114,20 @@ export default class Test extends Component<TestArgs> {
   usePortal = true;
   canOutsideClickClose = true;
   useTallContent = false;
+  isOpenPopper = false;
   @action
   onOverlayToggle() {
     set(this, 'isOpenOverlay', !this.isOpenOverlay);
   }
   @action
+  onOverlayToggle1() {
+    set(this, 'isOpenPopper', !this.isOpenPopper);
+  }
+  
+  @action
   onClose() {
     set(this, 'isOpenOverlay', false);
+    set(this, 'isOpenPopper', false);
     set(this, 'isOpenDialog', !this.isOpenDialog);
   }
 
@@ -157,5 +165,10 @@ export default class Test extends Component<TestArgs> {
   @action
   onDialogToggle() {
     set(this, 'isOpenDialog', !this.isOpenDialog);
+  }
+
+  @action
+  didInsertPopper(element: HTMLElement) {
+    this.popperTargetValue = element;
   }
 }

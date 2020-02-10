@@ -1,0 +1,38 @@
+<Overlay
+  @isOpen={{@isOpen}}
+  @lazy={{false}}
+  @hasBackdrop={{false}}
+  @onClose={{@onClose}}
+  @transitionName={{this.POPOVER}}
+>
+  {{#if @isOpen}}
+    <EmberPopover
+      class={{rw this.TRANSITION_CONTAINER this.getMinimal this.getClassName}}
+      @popperTarget={{@popperTarget}}
+      @modifiers={{this.modifiers}}
+    >
+      <div
+        class={{rw this.POPOVER this.getPopoverClassName}}
+        style={{this.transformOrigin}}
+      >
+        {{#if this.getIsArrowEnabled}}
+          <div class={{this.POPOVER_ARROW}} style={{this.arrowProps}} x-arrow>
+            <svg viewBox='0 0 30 30' style={{this.arrowAngleStyle}}>
+              <path
+                class='{{this.POPOVER_ARROW}}-border'
+                d={{this.SVG_SHADOW_PATH}}
+              ></path>
+              <path
+                class='{{this.POPOVER_ARROW}}-fill'
+                d={{this.SVG_ARROW_PATH}}
+              ></path>
+            </svg>
+          </div>
+        {{/if}}
+        <div class={{this.POPOVER_CONTENT}}>
+          {{yield}}
+        </div>
+      </div>
+    </EmberPopover>
+  {{/if}}
+</Overlay>
