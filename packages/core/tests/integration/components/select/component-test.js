@@ -10,15 +10,15 @@ module('Integration | Component | select', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{select}}`);
+    await render(hbs`<Select/>`);
 
     assert.equal(this.element.textContent.trim(), '');
-
+    this.set('text', 'template block text');
     // Template block usage:
     await render(hbs`
-      {{#select}}
-        template block text
-      {{/select}}
+      <Select>
+        {{this.text}}
+      </Select>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

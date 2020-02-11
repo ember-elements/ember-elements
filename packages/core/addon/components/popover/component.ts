@@ -12,9 +12,12 @@ import popoverLayout from './template';
 import PopperJS from 'popper.js';
 
 import { arrowOffsetModifier, getTransformOrigin, getPosition } from './popperUtils';
+import { positionToPlacement } from './popoverMigrationUtils';
+import { IPopoverSharedProps } from './popoverSharedProps';
 
 import { IProps } from '../../_private/common';
 import * as Classes from '../../_private/common/classes';
+
 export interface IPopoverProps extends IProps {
   /** HTML props for the backdrop element. Can be combined with `backdropClassName`. */
   backdropProps?: string;
@@ -63,7 +66,8 @@ export interface IPopoverProps extends IProps {
 
   popoverClassName?: string;
 }
-interface PopoverArgs extends IPopoverProps {
+
+interface PopoverArgs extends IPopoverProps, IPopoverSharedProps {
   props: PopoverArgs;
 }
 
@@ -79,12 +83,16 @@ class Select extends Component<PopoverArgs> {
 
   @reads('props.className') className?: PopoverArgs['className'];
   @reads('props.minimal') minimal?: PopoverArgs['minimal'];
+  @reads('props.position') position?: PopoverArgs['position'];
   @reads('props.popoverClassName')
   popoverClassName?: PopoverArgs['popoverClassName'];
 
-  @tracked transformOrigin = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @tracked transformOrigin: any = '';
   @tracked arrowProps = {};
-  @tracked arrowAngleStyle = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @tracked arrowAngleStyle: any = '';
+
   TRANSITION_CONTAINER = Classes.TRANSITION_CONTAINER;
   POPOVER = Classes.POPOVER;
   POPOVER_CONTENT = Classes.POPOVER_CONTENT;
@@ -118,6 +126,17 @@ class Select extends Component<PopoverArgs> {
 
   get getIsArrowEnabled() {
     return this.isArrowEnabled();
+  }
+
+  get getPlacement() {
+    let position: IPopoverSharedProps['position'] = 'auto';
+    if (this.args.position != undefined) {
+      position = this.args.position;
+    } else if (this.position != undefined) {
+      position = this.position;
+    }
+
+    return positionToPlacement(position);
   }
 
   minimalData() {

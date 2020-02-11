@@ -276,12 +276,12 @@ export default Component.extend({
       };
 
       if (onCreate) {
-        assert('onCreate of ember-popper must be a function', typeof onCreate === 'function');
+        assert('onCreate of ember-popover must be a function', typeof onCreate === 'function');
         options.onCreate = onCreate;
       }
 
       if (onUpdate) {
-        assert('onUpdate of ember-popper must be a function', typeof onUpdate === 'function');
+        assert('onUpdate of ember-popover must be a function', typeof onUpdate === 'function');
         options.onUpdate = onUpdate;
       }
 
@@ -340,7 +340,7 @@ export default Component.extend({
       const possibleContainers = self.document.querySelectorAll(selector);
 
       assert(
-        `ember-popper with popperContainer selector "${selector}" found ` +
+        `ember-popover with popperContainer selector "${selector}" found ` +
           `${possibleContainers.length} possible containers when there should be exactly 1`,
         possibleContainers.length === 1
       );

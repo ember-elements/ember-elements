@@ -4,12 +4,21 @@
   @hasBackdrop={{false}}
   @onClose={{@onClose}}
   @transitionName={{this.POPOVER}}
+  @props={{@props}}
+  @autoFocus={{@autoFocus}}
+  @canEscapeKeyClose={{@canEscapeKeyClose}}
+  @canOutsideClickClose={{@canOutsideClickClose}}
+  @enforceFocus={{@enforceFocus}}
+  @portalClassName={{@portalClassName}}
+  @transitionDuration={{@transitionDuration}}
+  @usePortal={{@usePortal}}
 >
   {{#if @isOpen}}
     <EmberPopover
       class={{rw this.TRANSITION_CONTAINER this.getMinimal this.getClassName}}
       @popperTarget={{@popperTarget}}
       @modifiers={{this.modifiers}}
+      @placement={{this.getPlacement}}
     >
       <div
         class={{rw this.POPOVER this.getPopoverClassName}}

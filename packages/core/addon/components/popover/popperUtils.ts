@@ -5,7 +5,8 @@ import PopperJS from 'popper.js';
 
 /** Converts a full placement to one of the four positions by stripping text after the `-`. */
 export function getPosition(placement: PopperJS.Placement) {
-  return placement.split('-')[0] as PopperJS.Position;
+  const position = placement.split('-')[0];
+  return position as PopperJS.Position;
 }
 
 /** Returns true if position is left or right. */

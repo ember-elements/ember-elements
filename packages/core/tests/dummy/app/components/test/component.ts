@@ -123,7 +123,7 @@ export default class Test extends Component<TestArgs> {
   onOverlayToggle1() {
     set(this, 'isOpenPopper', !this.isOpenPopper);
   }
-  
+
   @action
   onClose() {
     set(this, 'isOpenOverlay', false);

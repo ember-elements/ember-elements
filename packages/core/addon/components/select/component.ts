@@ -6,7 +6,7 @@ import selectLayout from './template';
 
 import * as Classes from '../../_private/common/classes';
 interface SelectArgs {
-      minimal?: boolean;
+  minimal?: boolean;
 }
 
 class Select extends Component<SelectArgs> {
