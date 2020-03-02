@@ -12,7 +12,7 @@ import { computed, action, set } from '@ember/object';
 
 //external file imports
 import { IButtonProps } from '../../_private/comp-typings/abstractButton';
-import { Alignment, Intent } from '../../_private/common';
+import { Alignment, Intent, StyleType } from '../../_private/common';
 import * as Classes from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
 
@@ -155,6 +155,19 @@ class Button extends Component<ButtonArgs> {
     }
 
     return Classes.intentClass(intent || 'none');
+  }
+
+  @computed('args.styleType', 'props.styleType')
+  get styletype() {
+    let styletype: StyleType = 'calltoaction';
+
+    if (this.args.styleType != undefined) {
+      styletype = this.args.styleType as StyleType;
+    } else if (this.props.styleType != undefined) {
+      styletype = this.props.styleType as StyleType;
+    }
+
+    return Classes.styletypeClass(styletype);
   }
 
   @computed('args.className', 'props.className')

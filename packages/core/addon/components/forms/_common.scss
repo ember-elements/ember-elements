@@ -1,4 +1,4 @@
-$input-padding-horizontal: $pt-grid-size !default;
+$input-padding-horizontal: $pt-grid-size * 1.5 !default;
 $input-small-padding: $pt-input-height-small - $pt-icon-size-standard !default;
 $input-font-weight: 400 !default;
 $input-transition: box-shadow $pt-transition-duration $pt-transition-ease;
@@ -6,7 +6,9 @@ $input-transition: box-shadow $pt-transition-duration $pt-transition-ease;
 $input-color: $pt-text-color !default;
 $input-color-disabled: $button-color-disabled !default;
 $input-placeholder-color: $pt-text-color-disabled !default;
-$input-background-color: $white !default;
+$input-border-color: #c2c7c7 !default;
+$input-border-color-focus: #0449d1 !default;
+$input-background-color: #ffffff 0% 0% no-repeat padding-box;
 $input-background-color-disabled: rgba($light-gray1, 0.5) !default;
 $input-shadow-color-focus: $pt-intent-primary !default;
 
@@ -78,25 +80,28 @@ $control-group-stack: (
   @include pt-input-placeholder();
 
   outline: none;
-  border: none;
-  border-radius: $pt-border-radius;
-  box-shadow: input-transition-shadow($input-shadow-color-focus),
-    $pt-input-box-shadow;
+  border: 1px solid;
+  border-color: $input-border-color;
+  border-radius: $pt-border-radius-form-elements;
+  box-shadow: none;
   background: $input-background-color;
   height: $pt-input-height;
   padding: 0 $input-padding-horizontal;
   vertical-align: middle;
-  line-height: $pt-input-height;
   color: $input-color;
-  font-size: $pt-font-size;
+  font-size: $pt-font-size-form-elements;
+  line-height: $pt-input-height;
   font-weight: $input-font-weight;
+  min-width: $pt-form-element-min-width;
+  max-width: $pt-form-element-max-width;
   transition: $input-transition;
   appearance: none;
-
+  outline: none;
   &:focus,
   &.#{$ns}-active {
-    box-shadow: input-transition-shadow($input-shadow-color-focus, true),
-      $input-box-shadow-focus;
+    box-shadow: none;
+    outline: none;
+    border-color: $input-border-color-focus;
   }
 
   &[type='search'],

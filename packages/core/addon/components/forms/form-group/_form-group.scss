@@ -78,7 +78,7 @@ Styleguide form-group
     .#{$ns}-form-helper-text {
       // disabled state always overrides over styles
       // stylelint-disable-next-line declaration-no-important
-      color: $pt-text-color-disabled !important;
+      color: $pt-text-color-disabled;
     }
   }
 

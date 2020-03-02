@@ -103,7 +103,7 @@ class FormGroup extends Component<FormsFormGroupArgs> {
       disabled = this.disabled;
     }
 
-    return disabled != null ? Classes.DISABLED : '';
+    return disabled ? Classes.DISABLED : '';
   }
 
   get getHelperText() {

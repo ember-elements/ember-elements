@@ -58,6 +58,25 @@ Styleguide button
     @include pt-button();
   }
 
+  // hex button style types (Call to action, Action and icon buttons)
+
+  &.#{$ns}-btn-calltoaction {
+    position: relative;
+    min-width: 70px;
+  }
+  &.#{$ns}-btn-action {
+    position: relative;
+    min-width: 80px;
+
+    .#{$ns}-icon > svg {
+      width: 12px;
+      height: auto;
+    }
+  }
+  &.#{$ns}-btn-icon {
+    position: relative;
+  }
+
   // intents
   @each $intent, $colors in $button-intents {
     &.#{$ns}-intent-#{$intent} {
@@ -194,4 +213,35 @@ a.#{$ns}-button {
       flex: 1 1 auto;
     }
   }
+}
+//hex button styles starts
+// .hex-button_action {
+//   min-width: 70px;
+//   max-width: 160px;
+//   font-size: 14px;
+//   line-height: 21px;
+//   padding: 7px 15px;
+//   color: #fff;
+//   background-color: #0449d1 !important;
+//   border: none;
+//   -webkit-border-radius: 2px;
+//   border-radius: 2px;
+//   outline: none;
+
+//   &:focus {
+//     outline: none;
+//   }
+// }
+.#{$ns}-icon > svg[data-icon='hex-arrow-down'] {
+  fill: none !important;
+  stroke: currentColor;
+  stroke-linejoin: round;
+}
+.#{$ns}-icon > svg[data-icon='hex-refresh-icon'] {
+  fill: currentColor;
+  stroke: none !important;
+}
+.#{$ns}-icon-hex-arrow-down > svg {
+  width: 16px;
+  height: auto;
 }

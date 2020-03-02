@@ -479,3 +479,5 @@ export const WRENCH = 'wrench';
 export const ZOOM_IN = 'zoom-in';
 export const ZOOM_OUT = 'zoom-out';
 export const ZOOM_TO_FIT = 'zoom-to-fit';
+export const HEX_ARROW_DOWN = 'hex-arrow-down';
+export const HEX_REFRESH_ICON = 'hex-refresh-icon';

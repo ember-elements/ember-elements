@@ -21,9 +21,10 @@ $pt-font-size: $pt-grid-size * 1.4 !default;
 $pt-font-size-large: $pt-grid-size * 1.6 !default;
 $pt-font-size-small: $pt-grid-size * 1.2 !default;
 
+$pt-font-size-form-elements : $pt-grid-size * 1.2 !default;
+
 // a little bit extra to ensure the height comes out to just over 18px (and browser rounds to 18px)
 $pt-line-height: ($pt-grid-size * 1.8) / $pt-font-size + 0.0001 !default;
-
 // Icon variables
 
 $icons16-family: 'Icons16' !default;
@@ -34,14 +35,18 @@ $pt-icon-size-large: 20px !default;
 
 // Grids & dimensions
 
-$pt-border-radius: floor($pt-grid-size / 3) !default;
+$pt-border-radius: floor($pt-grid-size / 5) !default;
+$pt-border-radius-form-elements: floor($pt-grid-size / 2.5) !default;
 
 // Buttons
-$pt-button-height: $pt-grid-size * 3 !default;
+$pt-button-height: $pt-grid-size * 3.5 !default;
 $pt-button-height-small: $pt-grid-size * 2.4 !default;
 $pt-button-height-smaller: $pt-grid-size * 2 !default;
-$pt-button-height-large: $pt-grid-size * 4 !default;
+$pt-button-height-large: $pt-grid-size * 5 !default;
 
+//form elements
+$pt-form-element-min-width: 260px;
+$pt-form-element-max-width: 320px;
 // Inputs
 $pt-input-height: $pt-grid-size * 3 !default;
 $pt-input-height-large: $pt-grid-size * 4 !default;

@@ -1,5 +1,6 @@
 export * from './alignment';
 export * from './intent';
+export * from './style_type';
 export * from './props';
 export * from './elevation';
 

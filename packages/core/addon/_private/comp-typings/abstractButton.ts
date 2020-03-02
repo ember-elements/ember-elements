@@ -1,4 +1,4 @@
-import { Alignment, Intent } from '../common';
+import { Alignment, Intent, StyleType } from '../common';
 
 /**
  * A shared base interface for all ember elements component props.
@@ -32,6 +32,9 @@ export interface IActionProps extends IIntentProps, IProps {
 
   /** Action text. */
   text?: string;
+
+  /**Style Type */
+  styleType?: StyleType;
 }
 
 export interface IButtonProps extends IActionProps {

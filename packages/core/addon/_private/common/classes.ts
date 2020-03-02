@@ -1,6 +1,7 @@
 import { Alignment } from './alignment';
 import { Intent } from './intent';
 import { Elevation } from './elevation';
+import { StyleType } from './style_type';
 
 const NS = 'ee';
 
@@ -169,6 +170,11 @@ export function intentClass(intent?: Intent) {
     return undefined;
   }
   return `${NS}-intent-${intent.toLowerCase()}`;
+}
+
+/** Return CSS class for button style type. */
+export function styletypeClass(styletype: StyleType = 'calltoaction') {
+  return `${NS}-btn-${styletype.toLowerCase()}`;
 }
 
 /** Returns CSS class for icon name. */

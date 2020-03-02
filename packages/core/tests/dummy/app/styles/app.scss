@@ -5,6 +5,7 @@
 @tailwind utilities; */
 
 @import 'app/styles/core';
+@import './test-styles.scss';
 .docs-overlay-example-transition {
   top: 0;
   left: calc(50vw - 200px);

@@ -3,7 +3,7 @@
 @import '../progress-bar/common';
 
 $button-border-width: 1px !default;
-$button-padding: ($pt-grid-size / 2) $pt-grid-size !default;
+$button-padding: ($pt-grid-size / 1.43) ($pt-grid-size * 1.5) !default;
 $button-padding-small: 0 ($pt-grid-size * 0.7) !default;
 $button-padding-large: ($pt-grid-size / 2) ($pt-grid-size * 1.5) !default;
 $button-icon-spacing: ($pt-button-height - $pt-icon-size-standard) / 2 !default;
@@ -89,24 +89,116 @@ $dark-minimal-button-background-color-active: rgba($gray3, 0.3) !default;
 // "intent": (default, hover, active colors)
 $button-intents: (
   'primary': (
-    $pt-intent-primary,
-    $blue2,
-    $blue1
+    $pt-hex-btn-default-text-color,
+    $pt-hex-btn-default-hover-text-color,
+    $pt-hex-btn-default-hover-text-color,
+    $pt-hex-btn-default-bg-color,
+    $pt-hex-btn-default-hover-bg-color,
+    $pt-hex-btn-default-hover-bg-color,
+    $pt-hex-btn-default-stroke-color,
+    $pt-hex-btn-default-hover-stroke-color,
+    $pt-hex-btn-default-hover-stroke-color,
+    $pt-hex-btn-default-text-color,
+    $pt-hex-btn-disabled-bg-color,
+    $pt-hex-btn-disabled-stroke-color
+  ),
+  'elementary': (
+    $pt-hex-btn-elementary-text-color,
+    $pt-hex-btn-elementary-hover-text-color,
+    $pt-hex-btn-elementary-hover-text-color,
+    $pt-hex-btn-elementary-bg-color,
+    $pt-hex-btn-elementary-hover-bg-color,
+    $pt-hex-btn-elementary-hover-bg-color,
+    $pt-hex-btn-elementary-stroke-color,
+    $pt-hex-btn-elementary-hover-stroke-color,
+    $pt-hex-btn-elementary-hover-stroke-color,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-elementary-bg-color,
+    $pt-hex-btn-disabled-stroke-color
+  ),
+  'secondary': (
+    $pt-hex-btn-secondary-text-color,
+    $pt-hex-btn-secondary-hover-text-color,
+    $pt-hex-btn-secondary-hover-text-color,
+    $pt-hex-btn-secondary-bg-color,
+    $pt-hex-btn-secondary-hover-bg-color,
+    $pt-hex-btn-secondary-hover-bg-color,
+    $pt-hex-btn-secondary-stroke-color,
+    $pt-hex-btn-secondary-hover-stroke-color,
+    $pt-hex-btn-secondary-hover-stroke-color,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-secondary-bg-color,
+    $pt-hex-btn-secondary-stroke-color
+  ),
+  'negative': (
+    $pt-hex-btn-negative-text-color,
+    $pt-hex-btn-negative-hover-text-color,
+    $pt-hex-btn-negative-hover-text-color,
+    $pt-hex-btn-negative-bg-color,
+    $pt-hex-btn-negative-hover-bg-color,
+    $pt-hex-btn-negative-hover-bg-color,
+    $pt-hex-btn-negative-stroke-color,
+    $pt-hex-btn-negative-hover-stroke-color,
+    $pt-hex-btn-negative-hover-stroke-color,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-negative-bg-color,
+    $pt-hex-btn-disabled-stroke-color
+  ),
+  'negative_stroke': (
+    $pt-hex-btn-negative_stroke-text-color,
+    $pt-hex-btn-negative_stroke-hover-text-color,
+    $pt-hex-btn-negative_stroke-hover-text-color,
+    $pt-hex-btn-negative_stroke-bg-color,
+    $pt-hex-btn-negative_stroke-hover-bg-color,
+    $pt-hex-btn-negative_stroke-hover-bg-color,
+    $pt-hex-btn-negative_stroke-stroke-color,
+    $pt-hex-btn-negative_stroke-hover-stroke-color,
+    $pt-hex-btn-negative_stroke-hover-stroke-color,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-elementary-bg-color,
+    $pt-hex-btn-disabled-stroke-color
   ),
   'success': (
     $pt-intent-success,
     $green2,
-    $green1
+    $green1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-disabled-bg-color,
+    $pt-hex-btn-disabled-stroke-color
   ),
   'warning': (
     $pt-intent-warning,
     $orange2,
-    $orange1
+    $orange1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-disabled-bg-color,
+    $pt-hex-btn-disabled-stroke-color
   ),
   'danger': (
     $pt-intent-danger,
     $red2,
-    $red1
+    $red1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-intent-primary,
+    $blue2,
+    $blue1,
+    $pt-hex-btn-disabled-text-color,
+    $pt-hex-btn-disabled-bg-color,
+    $pt-hex-btn-disabled-stroke-color
   )
 ) !default;
 
@@ -114,14 +206,15 @@ $button-intents: (
   @include pt-flex-container(row, $button-icon-spacing, $inline: inline);
   align-items: center;
   justify-content: center;
-
-  border: none;
+  border-width: $button-border-width;
+  border-style: solid;
   border-radius: $pt-border-radius;
   cursor: pointer;
   padding: $button-padding;
   vertical-align: middle;
   text-align: left;
   font-size: $pt-font-size;
+  outline: none;
 }
 
 @mixin pt-button-height($height) {
@@ -147,10 +240,11 @@ $button-intents: (
 }
 
 @mixin pt-button() {
-  box-shadow: $button-box-shadow;
-  background-color: $button-background-color;
-  background-image: $button-gradient;
-  color: $pt-text-color;
+  // box-shadow: $button-box-shadow;
+  // background-color: $button-background-color;
+  // background-image: $button-gradient;
+  color: $white;
+  outline: none;
 
   &:hover {
     @include pt-button-hover();
@@ -168,67 +262,97 @@ $button-intents: (
 }
 
 @mixin pt-button-hover() {
-  box-shadow: $button-box-shadow;
-  background-clip: padding-box;
-  background-color: $button-background-color-hover;
+  // box-shadow: $button-box-shadow;
+  // background-clip: padding-box;
+  background-color: $pt-hex-btn-elementary-hover-bg-color;
+  outline: none;
 }
 
 @mixin pt-button-active() {
-  box-shadow: $button-box-shadow-active;
-  background-color: $button-background-color-active;
+  // box-shadow: $button-box-shadow-active;
+  // background-color: $button-background-color-active;
   background-image: none;
+  background-color: $pt-hex-btn-elementary-hover-bg-color;
+  outline: none;
 }
 
 @mixin pt-button-disabled() {
   outline: none;
   box-shadow: none;
-  background-color: $button-background-color-disabled;
+  background-color: $pt-hex-btn-disabled-bg-color;
   background-image: none;
   cursor: not-allowed;
-  color: $button-color-disabled;
+  color: $pt-hex-btn-disabled-text-color;
 
   &.#{$ns}-active,
   &.#{$ns}-active:hover {
-    background: $button-background-color-active-disabled;
+    background: $pt-hex-btn-disabled-bg-color;
   }
 }
 
-@mixin pt-button-intent($default-color, $hover-color, $active-color) {
-  box-shadow: $button-intent-box-shadow;
-  background-color: $default-color;
-  background-image: $button-intent-gradient;
-  color: $white;
+@mixin pt-button-intent(
+  $default-color,
+  $hover-color,
+  $active-color,
+  $default-bg-color,
+  $hover-bg-color,
+  $active-bg-color,
+  $default-border-color,
+  $hover-border-color,
+  $active-border-color,
+  $disabled-text-color,
+  $disabled-bg-color,
+  $disabled-border-color
+) {
+  // box-shadow: $button-intent-box-shadow;
+  background-color: $default-bg-color;
+  // background-image: $button-intent-gradient;
+  color: $default-color;
+  border-color: $default-border-color;
 
   &:hover,
   &:active,
   &.#{$ns}-active {
-    color: $white;
+    color: $hover-color;
   }
 
   &:hover {
-    box-shadow: $button-intent-box-shadow;
-    background-color: $hover-color;
+    // box-shadow: $button-intent-box-shadow;
+    background-color: $hover-bg-color;
+    color: $hover-color;
+    border-color: $hover-border-color;
   }
 
   &:active,
   &.#{$ns}-active {
-    box-shadow: $button-intent-box-shadow-active;
-    background-color: $active-color;
+    // box-shadow: $button-intent-box-shadow-active;
     background-image: none;
+    background-color: $active-bg-color;
+    color: $active-color;
+    border-color: $active-border-color;
   }
 
   &:disabled,
   &.#{$ns}-disabled {
-    @include pt-button-intent-disabled($default-color);
+    @include pt-button-intent-disabled(
+      $disabled-text-color,
+      $disabled-bg-color,
+      $disabled-border-color
+    );
   }
 }
 
-@mixin pt-button-intent-disabled($default-color) {
-  border-color: transparent;
+@mixin pt-button-intent-disabled(
+  $disabled-text-color,
+  $disabled-bg-color,
+  $disabled-border-color
+) {
+  border-color: $disabled-border-color;
   box-shadow: none;
-  background-color: rgba($default-color, 0.5);
+  // background-color: rgba($default-color, 0.5);
+  background-color: $disabled-bg-color;
   background-image: none;
-  color: $button-intent-color-disabled;
+  color: $disabled-text-color;
 }
 
 @mixin pt-dark-button() {

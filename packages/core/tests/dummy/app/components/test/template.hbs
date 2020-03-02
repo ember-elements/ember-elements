@@ -1,4 +1,136 @@
-{{! template-lint-disable}}
+{{!-- {{! template-lint-disable}} --}}
+<div class='comp_viewport'>
+  <p class='demo_title'>
+    Buttons
+  </p>
+  <p class='demo_sub_title'>
+    Call to action buttons
+  </p>
+  <Button @styleType='calltoaction' @intent='primary'>
+    Default
+  </Button>
+  <Button @styleType='calltoaction' @intent='elementary'>
+    Elementary
+  </Button>
+  <Button @styleType='calltoaction' @intent='secondary'>
+    Secondary
+  </Button>
+  <Button @styleType='calltoaction' @intent='negative'>
+    Negative
+  </Button>
+  <Button @styleType='calltoaction' @intent='negative_stroke'>
+    Negative Stroke
+  </Button>
+  <Button @styleType='calltoaction' @intent='primary' @disabled={{true}}>
+    Disabled
+  </Button>
+  <Button @styleType='calltoaction' @intent='elementary' @disabled={{true}}>
+    Disabled Elementary
+  </Button>
+  <br />
+  <p class='demo_sub_title'>
+    Action buttons
+  </p>
+  <Button @styleType='action' @intent='primary' @rightIcon='hex-arrow-down'>
+    Action
+  </Button>
+  <Button @styleType='action' @intent='elementary' @rightIcon='hex-arrow-down'>
+    Action
+  </Button>
+  <Button @styleType='action' @intent='secondary' @rightIcon='hex-arrow-down'>
+    Action
+  </Button>
+  <Button @styleType='action' @intent='negative' @rightIcon='hex-arrow-down'>
+    Action
+  </Button>
+  <Button
+    @styleType='action'
+    @intent='negative_stroke'
+    @rightIcon='hex-arrow-down'
+  >
+    Action
+  </Button>
+  <p class='demo_sub_title'>
+    Icon buttons
+  </p>
+  <Button @styleType='icon' @intent='primary' @rightIcon='hex-arrow-down' />
+  <Button @styleType='icon' @intent='primary' @rightIcon='hex-refresh-icon' />
+  <Button
+    @styleType='icon'
+    @intent='elementary'
+    @rightIcon='hex-refresh-icon'
+  />
+  <Button @styleType='icon' @intent='secondary' @rightIcon='hex-refresh-icon' />
+  <Button @styleType='icon' @intent='negative' @rightIcon='hex-refresh-icon' />
+  <Button
+    @styleType='icon'
+    @intent='negative_stroke'
+    @rightIcon='hex-refresh-icon'
+  />
+</div>
+
+<div>
+  <p class='demo_title'>
+    From Elements
+  </p>
+  <p class='demo_title'>
+    Form Groups
+  </p>
+  <p class='demo_sub_title'>
+    Form Groups - default
+  </p>
+  <FormGroup
+    @disabled={{this.disabled}}
+    @inline={{true}}
+    @intent={{danger}}
+    @label='Label'
+    @labelFor='text-input'
+    @helperText='Helper text with details'
+    @labelInfo={{requiredLabel}}
+  >
+    <InputGroup
+      placeholder='Placeholder text'
+      @disabled={{disabled}}
+      @intent={{intent}}
+    />
+  </FormGroup>
+  <p class='demo_sub_title'>
+    Form Groups - Error
+  </p>
+  <FormGroup
+    @disabled={{false}}
+    @inline={{true}}
+    @intent='danger'
+    @label='Label'
+    @labelFor='text-input'
+    @helperText='Helper text with details'
+    @labelInfo={{requiredLabel}}
+  >
+    <InputGroup
+      placeholder='Placeholder text'
+      @disabled={{false}}
+      @intent={{intent}}
+    />
+  </FormGroup>
+  <p class='demo_sub_title'>
+    Form Groups - Primary
+  </p>
+  <FormGroup
+    @disabled={{false}}
+    @inline={{true}}
+    @intent={{primary}}
+    @label='Label'
+    @labelFor='text-input'
+    @helperText='Helper text with details'
+    @labelInfo={{requiredLabel}}
+  >
+    <InputGroup
+      placeholder='Placeholder text'
+      @disabled={{true}}
+      @intent={{intent}}
+    />
+  </FormGroup>
+</div>
 
 <Popover
   @popperTarget={{this.popperTargetValue}}
@@ -210,6 +342,7 @@
   </Button>
 </InputGroup>
 <TextArea @growVertically={{true}} @value={{this.value1}} @intent='primary' />
+
 <Tag @icon='home' @large={{true}}>
   {{this.tagText}}
 </Tag>

@@ -3,6 +3,10 @@
 
 $pt-intent-colors: (
   'primary': $pt-intent-primary,
+  'elementary': $pt-intent-primary,
+  'secondary': $pt-intent-primary,
+  'negative': $pt-intent-danger,
+  'negative_stroke': $pt-intent-danger,
   'success': $pt-intent-success,
   'warning': $pt-intent-warning,
   'danger': $pt-intent-danger
@@ -10,6 +14,10 @@ $pt-intent-colors: (
 
 $pt-intent-text-colors: (
   'primary': $blue2,
+  'elementary': $blue2,
+  'secondary': $blue2,
+  'negative': $blue2,
+  'negative_stroke': $blue2,
   'success': $green2,
   'warning': $orange2,
   'danger': $red2
@@ -17,6 +25,10 @@ $pt-intent-text-colors: (
 
 $pt-dark-intent-text-colors: (
   'primary': $blue5,
+  'elementary': $blue5,
+  'secondary': $blue5,
+  'negative': $blue5,
+  'negative_stroke': $blue5,
   'success': $green5,
   'warning': $orange5,
   'danger': $red5

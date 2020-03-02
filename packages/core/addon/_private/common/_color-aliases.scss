@@ -8,9 +8,9 @@ $pt-dark-app-background-color: $dark-gray3 !default;
 
 $pt-outline-color: rgba($blue3, 0.6);
 
-$pt-text-color: $dark-gray1 !default;
+$pt-text-color: #191919 !default;
 $pt-text-color-muted: $gray1 !default;
-$pt-text-color-disabled: rgba($pt-text-color-muted, 0.6) !default;
+$pt-text-color-disabled: #E4E8EB;
 $pt-heading-color: $pt-text-color !default;
 $pt-link-color: $blue2 !default;
 $pt-dark-text-color: $light-gray5 !default;
@@ -38,3 +38,43 @@ $pt-code-text-color: $pt-text-color-muted !default;
 $pt-dark-code-text-color: $pt-dark-text-color-muted !default;
 $pt-code-background-color: rgba($white, 0.7) !default;
 $pt-dark-code-background-color: rgba($black, 0.3) !default;
+//hex colors
+//default calltoaction, action and icons buttons
+$pt-hex-btn-default-text-color: #fff;
+$pt-hex-btn-default-hover-text-color: #fff;
+$pt-hex-btn-default-bg-color: #0449d1;
+$pt-hex-btn-default-hover-bg-color: #0540b4;
+$pt-hex-btn-default-stroke-color: #0449d1;
+$pt-hex-btn-default-hover-stroke-color: #0449d1;
+//elementary calltoaction, action and icons buttons
+$pt-hex-btn-elementary-text-color: #0449d1;
+$pt-hex-btn-elementary-hover-text-color: #0449d1;
+$pt-hex-btn-elementary-bg-color: transparent;
+$pt-hex-btn-elementary-hover-bg-color: transparent;
+$pt-hex-btn-elementary-stroke-color: #e4e8eb;
+$pt-hex-btn-elementary-hover-stroke-color: #0449d1;
+//secondary calltoaction, action and icons buttons
+$pt-hex-btn-secondary-text-color: #6d7278;
+$pt-hex-btn-secondary-hover-text-color: #6d7278;
+$pt-hex-btn-secondary-bg-color: transparent;
+$pt-hex-btn-secondary-hover-bg-color: transparent;
+$pt-hex-btn-secondary-stroke-color: transparent;
+$pt-hex-btn-secondary-hover-stroke-color: transparent;
+//negative calltoaction, action and icons buttons
+$pt-hex-btn-negative-text-color: #fff;
+$pt-hex-btn-negative-hover-text-color: #fff;
+$pt-hex-btn-negative-bg-color: #cc0000;
+$pt-hex-btn-negative-hover-bg-color: #cc0000;
+$pt-hex-btn-negative-stroke-color: #cc0000;
+$pt-hex-btn-negative-hover-stroke-color: #cc0000;
+//negative_stroke calltoaction, action and icons buttons
+$pt-hex-btn-negative_stroke-text-color: #cc0000;
+$pt-hex-btn-negative_stroke-hover-text-color: #cc0000;
+$pt-hex-btn-negative_stroke-bg-color: transparent;
+$pt-hex-btn-negative_stroke-hover-bg-color: transparent;
+$pt-hex-btn-negative_stroke-stroke-color: #cc0000;
+$pt-hex-btn-negative_stroke-hover-stroke-color: #cc0000;
+//disabled buttons
+$pt-hex-btn-disabled-text-color: #e4e8eb;
+$pt-hex-btn-disabled-bg-color: #e4e8eb;
+$pt-hex-btn-disabled-stroke-color: #e4e8eb;
