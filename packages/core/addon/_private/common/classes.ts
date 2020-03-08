@@ -102,6 +102,13 @@ export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
 
 export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
+export const MENU = `${NS}-menu`;
+export const MENU_ITEM = `${MENU}-item`;
+export const MENU_ITEM_LABEL = `${MENU_ITEM}-label`;
+export const MENU_SUBMENU = `${NS}-submenu`;
+export const MENU_DIVIDER = `${MENU}-divider`;
+export const MENU_HEADER = `${MENU}-header`;
+
 export const OVERLAY = `${NS}-overlay`;
 export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
 export const OVERLAY_CONTAINER = `${OVERLAY}-container`;
@@ -117,6 +124,18 @@ export const SPINNER_NO_SPIN = `${NS}-no-spin`;
 export const SPINNER_TRACK = `${SPINNER}-track`;
 
 export const PORTAL = `${NS}-portal`;
+
+export const POPOVER = `${NS}-popover`;
+export const POPOVER_ARROW = `${POPOVER}-arrow`;
+export const POPOVER_BACKDROP = `${POPOVER}-backdrop`;
+export const POPOVER_CONTENT = `${POPOVER}-content`;
+export const POPOVER_CONTENT_SIZING = `${POPOVER_CONTENT}-sizing`;
+export const POPOVER_DISMISS = `${POPOVER}-dismiss`;
+export const POPOVER_DISMISS_OVERRIDE = `${POPOVER_DISMISS}-override`;
+export const POPOVER_OPEN = `${POPOVER}-open`;
+export const POPOVER_TARGET = `${POPOVER}-target`;
+export const POPOVER_WRAPPER = `${POPOVER}-wrapper`;
+export const TRANSITION_CONTAINER = `${NS}-transition-container`;
 
 export const TAG = `${NS}-tag`;
 export const TAG_REMOVE = `${TAG}-remove`;
@@ -174,3 +193,12 @@ export function elevationClass(elevation: Elevation) {
   }
   return `${NS}-elevation-${elevation}`;
 }
+
+// select classes goes here
+export const MULTISELECT = `${NS}-multi-select`;
+export const MULTISELECT_POPOVER = `${MULTISELECT}-popover`;
+export const MULTISELECT_TAG_INPUT_INPUT = `${MULTISELECT}-tag-input-input`;
+export const OMNIBAR = `${NS}-omnibar`;
+export const OMNIBAR_OVERLAY = `${OMNIBAR}-overlay`;
+export const SELECT = `${NS}-select`;
+export const SELECT_POPOVER = `${SELECT}-popover`;

@@ -1,4 +1,202 @@
 {{! template-lint-disable}}
+
+<Button
+  @onClick={{action 'onSelectToggle'}}
+  @primary={{true}}
+  @icon='film'
+  @rightIcon='caret-down'
+  {{did-insert this.selectPath}}
+  {{! style='margin-left:400px;margin-top:300px' }}
+>
+  {{#if this.film}}
+    {{this.film.title}} {{this.film.year}}
+  {{else}}
+    (No selection)
+  {{/if}}
+</Button>
+<Select
+  @items={{this.TOP_100_FILMS}}
+  @isOpen={{this.isOpenSelect}}
+  @popperTarget={{this.selectTargetValue}}
+  @itemPredicate={{this.filterFilm}}
+  @onClose={{action 'onCloseSelect'}}
+  @resetOnClose={{false}}
+  @createNewItemRenderer={{true}}
+  @createNewItemFromQuery={{this.createFilm}}
+  @onItemSelect={{action 'handleValueChange'}}
+  @noResults={{this.noResults}}
+  @itemDisabled={{this.isItemDisabled1}}
+  {{!-- @initialContent={{this.initialContent}} --}} as |renderItem item handleClick|
+>
+  {{#if renderItem}}
+    <li>
+      <a
+        class="
+
+          ee-menu-item
+
+
+          {{if item.modifiers.active 'ee-active'}}
+
+
+
+          {{if item.modifiers.active 'ee-intent-primary'}}
+
+
+
+          {{if item.modifiers.disabled 'ee-disabled'}}
+
+
+           ee-popover-dismiss"
+        onclick={{handleClick}}
+      >
+        <div class='ee-text-overflow-ellipsis ee-fill'>
+          {{item.rank}}. {{item.title}}
+        </div>
+        <span class='ee-menu-item-label'>
+          {{item.year}}
+        </span>
+      </a>
+    </li>
+  {{else}}
+    <li>
+      <a
+        class="ee-menu-item ee-popover-dismiss
+
+
+          {{if item.active 'ee-active'}}
+
+
+
+          {{if item.active 'ee-intent-primary'}}
+
+
+          "
+        onclick={{handleClick}}
+      >
+        <Icon @icon='add' style='margin-right:5px' />
+        Create {{item.query}}
+      </a>
+    </li>
+  {{/if}}
+</Select>
+<br /><br />
+<div style='width: 300px;'>
+  <MultiSelect
+    @items={{this.items}}
+    @itemsEqual={{this.areFilmsEqual}}
+    @itemPredicate={{this.filterFilm}}
+    @createNewItemRenderer={{true}}
+    @noResults={{this.noResults}}
+    @onItemSelect={{action 'handleFilmSelect'}}
+    @tagRenderer={{this.renderTag}}
+    @selectedItems={{this.films}}
+    @popoverProps={{this.popoverProps}}
+    @resetOnSelect={{true}}
+    @createNewItemRenderer={{true}}
+    @createNewItemFromQuery={{this.createFilm}}
+    @onRemove={{action 'handleTagRemove'}}
+    @handleClearTagInput={{action 'handleClearTagInput'}}
+    {{!-- @initialContent={{this.initialContent}} --}} as |renderItem item handleClick index|
+  >
+    {{#if renderItem}}
+      <li>
+        <a
+          class="
+
+            ee-menu-item
+
+
+            {{if item.modifiers.active 'ee-active'}}
+
+
+
+            {{if item.modifiers.active 'ee-intent-primary'}}
+
+
+
+            {{if item.modifiers.disabled 'ee-disabled'}}
+
+
+             ee-popover-dismiss"
+          onclick={{handleClick}}
+        >
+          <Icon
+            @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank'}}
+          />
+          <div class='ee-text-overflow-ellipsis ee-fill'>
+            {{item.rank}}. {{item.title}}
+          </div>
+          <span class='ee-menu-item-label'>
+            {{item.year}}
+          </span>
+        </a>
+      </li>
+    {{else}}
+      <li>
+        <a
+          class="ee-menu-item ee-popover-dismiss
+
+
+            {{if item.active 'ee-active'}}
+
+
+
+            {{if item.active 'ee-intent-primary'}}
+
+
+            "
+          onclick={{handleClick}}
+        >
+          <Icon @icon='add' style='margin-right:5px' />
+          Create {{item.query}}
+        </a>
+      </li>
+    {{/if}}
+  </MultiSelect>
+</div>
+<Popover
+  @popperTarget={{this.popperTargetValue}}
+  @isOpen={{this.isOpenPopper}}
+  @hasBackdrop={{false}}
+  @onClose={{action 'onClose'}}
+  @popoverClassName='ee-popover-content-sizing'
+>
+  <div>
+    <h5 class='ee-heading'>
+      Confirm deletion
+    </h5>
+    <p>
+      Are you sure you want to delete these items? You won't be able to recover them.
+    </p>
+    <div style='display: flex; justify-content: flex-end; margin-top: 15px;'>
+      <button
+        type='button'
+        class='ee-button ee-popover-dismiss'
+        style='margin-right: 10px;'
+      >
+        <span class='ee-button-text'>
+          Cancel
+        </span>
+      </button>
+      <button
+        type='button'
+        class='ee-button ee-intent-danger ee-popover-dismiss'
+      >
+        <span class='ee-button-text'>
+          Delete
+        </span>
+      </button>
+    </div>
+  </div>
+</Popover>
+<Button
+  @onClick={{action 'onOverlayToggle1'}}
+  @primary={{true}}
+  {{did-insert this.didInsertPopper}}
+>
+  Popover
+</Button>
 <Button @onClick={{action 'onClickButton'}}>
   {{#if this.isOpen}}
     {{this.hide}}
@@ -205,7 +403,7 @@
   <Button @icon='add' />
   <Button @icon='remove' />
 </ButtonGroup>
-<Navbar/>
+<Navbar />
 <Button @onClick={{action 'onOverlayToggle'}} @primary={{true}}>
   Show overlay
 </Button>
@@ -213,6 +411,8 @@
   @className='ee-overlay-scroll-container'
   @isOpen={{this.isOpenOverlay}}
   class="ee-card ee-elevation-4 docs-overlay-example-transition
+
+
     {{if this.useTallContent 'docs-overlay-example-tall'}}"
   @autoFocus={{this.autoFocus}}
   @enforceFocus={{this.enforceFocus}}
@@ -264,7 +464,6 @@
   </div>
 </Overlay>
 
-
 <Button @onClick={{action 'onDialogToggle'}}>
   Show dialog
 </Button>
@@ -275,7 +474,6 @@
   @canOutsideClickClose={{this.canOutsideClickClose}}
   @onClose={{action 'onClose'}}
   @icon='info-sign'
-
   @title='Palantir Foundry'
 >
   <div class='ee-dialog-body'>
@@ -315,4 +513,3 @@
     </div>
   </div>
 </Dialog>
-

@@ -267,6 +267,10 @@ class Overlay extends Component<OverlayArgs> {
     return popperContainer;
   }
 
+  get hasEverOpenedProp() {
+    return this.hasEverOpened ? this.OVERLAY_OPEN : '';
+  }
+
   getautoFoucs() {
     let autoFocus = true;
 

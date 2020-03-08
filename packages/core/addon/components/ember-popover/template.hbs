@@ -1,0 +1,17 @@
+<div
+  id={{this.id}}
+  class={{@class}}
+  hidden={{this.hidden}}
+  role={{@ariaRole}}
+  ...attributes
+  {{ref this '_popperElement'}}
+>
+  {{yield
+    (hash
+      disableEventListeners=(action 'disableEventListeners')
+      enableEventListeners=(action 'enableEventListeners')
+      scheduleUpdate=(action 'scheduleUpdate')
+      update=(action 'update')
+    )
+  }}
+</div>

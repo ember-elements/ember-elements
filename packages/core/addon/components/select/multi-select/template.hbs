@@ -1,0 +1,82 @@
+{{! template-lint-disable}}
+<span isOpen={{this.getIsOpen}} activeItem={{this.getActiveItem}}></span>
+<div
+  onkeydown={{action 'getTagInputKeyDownHandler'}}
+  onKeyUp={{action 'getTagInputKeyUpHandler'}}
+  {{did-insert this.popperTargetRef}}
+  {{did-update this.popperTargetRender this.getTagRenderer}}
+>
+  <TagInput
+    placeholder='Search...'
+    ...attributes
+    class={{this.MULTISELECT_TAG_INPUT_INPUT}}
+    @className={{this.MULTISELECT}}
+    @props={{@tagProps}}
+    @inputValue={{this.queryState}}
+    @onAdd={{action 'handleTagInputAdd'}}
+    @onInputChange={{action 'handleQueryChange'}}
+    @values={{this.getTagRenderer}}
+    onfocus={{action 'onFocusTagInput'}}
+    @onRemove={{@onRemove}}
+    {{did-insert this.refHandlersInput}}
+    {{! inputProps='{inputProps}' }}
+  >
+    {{#if this.getTagRenderer}}
+      <Button
+        @icon='cross'
+        @minimal={{true}}
+        @onClick={{@handleClearTagInput}}
+      />
+    {{/if}}
+  </TagInput>
+</div>
+<Popover
+  @popperTarget={{this.popperTarget}}
+  @isScheduleUpdate={{this.isScheduleUpdate}}
+  @canEscapeKeyClose={{true}}
+  @autoFocus={{false}}
+  @enforceFocus={{false}}
+  @isOpen={{this.isOpenState}}
+  @disabled={{this.getDisabled}}
+  @position={{this.BOTTOM_LEFT}}
+  @props={{@popoverProps}}
+  @className='{{this.getClassName}} {{@popoverProps.className}}'
+  @popoverClassName='{{this.MULTISELECT_POPOVER}}
+
+
+
+    {{@popoverProps.popoverClassName}}'
+  @onClose={{action 'onClose'}}
+  onOpening='{this.handlePopoverOpening}'
+  onOpened='{this.handlePopoverOpened}'
+  onClosing='{this.handlePopoverClosing}'
+  {{!-- @onInteraction={{action 'handlePopoverInteraction'}} --}}
+>
+  <div onkeydown={{action 'handleKeyDown'}} onkeyup={{action 'handleKeyUp'}}>
+    <ul class={{rw this.MENU}} {{did-insert this.refHandlers}}>
+      {{#if (and this.getFindInitialContent (eq this.queryState ''))}}
+        {{{this.getFindInitialContent}}}
+      {{/if}}
+      {{#if this.getMenuContent.length}}
+        {{#each this.getMenuContent as |item index|}}
+          {{#if item.modifiers.matchesPredicate}}
+            {{yield
+              true
+              item
+              (action 'handleItemSelectClick' item.modifiers.item)
+              index
+            }}
+          {{/if}}
+        {{/each}}
+      {{else if this.createItemView}}
+        {{yield
+          false
+          this.createItemView
+          (action 'handleClick' this.queryState)
+        }}
+      {{else if @noResults}}
+        {{{@noResults}}}
+      {{/if}}
+    </ul>
+  </div>
+</Popover>
