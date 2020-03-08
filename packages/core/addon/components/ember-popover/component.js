@@ -177,6 +177,9 @@ export default Component.extend({
 
   didRender() {
     this._updatePopper();
+    if (this.get('isScheduleUpdate') && this._popper) {
+      this._popper.scheduleUpdate();
+    }
   },
 
   willDestroyElement() {

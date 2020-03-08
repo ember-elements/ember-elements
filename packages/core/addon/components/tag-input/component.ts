@@ -304,6 +304,15 @@ class TagInput extends Component<TagInputArgs> {
     return tagITagProps || {};
   }
 
+  get getInputValue() {
+    let inputValue;
+    if (this.args.inputValue != undefined) {
+      inputValue = this.args.inputValue;
+    }
+    this.inputValue = inputValue;
+    return inputValue;
+  }
+
   @action
   handleContainerBlur({ currentTarget }: FocusEvent) {
     requestAnimationFrame(() => {
@@ -437,10 +446,10 @@ class TagInput extends Component<TagInputArgs> {
 
   private addTags = (value: string, method: TagInputAddMethod = 'default') => {
     const newValues = this.getValues(value);
-    let shouldClearInput: boolean = this.args.inputValue === undefined;
     if (this.args.onAdd) {
       this.args.onAdd(newValues, method);
     }
+    let shouldClearInput: boolean = this.args.inputValue === undefined;
 
     if (this.args.onChange) {
       this.args.onChange([...this.getValuesData, ...newValues]);

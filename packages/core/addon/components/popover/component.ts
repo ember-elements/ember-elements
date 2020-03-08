@@ -72,6 +72,7 @@ interface PopoverArgs extends IPopoverProps, IPopoverSharedProps {
 }
 
 class Select extends Component<PopoverArgs> {
+  props = this.args.props;
   arrowElement!: HTMLElement;
   // these paths come from the Core Kit Sketch file
   SVG_SHADOW_PATH =

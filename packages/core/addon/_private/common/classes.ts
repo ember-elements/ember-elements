@@ -102,6 +102,13 @@ export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
 
 export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
+export const MENU = `${NS}-menu`;
+export const MENU_ITEM = `${MENU}-item`;
+export const MENU_ITEM_LABEL = `${MENU_ITEM}-label`;
+export const MENU_SUBMENU = `${NS}-submenu`;
+export const MENU_DIVIDER = `${MENU}-divider`;
+export const MENU_HEADER = `${MENU}-header`;
+
 export const OVERLAY = `${NS}-overlay`;
 export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
 export const OVERLAY_CONTAINER = `${OVERLAY}-container`;
@@ -186,3 +193,12 @@ export function elevationClass(elevation: Elevation) {
   }
   return `${NS}-elevation-${elevation}`;
 }
+
+// select classes goes here
+export const MULTISELECT = `${NS}-multi-select`;
+export const MULTISELECT_POPOVER = `${MULTISELECT}-popover`;
+export const MULTISELECT_TAG_INPUT_INPUT = `${MULTISELECT}-tag-input-input`;
+export const OMNIBAR = `${NS}-omnibar`;
+export const OMNIBAR_OVERLAY = `${OMNIBAR}-overlay`;
+export const SELECT = `${NS}-select`;
+export const SELECT_POPOVER = `${SELECT}-popover`;

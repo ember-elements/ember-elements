@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // @ts-nocheck
 import Component from '@glimmer/component';
 import { reads } from '@ember/object/computed';
@@ -6,63 +7,62 @@ import { tracked } from '@glimmer/tracking';
 // @ts-ignore
 import { setComponentTemplate } from '@ember/component';
 // @ts-ignore
-import selectLayout from './template';
+import multiLayout from './template';
 
 import { action } from '@ember/object';
 
-import * as Classes from '../../_private/common/classes';
-import * as Utils from '../../_private/common/utils';
+import * as Classes from '../../../_private/common/classes';
+import * as Utils from '../../../_private/common/utils';
 
-import { IQueryListProps } from './queryList';
-import { IListItemsProps, ICreateNewItem } from './common';
-import * as Fun from './common/listItemsUtils';
-import * as FunProps from './common/listItemsProps';
-import * as FunRender from './common/itemListRenderer';
-import { IInputGroupProps } from '../../components/forms/input-group/component';
-import { IPopoverProps } from '../../components/popover/component';
+import { IQueryListProps } from '../queryList';
+import { IListItemsProps, ICreateNewItem } from '../common';
+import * as Fun from '../common/listItemsUtils';
+import * as FunProps from '../common/listItemsProps';
+import * as FunRender from '../common/itemListRenderer';
+import { IPopoverProps } from '../../../components/popover/component';
+import { TagInputAddMethod } from '../../../components/tag-input/component';
 
-import { Position } from '../../_private/common/position';
-import * as Keys from '../../_private/common/keys';
-export interface ISelectProps<T> extends IListItemsProps<T> {
+import { Position } from '../../../_private/common/position';
+import * as Keys from '../../../_private/common/keys';
+
+export interface IMultiSelectProps<T> extends IListItemsProps<T> {
   /**
-   * Whether the dropdown list can be filtered.
-   * Disabling this option will remove the `InputGroup` and ignore `inputProps`.
-   * @default true
+   * Whether the component should take up the full width of its container.
+   * This overrides `popoverProps.fill` and `tagInputProps.fill`.
    */
-  filterable?: boolean;
+  fill?: boolean;
 
   /**
-   * Whether the component is non-interactive.
-   * If true, the list's item renderer will not be called.
-   * Note that you'll also need to disable the component's children, if appropriate.
+   * Whether the popover opens on key down or when `TagInput` is focused.
    * @default false
    */
-  disabled?: boolean;
+  openOnKeyDown?: boolean;
 
   /**
-   * Props to spread to the query `InputGroup`. Use `query` and
-   * `onQueryChange` instead of `inputProps.value` and `inputProps.onChange`
-   * to control this input.
+   * Input placeholder text. Shorthand for `tagInputProps.placeholder`.
+   * @default "Search..."
    */
-  inputProps?: IInputGroupProps;
+  placeholder?: string;
 
   /** Props to spread to `Popover`. Note that `content` cannot be changed. */
   popoverProps?: Partial<IPopoverProps> & object;
 
-  /**
-   * Whether the active item should be reset to the first matching item _when
-   * the popover closes_. The query will also be reset to the empty string.
-   * @default false
-   */
-  resetOnClose?: boolean;
+  /** Controlled selected values. */
+  selectedItems?: T[];
+
+  /** Props to spread to `TagInput`. Use `query` and `onQueryChange` to control the input. */
+  tagInputProps?: Partial<ITagInputProps> & object;
+
+  /** Custom renderer to transform an item into tag content. */
+  tagRenderer: (item: T) => Array<string>;
 }
 
-interface SelectArgs<T> extends ISelectProps<T>, IQueryListProps<T> {
-  props?: SelectArgs<T>;
+interface MultiSelectArgs<T> extends IMultiSelectProps<T>, IQueryListProps<T> {
+  props?: MultiSelectArgs<T>;
   isOpen?: boolean;
 }
 
-class Select<T> extends Component<SelectArgs<T>> {
+class MultiSelect<T> extends Component<MultiSelectArgs<T>> {
   props = this.args.props;
   private itemsParentRef?: HTMLElement | null;
 
@@ -317,8 +317,8 @@ class Select<T> extends Component<SelectArgs<T>> {
   ) {
     this.shouldCheckActiveItemInViewport = true;
     const hasQueryChanged = query !== this.queryState;
-    if (hasQueryChanged && this.args.onQueryChange) {
-      this.args.onQueryChange(query);
+    if (hasQueryChanged) {
+      this.onQueryChange(query);
     }
 
     const filteredItems = this.getFilteredItems(query);
@@ -338,7 +338,6 @@ class Select<T> extends Component<SelectArgs<T>> {
         activeIndex,
         this.findItemDisabled()
       );
-
     if (shouldUpdateActiveItem) {
       this.setActiveItem(getFirstEnabledItem(filteredItems, this.findItemDisabled()));
     }
@@ -375,37 +374,71 @@ class Select<T> extends Component<SelectArgs<T>> {
     this.checkViewPort();
   }
 
-  //select goes here
+  private handlePaste = (queries: string[]) => {
+    let nextActiveItem: T | undefined;
+    const nextQueries = [];
+
+    // eslint-disable-next-line no-irregular-whitespace
+    /*Find an existing item that exactly matches each pasted value, or
+    create a new item if possible. Ignore unmatched values if creating
+    items is disabled.*/
+    const pastedItemsToEmit = [];
+
+    for (const query of queries) {
+      const equalItem = getMatchingItem(query, this.args);
+
+      if (equalItem !== undefined) {
+        nextActiveItem = equalItem;
+        pastedItemsToEmit.push(equalItem);
+      } else if (this.canCreateItems()) {
+        const newItem = this.args.createNewItemFromQuery(query);
+        if (newItem !== undefined) {
+          pastedItemsToEmit.push(newItem);
+        }
+      } else {
+        nextQueries.push(query);
+      }
+    }
+
+    // UX nicety: combine all unmatched queries into a single
+    // comma-separated query in the input, so we don't lose any information.
+    // And don't reset the active item; we'll do that ourselves below.
+    this.setQuery(nextQueries.join(', '), false);
+
+    // UX nicety: update the active item if we matched with at least one
+    // existing item.
+    if (nextActiveItem !== undefined) {
+      this.setActiveItem(nextActiveItem);
+    }
+    if (this.args.onItemsPaste) {
+      this.args.onItemsPaste(pastedItemsToEmit);
+    }
+  };
+
+  //multi select -------------------
   input!: HTMLInputElement;
+  popperTarget!: HTMLElement;
+
   BOTTOM_LEFT = Position.BOTTOM_LEFT;
-  SELECT_POPOVER = Classes.SELECT_POPOVER;
+  MULTISELECT_POPOVER = Classes.MULTISELECT_POPOVER;
+  MULTISELECT = Classes.MULTISELECT;
+  MULTISELECT_TAG_INPUT_INPUT = Classes.MULTISELECT_TAG_INPUT_INPUT;
   MENU = Classes.MENU;
   MENU_ITEM = Classes.MENU_ITEM;
   ACTIVE = Classes.ACTIVE;
   INTENT_PRIMARY = Classes.intentClass('primary');
   POPOVER_DISMISS = Classes.POPOVER_DISMISS;
 
+  @reads('props.className') className?: MultiSelectArgs<T>['className'];
+  @reads('props.tagRenderer') tagRenderer?: MultiSelectArgs<T>['tagRenderer'];
+  @reads('props.isOpen') isOpen?: boolean;
+  @reads('props.initialContent') initialContent?: MultiSelectArgs<T>['initialContent'];
+  @reads('props.disabled') disabled?: MultiSelectArgs<T>['disabled'];
+  @reads('props.selectedItems') selectedItems?: MultiSelectArgs<T>['selectedItems'];
+
   @tracked isOpenState = false;
-  @tracked previousFocusedElement: HTMLElement = null;
   @tracked createItemView = null;
   @tracked isScheduleUpdate = false;
-  @reads('props.disabled') disabled?: SelectArgs<T>['disabled'];
-  @reads('props.className') className?: SelectArgs<T>['className'];
-  @reads('props.resetOnClose') resetOnClose?: SelectArgs<T>['resetOnClose'];
-  @reads('props.inputProps') inputProps?: SelectArgs<T>['inputProps'];
-  @reads('props.filterable') filterable?: SelectArgs<T>['filterable'];
-  @reads('props.initialContent') initialContent?: SelectArgs<T>['initialContent'];
-  @reads('props.isOpen') isOpen?: boolean;
-
-  get getDisabled() {
-    let disabled = false;
-    if (this.args.disabled != undefined) {
-      disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
-    }
-    return disabled;
-  }
 
   get getClassName() {
     let className;
@@ -417,55 +450,54 @@ class Select<T> extends Component<SelectArgs<T>> {
 
     return className;
   }
+
   get getIsOpen() {
-    let isOpen = false;
-    if (this.args.isOpen != undefined) {
-      isOpen = this.args.isOpen;
-    } else if (this.isOpen != undefined) {
-      isOpen = this.isOpen;
-    }
-    if (!this.isOpenState && isOpen) {
-      if (this.findResetOnClose()) {
-        // this.resetQuery();
-        this.setQuery('', true, null);
-      }
-    }
-    if (isOpen) {
-      this.previousFocusedElement = document.activeElement as HTMLElement;
+    if (this.isOpenState) {
+      // scroll active item into view after popover transition completes and all dimensions are stable.
       setTimeout(() => {
         this.scrollActiveItemIntoView();
-        requestAnimationFrame(() => {
-          const inputProps: IInputGroupProps = this.inputProps || {};
-          // autofocus is enabled by default
-          if (inputProps.autoFocus !== false && this.input != null) {
-            this.input.focus();
-          }
-        });
       }, 300);
     }
-    if (this.isOpenState && !isOpen) {
-      // restore focus to saved element.
-      // timeout allows popover to begin closing and remove focus handlers beforehand.
-      requestAnimationFrame(() => {
-        if (this.previousFocusedElement !== undefined) {
-          this.previousFocusedElement.focus();
-          this.previousFocusedElement = undefined;
-        }
-      });
-    }
-    this.isOpenState = isOpen;
-    return isOpen;
+    return this.isOpenState;
   }
 
-  get getFilterable() {
-    let filterable = true;
-    if (this.args.filterable != undefined) {
-      filterable = this.args.filterable;
-    } else if (this.filterable != undefined) {
-      filterable = this.filterable;
+  get getTagRenderer() {
+    let tagRenderer;
+    if (this.args.tagRenderer != undefined) {
+      tagRenderer = this.args.tagRenderer;
+    } else if (this.tagRenderer != undefined) {
+      tagRenderer = this.tagRenderer;
     }
 
-    return filterable;
+    return this.findSelectedItems().map(tagRenderer);
+  }
+
+  get getSelectedItems() {
+    return this.findSelectedItems();
+  }
+
+  findSelectedItems() {
+    let selectedItems;
+    if (this.args.selectedItems != undefined) {
+      selectedItems = this.args.selectedItems;
+    } else if (this.selectedItems != undefined) {
+      selectedItems = this.selectedItems;
+    }
+    return selectedItems || [];
+  }
+
+  findInitialContent() {
+    let initialContent;
+    if (this.args.initialContent != undefined) {
+      initialContent = this.args.initialContent;
+    } else if (this.initialContent != undefined) {
+      initialContent = this.initialContent;
+    }
+    return initialContent;
+  }
+
+  get getFindInitialContent() {
+    return this.findInitialContent();
   }
 
   get getMenuContent() {
@@ -490,6 +522,16 @@ class Select<T> extends Component<SelectArgs<T>> {
       return null;
     }
     return menuContent;
+  }
+
+  findDisabled() {
+    let disabled = false;
+    if (this.args.disabled != undefined) {
+      disabled = this.args.disabled;
+    } else if (this.disabled != undefined) {
+      disabled = this.disabled;
+    }
+    return disabled;
   }
 
   /** wrapper around `itemRenderer` to inject props */
@@ -527,6 +569,7 @@ class Select<T> extends Component<SelectArgs<T>> {
     const isActive = Fun.isCreateNewItem(activeItem);
     return this.args.createNewItemRenderer ? { query, active: isActive } : null;
   };
+
   @action
   handleClick(query: string, evt: HTMLElement) {
     this.handleItemCreate(query, evt);
@@ -537,44 +580,43 @@ class Select<T> extends Component<SelectArgs<T>> {
     this.handleItemSelect(item, evt);
   }
 
-  findDisabled() {
-    let disabled = false;
-    if (this.args.disabled != undefined) {
-      disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
-    }
-    return disabled;
-  }
-
-  findInitialContent() {
-    let initialContent;
-    if (this.args.initialContent != undefined) {
-      initialContent = this.args.initialContent;
-    } else if (this.initialContent != undefined) {
-      initialContent = this.initialContent;
-    }
-    return initialContent;
-  }
-
   @action
   refHandlersInput(element: HTMLInputElement) {
     this.input = element;
   }
 
   @action
-  refHandlersInputUpdate() {
+  popperTargetRef(element: HTMLElement) {
+    this.popperTarget = element;
+  }
+  @action
+  popperTargetRender() {
     this.isScheduleUpdate = true;
   }
 
-  findResetOnClose() {
-    let resetOnClose = false;
-    if (this.args.resetOnClose != undefined) {
-      resetOnClose = this.args.resetOnClose;
-    } else if (this.resetOnClose != undefined) {
-      resetOnClose = this.resetOnClose;
+  @action
+  getTagInputKeyDownHandler(e: KeyboardEvent) {
+    const { which } = e;
+
+    if (which === Keys.ESCAPE || which === Keys.TAB) {
+      // By default the escape key will not trigger a blur on the
+      // input element. It must be done explicitly.
+      if (this.input != null) {
+        this.input.blur();
+      }
+      this.isOpenState = false;
+    } else if (
+      !(which === Keys.BACKSPACE || which === Keys.ARROW_LEFT || which === Keys.ARROW_RIGHT)
+    ) {
+      this.isOpenState = true;
     }
-    return resetOnClose;
+
+    const isTargetingTagRemoveButton =
+      (e.target as HTMLElement).closest(`.${Classes.TAG_REMOVE}`) != null;
+
+    if (this.isOpenState && !isTargetingTagRemoveButton) {
+      this.handleKeyDown(e);
+    }
   }
 
   @action
@@ -617,6 +659,7 @@ class Select<T> extends Component<SelectArgs<T>> {
       startIndex
     );
   }
+
   private isCreateItemRendered(): boolean {
     return (
       this.canCreateItems() &&
@@ -641,6 +684,19 @@ class Select<T> extends Component<SelectArgs<T>> {
   }
 
   @action
+  getTagInputKeyUpHandler(e: KeyboardEvent) {
+    const isTargetingInput = (e.target as HTMLElement).classList.contains(
+      Classes.MULTISELECT_TAG_INPUT_INPUT
+    );
+
+    // only handle events when the focus is on the actual <input> inside the TagInput, as that's
+    // what QueryList is designed to do
+    if (this.isOpenState && isTargetingInput) {
+      this.handleKeyUp(e);
+    }
+  }
+
+  @action
   handleKeyUp(event: KeyboardEvent) {
     const activeItem = this.activeItemState;
     // using keyup for enter to play nice with Button's keyboard clicking.
@@ -655,6 +711,7 @@ class Select<T> extends Component<SelectArgs<T>> {
       }
     }
   }
+
   private handleItemCreate(query: string, evt?: HTMLElement) {
     // we keep a cached createNewItem in state, but might as well recompute
     // the result just to be sure it's perfectly in sync with the query.
@@ -677,20 +734,48 @@ class Select<T> extends Component<SelectArgs<T>> {
   }
 
   @action
-  handleQueryChange(event?: HTMLInputElement) {
-    const query = event == null ? '' : event.target.value;
-    this.setQuery(query);
-    if (this.args.onQueryChange) {
-      this.args.onQueryChange(query, event);
+  handleTagInputAdd(values: any[], method: TagInputAddMethod) {
+    if (method === 'paste') {
+      this.handlePaste(values);
     }
   }
 
   @action
-  onClickResetQuery() {
-    this.setQuery('', true);
+  handleQueryChange(event?: HTMLInputElement) {
+    const query = event == null ? '' : event.target.value;
+    this.setQuery(query);
+    this.onQueryChange(query, event);
+  }
+
+  private onQueryChange = (query: string, evt?: HTMLInputElement) => {
+    this.isOpenState = query.length > 0 || !this.args.openOnKeyDown;
+
+    if (this.args.onQueryChange) {
+      this.args.onQueryChange(query, evt);
+    }
+  };
+
+  @action
+  onFocusTagInput() {
+    if (!this.args.openOnKeyDown) {
+      this.isOpenState = true;
+    }
+  }
+
+  @action
+  onClose() {
+    requestAnimationFrame(() => {
+      if (this.input != null && this.input !== document.activeElement) {
+        // the input is no longer focused so we can close the popover
+        this.isOpenState = false;
+      } else if (!this.args.openOnKeyDown) {
+        // the input is no longer focused so we can close the popover
+        this.isOpenState = true;
+      }
+    });
   }
 }
-export default setComponentTemplate(selectLayout, Select);
+export default setComponentTemplate(multiLayout, MultiSelect);
 
 /** Wrap number around min/max values: if it exceeds one bound, return the other. */
 function wrapNumber(value: number, min: number, max: number) {
@@ -747,4 +832,21 @@ export function getFirstEnabledItem<T>(
 
 function pxToNumber(value: string | null) {
   return value == null ? 0 : parseInt(value.slice(0, -2), 10);
+}
+
+function getMatchingItem<T>(
+  query: string,
+  { items, itemPredicate }: IQueryListProps<T>
+): T | undefined {
+  if (Utils.isFunction(itemPredicate)) {
+    // .find() doesn't exist in ES5. Alternative: use a for loop instead of
+    // .filter() so that we can return as soon as we find the first match.
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (itemPredicate(query, item, i, true)) {
+        return item;
+      }
+    }
+  }
+  return undefined;
 }

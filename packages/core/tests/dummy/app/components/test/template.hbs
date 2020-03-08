@@ -1,5 +1,160 @@
 {{! template-lint-disable}}
 
+<Button
+  @onClick={{action 'onSelectToggle'}}
+  @primary={{true}}
+  @icon='film'
+  @rightIcon='caret-down'
+  {{did-insert this.selectPath}}
+  {{! style='margin-left:400px;margin-top:300px' }}
+>
+  {{#if this.film}}
+    {{this.film.title}} {{this.film.year}}
+  {{else}}
+    (No selection)
+  {{/if}}
+</Button>
+<Select
+  @items={{this.TOP_100_FILMS}}
+  @isOpen={{this.isOpenSelect}}
+  @popperTarget={{this.selectTargetValue}}
+  @itemPredicate={{this.filterFilm}}
+  @onClose={{action 'onCloseSelect'}}
+  @resetOnClose={{false}}
+  @createNewItemRenderer={{true}}
+  @createNewItemFromQuery={{this.createFilm}}
+  @onItemSelect={{action 'handleValueChange'}}
+  @noResults={{this.noResults}}
+  @itemDisabled={{this.isItemDisabled1}}
+  {{!-- @initialContent={{this.initialContent}} --}} as |renderItem item handleClick|
+>
+  {{#if renderItem}}
+    <li>
+      <a
+        class="
+
+          ee-menu-item
+
+
+          {{if item.modifiers.active 'ee-active'}}
+
+
+
+          {{if item.modifiers.active 'ee-intent-primary'}}
+
+
+
+          {{if item.modifiers.disabled 'ee-disabled'}}
+
+
+           ee-popover-dismiss"
+        onclick={{handleClick}}
+      >
+        <div class='ee-text-overflow-ellipsis ee-fill'>
+          {{item.rank}}. {{item.title}}
+        </div>
+        <span class='ee-menu-item-label'>
+          {{item.year}}
+        </span>
+      </a>
+    </li>
+  {{else}}
+    <li>
+      <a
+        class="ee-menu-item ee-popover-dismiss
+
+
+          {{if item.active 'ee-active'}}
+
+
+
+          {{if item.active 'ee-intent-primary'}}
+
+
+          "
+        onclick={{handleClick}}
+      >
+        <Icon @icon='add' style='margin-right:5px' />
+        Create {{item.query}}
+      </a>
+    </li>
+  {{/if}}
+</Select>
+<br /><br />
+<div style='width: 300px;'>
+  <MultiSelect
+    @items={{this.items}}
+    @itemsEqual={{this.areFilmsEqual}}
+    @itemPredicate={{this.filterFilm}}
+    @createNewItemRenderer={{true}}
+    @noResults={{this.noResults}}
+    @onItemSelect={{action 'handleFilmSelect'}}
+    @tagRenderer={{this.renderTag}}
+    @selectedItems={{this.films}}
+    @popoverProps={{this.popoverProps}}
+    @resetOnSelect={{true}}
+    @createNewItemRenderer={{true}}
+    @createNewItemFromQuery={{this.createFilm}}
+    @onRemove={{action 'handleTagRemove'}}
+    @handleClearTagInput={{action 'handleClearTagInput'}}
+    {{!-- @initialContent={{this.initialContent}} --}} as |renderItem item handleClick index|
+  >
+    {{#if renderItem}}
+      <li>
+        <a
+          class="
+
+            ee-menu-item
+
+
+            {{if item.modifiers.active 'ee-active'}}
+
+
+
+            {{if item.modifiers.active 'ee-intent-primary'}}
+
+
+
+            {{if item.modifiers.disabled 'ee-disabled'}}
+
+
+             ee-popover-dismiss"
+          onclick={{handleClick}}
+        >
+          <Icon
+            @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank'}}
+          />
+          <div class='ee-text-overflow-ellipsis ee-fill'>
+            {{item.rank}}. {{item.title}}
+          </div>
+          <span class='ee-menu-item-label'>
+            {{item.year}}
+          </span>
+        </a>
+      </li>
+    {{else}}
+      <li>
+        <a
+          class="ee-menu-item ee-popover-dismiss
+
+
+            {{if item.active 'ee-active'}}
+
+
+
+            {{if item.active 'ee-intent-primary'}}
+
+
+            "
+          onclick={{handleClick}}
+        >
+          <Icon @icon='add' style='margin-right:5px' />
+          Create {{item.query}}
+        </a>
+      </li>
+    {{/if}}
+  </MultiSelect>
+</div>
 <Popover
   @popperTarget={{this.popperTargetValue}}
   @isOpen={{this.isOpenPopper}}
