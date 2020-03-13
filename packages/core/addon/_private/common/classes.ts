@@ -144,6 +144,9 @@ export const TAG_INPUT = `${NS}-tag-input`;
 export const TAG_INPUT_ICON = `${TAG_INPUT}-icon`;
 export const TAG_INPUT_VALUES = `${TAG_INPUT}-values`;
 
+export const TOOLTIP = `${NS}-tooltip`;
+export const TOOLTIP_INDICATOR = `${TOOLTIP}-indicator`;
+
 export const SIZE_STANDARD = 16;
 export const SIZE_LARGE = 20;
 

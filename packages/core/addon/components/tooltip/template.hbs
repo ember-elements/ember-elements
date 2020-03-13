@@ -1,0 +1,22 @@
+{{! template-lint-disable}}
+{{unbound this._parentFinder}}
+{{unbound this.eventListener}}
+<span style='display: none;'>{{this.openComp}}</span>
+<Popover
+  ...attributes
+  {{will-destroy this.willDestroyRef}}
+  @popperTarget={{this._getPopperTarget}}
+  @isScheduleUpdate={{this.isScheduleUpdate}}
+  @autoFocus={{false}}
+  @canEscapeKeyClose={{false}}
+  @enforceFocus={{false}}
+  @isOpen={{this.isOpenState}}
+  @disabled={{this.getDisabled}}
+  @position={{@position}}
+  @props={{@popoverProps}}
+  @className='{{this.getClassName}} {{@popoverProps.className}}'
+  @popoverClassName='{{this.TOOLTIP}} {{this.getIntent}} {{@popoverProps.popoverClassName}}'
+  @onClose={{@onClose}}
+>
+  {{yield}}
+</Popover>

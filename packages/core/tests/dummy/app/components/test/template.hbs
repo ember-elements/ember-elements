@@ -14,6 +14,26 @@
     (No selection)
   {{/if}}
 </Button>
+<br />
+<Button
+>
+  <Tooltip @intent="success" >
+    hi its me ..wake up
+  </Tooltip>
+  this is tooltip
+</Button>
+
+<Button
+  onmouseenter={{action 'openTooltip' 1}}
+  onmouseleave={{action 'closeTooltip' 1}}
+  {{did-insert this.tooltipRef}}
+  {{did-update this.tooltipRef this.tooltip1}}
+>
+  <Tooltip @intent='primary' @target={{this.tooltipRefVar}} @event='none' @isOpen={{this.isOpenTooltip}}>
+    hi its me ..wake up
+  </Tooltip>
+  user controlled Tooltip
+</Button>
 <Select
   @items={{this.TOP_100_FILMS}}
   @isOpen={{this.isOpenSelect}}
@@ -80,7 +100,8 @@
     </li>
   {{/if}}
 </Select>
-<br /><br />
+<br />
+<br />
 <div style='width: 300px;'>
   <MultiSelect
     @items={{this.items}}
