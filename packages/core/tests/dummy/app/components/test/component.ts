@@ -463,6 +463,18 @@ export default class Test extends Component<TestArgs> {
     else set(this, 'tooltip2', false);
     set(this, 'isOpenTooltip', false);
   }
+
+  // Drawer goes here
+
+  isOpenDrawer = false;
+  @action
+  handleOpenDrawer() {
+    set(this, 'isOpenDrawer', true);
+  }
+  @action
+  handleCloseDrawer() {
+    set(this, 'isOpenDrawer', false);
+  }
 }
 
 export function maybeAddCreatedFilmToArrays(

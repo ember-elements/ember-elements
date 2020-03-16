@@ -57,6 +57,11 @@ export const DIALOG_HEADER = `${DIALOG}-header`;
 
 export const DIVIDER = `${NS}-divider`;
 
+export const DRAWER = `${NS}-drawer`;
+export const DRAWER_BODY = `${DRAWER}-body`;
+export const DRAWER_FOOTER = `${DRAWER}-footer`;
+export const DRAWER_HEADER = `${DRAWER}-header`;
+
 export const PROGRESS_BAR = `${NS}-progress-bar`;
 export const PROGRESS_METER = `${NS}-progress-meter`;
 export const PROGRESS_NO_STRIPES = `${NS}-no-stripes`;
