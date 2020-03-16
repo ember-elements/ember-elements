@@ -57,6 +57,11 @@ export const DIALOG_HEADER = `${DIALOG}-header`;
 
 export const DIVIDER = `${NS}-divider`;
 
+export const DRAWER = `${NS}-drawer`;
+export const DRAWER_BODY = `${DRAWER}-body`;
+export const DRAWER_FOOTER = `${DRAWER}-footer`;
+export const DRAWER_HEADER = `${DRAWER}-header`;
+
 export const PROGRESS_BAR = `${NS}-progress-bar`;
 export const PROGRESS_METER = `${NS}-progress-meter`;
 export const PROGRESS_NO_STRIPES = `${NS}-no-stripes`;
@@ -101,6 +106,13 @@ export const NAVBAR_DIVIDER = `${NAVBAR}-divider`;
 
 export const NUMERIC_INPUT = `${NS}-numeric-input`;
 
+export const MENU = `${NS}-menu`;
+export const MENU_ITEM = `${MENU}-item`;
+export const MENU_ITEM_LABEL = `${MENU_ITEM}-label`;
+export const MENU_SUBMENU = `${NS}-submenu`;
+export const MENU_DIVIDER = `${MENU}-divider`;
+export const MENU_HEADER = `${MENU}-header`;
+
 export const OVERLAY = `${NS}-overlay`;
 export const OVERLAY_BACKDROP = `${OVERLAY}-backdrop`;
 export const OVERLAY_CONTAINER = `${OVERLAY}-container`;
@@ -108,6 +120,14 @@ export const OVERLAY_CONTENT = `${OVERLAY}-content`;
 export const OVERLAY_INLINE = `${OVERLAY}-inline`;
 export const OVERLAY_OPEN = `${OVERLAY}-open`;
 export const OVERLAY_SCROLL_CONTAINER = `${OVERLAY}-scroll-container`;
+
+export const SPINNER = `${NS}-spinner`;
+export const SPINNER_ANIMATION = `${SPINNER}-animation`;
+export const SPINNER_HEAD = `${SPINNER}-head`;
+export const SPINNER_NO_SPIN = `${NS}-no-spin`;
+export const SPINNER_TRACK = `${SPINNER}-track`;
+
+export const PORTAL = `${NS}-portal`;
 
 export const POPOVER = `${NS}-popover`;
 export const POPOVER_ARROW = `${POPOVER}-arrow`;
@@ -121,18 +141,18 @@ export const POPOVER_TARGET = `${POPOVER}-target`;
 export const POPOVER_WRAPPER = `${POPOVER}-wrapper`;
 export const TRANSITION_CONTAINER = `${NS}-transition-container`;
 
-export const SPINNER = `${NS}-spinner`;
-export const SPINNER_ANIMATION = `${SPINNER}-animation`;
-export const SPINNER_HEAD = `${SPINNER}-head`;
-export const SPINNER_NO_SPIN = `${NS}-no-spin`;
-export const SPINNER_TRACK = `${SPINNER}-track`;
-
 export const TAG = `${NS}-tag`;
 export const TAG_REMOVE = `${TAG}-remove`;
 
 export const TAG_INPUT = `${NS}-tag-input`;
 export const TAG_INPUT_ICON = `${TAG_INPUT}-icon`;
 export const TAG_INPUT_VALUES = `${TAG_INPUT}-values`;
+
+export const TOOLTIP = `${NS}-tooltip`;
+export const TOOLTIP_INDICATOR = `${TOOLTIP}-indicator`;
+
+export const SIZE_STANDARD = 16;
+export const SIZE_LARGE = 20;
 
 // text utilities
 export const TEXT_OVERFLOW_ELLIPSIS = `${NS}-text-overflow-ellipsis`;

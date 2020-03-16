@@ -1,6 +1,8 @@
 // @ts-nocheck
 import Component from '@glimmer/component';
 import { action, set } from '@ember/object';
+// @ts-ignore
+import { tracked } from '@glimmer/tracking';
 export interface IFilm {
   /** Title of film. */
   title: string;
@@ -435,6 +437,43 @@ export default class Test extends Component<TestArgs> {
   @action
   handleClearTagInput() {
     set(this, 'films', []);
+  }
+
+  //tooltip related things goes here
+  @tracked tooltipRefVar!: HTMLElement = null;
+  isOpenTooltip = false;
+  tooltip1 = false;
+  tooltip2 = false;
+  @action
+  tooltipRef(element: HTMLElement) {
+    this.tooltipRefVar = element;
+  }
+
+  @action
+  openTooltip(type: number) {
+    if (type == 1) set(this, 'tooltip1', true);
+    else set(this, 'tooltip2', true);
+
+    set(this, 'isOpenTooltip', true);
+  }
+
+  @action
+  closeTooltip(type: number) {
+    if (type == 1) set(this, 'tooltip1', false);
+    else set(this, 'tooltip2', false);
+    set(this, 'isOpenTooltip', false);
+  }
+
+  // Drawer goes here
+
+  isOpenDrawer = false;
+  @action
+  handleOpenDrawer() {
+    set(this, 'isOpenDrawer', true);
+  }
+  @action
+  handleCloseDrawer() {
+    set(this, 'isOpenDrawer', false);
   }
 }
 
