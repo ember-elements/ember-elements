@@ -1,5 +1,3 @@
-
-
 // these implementations borrowed from Bourbon v5, and modified to fit our use cases.
 // changes: removed $asset-pipeline argument, added weight/style params like Bourbon v4.
 // https://github.com/thoughtbot/bourbon/blob/master/core/bourbon/library/_font-face.scss
@@ -50,7 +48,7 @@
     woff2: '#{$file-path}.woff2'format('woff2'),
     woff: '#{$file-path}.woff'format('woff'),
     ttf: '#{$file-path}.ttf'format('truetype'),
-    svg: '#{$file-path}.svg##{$font-family}'format('svg')
+    svg: '#{$file-path}.svg##{$font-family}'format('svg'),
   );
 
   @each $key, $values in $formats-map {

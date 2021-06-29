@@ -16,9 +16,16 @@
 		"try": "ember try:one"
 	},
 	"devDependencies": {
-		"lerna": "^3.19.0"
+		"lerna": "^4.0.0"
 	},
 	"engines": {
-		"node": "8.* || >= 10.*"
+		"node": "14.16.1"
+	},
+	"ember": {
+		"edition": "octane"
+	},
+	"volta": {
+		"node": "14.16.1",
+		"yarn": "1.22.10"
 	}
 }

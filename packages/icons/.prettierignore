@@ -1,6 +1,33 @@
-/components/*/component.js
-.eslintrc.js
-tailwind.config.js
-.prettierrc.js
-global.d.ts
+#/components/*/component.js
+#.eslintrc.js
+#tailwind.config.js
+#.prettierrc.js
+#global.d.ts
+
+# TODO NEED TO FIX IT LATER
 iconSvgPaths.ts
+iconName.ts
+index.js
+app/index.js
+
+# unconventional js
+/blueprints/*/files/
+/vendor/
+
+# compiled output
+/dist/
+/tmp/
+
+# dependencies
+/bower_components/
+/node_modules/
+
+# misc
+/coverage/
+!.*
+.eslintcache
+
+# ember-try
+/.node_modules.ember-try/
+/bower.json.ember-try
+/package.json.ember-try
