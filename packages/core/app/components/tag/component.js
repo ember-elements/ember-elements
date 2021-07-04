@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/tag/component';
+export { default } from '@ember-elements/core/components/tag';

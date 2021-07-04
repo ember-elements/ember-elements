@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/navbar/navbar-group/component';
+export { default } from '@ember-elements/core/components/navbar/navbar-group';

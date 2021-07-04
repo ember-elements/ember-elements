@@ -1,12 +1,7 @@
-<div
-  id={{this.id}}
-  class={{@class}}
-  hidden={{this.hidden}}
-  role={{@ariaRole}}
-  ...attributes
-  {{ref this '_popperElement'}}
->
-  {{yield
+{{! template-lint-disable no-action}}
+<div id={{this.id}} class={{@class}} hidden={{this.hidden}} role={{@ariaRole}} ...attributes {{did-insert
+	(action 'didInsertPopperElement' )}} {{will-destroy (action 'willDestroyPopperElement' )}}>
+	{{yield
     (hash
       disableEventListeners=(action 'disableEventListeners')
       enableEventListeners=(action 'enableEventListeners')

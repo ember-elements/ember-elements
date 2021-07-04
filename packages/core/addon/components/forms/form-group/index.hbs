@@ -1,0 +1,18 @@
+<div class={{rw this.FORM_GROUP this.getClassName this.getDisabled this.getInline this.getIntent }} ...attributes>
+	{{#if this.getLabel}}
+		<label class={{this.LABEL}} htmlFor={{this.getLabelFor}}>
+			{{this.getLabel}}
+			<span class={{this.TEXT_MUTED}}>
+				{{this.getLabelInfo}}
+			</span>
+		</label>
+	{{/if}}
+	<div class={{rw this.getContentClassName this.FORM_CONTENT}}>
+		{{yield}}
+		{{#if this.getHelperText}}
+			<div class={{this.FORM_HELPER_TEXT}}>
+				{{this.getHelperText}}
+			</div>
+		{{/if}}
+	</div>
+</div>

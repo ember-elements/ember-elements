@@ -5,6 +5,7 @@ export function clampValue(value: number, min?: number, max?: number) {
   // to +/- infinity here instead, as a catch-all.
   const adjustedMin = min != null ? min : -Infinity;
   const adjustedMax = max != null ? max : Infinity;
+
   return clamp(value, adjustedMin, adjustedMax);
 }
 
@@ -42,6 +43,7 @@ export function isValidNumericKeyboardEvent(e: KeyboardEvent) {
   // to the field--and since they may have important native behaviors
   // beyond printing a character--we don't want to disable their effects.
   const isSingleCharKey = e.key.length === 1;
+
   if (!isSingleCharKey) {
     return true;
   }
@@ -62,7 +64,9 @@ export function isValidNumericKeyboardEvent(e: KeyboardEvent) {
  * See here for the input[type="number"].value spec:
  * https://www.w3.org/TR/2012/WD-html-markup-20120329/input.number.html#input.number.attrs.value
  */
+// eslint-disable-next-line no-useless-escape
 const FLOATING_POINT_NUMBER_CHARACTER_REGEX = /^[Ee0-9\+\-\.]$/;
+
 export function isFloatingPointNumericCharacter(character: string) {
   return FLOATING_POINT_NUMBER_CHARACTER_REGEX.test(character);
 }
@@ -78,5 +82,6 @@ export function toMaxPrecision(value: number, maxPrecision: number) {
   // because it would show trailing zeros in the decimal part out to the specified precision)
   // source: http://stackoverflow.com/a/18358056/5199574
   const scaleFactor = Math.pow(10, maxPrecision);
+
   return Math.round(value * scaleFactor) / scaleFactor;
 }

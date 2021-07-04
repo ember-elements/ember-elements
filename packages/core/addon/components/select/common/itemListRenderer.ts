@@ -1,4 +1,4 @@
-import { ICreateNewItem } from './listItemsUtils';
+import type { ICreateNewItem } from './listItemsUtils';
 
 /**
  * An object describing how to render the list of items.
@@ -54,7 +54,9 @@ export type ItemListRenderer<T> = (itemListProps: IItemListRendererProps<T>) => 
  * with optional support for `noResults` (when filtered items is empty)
  * and `initialContent` (when query is empty).
  */
+
 export function renderFilteredItems(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props: IItemListRendererProps<any>,
   noResults?: string,
   initialContent?: string | null
@@ -62,6 +64,8 @@ export function renderFilteredItems(
   if (props.query.length === 0 && initialContent !== undefined) {
     return initialContent;
   }
-  const items = props.filteredItems.map(props.renderItem).filter(item => item != null);
+
+  const items = props.filteredItems.map(props.renderItem).filter((item) => item != null);
+
   return items.length > 0 ? items : noResults;
 }

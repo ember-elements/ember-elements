@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/forms/text-area/component';
+export { default } from '@ember-elements/core/components/forms/text-area';

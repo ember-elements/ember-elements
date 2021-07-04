@@ -1,13 +1,14 @@
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerKeyEvent } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | dialog', function(hooks) {
+module('Integration | Component | dialog', function (hooks) {
   setupRenderingTest(hooks);
-  test('dialog rendering', async function(assert) {
+  test('dialog rendering', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(
@@ -17,9 +18,9 @@ module('Integration | Component | dialog', function(hooks) {
     await click('.ee-overlay-backdrop');
   });
 
-  test('attempts to close when overlay backdrop element is moused down', async function(assert) {
+  test('attempts to close when overlay backdrop element is moused down', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(hbs` <Dialog @isOpen={{this.isOpen}} @portalClassName='test-class' @onClose={{action this.onClose}}>
@@ -46,9 +47,9 @@ module('Integration | Component | dialog', function(hooks) {
     assert.notOk(this.isOpen);
   });
 
-  test('renders its content correctly', async function(assert) {
+  test('renders its content correctly', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(hbs`<Dialog @isOpen={{this.isOpen}}  @onClose={{action this.onClose}}>
@@ -81,9 +82,9 @@ module('Integration | Component | dialog', function(hooks) {
     await click('.ee-overlay-backdrop');
   });
 
-  test('portalClassName appears on Portal', async function(assert) {
+  test('portalClassName appears on Portal', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(hbs` <Dialog @isOpen={{this.isOpen}} @portalClassName='test-class'  @onClose={{action this.onClose}}>
@@ -109,9 +110,9 @@ module('Integration | Component | dialog', function(hooks) {
     await click('.ee-overlay-backdrop');
   });
 
-  test('does not close when canOutsideClickClose = false and overlay backdrop element is moused down', async function(assert) {
+  test('does not close when canOutsideClickClose = false and overlay backdrop element is moused down', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(hbs` <Dialog @isOpen={{this.isOpen}} @canOutsideClickClose={{false}} @usePortal={{false}} @onClose={{action this.onClose}}>
@@ -138,9 +139,9 @@ module('Integration | Component | dialog', function(hooks) {
     assert.equal(document.querySelectorAll('.ee-dialog').length, 1);
   });
 
-  test('does not close when canEscapeKeyClose = false and escape key is pressed', async function(assert) {
+  test('does not close when canEscapeKeyClose = false and escape key is pressed', async function (assert) {
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
     await render(hbs` <Dialog @isOpen={{this.isOpen}} @canEscapeKeyClose={{false}} @usePortal={{false}} @onClose={{action this.onClose}}>

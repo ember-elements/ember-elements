@@ -1,4 +1,4 @@
-import { Alignment, IProps } from '../../_private/common';
+import type { Alignment, IProps } from '../../_private/common';
 
 export interface IControlProps extends IProps {
   /**

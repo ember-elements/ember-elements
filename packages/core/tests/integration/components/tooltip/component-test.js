@@ -1,13 +1,14 @@
+import { click, render, triggerEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerEvent } from '@ember/test-helpers';
 
 import hbs from 'htmlbars-inline-precompile';
+
 import * as Classes from '../classes';
-module('Integration | Component | tooltip', function(hooks) {
+module('Integration | Component | tooltip', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('tooltip render', async function(assert) {
+  test('tooltip render', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,7 +17,7 @@ module('Integration | Component | tooltip', function(hooks) {
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });
 
-  test('tooltip content render', async function(assert) {
+  test('tooltip content render', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', 'hii');
@@ -26,7 +27,7 @@ module('Integration | Component | tooltip', function(hooks) {
     assert.dom(`.${Classes.POPOVER_CONTENT}`).hasText('hii');
   });
 
-  test('default open by controlled variable', async function(assert) {
+  test('default open by controlled variable', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -34,7 +35,7 @@ module('Integration | Component | tooltip', function(hooks) {
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });
 
-  test('event type click', async function(assert) {
+  test('event type click', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -43,7 +44,7 @@ module('Integration | Component | tooltip', function(hooks) {
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });
 
-  test('intent primary', async function(assert) {
+  test('intent primary', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -52,7 +53,7 @@ module('Integration | Component | tooltip', function(hooks) {
     assert.dom(`.${Classes.intentClass('primary')}`).exists();
   });
 
-  test('targetId', async function(assert) {
+  test('targetId', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 

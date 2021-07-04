@@ -1,4 +1,4 @@
-import { Intent } from './intent';
+import type { Intent } from './intent';
 
 export interface IProps {
   /** A space-delimited list of class names to pass along to a child element. */

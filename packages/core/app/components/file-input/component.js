@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/forms/file-input/component';
+export { default } from '@ember-elements/core/components/forms/file-input';

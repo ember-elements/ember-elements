@@ -1,6 +1,7 @@
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
 const NS = 'ee';
@@ -10,10 +11,10 @@ const LARGE = `${NS}-large`;
 const MINIMAL = `${NS}-minimal`;
 const VERTICAL = `${NS}-vertical`;
 
-module('Integration | Component | button-group', function(hooks) {
+module('Integration | Component | button-group', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -22,7 +23,7 @@ module('Integration | Component | button-group', function(hooks) {
     assert.dom('div').hasClass(BUTTON);
   });
 
-  test('className renders', async function(assert) {
+  test('className renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -30,7 +31,7 @@ module('Integration | Component | button-group', function(hooks) {
     assert.dom('div').hasClass('foo');
   });
 
-  test('fill renders', async function(assert) {
+  test('fill renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -38,17 +39,17 @@ module('Integration | Component | button-group', function(hooks) {
     assert.dom('div').hasClass(FILL);
   });
 
-  test('minimal renders', async function(assert) {
+  test('minimal renders', async function (assert) {
     await render(hbs`<ButtonGroup @minimal={{true}} />`);
     assert.dom('div').hasClass(MINIMAL);
   });
 
-  test('vertical renders', async function(assert) {
+  test('vertical renders', async function (assert) {
     await render(hbs`<ButtonGroup @vertical={{true}} />`);
     assert.dom('div').hasClass(VERTICAL);
   });
 
-  test('large renders', async function(assert) {
+  test('large renders', async function (assert) {
     await render(hbs`<ButtonGroup @large={{true}} />`);
     assert.dom('div').hasClass(LARGE);
   });

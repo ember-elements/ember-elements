@@ -1,13 +1,14 @@
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
 import * as Classes from '../classes';
-module('Integration | Component | text-area', function(hooks) {
+module('Integration | Component | text-area', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('supports className, fill, & large & small', async function(assert) {
+  test('supports className, fill, & large & small', async function (assert) {
     await render(hbs`<TextArea @className='foo' @fill={{true}} @large={{true}} @small={{true}} />`);
 
     assert.dom('textarea').hasClass(Classes.INPUT);
@@ -17,7 +18,7 @@ module('Integration | Component | text-area', function(hooks) {
     assert.dom('textarea').hasClass('foo');
   });
 
-  test('can resize automatically', async function(assert) {
+  test('can resize automatically', async function (assert) {
     this.set('text', 'hii');
 
     await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`);
@@ -30,7 +31,7 @@ module('Integration | Component | text-area', function(hooks) {
     assert.notEqual(height, this.element.querySelector('textarea').style.height);
   });
 
-  test('doesnt clobber user-supplied styles', async function(assert) {
+  test('doesnt clobber user-supplied styles', async function (assert) {
     this.set('text', 'hii');
 
     await render(
@@ -50,7 +51,7 @@ module('Integration | Component | text-area', function(hooks) {
       );
   });
 
-  test('can fit large initial content', async function(assert) {
+  test('can fit large initial content', async function (assert) {
     this.set(
       'text',
       `Lorem ipsum dolor sit amet, consectetur adipiscing elit.

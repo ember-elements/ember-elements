@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/dialog/component';
+export { default } from '@ember-elements/core/components/dialog';

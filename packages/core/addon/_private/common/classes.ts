@@ -1,6 +1,8 @@
 import { Alignment } from './alignment';
 import { Intent } from './intent';
-import { Elevation } from './elevation';
+
+import type { Elevation } from './elevation';
+import type { Position } from './position';
 
 const NS = 'ee';
 
@@ -183,6 +185,7 @@ export function intentClass(intent?: Intent) {
   if (intent == null || intent === Intent.NONE) {
     return undefined;
   }
+
   return `${NS}-intent-${intent.toLowerCase()}`;
 }
 
@@ -191,6 +194,7 @@ export function iconClass(iconName?: string) {
   if (iconName == null) {
     return undefined;
   }
+
   // prettier-ignore
   return iconName.indexOf(`${NS}-icon-`) === 0 ? iconName : `${NS}-icon-${iconName}`;
 }
@@ -199,6 +203,7 @@ export function elevationClass(elevation: Elevation) {
   if (elevation == null) {
     return undefined;
   }
+
   return `${NS}-elevation-${elevation}`;
 }
 
@@ -206,6 +211,7 @@ export function positionClass(position: Position) {
   if (position == null) {
     return undefined;
   }
+
   return `${NS}-position-${position}`;
 }
 

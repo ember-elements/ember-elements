@@ -1,7 +1,9 @@
 import { Boundary as PopperBoundary, Modifiers as PopperModifiers } from 'popper.js';
+
 import { Position } from '../../_private/common/position';
-import { IProps } from '../../_private/common/props';
-import { IOverlayableProps } from '../overlay/component';
+
+import type { IProps } from '../../_private/common/props';
+import type { IOverlayableProps } from '../overlay/index';
 
 // re-export symbols for library consumers
 export { PopperBoundary, PopperModifiers };
@@ -9,9 +11,9 @@ export { PopperBoundary, PopperModifiers };
 /** `Position` with `"auto"` values, used by `Popover` and `Tooltip`. */
 export const PopoverPosition = {
   ...Position,
-  AUTO: 'auto' as 'auto',
-  AUTO_END: 'auto-end' as 'auto-end',
-  AUTO_START: 'auto-start' as 'auto-start',
+  AUTO: 'auto' as const,
+  AUTO_END: 'auto-end' as const,
+  AUTO_START: 'auto-start' as const,
 };
 export type PopoverPosition = typeof PopoverPosition[keyof typeof PopoverPosition];
 

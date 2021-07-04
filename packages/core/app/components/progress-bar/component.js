@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/progress-bar/component';
+export { default } from '@ember-elements/core/components/progress-bar';

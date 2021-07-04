@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/html-table/component';
+export { default } from '@ember-elements/core/components/html-table';

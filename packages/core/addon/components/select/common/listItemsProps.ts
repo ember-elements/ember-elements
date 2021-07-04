@@ -1,9 +1,10 @@
-import { IProps } from '../../../_private/common/index';
 import * as Utils from '../../../_private/common/utils';
-import { ItemListRenderer } from './itemListRenderer';
-import { ItemRenderer } from './itemRenderer';
-import { ICreateNewItem } from './listItemsUtils';
-import { ItemListPredicate, ItemPredicate } from './predicate';
+
+import type { IProps } from '../../../_private/common/index';
+import type { ItemListRenderer } from './itemListRenderer';
+import type { ItemRenderer } from './itemRenderer';
+import type { ICreateNewItem } from './listItemsUtils';
+import type { ItemListPredicate, ItemPredicate } from './predicate';
 
 /**
  * Equality test comparator to determine if two {@link IListItemsProps} items are equivalent.

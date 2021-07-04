@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/drawer/header/component';
+export { default } from '@ember-elements/core/components/drawer/header';

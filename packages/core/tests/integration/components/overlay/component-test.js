@@ -1,14 +1,15 @@
 /* eslint-disable qunit/no-commented-tests */
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerKeyEvent } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
 import * as Classes from '../classes';
-module('Integration | Component | overlay', function(hooks) {
+module('Integration | Component | overlay', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('Overlay', async function(assert) {
+  test('Overlay', async function (assert) {
     // renders its content correctly
     this.set('isOpen', true);
     await render(
@@ -20,10 +21,10 @@ module('Integration | Component | overlay', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('renders contents to specified container correctly', async function(assert) {
+  test('renders contents to specified container correctly', async function (assert) {
     const CLASS_TO_TEST = 'ee-test-content';
     this.set('content', `<div class='${CLASS_TO_TEST}'>test</div>`);
-    this.set('toggleOverlay', function() {
+    this.set('toggleOverlay', function () {
       this.set('isOpen', true);
     });
 
@@ -35,7 +36,7 @@ module('Integration | Component | overlay', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('portalClassName appears on Portal', async function(assert) {
+  test('portalClassName appears on Portal', async function (assert) {
     const CLASS_TO_TEST = 'bp-test-content';
     this.set('CLASS_TO_TEST', CLASS_TO_TEST);
     this.set('isOpen', true);
@@ -47,7 +48,7 @@ module('Integration | Component | overlay', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('renders Portal after first opened', async function(assert) {
+  test('renders Portal after first opened', async function (assert) {
     this.set('isOpen', false);
 
     await render(hbs`<Overlay @isOpen={{this.isOpen}}><span class='exists'> hi </span></Overlay>`);
@@ -60,7 +61,7 @@ module('Integration | Component | overlay', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('hasBackdrop=false does not render backdrop', async function(assert) {
+  test('hasBackdrop=false does not render backdrop', async function (assert) {
     this.set('isOpen', true);
 
     await render(
@@ -71,8 +72,8 @@ module('Integration | Component | overlay', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('renders portal attached to body when not inline after first opened', async function(assert) {
-    this.set('toggleOverlay', function() {
+  test('renders portal attached to body when not inline after first opened', async function (assert) {
+    this.set('toggleOverlay', function () {
       this.set('isOpen', true);
     });
     await render(
@@ -86,8 +87,8 @@ module('Integration | Component | overlay', function(hooks) {
   });
 
   // onClose-------------------------------
-  test('invoked on backdrop mousedown when canOutsideClickClose=true', async function(assert) {
-    this.set('onClose', function() {
+  test('invoked on backdrop mousedown when canOutsideClickClose=true', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     this.set('isOpen', true);
@@ -98,12 +99,12 @@ module('Integration | Component | overlay', function(hooks) {
 
     await click('.' + Classes.OVERLAY_BACKDROP);
 
-    assert.ok(this.get('IsOnCloseIsWorking'));
+    assert.ok(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
-  test('not invoked on backdrop mousedown when canOutsideClickClose=false', async function(assert) {
-    this.set('onClose', function() {
+  test('not invoked on backdrop mousedown when canOutsideClickClose=false', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     this.set('isOpen', true);
@@ -114,12 +115,12 @@ module('Integration | Component | overlay', function(hooks) {
 
     await click('.' + Classes.OVERLAY_BACKDROP);
 
-    assert.notOk(this.get('IsOnCloseIsWorking'));
+    assert.notOk(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
-  test('invoked on document mousedown when hasBackdrop=false', async function(assert) {
-    this.set('onClose', function() {
+  test('invoked on document mousedown when hasBackdrop=false', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     await this.set('isOpen', true);
@@ -130,12 +131,12 @@ module('Integration | Component | overlay', function(hooks) {
 
     await click(document.documentElement);
 
-    assert.ok(this.get('IsOnCloseIsWorking'));
+    assert.ok(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
-  test('not invoked on document mousedown when hasBackdrop=false and canOutsideClickClose=false', async function(assert) {
-    this.set('onClose', function() {
+  test('not invoked on document mousedown when hasBackdrop=false and canOutsideClickClose=false', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     this.set('isOpen', true);
@@ -146,12 +147,12 @@ module('Integration | Component | overlay', function(hooks) {
 
     await click(document.documentElement);
 
-    assert.notOk(this.get('IsOnCloseIsWorking'));
+    assert.notOk(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
-  test('invoked on escape key', async function(assert) {
-    this.set('onClose', function() {
+  test('invoked on escape key', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     this.set('isOpen', true);
@@ -162,12 +163,12 @@ module('Integration | Component | overlay', function(hooks) {
 
     await triggerKeyEvent('.' + Classes.OVERLAY_BACKDROP, 'keydown', 27);
 
-    assert.ok(this.get('IsOnCloseIsWorking'));
+    assert.ok(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
-  test('not invoked on escape key when canEscapeKeyClose=false', async function(assert) {
-    this.set('onClose', function() {
+  test('not invoked on escape key when canEscapeKeyClose=false', async function (assert) {
+    this.set('onClose', function () {
       this.set('IsOnCloseIsWorking', true);
     });
     this.set('isOpen', true);
@@ -178,7 +179,7 @@ module('Integration | Component | overlay', function(hooks) {
 
     await triggerKeyEvent('.' + Classes.OVERLAY_BACKDROP, 'keydown', 27);
 
-    assert.notOk(this.get('IsOnCloseIsWorking'));
+    assert.notOk(this.IsOnCloseIsWorking);
     await this.set('isOpen', false);
   });
 
@@ -194,7 +195,7 @@ module('Integration | Component | overlay', function(hooks) {
   //   await this.set('isOpen', false);
   // });
 
-  test('does not bring focus to overlay if autoFocus=false', async function(assert) {
+  test('does not bring focus to overlay if autoFocus=false', async function (assert) {
     this.set('isOpen', true);
 
     await render(
@@ -226,18 +227,18 @@ module('Integration | Component | overlay', function(hooks) {
   // });
 
   // Background scrolling
-  test('disables document scrolling by default', async function(assert) {
+  test('disables document scrolling by default', async function (assert) {
     this.set('isOpen', true);
 
     await render(
       hbs`<Overlay @isOpen={{this.isOpen}}><input tabIndex="0" type="text" /></Overlay>`
     );
     const hasClass = await document.body.classList.contains(Classes.OVERLAY_OPEN);
-    assert.equal(hasClass, true);
+    assert.true(hasClass);
     await this.set('isOpen', false);
   });
 
-  test('disables document scrolling if hasBackdrop=true and usePortal=true', async function(assert) {
+  test('disables document scrolling if hasBackdrop=true and usePortal=true', async function (assert) {
     this.set('isOpen', true);
     await render(
       hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}} @usePortal={{true}}  ><input tabIndex="0" type="text" /></Overlay>`
@@ -245,11 +246,11 @@ module('Integration | Component | overlay', function(hooks) {
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
 
-    assert.equal(hasClass, true);
+    assert.true(hasClass);
     await this.set('isOpen', false);
   });
 
-  test('does not disable document scrolling if hasBackdrop=true and usePortal=false', async function(assert) {
+  test('does not disable document scrolling if hasBackdrop=true and usePortal=false', async function (assert) {
     document.body.classList.remove(Classes.OVERLAY_OPEN);
     this.set('isOpen', true);
 
@@ -258,11 +259,11 @@ module('Integration | Component | overlay', function(hooks) {
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
-    assert.equal(hasClass, false);
+    assert.false(hasClass);
     await this.set('isOpen', false);
   });
 
-  test('does not disable document scrolling if hasBackdrop=false and usePortal=true', async function(assert) {
+  test('does not disable document scrolling if hasBackdrop=false and usePortal=true', async function (assert) {
     document.body.classList.remove(Classes.OVERLAY_OPEN);
     this.set('isOpen', true);
 
@@ -272,11 +273,11 @@ module('Integration | Component | overlay', function(hooks) {
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
 
-    assert.equal(hasClass, false);
+    assert.false(hasClass);
     await this.set('isOpen', false);
   });
 
-  test('does not disable document scrolling if hasBackdrop=false and usePortal=false', async function(assert) {
+  test('does not disable document scrolling if hasBackdrop=false and usePortal=false', async function (assert) {
     this.set('isOpen', true);
 
     await render(
@@ -285,11 +286,11 @@ module('Integration | Component | overlay', function(hooks) {
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
 
-    assert.equal(hasClass, false);
+    assert.false(hasClass);
     await this.set('isOpen', false);
   });
 
-  test('keeps scrolling disabled if hasBackdrop=true overlay exists following unmount', async function(assert) {
+  test('keeps scrolling disabled if hasBackdrop=true overlay exists following unmount', async function (assert) {
     this.set('isOpen', true);
 
     await render(
@@ -298,7 +299,7 @@ module('Integration | Component | overlay', function(hooks) {
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
 
-    assert.equal(hasClass, true);
+    assert.true(hasClass);
     await this.set('isOpen', false);
   });
 });

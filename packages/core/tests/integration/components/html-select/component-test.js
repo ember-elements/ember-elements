@@ -1,12 +1,13 @@
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | html-select', function(hooks) {
+module('Integration | Component | html-select', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('<HtmlSelect>: renders options strings', async function(assert) {
+  test('<HtmlSelect>: renders options strings', async function (assert) {
     this.set('options', ['a', 'b']);
 
     await render(hbs`<HtmlSelect @options={{this.options}}/>`);
@@ -14,7 +15,7 @@ module('Integration | Component | html-select', function(hooks) {
     assert.equal(this.element.querySelectorAll('option')[0].textContent.trim(), 'a');
     assert.equal(this.element.querySelectorAll('option')[1].textContent.trim(), 'b');
   });
-  test('<HtmlSelect>:renders options props', async function(assert) {
+  test('<HtmlSelect>:renders options props', async function (assert) {
     this.set('options', [
       { value: 'a' },
       { value: 'b', className: 'foo' },

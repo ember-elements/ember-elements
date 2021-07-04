@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/forms/switch/component';
+export { default } from '@ember-elements/core/components/forms/switch';

@@ -1,5 +1,5 @@
-import { Intent } from './intent';
 import { Alignment } from './alignment';
+import { Intent } from './intent';
 
 const NS = 'ee';
 
@@ -176,5 +176,6 @@ export function intentClass(intent?: Intent) {
   if (intent == null || intent === Intent.NONE) {
     return undefined;
   }
+
   return `${NS}-intent-${intent.toLowerCase()}`;
 }

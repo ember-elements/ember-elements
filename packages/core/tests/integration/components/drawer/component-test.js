@@ -1,7 +1,9 @@
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, triggerKeyEvent } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
+
 import * as Classes from '../classes';
 const DrawerContents = `
  <div class='${Classes.DRAWER_BODY}' key={1}>
@@ -19,10 +21,10 @@ const DrawerContents = `
   </div>
 `;
 
-module('Integration | Component | drawer', function(hooks) {
+module('Integration | Component | drawer', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('<Drawer>: renders its content correctly', async function(assert) {
+  test('<Drawer>: renders its content correctly', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -39,7 +41,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: overrides vertical', async function(assert) {
+  test('<Drawer>: overrides vertical', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -56,7 +58,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position right is default', async function(assert) {
+  test('<Drawer>: position right is default', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -70,7 +72,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position right, size becomes width', async function(assert) {
+  test('<Drawer>: position right, size becomes width', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -84,7 +86,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position right, adds appropriate classes (default behavior)', async function(assert) {
+  test('<Drawer>: position right, adds appropriate classes (default behavior)', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -98,7 +100,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position top, size becomes height', async function(assert) {
+  test('<Drawer>: position top, size becomes height', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -112,7 +114,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position top, adds appropriate classes (vertical, reverse)', async function(assert) {
+  test('<Drawer>: position top, adds appropriate classes (vertical, reverse)', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -126,7 +128,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position bottom, size becomes height', async function(assert) {
+  test('<Drawer>: position bottom, size becomes height', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -140,7 +142,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position bottom, adds appropriate classes (vertical)', async function(assert) {
+  test('<Drawer>: position bottom, adds appropriate classes (vertical)', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -154,7 +156,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position left, size becomes width', async function(assert) {
+  test('<Drawer>: position left, size becomes width', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -168,7 +170,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: position left, adds appropriate classes (reverse)', async function(assert) {
+  test('<Drawer>: position left, adds appropriate classes (reverse)', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -182,7 +184,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: size becomes width', async function(assert) {
+  test('<Drawer>: size becomes width', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -196,7 +198,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: vertical size becomes height', async function(assert) {
+  test('<Drawer>: vertical size becomes height', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -210,7 +212,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: vertical adds class', async function(assert) {
+  test('<Drawer>: vertical adds class', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
 
@@ -224,7 +226,7 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: portalClassName appears on Portal', async function(assert) {
+  test('<Drawer>: portalClassName appears on Portal', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
     this.set('testClassName', 'test-class');
@@ -239,10 +241,10 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: does not close when canOutsideClickClose=false and overlay backdrop element is moused down', async function(assert) {
+  test('<Drawer>: does not close when canOutsideClickClose=false and overlay backdrop element is moused down', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
 
@@ -258,10 +260,10 @@ module('Integration | Component | drawer', function(hooks) {
     await this.set('isOpen', false);
   });
 
-  test('<Drawer>: does not close when canEscapeKeyClose=false and escape key is pressed', async function(assert) {
+  test('<Drawer>: does not close when canEscapeKeyClose=false and escape key is pressed', async function (assert) {
     this.set('DrawerContents', DrawerContents);
     this.set('isOpen', true);
-    this.set('onClose', function() {
+    this.set('onClose', function () {
       this.set('isOpen', false);
     });
 

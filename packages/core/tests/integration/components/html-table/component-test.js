@@ -1,6 +1,7 @@
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
 const NS = 'ee';
@@ -10,12 +11,12 @@ const HTML_TABLE_BORDERED = `${HTML_TABLE}-bordered`;
 const HTML_TABLE_CONDENSED = `${HTML_TABLE}-condensed`;
 const HTML_TABLE_STRIPED = `${HTML_TABLE}-striped`;
 
-module('Integration | Component | html-table', function(hooks) {
+module('Integration | Component | html-table', function (hooks) {
   setupRenderingTest(hooks);
 
   // this component is simple enough that tests would be purely tautological.
 
-  test('supports bordered, interactive, stripped, condensed and className props', async function(assert) {
+  test('supports bordered, interactive, stripped, condensed and className props', async function (assert) {
     await render(
       hbs`<HtmlTable @bordered={{true}} @className='foo' @interactive={{true}} @striped={{true}} @condensed={{true}}/>`
     );

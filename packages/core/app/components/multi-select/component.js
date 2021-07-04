@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/select/multi-select/component';
+export { default } from '@ember-elements/core/components/select/multi-select';

@@ -1,1 +1,1 @@
-export { default, and } from '@ember-elements/core/helpers/and';
+export { and, default } from '@ember-elements/core/helpers/and';

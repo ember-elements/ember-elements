@@ -1,6 +1,7 @@
-import { Placement } from 'popper.js';
 import { Position } from '../../_private/common/position';
-import { PopoverPosition } from './popoverSharedProps';
+
+import type { PopoverPosition } from './popoverSharedProps';
+import type { Placement } from 'popper.js';
 
 /**
  * Convert a position to a placement.

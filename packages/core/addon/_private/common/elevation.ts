@@ -1,8 +1,8 @@
 export const Elevation = {
-  ZERO: 0 as 0,
-  ONE: 1 as 1,
-  TWO: 2 as 2,
-  THREE: 3 as 3,
-  FOUR: 4 as 4,
+  ZERO: 0 as const,
+  ONE: 1 as const,
+  TWO: 2 as const,
+  THREE: 3 as const,
+  FOUR: 4 as const,
 };
 export type Elevation = typeof Elevation[keyof typeof Elevation];

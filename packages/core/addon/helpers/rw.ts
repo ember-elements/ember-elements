@@ -5,6 +5,7 @@ export function rw(params: Array<string> /*, hash*/) {
 
   for (let index = 0; index < (params || []).length; index++) {
     const element: string = params[index];
+
     if (element) {
       removedWhiteSpace += element + ' ';
     }

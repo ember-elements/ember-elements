@@ -1,5 +1,5 @@
-import { ICreateNewItem, IListItemsProps } from './common/index';
-import { IProps } from '../../_private/common';
+import type { IProps } from '../../_private/common';
+import type { ICreateNewItem, IListItemsProps } from './common/index';
 
 export interface IQueryListProps<T> extends IListItemsProps<T> {
   /**
@@ -27,7 +27,7 @@ export interface IQueryListProps<T> extends IListItemsProps<T> {
  * An object describing how to render a `QueryList`.
  * A `QueryList` `renderer` receives this object as its sole argument.
  */
-export interface IQueryListRendererProps<T>  // Omit `createNewItem`, because it's used strictly for internal tracking.
+export interface IQueryListRendererProps<T> // Omit `createNewItem`, because it's used strictly for internal tracking.
   extends Pick<IQueryListState<T>, 'activeItem' | 'filteredItems' | 'query'>,
     IProps {
   /**

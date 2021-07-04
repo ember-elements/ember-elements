@@ -1,14 +1,15 @@
+import { render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+
 import hbs from 'htmlbars-inline-precompile';
 
 import * as Classes from '../../classes';
 
-module('Integration | Component | drawer/header', function(hooks) {
+module('Integration | Component | drawer/header', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('Drawer Header renders <Drawer::Header>', async function(assert) {
+  test('Drawer Header renders <Drawer::Header>', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', 'Header is rendering');

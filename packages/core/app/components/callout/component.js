@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/callout/component';
+export { default } from '@ember-elements/core/components/callout';

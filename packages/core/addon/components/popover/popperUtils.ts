@@ -1,4 +1,4 @@
-import PopperJS from 'popper.js';
+import type PopperJS from 'popper.js';
 
 // Popper placement utils
 // ======================
@@ -6,6 +6,7 @@ import PopperJS from 'popper.js';
 /** Converts a full placement to one of the four positions by stripping text after the `-`. */
 export function getPosition(placement: PopperJS.Placement) {
   const position = placement.split('-')[0];
+
   return position as PopperJS.Position;
 }
 
@@ -31,6 +32,7 @@ export function getOppositePosition(side: PopperJS.Position) {
 /** Returns the CSS alignment keyword corresponding to given placement. */
 export function getAlignment(placement: PopperJS.Placement) {
   const align = placement.split('-')[1] as 'start' | 'end' | undefined;
+
   switch (align) {
     case 'start':
       return 'left';
@@ -47,6 +49,7 @@ export function getAlignment(placement: PopperJS.Placement) {
 /** Modifier helper function to compute popper transform-origin based on arrow position */
 export function getTransformOrigin(data: PopperJS.Data) {
   const position = getPosition(data.placement);
+
   if (data.arrowElement == null) {
     return isVerticalPosition(position)
       ? `${getOppositePosition(position)} ${getAlignment(position)}`
@@ -54,6 +57,7 @@ export function getTransformOrigin(data: PopperJS.Data) {
   } else {
     const arrowSizeShift = data.arrowElement.clientHeight / 2;
     const { arrow } = data.offsets;
+
     // can use keyword for dimension without the arrow, to ease computation burden.
     // move origin by half arrow's height to keep it centered.
     return isVerticalPosition(position)
@@ -66,10 +70,11 @@ export function getTransformOrigin(data: PopperJS.Data) {
 const ARROW_SPACING = 4;
 
 /** Popper modifier that offsets popper and arrow so arrow points out of the correct side */
-export const arrowOffsetModifier: PopperJS.ModifierFn = data => {
+export const arrowOffsetModifier: PopperJS.ModifierFn = (data) => {
   if (data.arrowElement == null) {
     return data;
   }
+
   // our arrows have equal width and height
   const arrowSize = data.arrowElement.clientWidth;
   // this logic borrowed from original Popper arrow modifier itself
@@ -79,6 +84,7 @@ export const arrowOffsetModifier: PopperJS.ModifierFn = data => {
   const offsetSide = isVertical ? 'left' : 'top';
 
   const arrowOffsetSize = Math.round(arrowSize / 2 / Math.sqrt(2));
+
   // offset popover by arrow size, offset arrow in the opposite direction
   if (position === 'top' || position === 'left') {
     // the "up & back" directions require negative popper offsets
@@ -89,5 +95,6 @@ export const arrowOffsetModifier: PopperJS.ModifierFn = data => {
     data.offsets.popper[offsetSide] += arrowOffsetSize + ARROW_SPACING;
     data.offsets.arrow[offsetSide] = -arrowOffsetSize;
   }
+
   return data;
 };

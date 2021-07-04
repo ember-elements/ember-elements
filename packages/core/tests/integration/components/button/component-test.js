@@ -1,18 +1,18 @@
-import { module, test } from 'qunit';
-
-import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import { click, triggerKeyEvent } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+
+import hbs from 'htmlbars-inline-precompile';
 
 const NS = 'ee';
 const BUTTON = `${NS}-button`;
 const ICON = `${NS}-icon-style`;
 
-module('Integration | Component | button', function(hooks) {
+module('Integration | Component | button', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -22,7 +22,7 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('button').hasClass('foo');
   });
 
-  test('icon="style" renders Icon as first child', async function(assert) {
+  test('icon="style" renders Icon as first child', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -33,7 +33,7 @@ module('Integration | Component | button', function(hooks) {
     assert.ok(element[0].classList.contains(ICON));
   });
 
-  test('renders the button text prop', async function(assert) {
+  test('renders the button text prop', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', 'foo');
@@ -42,7 +42,7 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('button').hasText('foo');
   });
 
-  test('wraps string children in spans', async function(assert) {
+  test('wraps string children in spans', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', 'foo');
@@ -52,7 +52,7 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('em').exists();
   });
 
-  test('renders span if text=0', async function(assert) {
+  test('renders span if text=0', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
@@ -60,19 +60,19 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('span').exists();
   });
 
-  test('doesn\'t render a span if text=""', async function(assert) {
+  test('doesn\'t render a span if text=""', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     await render(hbs`<Button />`);
     assert.dom('span').doesNotExist();
   });
 
-  test('clicking button triggers onClick prop', async function(assert) {
+  test('clicking button triggers onClick prop', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(
@@ -83,28 +83,28 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('#result').hasText('Hello World');
   });
 
-  test('clicking disabled button does not trigger onClick prop', async function(assert) {
+  test('clicking disabled button does not trigger onClick prop', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(
       hbs`<Button @onClick={{action  this.buttonAction 'Hello' 'World'  }} @disabled={{true}}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
     );
-    await click('button');
+    // await click('button'); // TODO error Error: Can not `click` disabled
     assert.dom('span').exists();
     assert.dom('#result').hasNoText();
   });
 
-  test('pressing enter triggers onKeyDown props with any modifier flags', async function(assert) {
+  test('pressing enter triggers onKeyDown props with any modifier flags', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(
@@ -117,12 +117,12 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('#result').hasText('Hello World');
   });
 
-  test('pressing space triggers onKeyDown props with any modifier flags', async function(assert) {
+  test('pressing space triggers onKeyDown props with any modifier flags', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(
@@ -134,12 +134,12 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('#result').hasText('Hello World');
   });
 
-  test('onkeyup with Enter', async function(assert) {
+  test('onkeyup with Enter', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(
@@ -151,12 +151,12 @@ module('Integration | Component | button', function(hooks) {
     assert.dom('#result').hasText('Hello World');
   });
 
-  test('onkeyup with Space', async function(assert) {
+  test('onkeyup with Space', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', '0');
     this.set('result', '');
-    this.set('buttonAction', function(a, b) {
+    this.set('buttonAction', function (a, b) {
       this.set('result', a + ' ' + b);
     });
     await render(

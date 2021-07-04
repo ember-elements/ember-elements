@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/tooltip/component';
+export { default } from '@ember-elements/core/components/tooltip';

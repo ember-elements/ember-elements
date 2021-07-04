@@ -21,9 +21,11 @@ export function isCreateNewItem<T>(
   // see if the provided item exactly matches the `ICreateNewItem` object,
   // with no superfluous keys.
   const keys = Object.keys(item);
+
   if (keys.length !== 1 || keys[0] !== '__blueprintCreateNewItemBrand') {
     return false;
   }
+
   return (item as ICreateNewItem).__blueprintCreateNewItemBrand === 'blueprint-create-new-item';
 }
 

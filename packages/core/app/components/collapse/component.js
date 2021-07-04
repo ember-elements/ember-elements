@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/collapse/component';
+export { default } from '@ember-elements/core/components/collapse';

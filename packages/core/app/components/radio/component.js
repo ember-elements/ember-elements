@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/forms/radio/component';
+export { default } from '@ember-elements/core/components/forms/radio';

@@ -1,4 +1,4 @@
-import { Alignment, Intent } from '../common';
+import type { Alignment, Intent } from '../common';
 
 /**
  * A shared base interface for all ember elements component props.

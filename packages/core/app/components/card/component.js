@@ -1,1 +1,1 @@
-export { default } from '@ember-elements/core/components/card/component';
+export { default } from '@ember-elements/core/components/card';
