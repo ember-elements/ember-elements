@@ -980,6 +980,16 @@
   resolved "https://registry.yarnpkg.com/@ember-data/rfc395-data/-/rfc395-data-0.0.4.tgz#ecb86efdf5d7733a76ff14ea651a1b0ed1f8a843"
   integrity sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==
 
+"@ember-template-lint/todo-utils@^9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@ember-template-lint/todo-utils/-/todo-utils-9.1.2.tgz#acadb0378acb12d5220a397143a69f197b4a3a05"
+  integrity sha512-wHRL/YQc/CtPabV7GuYLtS2A592GCd54aY544JOH4OXnpepZkxy5dp18iaNbtErihBW/+sIJr8/JvsCxw5T3Wg==
+  dependencies:
+    "@types/eslint" "^7.2.12"
+    fs-extra "^9.1.0"
+    slash "^3.0.0"
+    tslib "^2.2.0"
+
 "@ember/edition-utils@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ember/edition-utils/-/edition-utils-1.2.0.tgz#a039f542dc14c8e8299c81cd5abba95e2459cfa6"
@@ -2413,6 +2423,19 @@
   resolved "https://registry.yarnpkg.com/@types/ember__utils/-/ember__utils-3.16.2.tgz#3fa9a0666a3e8204262e2a2960289aaf01f29467"
   integrity sha512-tBbqewgegiKSpGZvGh3pbcoXwLCMvKVdLRE97vys75nAEz/vBzkGJm+PDz1HVaTkRukWbRhlDiTm2qFH8qRnSw==
 
+"@types/eslint@^7.2.12":
+  version "7.2.13"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.13.tgz#e0ca7219ba5ded402062ad6f926d491ebb29dd53"
+  integrity sha512-LKmQCWAlnVHvvXq4oasNUMTJJb2GwSyTY8+1C7OH5ILR8mPLaljv1jxL1bXW3xB3jFbQxTKxJAvI8PyjB09aBg==
+  dependencies:
+    "@types/estree" "*"
+    "@types/json-schema" "*"
+
+"@types/estree@*":
+  version "0.0.49"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.49.tgz#3facb98ebcd4114a4ecef74e0de2175b56fd4464"
+  integrity sha512-K1AFuMe8a+pXmfHTtnwBvqoEylNKVeaiKYkjmcEAdytMQVJ/i9Fu7sc13GxgXdO49gkE7Hy8SyJonUZUn+eVaw==
+
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.22"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.22.tgz#e011c55de3f17ddf1161f790042a15c5a218744d"
@@ -2466,7 +2489,7 @@
   dependencies:
     "@types/sizzle" "*"
 
-"@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5":
+"@types/json-schema@*", "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
   integrity sha512-cxWFQVseBm6O9Gbw1IWb8r6OS4OhSt3hPZLkFApLjM8TEXROBuQGLAH2i2gZpcXdLBIrpXuTDhH7Vbm1iXmNGA==
@@ -5953,6 +5976,11 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
+date-fns@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
+  integrity sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==
+
 dateformat@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
@@ -6993,24 +7021,26 @@ ember-source@~3.24.0:
     semver "^6.1.1"
     silent-error "^1.1.1"
 
-ember-template-lint@^2.15.0:
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-2.21.0.tgz#7e120abf309a8810eeed26c52377943faf15a95b"
-  integrity sha512-19QbEqJQdMfcRS7PsQsubflRowEtnkbD0tpYR4q/xq4lodmhU7hhOFvlTQgbxD/jwW5Ur+tkOwH4KFy9JwOyXA==
+ember-template-lint@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-3.5.0.tgz#f178c233c42a1b17467db1520d964018d735dab6"
+  integrity sha512-wkSuR0LuYOMomZ142nX06r2d6pUWkMUwy4AbxZwcB1+ArLhgZYIuOZefd/zsWM+RuMI0w4PiNDZXNXdH7qEasg==
   dependencies:
-    chalk "^4.0.0"
-    ember-template-recast "^5.0.1"
+    "@ember-template-lint/todo-utils" "^9.1.2"
+    chalk "^4.1.1"
+    date-fns "^2.22.1"
+    ember-template-recast "^5.0.3"
     find-up "^5.0.0"
     fuse.js "^6.4.6"
     get-stdin "^8.0.0"
-    globby "^11.0.2"
+    globby "^11.0.3"
     is-glob "^4.0.1"
-    micromatch "^4.0.2"
+    micromatch "^4.0.4"
     resolve "^1.20.0"
-    v8-compile-cache "^2.2.0"
+    v8-compile-cache "^2.3.0"
     yargs "^16.2.0"
 
-ember-template-recast@^5.0.1:
+ember-template-recast@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/ember-template-recast/-/ember-template-recast-5.0.3.tgz#79df27a70bdce7be17f14db13886afde1e9d02d6"
   integrity sha512-qsJYQhf29Dk6QMfviXhUPE+byMOs6iRQxUDHgkj8yqjeppvjHaFG96hZi/NAXJTm/M7o3PpfF5YlmeaKtI9UeQ==
@@ -15136,7 +15166,7 @@ tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3:
+tslib@^2.0.3, tslib@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
   integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
@@ -15536,7 +15566,7 @@ uuid@^8.3.0, uuid@^8.3.1:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-v8-compile-cache@^2.0.3, v8-compile-cache@^2.2.0, v8-compile-cache@^2.3.0:
+v8-compile-cache@^2.0.3, v8-compile-cache@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
