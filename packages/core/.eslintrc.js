@@ -11,6 +11,9 @@ module.exports = {
     // your modifications here
     // see: https://eslint.org/docs/user-guide/configuring/configuration-files#how-do-overrides-work
   ],
+  rules: {
+    'ember/no-computed-properties-in-native-classes': 'off',
+  },
 };
 
 // 'use strict';

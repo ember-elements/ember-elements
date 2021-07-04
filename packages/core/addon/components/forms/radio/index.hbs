@@ -1,0 +1,12 @@
+{{! template-lint-disable no-triple-curlies }}
+<label class={{rw this.RADIO this.CONTROL this.getAlignIndicator this.getClassName this.getDisabled this.getInline
+	this.getLarge }}>
+	<input type='radio' disabled={{this.getDisabled}} onchange={{this.handleChange}} ...attributes>
+	<sapn class={{this.CONTROL_INDICATOR}}></sapn>
+	{{#if this.getLabel}}
+		{{this.getLabel}}
+	{{else}}
+		{{{this.getLabelElement}}}
+	{{/if}}
+	{{yield}}
+</label>

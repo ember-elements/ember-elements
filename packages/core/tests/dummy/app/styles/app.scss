@@ -1,0 +1,17 @@
+/* @tailwind base;
+
+@tailwind components;
+
+@tailwind utilities; */
+
+@import 'app/styles/core';
+.docs-overlay-example-transition {
+  top: 0;
+  left: calc(50vw - 200px);
+  margin: 10vh 0;
+  width: 400px;
+}
+
+.docs-overlay-example-tall {
+  height: 200%;
+}

@@ -1,0 +1,16 @@
+<button type={{this.type}} class={{rw this.BUTTON this.active this.alignText this.disabled this.fill this.large
+	this.loading this.minimal this.small this.intent this.className}} tabIndex={{if this.disabled -1 this.tabIndex}}
+	onkeydown={{this.handleKeyDown}} onkeyup={{this.handleKeyUp}} disabled={{this.disabled}} {{on 'click' this.onClick}}
+	{{did-insert this.onUpdate}} {{did-update this.onUpdate}} ...attributes>
+	{{#if this.icon}}
+		<Icon key='leftIcon' @icon={{this.icon}} />
+	{{/if}}
+	<span class={{this.BUTTON_TEXT}}>
+		{{yield}}
+	</span>
+	{{#if this.rightIcon}}
+		<Icon key='rightIcon' @icon={{this.rightIcon}} />
+	{{/if}}
+
+
+</button>

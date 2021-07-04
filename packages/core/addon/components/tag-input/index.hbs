@@ -1,0 +1,30 @@
+{{! template-lint-disable no-triple-curlies }}
+{{! template-lint-disable }}
+<div class={{rw this.INPUT this.TAG_INPUT this.getTagIClassName this.getActiveInputFocus this.getTagIDisabled
+	this.getTagIFill this.getTagILarge this.getTagIIntent }} {{on 'blur' this.handleContainerBlur}} {{on 'click'
+	this.handleContainerClick}} value={{this.getInputValue}}>
+	{{#if this.getTagILeftIcon}}
+		<Icon @className={{this.TAG_INPUT_ICON}} @icon={{this.getTagILeftIcon}} @iconSize={{if this.getTagILarge
+			this.SIZE_LARGE this.SIZE_STANDARD}} />
+	{{/if}}
+	<div class={{rw this.TAG_INPUT_VALUES}}>
+		{{#each this.getValuesData as |tag index|}}
+			{{#if tag}}
+				<Tag @active={{if (eq index this.activeIndex) true false}} key="{{tag}}__{{index}}" data-tag-index={{index}}
+					@large={{this.getTagILarge}} @removable={{if this.getTagIDisabled false true}}
+					@onRemove={{action 'handleRemoveTag' }} @className={{this.getTagProps.className}}
+					@fill={{this.getTagProps.fill}} @icon={{this.getTagProps.icon}} @iconSize={{this.getTagProps.iconSize}}
+					@intent={{this.getTagProps.intent}} @interactive={{this.getTagProps.interactive}}
+					@minimal={{this.getTagProps.minimal}} @rightIcon={{this.getTagProps.rightIcon}}
+					@round={{this.getTagProps.round}} @props={{this.getTagProps.props}} {{! render tag property }}>
+					{{{tag}}}
+				</Tag>
+			{{/if}}
+		{{/each}}
+		<input value={{this.inputValue}} ...attributes class={{this.INPUT_GHOST}} disabled={{if this.getTagIDisabled true}}
+			placeholder={{this.getPlaceHolder}} {{on 'focus' this.handleInputFocus}} {{on 'input' this.handleInputChange}}
+			{{on 'keydown' this.handleInputKeyDown}} {{on 'keyup' this.handleInputKeyUp}} {{on 'paste' this.handleInputPaste}}
+			{{did-insert this.inputElementRef}}>
+	</div>
+	{{yield}}
+</div>

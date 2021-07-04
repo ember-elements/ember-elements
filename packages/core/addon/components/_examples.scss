@@ -1,0 +1,33 @@
+@import '../_private/common/react-transition';
+
+// prettier-ignore
+.docs-overlay-example-transition {
+  $overlay-example-width: $pt-grid-size * 40;
+  $enter: (
+    transform: (translateY(-50vh) rotate(-10deg), translateY(0) rotate(0deg))
+  );
+  $leave: (
+    transform: (translateY(150vh) rotate(-20deg), translateY(0) rotate(0deg))
+  );
+
+  @include react-transition-phase(
+    "#{$ns}-overlay",
+    "enter",
+    $enter,
+    $pt-transition-duration * 3,
+    $pt-transition-ease-bounce,
+    $before: "&"
+  );
+  @include react-transition-phase(
+    "#{$ns}-overlay",
+    "leave",
+    $leave,
+    $pt-transition-duration * 5,
+    $before: "&"
+  );
+
+  top: 0;
+  left: calc(50vw - #{$overlay-example-width / 2});
+  margin: 10vh 0;
+  width: $overlay-example-width;
+}

@@ -1,0 +1,14 @@
+// NOTE: this partial file is imported once here so form components can just use it.
+@import './common';
+@import './control-group/control-group';
+@import './form-group/form-group';
+@import './label';
+@import './controls';
+@import './file-input/file-input';
+@import './input-group/input-group';
+@import './input';
+@import './numeric-input/numeric-input';
+
+form {
+  display: block;
+}

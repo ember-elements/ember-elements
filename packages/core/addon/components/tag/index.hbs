@@ -1,0 +1,22 @@
+<span class={{rw this.TAG this.getTagClassName this.getIntent this.getActive this.getTagFill this.getInteractive
+	this.getLarge this.getMinimal this.getRound }} tabIndex={{if this.getInteractive this.getTabIndex}} ...attributes>
+	{{#if this.getTagIcon}}
+		<Icon @icon={{this.getTagIcon}} />
+	{{/if}}
+
+	{{#if hasBlock}}
+		<span class={{rw this.FILL this.TEXT_OVERFLOW_ELLIPSIS}}>
+			{{yield}}
+		</span>
+	{{/if}}
+
+	{{#if this.getRightIcon}}
+		<Icon @icon={{this.getRightIcon}} />
+	{{/if}}
+
+	{{#if this.isRemovable}}
+		<button type='button' className={{this.TAG_REMOVE}} {{on 'click' this.onRemoveClick}}>
+			<Icon @icon='small-cross' @iconSize={{if this.getLarge this.SIZE_LARGE this.SIZE_STANDARD}} />
+		</button>
+	{{/if}}
+</span>
