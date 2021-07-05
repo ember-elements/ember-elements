@@ -98,6 +98,7 @@ Styleguide control-group
   .#{$ns}-html-select select,
   .#{$ns}-select select {
     @include new-render-layer();
+
     z-index: index($control-group-stack, 'button-default');
     // inherit radius since it's most likely to be zero
     border-radius: inherit;

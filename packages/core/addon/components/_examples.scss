@@ -2,7 +2,9 @@
 
 // prettier-ignore
 .docs-overlay-example-transition {
-  $overlay-example-width: $pt-grid-size * 40;
+  
+	$overlay-example-width: $pt-grid-size * 40;
+
   $enter: (
     transform: (translateY(-50vh) rotate(-10deg), translateY(0) rotate(0deg))
   );

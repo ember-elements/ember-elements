@@ -86,6 +86,7 @@ $file-input-button-padding-large: ($pt-input-height-large - $pt-button-height) /
 .#{$ns}-file-upload-input {
   @include pt-input();
   @include overflow-ellipsis();
+
   position: absolute;
   top: 0;
   right: 0;
@@ -98,6 +99,7 @@ $file-input-button-padding-large: ($pt-input-height-large - $pt-button-height) /
     @include pt-button();
     @include pt-button-height($pt-button-height-small);
     @include overflow-ellipsis();
+
     position: absolute;
     top: 0;
     right: 0;
@@ -119,10 +121,12 @@ $file-input-button-padding-large: ($pt-input-height-large - $pt-button-height) /
 
   .#{$ns}-large & {
     @include pt-input-large();
+
     padding-right: $file-input-button-width-large + $input-padding-horizontal;
 
     &::after {
       @include pt-button-height($pt-button-height);
+
       margin: $file-input-button-padding-large;
       width: $file-input-button-width-large;
       line-height: $pt-button-height;
@@ -131,6 +135,7 @@ $file-input-button-padding-large: ($pt-input-height-large - $pt-button-height) /
 
   .#{$ns}-dark & {
     @include pt-dark-input();
+
     color: $pt-dark-text-color-disabled;
 
     &::after {

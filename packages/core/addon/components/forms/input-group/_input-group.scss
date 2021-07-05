@@ -73,6 +73,7 @@ $input-button-height-small: $pt-button-height-smaller !default;
 
   .#{$ns}-button {
     @include pt-button-height($input-button-height);
+
     margin: ($pt-input-height - $input-button-height) / 2;
     padding: $button-padding-small;
 
@@ -146,6 +147,7 @@ $input-button-height-small: $pt-button-height-smaller !default;
   &.#{$ns}-large {
     .#{$ns}-button {
       @include pt-button-height($input-button-height-large);
+
       margin: ($pt-input-height-large - $input-button-height-large) / 2;
     }
 
@@ -170,11 +172,13 @@ $input-button-height-small: $pt-button-height-smaller !default;
   &.#{$ns}-small {
     .#{$ns}-button {
       @include pt-button-height($pt-button-height-smaller);
+
       margin: ($pt-input-height-small - $pt-button-height-smaller) / 2;
     }
 
     .#{$ns}-tag {
       @include pt-button-height($pt-button-height-smaller);
+
       margin: ($pt-input-height-small - $pt-button-height-smaller) / 2;
     }
 
