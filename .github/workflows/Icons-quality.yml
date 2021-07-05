@@ -1,0 +1,43 @@
+name: '@ember-elements/icons'
+on:
+  pull_request:
+    branches: [main]
+    # paths:
+    # - 'packages/icons/**'
+
+env:
+  cwd: packages/icons/
+
+jobs:
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: volta-cli/action@v1
+
+    - name: Install
+      working-directory: ${{ env.cwd }}
+      run: yarn install
+
+    - name: Snyk
+      working-directory: ${{ env.cwd }}
+      if: github.event == 'pull_request'
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      run: snyk test --severity-threshold=high
+
+    - name: "JS/TS"
+      working-directory: ${{ env.cwd }}
+      run: yarn eslint . --ext .ts --ext .js
+
+
+    - name: "Styles"
+      working-directory: ${{ env.cwd }}
+      run: yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss
+
+    - name: 'Type Correctness'
+      working-directory: ${{ env.cwd }}
+      run: yarn tsc --build

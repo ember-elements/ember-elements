@@ -16,6 +16,8 @@
 		"build": "ember build --environment=production",
 		"lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
 		"lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
+		"lint:scss:fix": "stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss --fix",
+		"lint:scss": "stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss",
 		"lint:hbs": "ember-template-lint .",
 		"lint:hbs:fix": "ember-template-lint . --fix",
 		"lint:js": "eslint . --cache",
@@ -41,7 +43,7 @@
 	"lint-staged": {
 		"*.{ts,js}": "yarn eslint --fix --quiet --cache",
 		"*.hbs": "yarn ember-template-lint --fix",
-		"*.css": "yarn stylelint --fix --cache",
+		"*.scss": "yarn stylelint --fix --cache",
 		"*.js": "eslint --cache --fix"
 	},
 	"dependencies": {
@@ -122,7 +124,7 @@
 		"qunit-dom": "^1.6.0",
 		"sass-lint": "^1.13.1",
 		"stylelint": "^13.13.1",
-		"stylelint-config-standard": "^22.0.0",
+		"stylelint-scss": "^3.19.0",
 		"typescript": "^4.3.4"
 	},
 	"engines": {

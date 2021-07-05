@@ -37,6 +37,7 @@
 
     "module": "ESNext",
 
+		"skipLibCheck": true,
     // Stage 3 one day
     "experimentalDecorators": true,
 
