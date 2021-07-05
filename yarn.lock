@@ -2299,9 +2299,9 @@
     "@types/ember__object" "*"
 
 "@types/ember__component@*", "@types/ember__component@^3.16.4":
-  version "3.16.4"
-  resolved "https://registry.yarnpkg.com/@types/ember__component/-/ember__component-3.16.4.tgz#545b35d8aa861eb4753e26b6a2cbde43d8524f89"
-  integrity sha512-AQKKspusr/28HoRJ7aK+PHx0r5At0LwStCijNlhxPLXAkK8tOBcEoVqMd1TT5xNXKCxzmgbGPf8pjR6Xbc1/Iw==
+  version "3.16.5"
+  resolved "https://registry.yarnpkg.com/@types/ember__component/-/ember__component-3.16.5.tgz#6dcda9dfc9d9b6837f300f7862c28ac0b9368cc8"
+  integrity sha512-+6gtvT4ca0I47Vv5wh8EghaRFqNOanqVYkry5s/om246h9HavY1chd0AzzbNcEK26DGNOKCEP3paF2Zzevny1A==
   dependencies:
     "@types/ember__component" "*"
     "@types/ember__object" "*"
@@ -14581,18 +14581,6 @@ styled_string@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/styled_string/-/styled_string-0.0.1.tgz#d22782bd81295459bc4f1df18c4bad8e94dd124a"
   integrity sha1-0ieCvYEpVFm8Tx3xjEutjpTdEko=
-
-stylelint-config-recommended@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-5.0.0.tgz#fb5653f495a60b4938f2ad3e77712d9e1039ae78"
-  integrity sha512-c8aubuARSu5A3vEHLBeOSJt1udOdS+1iue7BmJDTSXoCBmfEQmmWX+59vYIj3NQdJBY6a/QRv1ozVFpaB9jaqA==
-
-stylelint-config-standard@^22.0.0:
-  version "22.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-22.0.0.tgz#c860be9a13ebbc1b084456fa10527bf13a44addf"
-  integrity sha512-uQVNi87SHjqTm8+4NIP5NMAyY/arXrBgimaaT7skvRfE9u3JKXRK9KBkbr4pVmeciuCcs64kAdjlxfq6Rur7Hw==
-  dependencies:
-    stylelint-config-recommended "^5.0.0"
 
 stylelint-scss@^3.19.0:
   version "3.19.0"
