@@ -156,9 +156,9 @@ export default class Overlay extends Component<OverlayArgs> {
 
   popperContainer = '.ember-application';
   prevPropsIsOpen = false;
-  @tracked hasEverOpened = false;
+  hasEverOpened = false;
   //ember css transition state handling
-  @tracked isShowContentAnimation = true;
+  isShowContentAnimation = true;
 
   @tracked getHasBackdropState = true;
 
@@ -266,6 +266,9 @@ export default class Overlay extends Component<OverlayArgs> {
 
   get hasEverOpenedProp() {
     return this.hasEverOpened ? this.OVERLAY_OPEN : '';
+  }
+  get getHasEverOpened() {
+    return this.hasEverOpened;
   }
 
   getautoFoucs() {
@@ -420,6 +423,10 @@ export default class Overlay extends Component<OverlayArgs> {
       this.prevPropsIsOpen = this.getIsOpen();
       this.overlayWillOpen();
     }
+  }
+
+  get getIsShowContentAnimation() {
+    return this.isShowContentAnimation;
   }
 
   @action

@@ -80,11 +80,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
-      max-parallel: 2
+      max-parallel: 6
       matrix:
         scenario:
         - "ember-lts-3.16"
         - "ember-lts-3.20"
+        - "ember-default-with-jquery"
         - "ember-release"
         - "ember-beta"
         - "ember-canary"
