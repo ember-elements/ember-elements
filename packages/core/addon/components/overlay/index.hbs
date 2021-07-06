@@ -5,8 +5,8 @@
 		<div class={{rw this.OVERLAY this.hasEverOpenedProp (if this.getUserPortalPro '' this.OVERLAY_INLINE)
 			this.getClassName }} {{did-insert this.getRefElement}} onKeyDown={{action 'handleKeyDown' }} {{!
 			template-lint-disable}}>
-			{{#if (and this.getLazyProp this.hasEverOpened)}}
-				{{#if this.isShowContentAnimation}}
+			{{#if (and this.getLazyProp this.getHasEverOpened)}}
+				{{#if this.getIsShowContentAnimation}}
 					{{#if (and this.getHasBackdropProp this.getHasBackdropState)}}
 						<div class={{rw this.OVERLAY_BACKDROP this.getBackdropClassName}} tabIndex={{if
 							this.getCanOutsideClickCloseProp 0 null}} onMouseDown={{action 'handleBackdropMouseDown' }}
@@ -36,8 +36,8 @@
 			<div class={{rw this.OVERLAY this.hasEverOpenedProp (if this.getUserPortalPro '' this.OVERLAY_INLINE)
 				this.getClassName }} {{did-insert this.getRefElement}} onKeyDown={{action 'handleKeyDown' }} {{!
 				template-lint-disable}}>
-				{{#if (and this.getLazyProp this.hasEverOpened)}}
-					{{#if this.isShowContentAnimation}}
+				{{#if (and this.getLazyProp this.getHasEverOpened)}}
+					{{#if this.getIsShowContentAnimation}}
 						{{#if (and this.getHasBackdropProp this.getHasBackdropState)}}
 							<div class={{rw this.OVERLAY_BACKDROP this.getBackdropClassName}} tabIndex={{if
 								this.getCanOutsideClickCloseProp 0 null}} onMouseDown={{action 'handleBackdropMouseDown' }}

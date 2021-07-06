@@ -31,6 +31,7 @@
 		"start": "ember serve",
 		"test": "npm-run-all lint test:*",
 		"test:ember": "ember test",
+		"test:try-one": "ember try:one",
 		"test:ember-compatibility": "ember try:each",
 		"prepack": "ember ts:precompile",
 		"postpack": "ember ts:clean"
@@ -51,7 +52,8 @@
 		"ember-cli-htmlbars": "^5.3.1",
 		"ember-cli-sass": "^10.0.1",
 		"ember-cli-typescript": "^4.2.1",
-		"sass": "^1.35.1"
+		"sass": "^1.35.1",
+		"ember-in-element-polyfill": "^1.0.1"
 	},
 	"devDependencies": {
 		"@ember-elements/icons": "0.0.0",
