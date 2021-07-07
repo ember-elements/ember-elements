@@ -106,7 +106,7 @@
 		"ember-try": "^1.4.0",
 		"eslint": "^7.17.0",
 		"eslint-config-prettier": "^7.1.0",
-		"eslint-plugin-decorator-position": "2.2.27",
+		"eslint-plugin-decorator-position": "2.2.28",
 		"eslint-plugin-ember": "^10.1.1",
 		"eslint-plugin-import": "2.22.1",
 		"eslint-plugin-node": "^11.1.0",
