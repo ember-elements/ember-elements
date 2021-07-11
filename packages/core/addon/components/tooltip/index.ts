@@ -2,9 +2,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { warn } from '@ember/debug';
-import { computed } from '@ember/object';
 import { action } from '@ember/object';
-import { reads } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 
 import * as Classes from '../../_private/common/classes';
@@ -61,18 +59,6 @@ interface TooltipArgs extends ITooltipProps, EmberTooltip {
 }
 
 export default class Tooltip extends Component<TooltipArgs> {
-	props = this.args.props;
-
-	@reads('props.popoverClassName') popoverClassName?: TooltipArgs['popoverClassName'];
-	@reads('props.intent') intent?: TooltipArgs['intent'];
-	@reads('props.isOpen') isOpen?: TooltipArgs['isOpen'];
-	@reads('props.defaultIsOpen') defaultIsOpen?: TooltipArgs['defaultIsOpen'];
-
-	// ember tooltip
-	@reads('props.targetId') targetId?: TooltipArgs['targetId'];
-	@reads('props.target') target?: TooltipArgs['target'];
-	@reads('props.event') event?: TooltipArgs['event'];
-
 	POPOVER_TARGET = Classes.POPOVER_TARGET;
 	TOOLTIP = Classes.TOOLTIP;
 
@@ -87,13 +73,18 @@ export default class Tooltip extends Component<TooltipArgs> {
 		this._parentFinder = self.document ? self.document.createTextNode('') : '';
 	}
 
+	get props() {
+
+		return this.args.props || {};
+	}
+
 	get getClassName() {
 		let popoverClassName;
 
 		if (this.args.popoverClassName != undefined) {
 			popoverClassName = this.args.popoverClassName;
-		} else if (this.popoverClassName != undefined) {
-			popoverClassName = this.popoverClassName;
+		} else if (this.props.popoverClassName != undefined) {
+			popoverClassName = this.props.popoverClassName;
 		}
 
 		return popoverClassName;
@@ -104,14 +95,13 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.intent != undefined) {
 			intent = this.args.intent;
-		} else if (this.intent != undefined) {
-			intent = this.intent;
+		} else if (this.props.intent != undefined) {
+			intent = this.props.intent;
 		}
 
 		return Classes.intentClass(intent) as TooltipArgs['intent'];
 	}
 
-	@computed('args.isOpen', 'isOpen', 'isOpenState')
 	get openComp() {
 		if (this.findEvent() === 'none') {
 			this.isOpenState = this.getIsOpen();
@@ -125,8 +115,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.isOpen != undefined) {
 			isOpen = this.args.isOpen;
-		} else if (this.isOpen != undefined) {
-			isOpen = this.isOpen;
+		} else if (this.props.isOpen != undefined) {
+			isOpen = this.props.isOpen;
 		}
 
 		return isOpen || this.findDefaultIsOpen();
@@ -152,8 +142,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.defaultIsOpen != undefined) {
 			defaultIsOpen = this.args.defaultIsOpen;
-		} else if (this.defaultIsOpen != undefined) {
-			defaultIsOpen = this.defaultIsOpen;
+		} else if (this.props.defaultIsOpen != undefined) {
+			defaultIsOpen = this.props.defaultIsOpen;
 		}
 
 		return defaultIsOpen;
@@ -183,8 +173,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.targetId != undefined) {
 			targetId = this.args.targetId;
-		} else if (this.targetId != undefined) {
-			targetId = this.targetId;
+		} else if (this.props.targetId != undefined) {
+			targetId = this.props.targetId;
 		}
 
 		let target;
@@ -207,8 +197,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.target != undefined) {
 			target = this.args.target;
-		} else if (this.target != undefined) {
-			target = this.target;
+		} else if (this.props.target != undefined) {
+			target = this.props.target;
 		}
 
 		return target;
@@ -219,8 +209,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
 		if (this.args.event != undefined) {
 			event = this.args.event;
-		} else if (this.event != undefined) {
-			event = this.event;
+		} else if (this.props.event != undefined) {
+			event = this.props.event;
 		}
 
 		return event;

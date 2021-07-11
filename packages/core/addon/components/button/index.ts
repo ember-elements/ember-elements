@@ -1,8 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { action, computed, set } from '@ember/object';
+import { action } from '@ember/object';
 
 import * as Classes from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
@@ -16,7 +15,6 @@ interface ButtonArgs extends IButtonProps {
 }
 
 export default class Button extends Component<ButtonArgs> {
-  props = this.args.props || {};
   @tracked isActive = false;
   @tracked currentKeyDown: number | null = null;
 
@@ -30,8 +28,11 @@ export default class Button extends Component<ButtonArgs> {
 		2. @props is a user defined object vars and it accept all props and expect @actions
 	 */
 
+  get props() {
+    return this.args.props || {};
+  }
+
   // active props return active className
-  @computed('args.active', 'props.active', 'isActive')
   get active() {
     let active;
 
@@ -45,7 +46,6 @@ export default class Button extends Component<ButtonArgs> {
   }
 
   // alignText return alignment class names , `Alignment.CENTER` is the default className
-  @computed('args.alignText', 'props.alignText')
   get alignText() {
     let alignText: Alignment = 'center';
 
@@ -59,7 +59,6 @@ export default class Button extends Component<ButtonArgs> {
   }
 
   // `Classes.DISABLED` className
-  @computed('args.disabled', 'props.disabled', 'loading')
   get disabled() {
     let disabled;
 
@@ -73,7 +72,6 @@ export default class Button extends Component<ButtonArgs> {
   }
 
   //`Classes.FILL`
-  @computed('args.fill', 'props.fill')
   get fill() {
     let fill;
 
@@ -87,7 +85,6 @@ export default class Button extends Component<ButtonArgs> {
   }
 
   //`Classes.Large`
-  @computed('args.large', 'props.large')
   get large() {
     let large;
 
@@ -100,7 +97,6 @@ export default class Button extends Component<ButtonArgs> {
     return large ? `${Classes.LARGE} ` : '';
   }
 
-  @computed('args.loading', 'props.loading')
   get loading() {
     let loading;
 
@@ -113,7 +109,6 @@ export default class Button extends Component<ButtonArgs> {
     return loading ? `${Classes.LOADING} ` : '';
   }
 
-  @computed('args.minimal', 'props.minimal')
   get minimal() {
     let minimal;
 
@@ -126,7 +121,6 @@ export default class Button extends Component<ButtonArgs> {
     return minimal ? `${Classes.MINIMAL} ` : '';
   }
 
-  @computed('args.small', 'props.small')
   get small() {
     let small;
 
@@ -139,7 +133,6 @@ export default class Button extends Component<ButtonArgs> {
     return small ? `${Classes.SMALL} ` : '';
   }
 
-  @computed('args.intent', 'props.intent')
   get intent() {
     let intent: Intent = 'none';
 
@@ -152,7 +145,6 @@ export default class Button extends Component<ButtonArgs> {
     return Classes.intentClass(intent || 'none');
   }
 
-  @computed('args.className', 'props.className')
   get className() {
     let className;
 
@@ -165,7 +157,6 @@ export default class Button extends Component<ButtonArgs> {
     return className;
   }
 
-  @computed('args.type', 'props.type')
   get type() {
     let type = 'button';
 
@@ -178,7 +169,6 @@ export default class Button extends Component<ButtonArgs> {
     return type;
   }
 
-  @computed('args.icon', 'props.icon')
   get icon() {
     let icon;
 
@@ -191,7 +181,6 @@ export default class Button extends Component<ButtonArgs> {
     return icon;
   }
 
-  @computed('args.rightIcon', 'props.rightIcon')
   get rightIcon() {
     let rightIcon;
 
@@ -226,7 +215,7 @@ export default class Button extends Component<ButtonArgs> {
       event.preventDefault();
 
       if (event.which !== this.currentKeyDown) {
-        set(this, 'isActive', true);
+        this.isActive = true;
       }
     }
 
@@ -250,7 +239,8 @@ export default class Button extends Component<ButtonArgs> {
   @action
   handleKeyUp(event: KeyboardEvent) {
     if (Keys.isKeyboardClick(event.which)) {
-      set(this, 'isActive', false);
+      this.isActive = false;
+      this.isActive = false;
 
       this.currentKeyDown = null;
     }

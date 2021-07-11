@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 import { htmlSafe } from '@ember/string';
 
 import * as collapseClasses from '../../_private/common/classes';
@@ -40,11 +38,6 @@ interface CollapseArgs extends ICollapseProps {
 }
 
 export default class Collapse extends Component<CollapseArgs> {
-  @reads('props.className') className?: CollapseArgs['className'];
-  @reads('props.isOpen') isOpenProps?: CollapseArgs['isOpen'];
-  @reads('props.keepChildrenMounted') keepChildrenMounted?: CollapseArgs['keepChildrenMounted'];
-  @reads('props.transitionDuration') transitionDuration?: CollapseArgs['transitionDuration'];
-
   animationState = this.args.isOpen ? AnimationStates.OPEN : AnimationStates.CLOSED;
   @tracked isOpen = false;
   height = '0px';
@@ -67,13 +60,17 @@ export default class Collapse extends Component<CollapseArgs> {
   COLLAPSE = collapseClasses.COLLAPSE;
   COLLAPSE_BODY = collapseClasses.COLLAPSE_BODY;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getCollapseClassName() {
     let collapseClassName;
 
     if (this.args.className != undefined) {
       collapseClassName = this.args.className;
-    } else if (this.className != undefined) {
-      collapseClassName = this.className;
+    } else if (this.props.className != undefined) {
+      collapseClassName = this.props.className;
     }
 
     return collapseClassName;
@@ -84,8 +81,8 @@ export default class Collapse extends Component<CollapseArgs> {
 
     if (this.args.transitionDuration != undefined) {
       transitionDuration = this.args.transitionDuration;
-    } else if (this.transitionDuration != undefined) {
-      transitionDuration = this.transitionDuration;
+    } else if (this.props.transitionDuration != undefined) {
+      transitionDuration = this.props.transitionDuration;
     }
 
     return transitionDuration;
@@ -108,8 +105,8 @@ export default class Collapse extends Component<CollapseArgs> {
 
     if (this.args.isOpen != undefined) {
       isOpen = this.args.isOpen;
-    } else if (this.isOpenProps != undefined) {
-      isOpen = this.isOpenProps;
+    } else if (this.props.isOpen != undefined) {
+      isOpen = this.props.isOpen;
     }
 
     this.willRenderComp();
@@ -145,8 +142,8 @@ export default class Collapse extends Component<CollapseArgs> {
 
     if (this.args.keepChildrenMounted != undefined) {
       keepChildrenMounted = this.args.keepChildrenMounted;
-    } else if (this.keepChildrenMounted != undefined) {
-      keepChildrenMounted = this.keepChildrenMounted;
+    } else if (this.props.keepChildrenMounted != undefined) {
+      keepChildrenMounted = this.props.keepChildrenMounted;
     }
 
     return keepChildrenMounted;

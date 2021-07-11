@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { computed } from '@ember/object';
 
 import * as Classes from '../../_private/common/classes';
 
@@ -46,11 +44,12 @@ interface ButtonGroupArgs extends BProps {
 }
 
 export default class ButtonGroup extends Component<ButtonGroupArgs> {
-  props = this.args.props || {};
-
   BUTTON_GROUP = Classes.BUTTON_GROUP;
 
-  @computed('args.className', 'props.className')
+  get props() {
+    return this.args.props || {};
+  }
+
   get className() {
     let className;
 
@@ -64,7 +63,6 @@ export default class ButtonGroup extends Component<ButtonGroupArgs> {
   }
 
   //`Classes.FILL`
-  @computed('args.fill', 'props.fill')
   get fill() {
     let fill;
 
@@ -78,7 +76,6 @@ export default class ButtonGroup extends Component<ButtonGroupArgs> {
   }
 
   //`Classes.LARGE`
-  @computed('args.large', 'props.large')
   get large() {
     let large;
 
@@ -92,7 +89,6 @@ export default class ButtonGroup extends Component<ButtonGroupArgs> {
   }
 
   //`Classes.MINIMAL`
-  @computed('args.minimal', 'props.minimal')
   get minimal() {
     let minimal;
 
@@ -106,7 +102,6 @@ export default class ButtonGroup extends Component<ButtonGroupArgs> {
   }
 
   //`Classes.VERTICAL`
-  @computed('args.vertical', 'props.vertical')
   get vertical() {
     let vertical;
 
@@ -120,7 +115,6 @@ export default class ButtonGroup extends Component<ButtonGroupArgs> {
   }
 
   // alignText return alignment class names , `Alignment.CENTER` is the default className
-  @computed('args.alignText', 'props.alignText')
   get alignText() {
     let alignText: Alignment = 'center';
 

@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { computed } from '@ember/object';
 import { IconSvgPaths16, IconSvgPaths20 } from '@ember-elements/icons';
 
 import * as Classes from '../../_private/common/classes';
@@ -68,15 +66,16 @@ export default class Icon extends Component<IconArgs> {
 
   ICON = Classes.ICON;
 
-  props = this.args.props || {}; //props object
-
   // prettier-ignore
   @tracked title = this.args.icon != undefined ? this.args.title : this.props.title;
 
   @tracked iconClass = Classes.iconClass(this.args.icon || this.props.icon);
 
+  get props() {
+    return this.args.props || {};
+  }
+
   // active props return active className
-  @computed('args.icon', 'props.icon')
   get icon() {
     let icon;
 
@@ -89,7 +88,6 @@ export default class Icon extends Component<IconArgs> {
     return icon;
   }
 
-  @computed('args.className', 'props.className')
   get className() {
     let className;
 
@@ -102,7 +100,6 @@ export default class Icon extends Component<IconArgs> {
     return className;
   }
 
-  @computed('args.color', 'props.color')
   get color() {
     let color;
 
@@ -115,7 +112,6 @@ export default class Icon extends Component<IconArgs> {
     return color;
   }
 
-  @computed('args.htmlTitle', 'props.htmlTitle')
   get htmlTitle() {
     let htmlTitle;
 
@@ -128,7 +124,6 @@ export default class Icon extends Component<IconArgs> {
     return htmlTitle;
   }
 
-  @computed('args.iconSize', 'props.iconSize')
   get pixelGridSize() {
     let iconSize;
 
@@ -143,7 +138,6 @@ export default class Icon extends Component<IconArgs> {
     return iconSize >= Icon.SIZE_LARGE ? Icon.SIZE_LARGE : Icon.SIZE_STANDARD;
   }
 
-  @computed('args.intent', 'props.intent')
   get intent() {
     let intent: Intent = 'none';
 
@@ -156,7 +150,6 @@ export default class Icon extends Component<IconArgs> {
     return Classes.intentClass(intent || 'none');
   }
 
-  @computed('pixelGridSize', 'icon')
   get paths() {
     return this.renderSvgPaths(this.pixelGridSize, this.icon as IconName);
   }

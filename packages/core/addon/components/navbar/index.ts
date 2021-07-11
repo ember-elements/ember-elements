@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as navbarClasses from '../../_private/common/classes';
 
@@ -18,18 +16,19 @@ interface NavbarArgs extends INavbarProps {
 }
 
 export default class Navbar extends Component<NavbarArgs> {
-  @reads('props.className') className?: NavbarArgs['className'];
-  @reads('props.fixedToTop') fixedToTop?: NavbarArgs['fixedToTop'];
-
   NAVBAR = navbarClasses.NAVBAR;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getNavbarClassNames() {
     let navbarClassName;
 
     if (this.args.className != undefined) {
       navbarClassName = this.args.className;
-    } else if (this.className != undefined) {
-      navbarClassName = this.className;
+    } else if (this.props.className != undefined) {
+      navbarClassName = this.props.className;
     }
 
     return navbarClassName;
@@ -40,8 +39,8 @@ export default class Navbar extends Component<NavbarArgs> {
 
     if (this.args.fixedToTop != undefined) {
       navbarFixedTop = this.args.fixedToTop;
-    } else if (this.fixedToTop != undefined) {
-      navbarFixedTop = this.fixedToTop;
+    } else if (this.props.fixedToTop != undefined) {
+      navbarFixedTop = this.props.fixedToTop;
     }
 
     return navbarFixedTop ? navbarClasses.FIXED_TOP : '';

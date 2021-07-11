@@ -27,8 +27,8 @@ export interface IControlProps extends IProps {
 
   /**
 
-   * accepts strings..
-   */
+	 * accepts strings..
+	 */
   labelElement?: string;
 
   /** Whether this control should use large styles. */

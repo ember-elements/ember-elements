@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
@@ -25,19 +23,19 @@ interface ControlGroupArgs extends IControlGroupProps {
 }
 
 export default class ControlGroup extends Component<ControlGroupArgs> {
-  @reads('props.className') className?: ControlGroupArgs['className'];
-  @reads('props.fill') fill?: ControlGroupArgs['fill'];
-  @reads('props.vertical') vertical?: ControlGroupArgs['vertical'];
-
   CONTROL_GROUP = Classes.CONTROL_GROUP;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      className = this.props.className;
     }
 
     return className;
@@ -48,8 +46,8 @@ export default class ControlGroup extends Component<ControlGroupArgs> {
 
     if (this.args.fill != undefined) {
       fill = this.args.fill;
-    } else if (this.fill != undefined) {
-      fill = this.fill;
+    } else if (this.props.fill != undefined) {
+      fill = this.props.fill;
     }
 
     return fill != null ? Classes.FILL : '';
@@ -60,8 +58,8 @@ export default class ControlGroup extends Component<ControlGroupArgs> {
 
     if (this.args.vertical != undefined) {
       vertical = this.args.vertical;
-    } else if (this.vertical != undefined) {
-      vertical = this.vertical;
+    } else if (this.props.vertical != undefined) {
+      vertical = this.props.vertical;
     }
 
     return vertical != null ? Classes.VERTICAL : '';

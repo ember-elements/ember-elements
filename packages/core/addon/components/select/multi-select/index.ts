@@ -14,9 +14,9 @@ import * as FunRender from '../common/itemListRenderer';
 import * as FunProps from '../common/listItemsProps';
 import * as Fun from '../common/listItemsUtils';
 
-import type { IPopoverProps } from '../../../components/popover/component';
-import type { TagInputAddMethod } from '../../tag-input';
-import type { ITagInputProps } from '../../tag-input';
+import type { IPopoverProps } from '../../../components/popover/index';
+import type { TagInputAddMethod } from '../../../tag-input';
+import type { ITagInputProps } from '../../../tag-input';
 import type { ICreateNewItem, IListItemsProps } from '../common';
 import type { IQueryListProps } from '../queryList';
 

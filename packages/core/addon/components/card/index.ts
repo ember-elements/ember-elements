@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 
@@ -40,21 +38,19 @@ interface CardArgs extends ICardProps {
 }
 
 export default class Card extends Component<CardArgs> {
-  props = this.args.props || {};
-
-  @reads('props.className') className?: ICardProps['className'];
-  @reads('props.elevation') elevation!: Elevation;
-  @reads('props.interactive') interactive?: ICardProps['interactive'];
-
   CARD = Classes.CARD;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -65,8 +61,8 @@ export default class Card extends Component<CardArgs> {
 
     if (this.args.interactive != undefined) {
       interactive = this.args.interactive;
-    } else if (this.interactive != undefined) {
-      return (interactive = this.interactive);
+    } else if (this.props.interactive != undefined) {
+      return (interactive = this.props.interactive);
     }
 
     return interactive ? Classes.INTERACTIVE : '';
@@ -77,8 +73,8 @@ export default class Card extends Component<CardArgs> {
 
     if (this.args.elevation != undefined) {
       elevation = this.args.elevation;
-    } else if (this.elevation != undefined) {
-      return (elevation = this.elevation);
+    } else if (this.props.elevation != undefined) {
+      return (elevation = this.props.elevation);
     }
 
     return Classes.elevationClass(elevation);

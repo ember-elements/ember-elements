@@ -2,8 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
@@ -132,21 +130,6 @@ interface OverlayArgs extends IOverlayProps, IProps {
 
 export default class Overlay extends Component<OverlayArgs> {
   containerElement!: HTMLElement;
-
-  @reads('props.className') className?: OverlayArgs['className'];
-  @reads('props.autoFocus') autoFocus?: OverlayArgs['autoFocus'];
-  @reads('props.canEscapeKeyClose') canEscapeKeyClose?: OverlayArgs['canEscapeKeyClose'];
-  @reads('props.enforceFocus') enforceFocus?: OverlayArgs['enforceFocus'];
-  @reads('props.lazy') lazy?: OverlayArgs['lazy'];
-  @reads('props.portalClassName') portalClassName?: OverlayArgs['portalClassName'];
-  @reads('props.transitionDuration') transitionDuration?: OverlayArgs['transitionDuration'];
-  @reads('props.usePortal') usePortal?: OverlayArgs['usePortal'];
-  @reads('props.canOutsideClickClose') canOutsideClickClose?: OverlayArgs['canOutsideClickClose'];
-  @reads('props.backdropClassName') backdropClassName?: OverlayArgs['backdropClassName'];
-  @reads('props.hasBackdrop') hasBackdrop?: OverlayArgs['hasBackdrop'];
-  @reads('props.isOpen') isOpen?: OverlayArgs['isOpen'];
-  @reads('props.transitionName') transitionName?: OverlayArgs['transitionName'];
-
   OVERLAY = Classes.OVERLAY;
   OVERLAY_OPEN = Classes.OVERLAY_OPEN;
   OVERLAY_INLINE = Classes.OVERLAY_INLINE;
@@ -162,13 +145,17 @@ export default class Overlay extends Component<OverlayArgs> {
 
   @tracked getHasBackdropState = true;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      className = this.className;
+    } else if (this.props.className != undefined) {
+      className = this.props.className;
     }
 
     return className;
@@ -179,8 +166,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.portalClassName != undefined) {
       portalClassName = this.args.portalClassName;
-    } else if (this.portalClassName != undefined) {
-      portalClassName = this.portalClassName;
+    } else if (this.props.portalClassName != undefined) {
+      portalClassName = this.props.portalClassName;
     }
 
     return portalClassName;
@@ -191,8 +178,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.backdropClassName != undefined) {
       backdropClassName = this.args.backdropClassName;
-    } else if (this.backdropClassName != undefined) {
-      backdropClassName = this.backdropClassName;
+    } else if (this.props.backdropClassName != undefined) {
+      backdropClassName = this.props.backdropClassName;
     }
 
     return backdropClassName;
@@ -203,8 +190,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.transitionName != undefined) {
       transitionName = this.args.transitionName;
-    } else if (this.transitionName != undefined) {
-      transitionName = this.transitionName;
+    } else if (this.props.transitionName != undefined) {
+      transitionName = this.props.transitionName;
     }
 
     return transitionName;
@@ -276,8 +263,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.autoFocus != undefined) {
       autoFocus = this.args.autoFocus;
-    } else if (this.autoFocus != undefined) {
-      autoFocus = this.autoFocus;
+    } else if (this.props.autoFocus != undefined) {
+      autoFocus = this.props.autoFocus;
     }
 
     return autoFocus;
@@ -288,8 +275,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.canEscapeKeyClose != undefined) {
       canEscapeKeyClose = this.args.canEscapeKeyClose;
-    } else if (this.canEscapeKeyClose != undefined) {
-      canEscapeKeyClose = this.canEscapeKeyClose;
+    } else if (this.props.canEscapeKeyClose != undefined) {
+      canEscapeKeyClose = this.props.canEscapeKeyClose;
     }
 
     return canEscapeKeyClose;
@@ -300,8 +287,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.enforceFocus != undefined) {
       enforceFocus = this.args.enforceFocus;
-    } else if (this.enforceFocus != undefined) {
-      enforceFocus = this.enforceFocus;
+    } else if (this.props.enforceFocus != undefined) {
+      enforceFocus = this.props.enforceFocus;
     }
 
     return enforceFocus;
@@ -312,8 +299,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.lazy != undefined) {
       lazy = this.args.lazy;
-    } else if (this.lazy != undefined) {
-      lazy = this.lazy;
+    } else if (this.props.lazy != undefined) {
+      lazy = this.props.lazy;
     }
 
     return lazy;
@@ -324,8 +311,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.transitionDuration != undefined) {
       transitionDuration = this.args.transitionDuration;
-    } else if (this.transitionDuration != undefined) {
-      transitionDuration = this.transitionDuration;
+    } else if (this.props.transitionDuration != undefined) {
+      transitionDuration = this.props.transitionDuration;
     }
 
     return transitionDuration;
@@ -336,8 +323,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.usePortal != undefined) {
       usePortal = this.args.usePortal;
-    } else if (this.usePortal != undefined) {
-      usePortal = this.usePortal;
+    } else if (this.props.usePortal != undefined) {
+      usePortal = this.props.usePortal;
     }
 
     return usePortal || false;
@@ -348,8 +335,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.canOutsideClickClose != undefined) {
       canOutsideClickClose = this.args.canOutsideClickClose;
-    } else if (this.canOutsideClickClose != undefined) {
-      canOutsideClickClose = this.canOutsideClickClose;
+    } else if (this.props.canOutsideClickClose != undefined) {
+      canOutsideClickClose = this.props.canOutsideClickClose;
     }
 
     return canOutsideClickClose;
@@ -360,8 +347,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.hasBackdrop != undefined) {
       hasBackdrop = this.args.hasBackdrop;
-    } else if (this.hasBackdrop != undefined) {
-      hasBackdrop = this.hasBackdrop;
+    } else if (this.props.hasBackdrop != undefined) {
+      hasBackdrop = this.props.hasBackdrop;
     }
 
     return hasBackdrop;
@@ -372,8 +359,8 @@ export default class Overlay extends Component<OverlayArgs> {
 
     if (this.args.isOpen != undefined) {
       isOpen = this.args.isOpen;
-    } else if (this.isOpen != undefined) {
-      isOpen = this.isOpen;
+    } else if (this.props.isOpen != undefined) {
+      isOpen = this.props.isOpen;
     }
 
     return isOpen;

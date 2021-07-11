@@ -2,8 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
@@ -55,27 +53,22 @@ interface InputGroupArgs extends IInputGroupProps, IProps, IInputGroupState {
 
 export default class InputGroup extends Component<InputGroupArgs> {
   input!: HTMLInputElement;
-  @reads('props.className') className?: InputGroupArgs['className'];
-  @reads('props.disabled') disabled?: InputGroupArgs['disabled'];
-  @reads('props.fill') fill?: InputGroupArgs['fill'];
-  @reads('props.large') large?: InputGroupArgs['large'];
-  @reads('props.small') small?: InputGroupArgs['small'];
-  @reads('props.round') round?: InputGroupArgs['round'];
-  @reads('props.leftIcon') leftIcon?: InputGroupArgs['leftIcon'];
-  @reads('props.intent') intent?: Intent;
-
   INPUT_GROUP = Classes.INPUT_GROUP;
   INPUT = Classes.INPUT;
   INPUT_ACTION = Classes.INPUT_ACTION;
   @tracked rightElementWidth = DEFAULT_RIGHT_ELEMENT_WIDTH;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -86,8 +79,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.disabled != undefined) {
       disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      disabled = this.props.disabled;
     }
 
     return disabled ? Classes.DISABLED : '';
@@ -98,8 +91,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.fill != undefined) {
       fill = this.args.fill;
-    } else if (this.fill != undefined) {
-      fill = this.fill;
+    } else if (this.props.fill != undefined) {
+      fill = this.props.fill;
     }
 
     return fill ? Classes.FILL : '';
@@ -110,8 +103,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.large != undefined) {
       large = this.args.large;
-    } else if (this.large != undefined) {
-      large = this.large;
+    } else if (this.props.large != undefined) {
+      large = this.props.large;
     }
 
     return large ? Classes.LARGE : '';
@@ -122,8 +115,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.small != undefined) {
       small = this.args.small;
-    } else if (this.small != undefined) {
-      small = this.small;
+    } else if (this.props.small != undefined) {
+      small = this.props.small;
     }
 
     return small ? Classes.SMALL : '';
@@ -134,8 +127,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.round != undefined) {
       round = this.args.round;
-    } else if (this.round != undefined) {
-      round = this.round;
+    } else if (this.props.round != undefined) {
+      round = this.props.round;
     }
 
     return round ? Classes.ROUND : '';
@@ -146,8 +139,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.intent != undefined) {
       intent = this.args.intent;
-    } else if (this.intent != undefined) {
-      intent = this.intent;
+    } else if (this.props.intent != undefined) {
+      intent = this.props.intent;
     }
 
     return Classes.intentClass(intent) as Intent;
@@ -158,8 +151,8 @@ export default class InputGroup extends Component<InputGroupArgs> {
 
     if (this.args.leftIcon != undefined) {
       leftIcon = this.args.leftIcon;
-    } else if (this.leftIcon != undefined) {
-      leftIcon = this.leftIcon;
+    } else if (this.props.leftIcon != undefined) {
+      leftIcon = this.props.leftIcon;
     }
 
     return leftIcon;
@@ -191,7 +184,7 @@ export default class InputGroup extends Component<InputGroupArgs> {
       );
 
       // disabled radio doesn't have a action
-      if (!this.disabled && this.args.onChange) {
+      if (!this.props.disabled && this.args.onChange) {
         this.args.onChange(e);
       }
     }

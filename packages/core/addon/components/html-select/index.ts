@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 
@@ -46,27 +44,23 @@ interface HtmlSelectArgs extends IHTMLSelectProps {
 }
 
 export default class HtmlSelect extends Component<HtmlSelectArgs> {
-  @reads('props.className') className?: HtmlSelectArgs['className'];
-  @reads('props.disabled') disabled?: HtmlSelectArgs['disabled'];
-  @reads('props.fill') fill?: HtmlSelectArgs['fill'];
-  @reads('props.iconProps') iconProps?: HtmlSelectArgs['iconProps'];
-  @reads('props.large') large?: HtmlSelectArgs['large'];
-  @reads('props.options') options?: HtmlSelectArgs['options'];
-  @reads('props.minimal') minimal?: HtmlSelectArgs['minimal'];
-
   HTML_SELECT = Classes.HTML_SELECT;
   DISABLED = Classes.DISABLED;
   FILL = Classes.FILL;
   LARGE = Classes.LARGE;
   MINIMAL = Classes.MINIMAL;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -77,8 +71,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.disabled != undefined) {
       disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      disabled = this.props.disabled;
     }
 
     return disabled ? Classes.DISABLED : '';
@@ -89,8 +83,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.fill != undefined) {
       fill = this.args.fill;
-    } else if (this.fill != undefined) {
-      fill = this.fill;
+    } else if (this.props.fill != undefined) {
+      fill = this.props.fill;
     }
 
     return fill ? Classes.FILL : '';
@@ -102,8 +96,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.iconProps != undefined) {
       iconProps = this.args.iconProps;
-    } else if (this.iconProps != undefined) {
-      iconProps = this.iconProps;
+    } else if (this.props.iconProps != undefined) {
+      iconProps = this.props.iconProps;
     }
 
     return iconProps || {};
@@ -114,8 +108,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.large != undefined) {
       large = this.args.large;
-    } else if (this.large != undefined) {
-      large = this.large;
+    } else if (this.props.large != undefined) {
+      large = this.props.large;
     }
 
     return large ? Classes.LARGE : '';
@@ -126,8 +120,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.options != undefined) {
       options = this.args.options;
-    } else if (this.options != undefined) {
-      options = this.options;
+    } else if (this.props.options != undefined) {
+      options = this.props.options;
     }
 
     return options || [];
@@ -138,8 +132,8 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
 
     if (this.args.minimal != undefined) {
       minimal = this.args.minimal;
-    } else if (this.minimal != undefined) {
-      minimal = this.minimal;
+    } else if (this.props.minimal != undefined) {
+      minimal = this.props.minimal;
     }
 
     return minimal ? Classes.MINIMAL : '';
@@ -155,7 +149,7 @@ export default class HtmlSelect extends Component<HtmlSelectArgs> {
       );
 
       // disabled select doesn't have a action
-      if (!this.disabled && this.args.onChange) {
+      if (!this.props.disabled && this.args.onChange) {
         this.args.onChange(e);
       }
     }

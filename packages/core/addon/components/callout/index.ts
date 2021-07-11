@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 
@@ -37,13 +35,6 @@ interface CalloutArgs extends ICalloutProps {
 }
 
 export default class Callout extends Component<CalloutArgs> {
-  props = this.args.props || {};
-
-  @reads('props.className') className?: ICalloutProps['className'];
-  @reads('props.intent') intent?: Intent;
-  @reads('props.icon') icon?: IconName;
-  @reads('props.title') title?: ICalloutProps['title'];
-
   @tracked iconClassName = '';
   @tracked intentValue: Intent = 'none';
 
@@ -51,13 +42,17 @@ export default class Callout extends Component<CalloutArgs> {
   SIZE_LARGE = 20;
   HEADING = Classes.HEADING;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -68,8 +63,8 @@ export default class Callout extends Component<CalloutArgs> {
 
     if (this.args.intent != undefined) {
       intent = this.args.intent;
-    } else if (this.intent != undefined) {
-      intent = this.intent;
+    } else if (this.props.intent != undefined) {
+      intent = this.props.intent;
     }
 
 		this.intentValue = intent; // eslint-disable-line
@@ -82,8 +77,8 @@ export default class Callout extends Component<CalloutArgs> {
 
     if (this.args.title != undefined) {
       title = this.args.title;
-    } else if (this.title != undefined) {
-      title = this.title;
+    } else if (this.props.title != undefined) {
+      title = this.props.title;
     }
 
     return title;
@@ -94,8 +89,8 @@ export default class Callout extends Component<CalloutArgs> {
 
     if (this.args.icon != undefined) {
       icon = this.args.icon;
-    } else if (this.icon != undefined) {
-      icon = this.icon;
+    } else if (this.props.icon != undefined) {
+      icon = this.props.icon;
     }
 
     return this.fetchIconName(icon as IconName, this.intentValue);

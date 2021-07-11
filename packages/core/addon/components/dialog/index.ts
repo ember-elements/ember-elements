@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 import * as Errors from '../../_private/common/errors';
@@ -54,17 +52,12 @@ export interface IDialogProps extends IOverlayableProps, IBackdropProps {
    */
   transitionName?: string;
 }
+
 interface DialogArgs extends IProps, IDialogProps {
   props: DialogArgs;
 }
 
 export default class Dialog extends Component<DialogArgs> {
-  @reads('props.className') className?: DialogArgs['className'];
-  @reads('props.style') style?: DialogArgs['style'];
-  @reads('props.title') title?: DialogArgs['title'];
-  @reads('props.icon') icon?: DialogArgs['icon'];
-  @reads('props.isCloseButtonShown') isCloseButtonShown?: DialogArgs['isCloseButtonShown'];
-
   // import classes
   OVERLAY_SCROLL_CONTAINER = Classes.OVERLAY_SCROLL_CONTAINER;
   DIALOG_CONTAINER = Classes.DIALOG_CONTAINER;
@@ -73,14 +66,18 @@ export default class Dialog extends Component<DialogArgs> {
   DIALOG_CLOSE_BUTTON = Classes.DIALOG_CLOSE_BUTTON;
   SIZE_LARGE = Classes.SIZE_LARGE;
   HEADING = Classes.HEADING;
+
+  get props() {
+    return this.args.props || {};
+  }
   // values to UI
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      className = this.className;
+    } else if (this.props.className != undefined) {
+      className = this.props.className;
     }
 
     return className;
@@ -91,8 +88,8 @@ export default class Dialog extends Component<DialogArgs> {
 
     if (this.args.style != undefined) {
       style = this.args.style;
-    } else if (this.style != undefined) {
-      style = this.style;
+    } else if (this.props.style != undefined) {
+      style = this.props.style;
     }
 
     return style;
@@ -115,8 +112,8 @@ export default class Dialog extends Component<DialogArgs> {
 
     if (this.args.title != undefined) {
       title = this.args.title;
-    } else if (this.title != undefined) {
-      title = this.title;
+    } else if (this.props.title != undefined) {
+      title = this.props.title;
     }
 
     return title;
@@ -127,8 +124,8 @@ export default class Dialog extends Component<DialogArgs> {
 
     if (this.args.icon != undefined) {
       icon = this.args.icon;
-    } else if (this.icon != undefined) {
-      icon = this.icon;
+    } else if (this.props.icon != undefined) {
+      icon = this.props.icon;
     }
 
     return icon;
@@ -138,8 +135,8 @@ export default class Dialog extends Component<DialogArgs> {
 
     if (this.args.isCloseButtonShown != undefined) {
       isCloseButtonShown = this.args.isCloseButtonShown;
-    } else if (this.isCloseButtonShown != undefined) {
-      isCloseButtonShown = this.isCloseButtonShown;
+    } else if (this.props.isCloseButtonShown != undefined) {
+      isCloseButtonShown = this.props.isCloseButtonShown;
     }
 
     return isCloseButtonShown;
