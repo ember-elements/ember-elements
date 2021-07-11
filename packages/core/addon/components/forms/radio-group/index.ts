@@ -1,14 +1,8 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
 import type { IProps } from '../../../_private/common/props';
-
-/**
- * ToDo object based radio rendering
- */
 
 export interface IRadioGroupProps extends IProps {
   /**
@@ -47,17 +41,19 @@ interface RadioGroupArgs extends IRadioGroupProps {
 }
 
 export default class RadioGroup extends Component<RadioGroupArgs> {
-  @reads('props.label') label?: RadioGroupArgs['label'];
-
   LABEL = Classes.LABEL;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getLabel() {
     let label;
 
     if (this.args.label != undefined) {
       label = this.args.label;
-    } else if (this.label != undefined) {
-      label = this.label;
+    } else if (this.props.label != undefined) {
+      label = this.props.label;
     }
 
     return label;

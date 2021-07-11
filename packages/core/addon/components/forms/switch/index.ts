@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import { Alignment } from '../../../_private/common/alignment';
 import * as Classes from '../../../_private/common/classes';
@@ -29,29 +27,23 @@ interface SwitchArgs extends ISwitchProps {
 }
 
 export default class Switch extends Component<SwitchArgs> {
-  @reads('props.alignIndicator') alignIndicator?: SwitchArgs['alignIndicator'];
-  @reads('props.className') className?: SwitchArgs['className'];
-  @reads('props.disabled') disabled?: SwitchArgs['disabled'];
-  @reads('props.inline') inline?: SwitchArgs['inline'];
-  @reads('props.innerLabel') innerLabel?: SwitchArgs['innerLabel'];
-  @reads('props.innerLabelChecked') innerLabelChecked?: SwitchArgs['innerLabelChecked'];
-  @reads('props.label') label?: SwitchArgs['label'];
-  @reads('props.labelElement') labelElement?: SwitchArgs['labelElement'];
-  @reads('props.large') large?: SwitchArgs['large'];
-
   CONTROL = Classes.CONTROL;
   CONTROL_INDICATOR = Classes.CONTROL_INDICATOR;
   CONTROL_INDICATOR_CHILD = Classes.CONTROL_INDICATOR_CHILD;
   SWITCH = Classes.SWITCH;
   SWITCH_INNER_TEXT = Classes.SWITCH_INNER_TEXT;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getAlignIndicator() {
     let alignIndicator: Alignment = Alignment.LEFT;
 
     if (this.args.alignIndicator != undefined) {
       alignIndicator = this.args.alignIndicator;
-    } else if (this.alignIndicator != undefined) {
-      alignIndicator = this.alignIndicator;
+    } else if (this.props.alignIndicator != undefined) {
+      alignIndicator = this.props.alignIndicator;
     }
 
     return Classes.alignmentClass(alignIndicator);
@@ -62,8 +54,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -74,8 +66,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.disabled != undefined) {
       disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      disabled = this.props.disabled;
     }
 
     return disabled ? Classes.DISABLED : '';
@@ -86,8 +78,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.inline != undefined) {
       inline = this.args.inline;
-    } else if (this.inline != undefined) {
-      inline = this.inline;
+    } else if (this.props.inline != undefined) {
+      inline = this.props.inline;
     }
 
     return inline ? Classes.INLINE : '';
@@ -98,14 +90,14 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.innerLabel != undefined) {
       innerLabels = this.args.innerLabel;
-    } else if (this.innerLabel != undefined) {
-      innerLabels = this.innerLabel;
+    } else if (this.props.innerLabel != undefined) {
+      innerLabels = this.props.innerLabel;
     }
 
     if (this.args.innerLabelChecked != undefined) {
       innerLabels = this.args.innerLabelChecked;
-    } else if (this.innerLabelChecked != undefined) {
-      innerLabels = this.innerLabelChecked;
+    } else if (this.props.innerLabelChecked != undefined) {
+      innerLabels = this.props.innerLabelChecked;
     }
 
     return innerLabels;
@@ -116,8 +108,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.innerLabel != undefined) {
       innerLabel = this.args.innerLabel;
-    } else if (this.innerLabel != undefined) {
-      innerLabel = this.innerLabel;
+    } else if (this.props.innerLabel != undefined) {
+      innerLabel = this.props.innerLabel;
     }
 
     return innerLabel;
@@ -128,8 +120,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.large != undefined) {
       large = this.args.large;
-    } else if (this.large != undefined) {
-      large = this.large;
+    } else if (this.props.large != undefined) {
+      large = this.props.large;
     }
 
     return large ? Classes.LARGE : '';
@@ -140,8 +132,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.label != undefined) {
       label = this.args.label;
-    } else if (this.label != undefined) {
-      label = this.label;
+    } else if (this.props.label != undefined) {
+      label = this.props.label;
     }
 
     return label;
@@ -152,8 +144,8 @@ export default class Switch extends Component<SwitchArgs> {
 
     if (this.args.labelElement != undefined) {
       labelElement = this.args.labelElement;
-    } else if (this.labelElement != undefined) {
-      labelElement = this.labelElement;
+    } else if (this.props.labelElement != undefined) {
+      labelElement = this.props.labelElement;
     }
 
     return labelElement;
@@ -169,7 +161,7 @@ export default class Switch extends Component<SwitchArgs> {
       );
 
       // disabled radio doesn't have a action
-      if (!this.disabled && this.args.onChange) {
+      if (!this.props.disabled && this.args.onChange) {
         this.args.onChange(e);
       }
     }

@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 import { next } from '@ember/runloop';
 
 import * as numericIClasses from '../../../_private/common/classes';
@@ -143,8 +141,6 @@ enum IncrementDirection {
 }
 
 export default class NumericInput extends Component<NumericInputArgs> {
-  props = this.args.props || {};
-
   public static VALUE_EMPTY = '';
   public static VALUE_ZERO = '0';
 
@@ -153,22 +149,6 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
   inputElement!: HTMLInputElement;
 
-  @reads('props.className') className?: NumericInputArgs['className'];
-  @reads('props.large') large?: NumericInputArgs['large'];
-  @reads('props.fill') fill?: NumericInputArgs['fill'];
-  @reads('props.buttonPosition') buttonPosition?: NumericInputArgs['buttonPosition'];
-  @reads('props.intent') intent?: NumericInputArgs['intent'];
-  @reads('props.disabled') disabled?: NumericInputArgs['disabled'];
-  @reads('props.majorStepSize') majorStepSize?: NumericInputArgs['majorStepSize'];
-  @reads('props.minorStepSize') minorStepSize?: NumericInputArgs['minorStepSize'];
-  @reads('props.stepSize') stepSize?: NumericInputArgs['stepSize'];
-  @reads('props.selectAllOnIncrement')
-  selectAllOnIncrement?: NumericInputArgs['selectAllOnIncrement'];
-  @reads('props.min') min?: NumericInputArgs['min'];
-  @reads('props.max') max?: NumericInputArgs['max'];
-  @reads('props.leftIcon') leftIcon?: NumericInputArgs['leftIcon'];
-  @reads('props.clampValueOnBlur') clampValueOnBlur?: NumericInputArgs['clampValueOnBlur'];
-  @reads('props.allowNumericCharactersOnly')
   allowNumericCharactersOnly?: NumericInputArgs['allowNumericCharactersOnly'];
 
   didValueChange = getValueOrEmptyValue(this.args.value);
@@ -187,13 +167,17 @@ export default class NumericInput extends Component<NumericInputArgs> {
   PositionLeft = 'left';
   PositionRight = 'right';
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getNumericIClassName() {
     let numericIClassName;
 
     if (this.args.className != undefined) {
       numericIClassName = this.args.className;
-    } else if (this.className != undefined) {
-      numericIClassName = this.className;
+    } else if (this.props.className != undefined) {
+      numericIClassName = this.props.className;
     }
 
     return numericIClassName;
@@ -204,8 +188,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.large != undefined) {
       numericILarge = this.args.large;
-    } else if (this.large != undefined) {
-      numericILarge = this.large;
+    } else if (this.props.large != undefined) {
+      numericILarge = this.props.large;
     }
 
     return numericILarge ? numericIClasses.LARGE : '';
@@ -216,8 +200,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.fill != undefined) {
       numericIFill = this.args.fill;
-    } else if (this.fill != undefined) {
-      numericIFill = this.fill;
+    } else if (this.props.fill != undefined) {
+      numericIFill = this.props.fill;
     }
 
     return numericIFill;
@@ -228,8 +212,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.buttonPosition != undefined) {
       buttonPosition = this.args.buttonPosition;
-    } else if (this.buttonPosition != undefined) {
-      buttonPosition = this.buttonPosition;
+    } else if (this.props.buttonPosition != undefined) {
+      buttonPosition = this.props.buttonPosition;
     }
 
     return buttonPosition;
@@ -240,8 +224,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.intent != undefined) {
       numericIIntent = this.args.intent;
-    } else if (this.intent != undefined) {
-      numericIIntent = this.intent;
+    } else if (this.props.intent != undefined) {
+      numericIIntent = this.props.intent;
     }
 
     return numericIClasses.intentClass(numericIIntent) as Intent;
@@ -256,8 +240,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.disabled != undefined) {
       numericILeftIcon = this.args.leftIcon;
-    } else if (this.leftIcon != undefined) {
-      numericILeftIcon = this.leftIcon;
+    } else if (this.props.leftIcon != undefined) {
+      numericILeftIcon = this.props.leftIcon;
     }
 
     return numericILeftIcon;
@@ -294,8 +278,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.majorStepSize != undefined) {
       majorStepSize = this.args.majorStepSize;
-    } else if (this.majorStepSize != undefined) {
-      majorStepSize = this.majorStepSize;
+    } else if (this.props.majorStepSize != undefined) {
+      majorStepSize = this.props.majorStepSize;
     }
 
     return majorStepSize;
@@ -306,8 +290,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.minorStepSize != undefined) {
       minorStepSize = this.args.minorStepSize;
-    } else if (this.minorStepSize != undefined) {
-      minorStepSize = this.minorStepSize;
+    } else if (this.props.minorStepSize != undefined) {
+      minorStepSize = this.props.minorStepSize;
     }
 
     return minorStepSize;
@@ -318,8 +302,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.stepSize != undefined) {
       stepSize = this.args.stepSize;
-    } else if (this.stepSize != undefined) {
-      stepSize = this.stepSize;
+    } else if (this.props.stepSize != undefined) {
+      stepSize = this.props.stepSize;
     }
 
     return stepSize;
@@ -330,8 +314,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.selectAllOnIncrement != undefined) {
       selectAllOnIncrement = this.args.selectAllOnIncrement;
-    } else if (this.selectAllOnIncrement != undefined) {
-      selectAllOnIncrement = this.selectAllOnIncrement;
+    } else if (this.props.selectAllOnIncrement != undefined) {
+      selectAllOnIncrement = this.props.selectAllOnIncrement;
     }
 
     return selectAllOnIncrement;
@@ -342,8 +326,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.min != undefined) {
       min = this.args.min;
-    } else if (this.min != undefined) {
-      min = this.min;
+    } else if (this.props.min != undefined) {
+      min = this.props.min;
     }
 
     return min as number;
@@ -354,8 +338,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.max != undefined) {
       max = this.args.max;
-    } else if (this.max != undefined) {
-      max = this.max;
+    } else if (this.props.max != undefined) {
+      max = this.props.max;
     }
 
     return max as number;
@@ -376,8 +360,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.clampValueOnBlur != undefined) {
       clampValueOnBlur = this.args.clampValueOnBlur;
-    } else if (this.clampValueOnBlur != undefined) {
-      clampValueOnBlur = this.clampValueOnBlur;
+    } else if (this.props.clampValueOnBlur != undefined) {
+      clampValueOnBlur = this.props.clampValueOnBlur;
     }
 
     return clampValueOnBlur as boolean;
@@ -388,8 +372,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.allowNumericCharactersOnly != undefined) {
       allowNumericCharactersOnly = this.args.allowNumericCharactersOnly;
-    } else if (this.allowNumericCharactersOnly != undefined) {
-      allowNumericCharactersOnly = this.allowNumericCharactersOnly;
+    } else if (this.props.allowNumericCharactersOnly != undefined) {
+      allowNumericCharactersOnly = this.props.allowNumericCharactersOnly;
     }
 
     return allowNumericCharactersOnly;
@@ -400,8 +384,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.args.disabled != undefined) {
       numericIDisabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      numericIDisabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      numericIDisabled = this.props.disabled;
     }
 
     return numericIDisabled;

@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
@@ -52,29 +50,23 @@ interface FormsFormGroupArgs extends IFormGroupProps {
 }
 
 export default class FormGroup extends Component<FormsFormGroupArgs> {
-  @reads('props.className') className?: FormsFormGroupArgs['className'];
-  @reads('props.contentClassName') contentClassName?: FormsFormGroupArgs['contentClassName'];
-  @reads('props.disabled') disabled?: FormsFormGroupArgs['disabled'];
-  @reads('props.helperText') helperText?: FormsFormGroupArgs['helperText'];
-  @reads('props.inline') inline?: FormsFormGroupArgs['inline'];
-  @reads('props.intent') intent?: Intent;
-  @reads('props.label') label?: FormsFormGroupArgs['label'];
-  @reads('props.labelFor') labelFor?: FormsFormGroupArgs['labelFor'];
-  @reads('props.labelInfo') labelInfo?: FormsFormGroupArgs['labelInfo'];
-
   FORM_GROUP = Classes.FORM_GROUP;
   FORM_CONTENT = Classes.FORM_CONTENT;
   LABEL = Classes.LABEL;
   TEXT_MUTED = Classes.TEXT_MUTED;
   FORM_HELPER_TEXT = Classes.FORM_HELPER_TEXT;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -85,8 +77,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.contentClassName != undefined) {
       contentClassName = this.args.contentClassName;
-    } else if (this.contentClassName != undefined) {
-      return (contentClassName = this.contentClassName);
+    } else if (this.props.contentClassName != undefined) {
+      return (contentClassName = this.props.contentClassName);
     }
 
     return contentClassName;
@@ -97,8 +89,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.disabled != undefined) {
       disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      disabled = this.props.disabled;
     }
 
     return disabled != null ? Classes.DISABLED : '';
@@ -109,8 +101,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.helperText != undefined) {
       helperText = this.args.helperText;
-    } else if (this.helperText != undefined) {
-      helperText = this.helperText;
+    } else if (this.props.helperText != undefined) {
+      helperText = this.props.helperText;
     }
 
     return helperText;
@@ -121,8 +113,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.inline != undefined) {
       inline = this.args.inline;
-    } else if (this.inline != undefined) {
-      inline = this.inline;
+    } else if (this.props.inline != undefined) {
+      inline = this.props.inline;
     }
 
     return inline != null ? Classes.INLINE : '';
@@ -133,8 +125,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.intent != undefined) {
       intent = this.args.intent;
-    } else if (this.intent != undefined) {
-      intent = this.intent;
+    } else if (this.props.intent != undefined) {
+      intent = this.props.intent;
     }
 
     return Classes.intentClass(intent) as Intent;
@@ -145,8 +137,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.label != undefined) {
       label = this.args.label;
-    } else if (this.label != undefined) {
-      label = this.label;
+    } else if (this.props.label != undefined) {
+      label = this.props.label;
     }
 
     return label;
@@ -157,8 +149,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.labelFor != undefined) {
       labelFor = this.args.labelFor;
-    } else if (this.labelFor != undefined) {
-      labelFor = this.labelFor;
+    } else if (this.props.labelFor != undefined) {
+      labelFor = this.props.labelFor;
     }
 
     return labelFor;
@@ -169,8 +161,8 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
 
     if (this.args.labelInfo != undefined) {
       labelInfo = this.args.labelInfo;
-    } else if (this.labelInfo != undefined) {
-      labelInfo = this.labelInfo;
+    } else if (this.props.labelInfo != undefined) {
+      labelInfo = this.props.labelInfo;
     }
 
     return labelInfo;

@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import { SPINNER_WARN_CLASSES_SIZE } from '../../_private/common/_errors';
 import * as Classes from '../../_private/common/classes';
@@ -54,13 +52,6 @@ export default class Spinner extends Component<SpinnerArgs> {
   public static readonly SIZE_STANDARD = 50;
   public static readonly SIZE_LARGE = 100;
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-
-	@reads('props.className') className?: SpinnerArgs['className']; // eslint-disable-line
-	@reads('props.value') value?: SpinnerArgs['value'];// eslint-disable-line
-	@reads('props.size') size?: SpinnerArgs['size'];// eslint-disable-line
-	@reads('props.intent') intent?: Intent;// eslint-disable-line
-
   @tracked strokeWidth = '';
 
   SPINNER = Classes.SPINNER;
@@ -73,13 +64,16 @@ export default class Spinner extends Component<SpinnerArgs> {
 
   strokeDasharray = `${PATH_LENGTH} ${PATH_LENGTH}`;
 
+  get props() {
+    return this.args.props || {};
+  }
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -90,8 +84,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (this.args.intent != undefined) {
       intent = this.args.intent;
-    } else if (this.intent != undefined) {
-      intent = this.intent;
+    } else if (this.props.intent != undefined) {
+      intent = this.props.intent;
     }
 
     return Classes.intentClass(intent) as Intent;
@@ -102,8 +96,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (this.args.value != undefined) {
       value = this.args.value;
-    } else if (this.value != undefined) {
-      value = this.value;
+    } else if (this.props.value != undefined) {
+      value = this.props.value;
     }
 
     return PATH_LENGTH - PATH_LENGTH * (value == null ? 0.25 : clamp(value, 0, 1));
@@ -113,8 +107,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (this.args.value != undefined) {
       value = this.args.value;
-    } else if (this.value != undefined) {
-      value = this.value;
+    } else if (this.props.value != undefined) {
+      value = this.props.value;
     }
 
     return value != null ? Classes.SPINNER_NO_SPIN : '';
@@ -124,8 +118,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (this.args.size != undefined) {
       size = this.args.size;
-    } else if (this.size != undefined) {
-      size = this.size;
+    } else if (this.props.size != undefined) {
+      size = this.props.size;
     }
 
     return size;
@@ -150,8 +144,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     const size = this.sizeProps();

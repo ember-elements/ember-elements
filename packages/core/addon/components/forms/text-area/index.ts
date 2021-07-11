@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
@@ -39,22 +37,19 @@ interface TextAreaArgs extends ITextAreaProps, IProps {
 }
 
 export default class TextArea extends Component<TextAreaArgs> {
-  @reads('props.className') className?: TextAreaArgs['className'];
-  @reads('props.fill') fill?: TextAreaArgs['fill'];
-  @reads('props.large') large?: TextAreaArgs['large'];
-  @reads('props.small') small?: TextAreaArgs['small'];
-  @reads('props.intent') intent?: Intent;
-  @reads('props.value') value?: TextAreaArgs['value'];
-  @reads('props.growVertically') growVertically?: TextAreaArgs['growVertically'];
-
   INPUT = Classes.INPUT;
+
+  get props() {
+    return this.args.props || {};
+  }
+
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -65,8 +60,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.fill != undefined) {
       fill = this.args.fill;
-    } else if (this.fill != undefined) {
-      fill = this.fill;
+    } else if (this.props.fill != undefined) {
+      fill = this.props.fill;
     }
 
     return fill ? Classes.FILL : '';
@@ -77,8 +72,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.large != undefined) {
       large = this.args.large;
-    } else if (this.large != undefined) {
-      large = this.large;
+    } else if (this.props.large != undefined) {
+      large = this.props.large;
     }
 
     return large ? Classes.LARGE : '';
@@ -89,8 +84,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.small != undefined) {
       small = this.args.small;
-    } else if (this.small != undefined) {
-      small = this.small;
+    } else if (this.props.small != undefined) {
+      small = this.props.small;
     }
 
     return small ? Classes.SMALL : '';
@@ -101,8 +96,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.intent != undefined) {
       intent = this.args.intent;
-    } else if (this.intent != undefined) {
-      intent = this.intent;
+    } else if (this.props.intent != undefined) {
+      intent = this.props.intent;
     }
 
     return Classes.intentClass(intent) as Intent;
@@ -113,8 +108,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.value != undefined) {
       value = this.args.value;
-    } else if (this.value != undefined) {
-      value = this.value;
+    } else if (this.props.value != undefined) {
+      value = this.props.value;
     }
 
     return value;
@@ -125,8 +120,8 @@ export default class TextArea extends Component<TextAreaArgs> {
 
     if (this.args.growVertically != undefined) {
       growVertically = this.args.growVertically;
-    } else if (this.growVertically != undefined) {
-      growVertically = this.growVertically;
+    } else if (this.props.growVertically != undefined) {
+      growVertically = this.props.growVertically;
     }
 
     return growVertically;

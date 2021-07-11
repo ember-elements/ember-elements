@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as tagClasses from '../../_private/common/classes';
 
@@ -90,18 +88,6 @@ interface TagArgs extends ITagProps {
 }
 
 export default class Tag extends Component<TagArgs> {
-  @reads('props.active') active?: TagArgs['active'];
-  @reads('props.className') className?: TagArgs['className'];
-  @reads('props.fill') fill?: TagArgs['fill'];
-  @reads('props.icon') icon?: TagArgs['icon'];
-  @reads('props.intent') intent?: Intent;
-  @reads('props.interactive') interactive?: TagArgs['interactive'];
-  @reads('props.large') large?: TagArgs['large'];
-  @reads('props.minimal') minimal?: TagArgs['minimal'];
-  @reads('props.round') round?: TagArgs['round'];
-  @reads('props.tabIndex') tabIndex?: TagArgs['tabIndex'];
-  @reads('props.rightIcon') rightIcon?: TagArgs['rightIcon'];
-
   public static readonly SIZE_STANDARD = 16;
   public static readonly SIZE_LARGE = 20;
 
@@ -111,13 +97,17 @@ export default class Tag extends Component<TagArgs> {
 
   FILL = tagClasses.FILL;
 
+  get props() {
+    return this.args.props || {};
+  }
+
   get getActive() {
     let active;
 
     if (this.args.active != undefined) {
       active = this.args.active;
-    } else if (this.active != undefined) {
-      active = this.active;
+    } else if (this.props.active != undefined) {
+      active = this.props.active;
     }
 
     return active ? tagClasses.ACTIVE : '';
@@ -128,8 +118,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.className != undefined) {
       tagClassName = this.args.className;
-    } else if (this.className != undefined) {
-      tagClassName = this.className;
+    } else if (this.props.className != undefined) {
+      tagClassName = this.props.className;
     }
 
     return tagClassName;
@@ -140,8 +130,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.fill != undefined) {
       tagFill = this.args.fill;
-    } else if (this.fill != undefined) {
-      tagFill = this.fill;
+    } else if (this.props.fill != undefined) {
+      tagFill = this.props.fill;
     }
 
     return tagFill ? tagClasses.FILL : '';
@@ -152,8 +142,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.icon != undefined) {
       tagIcon = this.args.icon;
-    } else if (this.icon != undefined) {
-      tagIcon = this.icon;
+    } else if (this.props.icon != undefined) {
+      tagIcon = this.props.icon;
     }
 
     return tagIcon;
@@ -164,8 +154,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.intent != undefined) {
       tagIntent = this.args.intent;
-    } else if (this.intent != undefined) {
-      tagIntent = this.intent;
+    } else if (this.props.intent != undefined) {
+      tagIntent = this.props.intent;
     }
 
     return tagClasses.intentClass(tagIntent) as Intent;
@@ -176,8 +166,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.interactive != undefined) {
       tagInteractive = this.args.interactive;
-    } else if (this.interactive != undefined) {
-      tagInteractive = this.interactive;
+    } else if (this.props.interactive != undefined) {
+      tagInteractive = this.props.interactive;
     }
 
     return tagInteractive ? tagClasses.INTERACTIVE : '';
@@ -188,8 +178,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.large != undefined) {
       tagLarge = this.args.large;
-    } else if (this.large != undefined) {
-      tagLarge = this.large;
+    } else if (this.props.large != undefined) {
+      tagLarge = this.props.large;
     }
 
     return tagLarge ? tagClasses.LARGE : '';
@@ -200,8 +190,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.minimal != undefined) {
       tagMinimal = this.args.minimal;
-    } else if (this.minimal != undefined) {
-      tagMinimal = this.minimal;
+    } else if (this.props.minimal != undefined) {
+      tagMinimal = this.props.minimal;
     }
 
     return tagMinimal ? tagClasses.MINIMAL : '';
@@ -212,8 +202,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.round != undefined) {
       tagRound = this.args.round;
-    } else if (this.round != undefined) {
-      tagRound = this.round;
+    } else if (this.props.round != undefined) {
+      tagRound = this.props.round;
     }
 
     return tagRound ? tagClasses.ROUND : '';
@@ -224,8 +214,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.tabIndex != undefined) {
       tabIndex = this.args.tabIndex;
-    } else if (this.tabIndex != undefined) {
-      tabIndex = this.tabIndex;
+    } else if (this.props.tabIndex != undefined) {
+      tabIndex = this.props.tabIndex;
     }
 
     return tabIndex;
@@ -236,8 +226,8 @@ export default class Tag extends Component<TagArgs> {
 
     if (this.args.rightIcon != undefined) {
       tagRightIcon = this.args.rightIcon;
-    } else if (this.rightIcon != undefined) {
-      tagRightIcon = this.rightIcon;
+    } else if (this.props.rightIcon != undefined) {
+      tagRightIcon = this.props.rightIcon;
     }
 
     return tagRightIcon;

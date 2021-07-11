@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as navbarDividerClasses from '../../../_private/common/classes';
 
@@ -13,17 +11,19 @@ interface NavbarDividerArgs extends INavbarDividerProps {
 }
 
 export default class NavbarDivider extends Component<NavbarDividerArgs> {
-  @reads('props.className') className?: NavbarDividerArgs['className'];
-
   NAVBAR_DIVIDER = navbarDividerClasses.NAVBAR_DIVIDER;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getNavbarDividerClassNames() {
     let navbarDividerClassName;
 
     if (this.args.className != undefined) {
       navbarDividerClassName = this.args.className;
-    } else if (this.className != undefined) {
-      navbarDividerClassName = this.className;
+    } else if (this.props.className != undefined) {
+      navbarDividerClassName = this.props.className;
     }
 
     return navbarDividerClassName;

@@ -1,7 +1,5 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-// eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 import { htmlSafe } from '@ember/template';
 
 import * as Classes from '../../_private/common/classes';
@@ -66,7 +64,6 @@ interface PopoverArgs extends IPopoverProps, IPopoverSharedProps {
 }
 
 export default class Select extends Component<PopoverArgs> {
-  props = this.args.props;
   arrowElement!: HTMLElement;
   // these paths come from the Core Kit Sketch file
   SVG_SHADOW_PATH =
@@ -75,11 +72,6 @@ export default class Select extends Component<PopoverArgs> {
   SVG_ARROW_PATH =
     'M8.787 7.036c1.22-1.125 2.21-3.376 2.21-5.03V0v30-2.005' +
     'c0-1.654-.983-3.9-2.21-5.03l-7.183-6.616c-.81-.746-.802-1.96 0-2.7l7.183-6.614z';
-
-  @reads('props.className') className?: PopoverArgs['className'];
-  @reads('props.minimal') minimal?: PopoverArgs['minimal'];
-  @reads('props.position') position?: PopoverArgs['position'];
-  @reads('props.popoverClassName') popoverClassName?: PopoverArgs['popoverClassName'];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @tracked transformOrigin: any = '';
@@ -92,13 +84,16 @@ export default class Select extends Component<PopoverArgs> {
   POPOVER_CONTENT = Classes.POPOVER_CONTENT;
   POPOVER_ARROW = Classes.POPOVER_ARROW;
 
+  get props() {
+    return this.args.props || {};
+  }
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      className = this.className;
+    } else if (this.props.className != undefined) {
+      className = this.props.className;
     }
 
     return className;
@@ -109,8 +104,8 @@ export default class Select extends Component<PopoverArgs> {
 
     if (this.args.popoverClassName != undefined) {
       popoverClassName = this.args.popoverClassName;
-    } else if (this.popoverClassName != undefined) {
-      popoverClassName = this.popoverClassName;
+    } else if (this.props.popoverClassName != undefined) {
+      popoverClassName = this.props.popoverClassName;
     }
 
     return popoverClassName;
@@ -129,8 +124,8 @@ export default class Select extends Component<PopoverArgs> {
 
     if (this.args.position != undefined) {
       position = this.args.position;
-    } else if (this.position != undefined) {
-      position = this.position;
+    } else if (this.props.position != undefined) {
+      position = this.props.position;
     }
 
     return positionToPlacement(position);
@@ -141,8 +136,8 @@ export default class Select extends Component<PopoverArgs> {
 
     if (this.args.minimal != undefined) {
       minimal = this.args.minimal;
-    } else if (this.minimal != undefined) {
-      minimal = this.minimal;
+    } else if (this.props.minimal != undefined) {
+      minimal = this.props.minimal;
     }
 
     return minimal;

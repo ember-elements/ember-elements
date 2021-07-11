@@ -1,8 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../../_private/common/classes';
 
@@ -53,30 +51,27 @@ export interface IFileInputProps extends IProps {
    */
   buttonText?: string;
 }
+
 interface FileInputArgs extends IFileInputProps {
   props: IFileInputProps;
 }
 
 export default class FileInput extends Component<FileInputArgs> {
-  @reads('props.className') className?: FileInputArgs['className'];
-  @reads('props.disabled') disabled?: FileInputArgs['disabled'];
-  @reads('props.fill') fill?: FileInputArgs['fill'];
-  @reads('props.hasSelection') hasSelection?: FileInputArgs['hasSelection'];
-  @reads('props.large') large?: FileInputArgs['large'];
-  @reads('props.text') text?: FileInputArgs['text'];
-  @reads('props.buttonText') buttonText?: FileInputArgs['buttonText'];
-
   FILE_INPUT = Classes.FILE_INPUT;
   FILE_UPLOAD_INPUT = Classes.FILE_UPLOAD_INPUT;
   NS = Classes.getClassNamespace();
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -87,8 +82,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.disabled != undefined) {
       disabled = this.args.disabled;
-    } else if (this.disabled != undefined) {
-      disabled = this.disabled;
+    } else if (this.props.disabled != undefined) {
+      disabled = this.props.disabled;
     }
 
     return disabled ? Classes.DISABLED : '';
@@ -99,8 +94,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.fill != undefined) {
       fill = this.args.fill;
-    } else if (this.fill != undefined) {
-      fill = this.fill;
+    } else if (this.props.fill != undefined) {
+      fill = this.props.fill;
     }
 
     return fill ? Classes.FILL : '';
@@ -111,8 +106,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.hasSelection != undefined) {
       hasSelection = this.args.hasSelection;
-    } else if (this.hasSelection != undefined) {
-      hasSelection = this.hasSelection;
+    } else if (this.props.hasSelection != undefined) {
+      hasSelection = this.props.hasSelection;
     }
 
     return hasSelection ? Classes.FILE_INPUT_HAS_SELECTION : '';
@@ -123,8 +118,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.large != undefined) {
       large = this.args.large;
-    } else if (this.large != undefined) {
-      large = this.large;
+    } else if (this.props.large != undefined) {
+      large = this.props.large;
     }
 
     return large ? Classes.LARGE : '';
@@ -135,8 +130,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.text != undefined) {
       text = this.args.text;
-    } else if (this.text != undefined) {
-      text = this.text;
+    } else if (this.props.text != undefined) {
+      text = this.props.text;
     }
 
     return text;
@@ -147,8 +142,8 @@ export default class FileInput extends Component<FileInputArgs> {
 
     if (this.args.buttonText != undefined) {
       buttonText = this.args.buttonText;
-    } else if (this.buttonText != undefined) {
-      buttonText = this.buttonText;
+    } else if (this.props.buttonText != undefined) {
+      buttonText = this.props.buttonText;
     }
 
     return buttonText;
@@ -172,7 +167,7 @@ export default class FileInput extends Component<FileInputArgs> {
       );
 
       // disabled radio doesn't have a action
-      if (!this.disabled && this.args.onInputChange) {
+      if (!this.props.disabled && this.args.onInputChange) {
         this.args.onInputChange(e);
       }
     }

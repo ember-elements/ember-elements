@@ -1,9 +1,8 @@
 /* eslint-disable */
-// @ts-nocheck
+//@ts-nocheck
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
@@ -13,8 +12,8 @@ import * as FunRender from './common/itemListRenderer';
 import * as FunProps from './common/listItemsProps';
 import * as Fun from './common/listItemsUtils';
 
-import type { IInputGroupProps } from '../../components/forms/input-group/component';
-import type { IPopoverProps } from '../../components/popover/component';
+import type { IInputGroupProps } from '../../components/forms/input-group/index';
+import type { IPopoverProps } from '../../components/popover/index';
 import type { ICreateNewItem, IListItemsProps } from './common';
 import type { IQueryListProps } from './queryList';
 export interface ISelectProps<T> extends IListItemsProps<T> {
@@ -52,24 +51,13 @@ export interface ISelectProps<T> extends IListItemsProps<T> {
 }
 
 interface SelectArgs<T> extends ISelectProps<T>, IQueryListProps<T> {
-	props?: SelectArgs<T>;
+	props: IQueryListProps<T> | SelectArgs<T>;
 	isOpen?: boolean;
 }
 
 export default class Select<T> extends Component<SelectArgs<T>> {
-	props = this.args.props;
 	private itemsParentRef?: HTMLElement | null;
 
-	@reads('props.query') query?: IListItemsProps<T>['query'];
-	@reads('props.items') items?: IQueryListProps<T>['items'];
-	@reads('props.activeItem') activeItem?: IQueryListProps<T>['activeItem'];
-	@reads('props.itemDisabled') itemDisabled?: IQueryListProps<T>['itemDisabled'];
-	@reads('props.resetOnQuery') resetOnQuery?: IQueryListProps<T>['resetOnQuery'];
-	@reads('props.createNewItemFromQuery')
-	createNewItemFromQuery?: IQueryListProps<T>['createNewItemFromQuery'];
-	@reads('props.itemsEqual') itemsEqual?: IQueryListProps<T>['itemsEqual'];
-	@reads('props.resetOnSelect') resetOnSelect?: IQueryListProps<T>['resetOnSelect'];
-	@reads('props.scrollToActiveItem') scrollToActiveItem?: IQueryListProps<T>['scrollToActiveItem'];
 
 	/**
 	 * Flag indicating that we should check whether selected item is in viewport
@@ -105,6 +93,11 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 				: getFirstEnabledItem(this.filteredItemsState, this.findItemDisabled());
 	}
 
+	get props() {
+
+		return this.args.props || {};
+	}
+
 	get getActiveItem() {
 		if (this.findActiveItem() !== undefined && this.findActiveItem() !== this.activeItemState) {
 			this.shouldCheckActiveItemInViewport = true;
@@ -138,8 +131,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.query != undefined) {
 			query = this.args.query;
-		} else if (this.query != undefined) {
-			query = this.query;
+		} else if (this.props.query != undefined) {
+			query = this.props.query;
 		}
 
 		if (query) this.queryState = query;
@@ -151,8 +144,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.items != undefined) {
 			items = this.args.items;
-		} else if (this.items != undefined) {
-			items = this.items;
+		} else if (this.props.items != undefined) {
+			items = this.props.items;
 		}
 
 		return items;
@@ -163,8 +156,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.activeItem != undefined) {
 			activeItem = this.args.activeItem;
-		} else if (this.activeItem != undefined) {
-			activeItem = this.activeItem;
+		} else if (this.props.activeItem != undefined) {
+			activeItem = this.props.activeItem;
 		}
 
 		return activeItem;
@@ -174,8 +167,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.itemDisabled != undefined) {
 			itemDisabled = this.args.itemDisabled;
-		} else if (this.itemDisabled != undefined) {
-			itemDisabled = this.itemDisabled;
+		} else if (this.props.itemDisabled != undefined) {
+			itemDisabled = this.props.itemDisabled;
 		}
 
 		return itemDisabled;
@@ -185,8 +178,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.resetOnQuery != undefined) {
 			resetOnQuery = this.args.resetOnQuery;
-		} else if (this.resetOnQuery != undefined) {
-			resetOnQuery = this.resetOnQuery;
+		} else if (this.props.resetOnQuery != undefined) {
+			resetOnQuery = this.props.resetOnQuery;
 		}
 
 		return resetOnQuery;
@@ -196,8 +189,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.createNewItemFromQuery != undefined) {
 			createNewItemFromQuery = this.args.createNewItemFromQuery;
-		} else if (this.createNewItemFromQuery != undefined) {
-			createNewItemFromQuery = this.createNewItemFromQuery;
+		} else if (this.props.createNewItemFromQuery != undefined) {
+			createNewItemFromQuery = this.props.createNewItemFromQuery;
 		}
 
 		return createNewItemFromQuery;
@@ -208,8 +201,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.itemsEqual != undefined) {
 			itemsEqual = this.args.itemsEqual;
-		} else if (this.itemsEqual != undefined) {
-			itemsEqual = this.itemsEqual;
+		} else if (this.props.itemsEqual != undefined) {
+			itemsEqual = this.props.itemsEqual;
 		}
 
 		return itemsEqual;
@@ -219,8 +212,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.scrollToActiveItem != undefined) {
 			scrollToActiveItem = this.args.scrollToActiveItem;
-		} else if (this.scrollToActiveItem != undefined) {
-			scrollToActiveItem = this.scrollToActiveItem;
+		} else if (this.props.scrollToActiveItem != undefined) {
+			scrollToActiveItem = this.props.scrollToActiveItem;
 		}
 
 		return scrollToActiveItem;
@@ -231,8 +224,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.resetOnSelect != undefined) {
 			resetOnSelect = this.args.resetOnSelect;
-		} else if (this.resetOnSelect != undefined) {
-			resetOnSelect = this.resetOnSelect;
+		} else if (this.props.resetOnSelect != undefined) {
+			resetOnSelect = this.props.resetOnSelect;
 		}
 
 		return resetOnSelect;
@@ -422,21 +415,14 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 	@tracked previousFocusedElement: HTMLElement = null;
 	@tracked createItemView = null;
 	@tracked isScheduleUpdate = false;
-	@reads('props.disabled') disabled?: SelectArgs<T>['disabled'];
-	@reads('props.className') className?: SelectArgs<T>['className'];
-	@reads('props.resetOnClose') resetOnClose?: SelectArgs<T>['resetOnClose'];
-	@reads('props.inputProps') inputProps?: SelectArgs<T>['inputProps'];
-	@reads('props.filterable') filterable?: SelectArgs<T>['filterable'];
-	@reads('props.initialContent') initialContent?: SelectArgs<T>['initialContent'];
-	@reads('props.isOpen') isOpen?: boolean;
 
 	get getDisabled() {
 		let disabled = false;
 
 		if (this.args.disabled != undefined) {
 			disabled = this.args.disabled;
-		} else if (this.disabled != undefined) {
-			disabled = this.disabled;
+		} else if (this.props.disabled != undefined) {
+			disabled = this.props.disabled;
 		}
 
 		return disabled;
@@ -447,8 +433,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.className != undefined) {
 			className = this.args.className;
-		} else if (this.className != undefined) {
-			className = this.className;
+		} else if (this.props.className != undefined) {
+			className = this.props.className;
 		}
 
 		return className;
@@ -458,8 +444,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.isOpen != undefined) {
 			isOpen = this.args.isOpen;
-		} else if (this.isOpen != undefined) {
-			isOpen = this.isOpen;
+		} else if (this.props.isOpen != undefined) {
+			isOpen = this.props.isOpen;
 		}
 
 		if (!this.isOpenState && isOpen) {
@@ -474,7 +460,7 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 			setTimeout(() => {
 				this.scrollActiveItemIntoView();
 				requestAnimationFrame(() => {
-					const inputProps: IInputGroupProps = this.inputProps || {};
+					const inputProps: IInputGroupProps = this.props.inputProps || {};
 
 					// autofocus is enabled by default
 					if (inputProps.autoFocus !== false && this.input != null) {
@@ -505,8 +491,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.filterable != undefined) {
 			filterable = this.args.filterable;
-		} else if (this.filterable != undefined) {
-			filterable = this.filterable;
+		} else if (this.props.filterable != undefined) {
+			filterable = this.props.inputProps;
 		}
 
 		return filterable;
@@ -590,8 +576,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.disabled != undefined) {
 			disabled = this.args.disabled;
-		} else if (this.disabled != undefined) {
-			disabled = this.disabled;
+		} else if (this.props.disabled != undefined) {
+			disabled = this.props.disabled;
 		}
 
 		return disabled;
@@ -602,8 +588,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.initialContent != undefined) {
 			initialContent = this.args.initialContent;
-		} else if (this.initialContent != undefined) {
-			initialContent = this.initialContent;
+		} else if (this.props.initialContent != undefined) {
+			initialContent = this.props.initialContent;
 		}
 
 		return initialContent;
@@ -624,8 +610,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
 		if (this.args.resetOnClose != undefined) {
 			resetOnClose = this.args.resetOnClose;
-		} else if (this.resetOnClose != undefined) {
-			resetOnClose = this.resetOnClose;
+		} else if (this.props.resetOnClose != undefined) {
+			resetOnClose = this.props.resetOnClose;
 		}
 
 		return resetOnClose;

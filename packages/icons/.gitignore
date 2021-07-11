@@ -19,6 +19,9 @@
 /npm-debug.log*
 /testem.log
 /yarn-error.log
+.eslintcache
+.stylelintcache
+tsconfig.tsbuildinfo
 
 # ember-try
 /.node_modules.ember-try/

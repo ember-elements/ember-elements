@@ -3,8 +3,8 @@
 	{{#if this.getLeftIcon}}
 		<Icon @icon={{this.getLeftIcon}} />
 	{{/if}}
-	<input type='text' class={{this.INPUT}} onchange={{this.handleChange}} ...attributes {{did-insert this.updatePadding}}
-		{{did-update this.updatePadding}}>
+	<input type='text' class={{this.INPUT}} onchange={{this.handleChange}} {{did-insert this.updatePadding}} {{did-update
+		this.updatePadding}} ...attributes>
 	{{#if hasBlock}}
 		<span class={{this.INPUT_ACTION}} {{did-insert this.updateWidth}} {{did-update this.updateWidth}}>
 			{{yield}}

@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 import { htmlSafe } from '@ember/string';
 
 import * as Classes from '../../_private/common/classes';
@@ -63,31 +61,30 @@ export interface IDrawerProps extends IOverlayableProps, IBackdropProps {
    */
   vertical?: boolean;
 }
-interface DrawerArgs extends IProps, IDrawerProps {}
+interface DrawerArgs extends IProps, IDrawerProps {
+  props: DrawerArgs;
+}
 
 export default class Drawer extends Component<DrawerArgs> {
   public static readonly SIZE_SMALL = '360px';
   public static readonly SIZE_STANDARD = '50%';
   public static readonly SIZE_LARGE = '90%';
 
-  @reads('props.size') size?: DrawerArgs['size'];
-  @reads('props.style') style?: DrawerArgs['style'];
-  @reads('props.position') position?: DrawerArgs['position'];
-  @reads('props.vertical') vertical?: DrawerArgs['vertical'];
-  @reads('props.className') className?: DrawerArgs['className'];
-  @reads('props.isOpen') isOpen?: DrawerArgs['isOpen'];
-
   DRAWER = Classes.DRAWER;
   VERTICAL = Classes.VERTICAL;
   OVERLAY_CONTAINER = Classes.OVERLAY_CONTAINER;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getClassName() {
     let className;
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      className = this.className;
+    } else if (this.props.className != undefined) {
+      className = this.props.className;
     }
 
     const realPosition = this.realPosition();
@@ -103,8 +100,8 @@ export default class Drawer extends Component<DrawerArgs> {
 
     if (this.args.isOpen != undefined) {
       isOpen = this.args.isOpen;
-    } else if (this.isOpen != undefined) {
-      isOpen = this.isOpen;
+    } else if (this.props.isOpen != undefined) {
+      isOpen = this.props.isOpen;
     }
 
     return isOpen;
@@ -127,8 +124,8 @@ export default class Drawer extends Component<DrawerArgs> {
 
     if (this.args.size != undefined) {
       size = this.args.size;
-    } else if (this.size != undefined) {
-      size = this.size;
+    } else if (this.props.size != undefined) {
+      size = this.props.size;
     }
 
     return size;
@@ -139,8 +136,8 @@ export default class Drawer extends Component<DrawerArgs> {
 
     if (this.args.style != undefined) {
       style = this.args.style;
-    } else if (this.style != undefined) {
-      style = this.style;
+    } else if (this.props.style != undefined) {
+      style = this.props.style;
     }
 
     return style;
@@ -151,8 +148,8 @@ export default class Drawer extends Component<DrawerArgs> {
 
     if (this.args.position != undefined) {
       position = this.args.position;
-    } else if (this.position != undefined) {
-      position = this.position;
+    } else if (this.props.position != undefined) {
+      position = this.props.position;
     }
 
     return position as Position;
@@ -163,8 +160,8 @@ export default class Drawer extends Component<DrawerArgs> {
 
     if (this.args.vertical != undefined) {
       vertical = this.args.vertical;
-    } else if (this.vertical) {
-      vertical = this.vertical;
+    } else if (this.props.vertical) {
+      vertical = this.props.vertical;
     }
 
     return vertical;

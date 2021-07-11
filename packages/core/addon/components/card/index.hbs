@@ -1,5 +1,4 @@
-{{! template-lint-disable }}
-<div class={{rw this.CARD this.getClassName this.getInteractive this.getElevation}} ...attributes {{on 'click'
-	this.onClick}}>
+<div role='button' class={{rw this.CARD this.getClassName this.getInteractive this.getElevation}} ...attributes
+	{{on 'click' this.onClick}}>
 	{{yield}}
 </div>

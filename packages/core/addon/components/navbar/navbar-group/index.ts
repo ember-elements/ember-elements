@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as navbarGroupClasses from '../../../_private/common/classes';
 
@@ -20,18 +18,19 @@ interface NavbarGroupArgs extends INavbarGroupProps {
 }
 
 export default class NavbarGroup extends Component<NavbarGroupArgs> {
-  @reads('props.className') className?: NavbarGroupArgs['className'];
-  @reads('props.align') align?: NavbarGroupArgs['align'];
-
   NAVBAR_GROUP = navbarGroupClasses.NAVBAR_GROUP;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getNavbarDividerClassNames() {
     let navbarDividerClassName;
 
     if (this.args.className != undefined) {
       navbarDividerClassName = this.args.className;
-    } else if (this.className != undefined) {
-      navbarDividerClassName = this.className;
+    } else if (this.props.className != undefined) {
+      navbarDividerClassName = this.props.className;
     }
 
     return navbarDividerClassName;
@@ -42,8 +41,8 @@ export default class NavbarGroup extends Component<NavbarGroupArgs> {
 
     if (this.args.align != undefined) {
       navbarGroupAlign = this.args.align;
-    } else if (this.align != undefined) {
-      navbarGroupAlign = this.align;
+    } else if (this.props.align != undefined) {
+      navbarGroupAlign = this.props.align;
     }
 
     return navbarGroupClasses.alignmentClass(navbarGroupAlign);

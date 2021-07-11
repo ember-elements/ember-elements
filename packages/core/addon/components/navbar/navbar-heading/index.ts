@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as navbarHeadingClasses from '../../../_private/common/classes';
 
@@ -13,17 +11,19 @@ interface NavbarHeadingArgs extends INavbarHeadingProps {
 }
 
 export default class NavbarHeading extends Component<NavbarHeadingArgs> {
-  @reads('props.className') className?: NavbarHeadingArgs['className'];
-
   NAVBAR_HEADING = navbarHeadingClasses.NAVBAR_HEADING;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getNavbarHeadingClassNames() {
     let navbarHeadingClassName;
 
     if (this.args.className != undefined) {
       navbarHeadingClassName = this.args.className;
-    } else if (this.className != undefined) {
-      navbarHeadingClassName = this.className;
+    } else if (this.props.className != undefined) {
+      navbarHeadingClassName = this.props.className;
     }
 
     return navbarHeadingClassName;

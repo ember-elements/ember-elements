@@ -3,14 +3,13 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { reads } from '@ember/object/computed';
 
 import * as tagIClasses from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
 import * as Utils from '../../_private/common/utils';
 
 import type { IIntentProps, Intent, IProps } from '../../_private/common';
-import type { ITagProps } from '../tag/component';
+import type { ITagProps } from '../tag/index';
 import type { IconName } from '@ember-elements/icons/addon'; // import icons for TagInput
 
 /**
@@ -174,17 +173,6 @@ export default class TagInput extends Component<TagInputArgs> {
 	public static readonly SIZE_LARGE = 20;
 	inputElement!: HTMLInputElement;
 
-	@reads('props.className') className?: TagInputArgs['className'];
-	@reads('props.disabled') disabled?: TagInputArgs['disabled'];
-	@reads('props.fill') fill?: TagInputArgs['fill'];
-	@reads('props.large') large?: TagInputArgs['large'];
-	@reads('props.intent') intent?: TagInputArgs['intent'];
-	@reads('props.leftIcon') leftIcon?: TagInputArgs['leftIcon'];
-	@reads('props.values') values?: TagInputArgs['values'];
-	@reads('props.tagProps') tagProps?: TagInputArgs['tagProps'];
-	@reads('props.separator') separator?: TagInputArgs['separator'];
-	@reads('props.placeholder') placeholder?: TagInputArgs['placeholder'];
-
 	@tracked isInputFocused = false;
 	@tracked inputValue = this.args.inputValue;
 	@tracked activeIndex = NONE;
@@ -195,13 +183,17 @@ export default class TagInput extends Component<TagInputArgs> {
 	TAG_INPUT_VALUES = tagIClasses.TAG_INPUT_VALUES;
 	INPUT_GHOST = tagIClasses.INPUT_GHOST;
 
+	get props() {
+		return this.args.props || {};
+	}
+
 	get getTagIClassName() {
 		let tagIClassName;
 
 		if (this.args.className != undefined) {
 			tagIClassName = this.args.className;
-		} else if (this.className != undefined) {
-			tagIClassName = this.className;
+		} else if (this.props.className != undefined) {
+			tagIClassName = this.props.className;
 		}
 
 		return tagIClassName;
@@ -216,8 +208,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.disabled != undefined) {
 			tagIDisabled = this.args.disabled;
-		} else if (this.disabled != undefined) {
-			tagIDisabled = this.disabled;
+		} else if (this.props.disabled != undefined) {
+			tagIDisabled = this.props.disabled;
 		}
 
 		return tagIDisabled ? tagIClasses.DISABLED : '';
@@ -228,8 +220,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.fill != undefined) {
 			tagIfill = this.args.fill;
-		} else if (this.fill != undefined) {
-			tagIfill = this.fill;
+		} else if (this.props.fill != undefined) {
+			tagIfill = this.props.fill;
 		}
 
 		return tagIfill ? tagIClasses.FILL : '';
@@ -240,8 +232,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.large != undefined) {
 			tagILarge = this.args.large;
-		} else if (this.large != undefined) {
-			tagILarge = this.large;
+		} else if (this.props.large != undefined) {
+			tagILarge = this.props.large;
 		}
 
 		return tagILarge ? tagIClasses.LARGE : '';
@@ -252,8 +244,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.intent != undefined) {
 			tagIIntent = this.args.intent;
-		} else if (this.intent != undefined) {
-			tagIIntent = this.intent;
+		} else if (this.props.intent != undefined) {
+			tagIIntent = this.props.intent;
 		}
 
 		return tagIClasses.intentClass(tagIIntent) as Intent;
@@ -264,8 +256,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.leftIcon != undefined) {
 			tagIIcon = this.args.leftIcon;
-		} else if (this.leftIcon != undefined) {
-			tagIIcon = this.leftIcon;
+		} else if (this.props.leftIcon != undefined) {
+			tagIIcon = this.props.leftIcon;
 		}
 
 		return tagIIcon;
@@ -276,8 +268,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.values != undefined) {
 			tagIValues = this.args.values;
-		} else if (this.values != undefined) {
-			tagIValues = this.values;
+		} else if (this.props.values != undefined) {
+			tagIValues = this.props.values;
 		}
 
 		return tagIValues || [];
@@ -288,8 +280,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.placeholder != undefined) {
 			tagIPlaceHolder = this.args.placeholder;
-		} else if (this.placeholder != undefined) {
-			tagIPlaceHolder = this.placeholder;
+		} else if (this.props.placeholder != undefined) {
+			tagIPlaceHolder = this.props.placeholder;
 		}
 
 		return tagIPlaceHolder;
@@ -299,8 +291,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.tagProps != undefined) {
 			tagITagProps = this.args.tagProps;
-		} else if (this.tagProps != undefined) {
-			tagITagProps = this.tagProps;
+		} else if (this.props.tagProps != undefined) {
+			tagITagProps = this.props.tagProps;
 		}
 
 		return tagITagProps || {};
@@ -367,8 +359,8 @@ export default class TagInput extends Component<TagInputArgs> {
 	}
 
 	@action
-	handleInputKeyDown(event: HTMLInputElement) {
-		const { selectionEnd, value } = event.target;
+	handleInputKeyDown(event: KeyboardEvent) {
+		const { selectionEnd, value } = event.target as HTMLElement;
 		const activeIndex = this.activeIndex;
 		let activeIndexToEmit = this.activeIndex;
 
@@ -436,8 +428,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.leftIcon != undefined) {
 			tagIAddOnBlur = this.args.leftIcon;
-		} else if (this.leftIcon != undefined) {
-			tagIAddOnBlur = this.leftIcon;
+		} else if (this.props.leftIcon != undefined) {
+			tagIAddOnBlur = this.props.leftIcon;
 		}
 
 		return tagIAddOnBlur;
@@ -448,8 +440,8 @@ export default class TagInput extends Component<TagInputArgs> {
 
 		if (this.args.separator != undefined) {
 			tagISeparator = this.args.separator;
-		} else if (this.separator != undefined) {
-			tagISeparator = this.separator;
+		} else if (this.props.separator != undefined) {
+			tagISeparator = this.props.separator;
 		}
 
 		return tagISeparator;

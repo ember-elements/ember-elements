@@ -1,6 +1,4 @@
 import Component from '@glimmer/component';
-// eslint-disable-next-line  ember/no-computed-properties-in-native-classes
-import { reads } from '@ember/object/computed';
 
 import * as Classes from '../../_private/common/classes';
 
@@ -25,21 +23,19 @@ interface HtmlTableArgs extends IHTMLTableProps {
 }
 
 export default class HtmlTable extends Component<HtmlTableArgs> {
-  @reads('props.bordered') bordered?: HtmlTableArgs['bordered'];
-  @reads('props.className') className?: HtmlTableArgs['className'];
-  @reads('props.condensed') condensed?: HtmlTableArgs['condensed'];
-  @reads('props.striped') striped?: HtmlTableArgs['striped'];
-  @reads('props.interactive') interactive?: HtmlTableArgs['interactive'];
-
   HTML_TABLE = Classes.HTML_TABLE;
+
+  get props() {
+    return this.args.props || {};
+  }
 
   get getBordered() {
     let bordered;
 
     if (this.args.bordered != undefined) {
       bordered = this.args.bordered;
-    } else if (this.bordered != undefined) {
-      bordered = this.bordered;
+    } else if (this.props.bordered != undefined) {
+      bordered = this.props.bordered;
     }
 
     return bordered ? `${Classes.HTML_TABLE_BORDERED} ` : '';
@@ -50,8 +46,8 @@ export default class HtmlTable extends Component<HtmlTableArgs> {
 
     if (this.args.className != undefined) {
       className = this.args.className;
-    } else if (this.className != undefined) {
-      return (className = this.className);
+    } else if (this.props.className != undefined) {
+      return (className = this.props.className);
     }
 
     return className;
@@ -62,8 +58,8 @@ export default class HtmlTable extends Component<HtmlTableArgs> {
 
     if (this.args.condensed != undefined) {
       condensed = this.args.condensed;
-    } else if (this.condensed != undefined) {
-      condensed = this.condensed;
+    } else if (this.props.condensed != undefined) {
+      condensed = this.props.condensed;
     }
 
     return condensed ? `${Classes.HTML_TABLE_CONDENSED} ` : '';
@@ -74,8 +70,8 @@ export default class HtmlTable extends Component<HtmlTableArgs> {
 
     if (this.args.striped != undefined) {
       striped = this.args.striped;
-    } else if (this.striped != undefined) {
-      striped = this.striped;
+    } else if (this.props.striped != undefined) {
+      striped = this.props.striped;
     }
 
     return striped ? `${Classes.HTML_TABLE_STRIPED} ` : '';
@@ -86,8 +82,8 @@ export default class HtmlTable extends Component<HtmlTableArgs> {
 
     if (this.args.interactive != undefined) {
       interactive = this.args.interactive;
-    } else if (this.interactive != undefined) {
-      interactive = this.interactive;
+    } else if (this.props.interactive != undefined) {
+      interactive = this.props.interactive;
     }
 
     return interactive ? `${Classes.INTERACTIVE} ` : '';
