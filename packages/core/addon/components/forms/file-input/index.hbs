@@ -1,7 +1,10 @@
-<label class={{rw this.FILE_INPUT this.getClassName this.getDisabled this.getFill this.getHasSelection this.getLarge }}>
-	<input type='file' onchange={{this.handleInputChange}} disabled={{if this.getDisabled true}} ...attributes>
-	<span class={{rw this.FILE_UPLOAD_INPUT this.getButtonText}} {{did-insert this.updateButtonText this.buttonTextValue}}
-		{{did-update this.updateButtonText this.buttonTextValue}}>
-		{{this.getText}}
-	</span>
+<label class={{rw this.FILE_INPUT this.getClassName this.getDisabled this.getFill this.getHasSelection this.getLarge}}>
+  <input type='file' onchange={{this.handleInputChange}} disabled={{if this.getDisabled true}} ...attributes />
+  <span
+    class={{rw this.FILE_UPLOAD_INPUT this.getButtonText}}
+    {{did-insert this.updateButtonText this.buttonTextValue}}
+    {{did-update this.updateButtonText this.buttonTextValue}}
+  >
+    {{this.getText}}
+  </span>
 </label>

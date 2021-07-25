@@ -30,28 +30,28 @@ Styleguide headings
 $headings: (
   'h1': (
     36px,
-    40px
+    40px,
   ),
   'h2': (
     28px,
-    32px
+    32px,
   ),
   'h3': (
     22px,
-    25px
+    25px,
   ),
   'h4': (
     18px,
-    21px
+    21px,
   ),
   'h5': (
     16px,
-    19px
+    19px,
   ),
   'h6': (
     14px,
-    16px
-  )
+    16px,
+  ),
 ) !default;
 
 @each $tag, $props in $headings {

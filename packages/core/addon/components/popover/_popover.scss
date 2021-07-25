@@ -1,14 +1,9 @@
-
 @import './common';
 
 $popover-width: $pt-grid-size * 35 !default;
 
 .#{$ns}-popover {
-  @include popover-sizing(
-    $arrow-square-size: 30px,
-    $arrow-offset: 4px,
-    $arrow-target-offset: -4px
-  );
+  @include popover-sizing($arrow-square-size: 30px, $arrow-offset: 4px, $arrow-target-offset: -4px);
   @include popover-appearance(
     $popover-background-color,
     inherit,
@@ -53,7 +48,7 @@ $popover-width: $pt-grid-size * 35 !default;
       @include react-transition(
         '#{$ns}-popover',
         (
-          transform: scale(1) scale(1)
+          transform: scale(1) scale(1),
         ),
         $duration: $pt-transition-duration,
         $after: '> &'

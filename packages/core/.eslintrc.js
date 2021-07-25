@@ -12,6 +12,8 @@ module.exports = {
     // see: https://eslint.org/docs/user-guide/configuring/configuration-files#how-do-overrides-work
   ],
   rules: {
+    'no-multi-spaces': 'error',
+    'no-multiple-empty-lines': 'error',
     'ember/no-computed-properties-in-native-classes': 'off',
   },
 };

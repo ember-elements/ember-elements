@@ -1,14 +1,19 @@
 <span class={{rw this.ICON this.iconClass this.intent this.className}} title={{this.htmlTitle}} ...attributes>
-	<svg fill={{this.color}} data-icon={{this.icon}} width={{this.pixelGridSize}} height={{this.pixelGridSize}}
-		viewBox='0 0 {{this.pixelGridSize}} {{this.pixelGridSize}}'>
-		{{#if this.title}}
-			<desc>
-				{{this.title}}
-			</desc>
-		{{/if}}
+  <svg
+    fill={{this.color}}
+    data-icon={{this.icon}}
+    width={{this.pixelGridSize}}
+    height={{this.pixelGridSize}}
+    viewBox='0 0 {{this.pixelGridSize}} {{this.pixelGridSize}}'
+  >
+    {{#if this.title}}
+      <desc>
+        {{this.title}}
+      </desc>
+    {{/if}}
 
-		{{#each this.paths as |item index|}}
-			<path d={{item}} key={{index}} fill-rule='evenodd'></path>
-		{{/each}}
-	</svg>
+    {{#each this.paths as |item index|}}
+      <path d={{item}} key={{index}} fill-rule='evenodd'></path>
+    {{/each}}
+  </svg>
 </span>

@@ -39,12 +39,12 @@ $dialog-padding: $pt-grid-size * 2 !default;
   $dialog-transition-props-all: (
     opacity: (
       0,
-      1
+      1,
     ),
     transform: (
       scale(0.5),
-      scale(1)
-    )
+      scale(1),
+    ),
   );
   @include react-transition(
     '#{$ns}-overlay',
@@ -56,12 +56,12 @@ $dialog-padding: $pt-grid-size * 2 !default;
   $dialog-transition-props: (
     opacity: (
       0,
-      1
+      1,
     ),
     transform: (
       scale(0.5),
-      scale(1)
-    )
+      scale(1),
+    ),
   );
 
   @include react-transition(

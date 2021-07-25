@@ -5,8 +5,7 @@
 $tag-input-padding: ($pt-input-height - $tag-height) / 2 !default;
 
 $tag-input-icon-padding: ($pt-input-height - $pt-icon-size-standard) / 2 !default;
-$tag-input-icon-padding-large: ($pt-input-height-large - $pt-icon-size-large) /
-  2 !default;
+$tag-input-icon-padding-large: ($pt-input-height-large - $pt-icon-size-large) / 2 !default;
 
 .#{$ns}-tag-input {
   @include pt-flex-container(row, $fill: '.#{$ns}-tag-input-values');
@@ -109,14 +108,12 @@ $tag-input-icon-padding-large: ($pt-input-height-large - $pt-icon-size-large) /
   }
 
   &.#{$ns}-active {
-    box-shadow: input-transition-shadow($input-shadow-color-focus, true),
-      $input-box-shadow-focus;
+    box-shadow: input-transition-shadow($input-shadow-color-focus, true), $input-box-shadow-focus;
     background-color: $input-background-color;
 
     @each $intent, $color in $pt-intent-text-colors {
       &.#{$ns}-intent-#{$intent} {
-        box-shadow: input-transition-shadow($color, true),
-          $input-box-shadow-focus;
+        box-shadow: input-transition-shadow($color, true), $input-box-shadow-focus;
       }
     }
   }
@@ -134,17 +131,12 @@ $tag-input-icon-padding-large: ($pt-input-height-large - $pt-icon-size-large) /
     }
 
     &.#{$ns}-active {
-      box-shadow: dark-input-transition-shadow(
-          $dark-input-shadow-color-focus,
-          true
-        ),
-        $pt-dark-input-box-shadow;
+      box-shadow: dark-input-transition-shadow($dark-input-shadow-color-focus, true), $pt-dark-input-box-shadow;
       background-color: $dark-input-background-color;
 
       @each $intent, $color in $pt-intent-text-colors {
         &.#{$ns}-intent-#{$intent} {
-          box-shadow: input-transition-shadow($color, true),
-            $pt-dark-input-box-shadow;
+          box-shadow: input-transition-shadow($color, true), $pt-dark-input-box-shadow;
         }
       }
     }

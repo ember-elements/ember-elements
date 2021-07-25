@@ -220,7 +220,7 @@ export function executeItemsEqual<T>(
 
   if (Utils.isFunction(itemsEqualProp)) {
     // itemsEqualProp is an equality comparator function, so use it
-    return itemsEqualProp(itemA, itemB);
+    return itemsEqualProp(itemA, itemB); // eslint-disable-line
   } else {
     // itemsEqualProp is a property name, so strictly compare the values of the property.
     return itemA[itemsEqualProp] === itemB[itemsEqualProp];

@@ -67,7 +67,7 @@ export default class Callout extends Component<CalloutArgs> {
       intent = this.props.intent;
     }
 
-		this.intentValue = intent; // eslint-disable-line
+    this.intentValue = intent; // eslint-disable-line
 
     return Classes.intentClass(intent) as Intent;
   }
@@ -97,7 +97,7 @@ export default class Callout extends Component<CalloutArgs> {
   }
 
   get getIconClassName() {
-		this.iconClassName = this.getIconName ? Classes.CALLOUT_ICON : ''; // eslint-disable-line
+    this.iconClassName = this.getIconName ? Classes.CALLOUT_ICON : ''; // eslint-disable-line
 
     return this.iconClassName;
   }

@@ -88,7 +88,8 @@ jobs:
         - "ember-default-with-jquery"
         - "ember-release"
         - "ember-beta"
-        - "ember-canary"
+        # TODO https://github.com/dunkinbase/ember-elements/issues/352
+        # - "ember-canary" 
     steps:
     - uses: actions/checkout@v2
     - uses: volta-cli/action@v1

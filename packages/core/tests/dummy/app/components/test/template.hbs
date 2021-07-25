@@ -1,437 +1,496 @@
 {{! template-lint-disable}}
 
-<Button @onClick={{action 'onSelectToggle' }} @primary={{true}} @icon='film' @rightIcon='caret-down' {{did-insert
-	this.selectPath}} {{! style='margin-left:400px;margin-top:300px' }}>
-	{{#if this.film}}
-		{{this.film.title}} {{this.film.year}}
-	{{else}}
-		(No selection)
-	{{/if}}
+<Button
+  @onClick={{action 'onSelectToggle'}}
+  @primary={{true}}
+  @icon='film'
+  @rightIcon='caret-down'
+  {{did-insert this.selectPath}}
+  {{! style='margin-left:400px;margin-top:300px' }}
+>
+  {{#if this.film}}
+    {{this.film.title}}
+    {{this.film.year}}
+  {{else}}
+    (No selection)
+  {{/if}}
 </Button>
 <br />
 <Button>
-	<Tooltip @intent='success'>
-		hi its me ..wake up
-	</Tooltip>
-	this is tooltip
+  <Tooltip @intent='success'>
+    hi its me ..wake up
+  </Tooltip>
+  this is tooltip
 </Button>
 
-<Button onmouseenter={{action 'openTooltip' 1}} onmouseleave={{action 'closeTooltip' 1}} {{did-insert this.tooltipRef}}
-	{{did-update this.tooltipRef this.tooltip1}}>
-	<Tooltip @intent='primary' @target={{this.tooltipRefVar}} @event='none' @isOpen={{this.isOpenTooltip}}>
-		hi its me ..wake up
-	</Tooltip>
-	user controlled Tooltip
+<Button
+  onmouseenter={{action 'openTooltip' 1}}
+  onmouseleave={{action 'closeTooltip' 1}}
+  {{did-insert this.tooltipRef}}
+  {{did-update this.tooltipRef this.tooltip1}}
+>
+  <Tooltip @intent='primary' @target={{this.tooltipRefVar}} @event='none' @isOpen={{this.isOpenTooltip}}>
+    hi its me ..wake up
+  </Tooltip>
+  user controlled Tooltip
 </Button>
 <br />
-<Button @onClick={{action 'handleOpenDrawer' }}>
-	Show Drawer
+<Button @onClick={{action 'handleOpenDrawer'}}>
+  Show Drawer
 </Button>
-<Drawer @isOpen={{this.isOpenDrawer}} @onClose={{action 'handleCloseDrawer' }} @canOutsideClickClose={{false}}>
-	<Drawer::Header>
-		<Icon @icon='info-sign' @iconSize={{20}} />
-		<h4 class='ee-heading'>
-			Palantir Foundry
-		</h4>
-		<Button aria-label='Close' @className='dialog_close_button' @icon='small-cross' @iconSize={{20}} @minimal={{true}}
-			@onClick={{action 'handleCloseDrawer' }} />
-	</Drawer::Header>
-	<div class='ee-drawer-body'>
-		<div class='ee-dialog-body'>
-			<p>
-				<strong>
-					Data integration is the seminal problem of the digital age. For over ten years,
-					we’ve helped the world’s premier organizations rise to the challenge.
-				</strong>
-			</p>
-			<p>
-				Palantir Foundry radically reimagines the way enterprises interact with data by
-				amplifying and extending the power of data integration. With Foundry, anyone can source,
-				fuse, and transform data into any shape they desire. Business analysts become data
-				engineers — and leaders in their organization’s data revolution.
-			</p>
-			<p>
-				Foundry’s back end includes a suite of best-in-class data integration capabilities: data
-				provenance, git-style versioning semantics, granular access controls, branching,
-				transformation authoring, and more. But these powers are not limited to the back-end IT
-				shop.
-			</p>
-			<p>
-				In Foundry, tables, applications, reports, presentations, and spreadsheets operate as
-				data integrations in their own right. Access controls, transformation logic, and data
-				quality flow from original data source to intermediate analysis to presentation in real
-				time. Every end product created in Foundry becomes a new data source that other users
-				can build upon. And the enterprise data foundation goes where the business drives it.
-			</p>
-			<p>
-				Start the revolution. Unleash the power of data integration with Palantir Foundry.
-			</p>
-		</div>
-	</div>
-	<div class='ee-drawer-footer'>
-		Footer
-	</div>
+<Drawer @isOpen={{this.isOpenDrawer}} @onClose={{action 'handleCloseDrawer'}} @canOutsideClickClose={{false}}>
+  <Drawer::Header>
+    <Icon @icon='info-sign' @iconSize={{20}} />
+    <h4 class='ee-heading'>
+      Palantir Foundry
+    </h4>
+    <Button
+      aria-label='Close'
+      @className='dialog_close_button'
+      @icon='small-cross'
+      @iconSize={{20}}
+      @minimal={{true}}
+      @onClick={{action 'handleCloseDrawer'}}
+    />
+  </Drawer::Header>
+  <div class='ee-drawer-body'>
+    <div class='ee-dialog-body'>
+      <p>
+        <strong>
+          Data integration is the seminal problem of the digital age. For over ten years, we’ve helped the world’s
+          premier organizations rise to the challenge.
+        </strong>
+      </p>
+      <p>
+        Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and extending the
+        power of data integration. With Foundry, anyone can source, fuse, and transform data into any shape they desire.
+        Business analysts become data engineers — and leaders in their organization’s data revolution.
+      </p>
+      <p>
+        Foundry’s back end includes a suite of best-in-class data integration capabilities: data provenance, git-style
+        versioning semantics, granular access controls, branching, transformation authoring, and more. But these powers
+        are not limited to the back-end IT shop.
+      </p>
+      <p>
+        In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data integrations in their
+        own right. Access controls, transformation logic, and data quality flow from original data source to
+        intermediate analysis to presentation in real time. Every end product created in Foundry becomes a new data
+        source that other users can build upon. And the enterprise data foundation goes where the business drives it.
+      </p>
+      <p>
+        Start the revolution. Unleash the power of data integration with Palantir Foundry.
+      </p>
+    </div>
+  </div>
+  <div class='ee-drawer-footer'>
+    Footer
+  </div>
 </Drawer>
-<Select @items={{this.TOP_100_FILMS}} @isOpen={{this.isOpenSelect}} @popperTarget={{this.selectTargetValue}}
-	@itemPredicate={{this.filterFilm}} @onClose={{action 'onCloseSelect' }} @resetOnClose={{false}}
-	@createNewItemRenderer={{true}} @createNewItemFromQuery={{this.createFilm}} @onItemSelect={{action 'handleValueChange'
-	}} @noResults={{this.noResults}} @itemDisabled={{this.isItemDisabled1}} {{!-- @initialContent={{this.initialContent}}
-	--}} as |renderItem item handleClick|>
-	{{#if renderItem}}
-		<li>
-			<a class="
-
-          ee-menu-item
-
-
+<Select
+  @items={{this.TOP_100_FILMS}}
+  @isOpen={{this.isOpenSelect}}
+  @popperTarget={{this.selectTargetValue}}
+  @itemPredicate={{this.filterFilm}}
+  @onClose={{action 'onCloseSelect'}}
+  @resetOnClose={{false}}
+  @createNewItemRenderer={{true}}
+  @createNewItemFromQuery={{this.createFilm}}
+  @onItemSelect={{action 'handleValueChange'}}
+  @noResults={{this.noResults}}
+  @itemDisabled={{this.isItemDisabled1}}
+  {{!-- @initialContent={{this.initialContent}}
+	--}}
+  as |renderItem item handleClick|
+>
+  {{#if renderItem}}
+    <li>
+      <a
+        class='ee-menu-item
           {{if item.modifiers.active 'ee-active'}}
-
-
-
           {{if item.modifiers.active 'ee-intent-primary'}}
-
-
-
           {{if item.modifiers.disabled 'ee-disabled'}}
-
-
-           ee-popover-dismiss" onclick={{handleClick}}>
-				<div class='ee-text-overflow-ellipsis ee-fill'>
-					{{item.rank}}. {{item.title}}
-				</div>
-				<span class='ee-menu-item-label'>
-					{{item.year}}
-				</span>
-			</a>
-		</li>
-	{{else}}
-		<li>
-			<a class="ee-menu-item ee-popover-dismiss
-
-
-          {{if item.active 'ee-active'}}
-
-
-
-          {{if item.active 'ee-intent-primary'}}
-
-
-          " onclick={{handleClick}}>
-				<Icon @icon='add' style='margin-right:5px' />
-				Create {{item.query}}
-			</a>
-		</li>
-	{{/if}}
+          ee-popover-dismiss'
+        onclick={{handleClick}}
+      >
+        <div class='ee-text-overflow-ellipsis ee-fill'>
+          {{item.rank}}.
+          {{item.title}}
+        </div>
+        <span class='ee-menu-item-label'>
+          {{item.year}}
+        </span>
+      </a>
+    </li>
+  {{else}}
+    <li>
+      <a
+        class='ee-menu-item ee-popover-dismiss {{if item.active 'ee-active'}} {{if item.active 'ee-intent-primary'}} '
+        onclick={{handleClick}}
+      >
+        <Icon @icon='add' style='margin-right:5px' />
+        Create
+        {{item.query}}
+      </a>
+    </li>
+  {{/if}}
 </Select>
 <br />
 <br />
 <div style='width: 300px;'>
-	<MultiSelect @items={{this.items}} @itemsEqual={{this.areFilmsEqual}} @itemPredicate={{this.filterFilm}}
-		@createNewItemRenderer={{true}} @noResults={{this.noResults}} @onItemSelect={{action 'handleFilmSelect' }}
-		@tagRenderer={{this.renderTag}} @selectedItems={{this.films}} @popoverProps={{this.popoverProps}}
-		@resetOnSelect={{true}} @createNewItemRenderer={{true}} @createNewItemFromQuery={{this.createFilm}}
-		@onRemove={{action 'handleTagRemove' }} @handleClearTagInput={{action 'handleClearTagInput' }} {{!--
-		@initialContent={{this.initialContent}} --}} as |renderItem item handleClick index|>
-		{{#if renderItem}}
-			<li>
-				<a class="
-
-            ee-menu-item
-
-
+  <MultiSelect
+    @items={{this.items}}
+    @itemsEqual={{this.areFilmsEqual}}
+    @itemPredicate={{this.filterFilm}}
+    @createNewItemRenderer={{true}}
+    @noResults={{this.noResults}}
+    @onItemSelect={{action 'handleFilmSelect'}}
+    @tagRenderer={{this.renderTag}}
+    @selectedItems={{this.films}}
+    @popoverProps={{this.popoverProps}}
+    @resetOnSelect={{true}}
+    @createNewItemRenderer={{true}}
+    @createNewItemFromQuery={{this.createFilm}}
+    @onRemove={{action 'handleTagRemove'}}
+    @handleClearTagInput={{action 'handleClearTagInput'}}
+    {{!--
+		@initialContent={{this.initialContent}} --}}
+    as |renderItem item handleClick index|
+  >
+    {{#if renderItem}}
+      <li>
+        <a
+          class='ee-menu-item
             {{if item.modifiers.active 'ee-active'}}
-
-
-
             {{if item.modifiers.active 'ee-intent-primary'}}
-
-
-
             {{if item.modifiers.disabled 'ee-disabled'}}
-
-
-             ee-popover-dismiss" onclick={{handleClick}}>
-					<Icon @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank' }} />
-					<div class='ee-text-overflow-ellipsis ee-fill'>
-						{{item.rank}}. {{item.title}}
-					</div>
-					<span class='ee-menu-item-label'>
-						{{item.year}}
-					</span>
-				</a>
-			</li>
-		{{else}}
-			<li>
-				<a class="ee-menu-item ee-popover-dismiss
-
-
-            {{if item.active 'ee-active'}}
-
-
-
-            {{if item.active 'ee-intent-primary'}}
-
-
-            " onclick={{handleClick}}>
-					<Icon @icon='add' style='margin-right:5px' />
-					Create {{item.query}}
-				</a>
-			</li>
-		{{/if}}
-	</MultiSelect>
+            ee-popover-dismiss'
+          onclick={{handleClick}}
+        >
+          <Icon @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank'}} />
+          <div class='ee-text-overflow-ellipsis ee-fill'>
+            {{item.rank}}.
+            {{item.title}}
+          </div>
+          <span class='ee-menu-item-label'>
+            {{item.year}}
+          </span>
+        </a>
+      </li>
+    {{else}}
+      <li>
+        <a
+          class='ee-menu-item ee-popover-dismiss {{if item.active 'ee-active'}} {{if item.active 'ee-intent-primary'}} '
+          onclick={{handleClick}}
+        >
+          <Icon @icon='add' style='margin-right:5px' />
+          Create
+          {{item.query}}
+        </a>
+      </li>
+    {{/if}}
+  </MultiSelect>
 </div>
-<Popover @popperTarget={{this.popperTargetValue}} @isOpen={{this.isOpenPopper}} @hasBackdrop={{false}}
-	@onClose={{action 'onClose' }} @popoverClassName='ee-popover-content-sizing'>
-	<div>
-		<h5 class='ee-heading'>
-			Confirm deletion
-		</h5>
-		<p>
-			Are you sure you want to delete these items? You won't be able to recover them.
-		</p>
-		<div style='display: flex; justify-content: flex-end; margin-top: 15px;'>
-			<button type='button' class='ee-button ee-popover-dismiss' style='margin-right: 10px;'>
-				<span class='ee-button-text'>
-					Cancel
-				</span>
-			</button>
-			<button type='button' class='ee-button ee-intent-danger ee-popover-dismiss'>
-				<span class='ee-button-text'>
-					Delete
-				</span>
-			</button>
-		</div>
-	</div>
+<Popover
+  @popperTarget={{this.popperTargetValue}}
+  @isOpen={{this.isOpenPopper}}
+  @hasBackdrop={{false}}
+  @onClose={{action 'onClose'}}
+  @popoverClassName='ee-popover-content-sizing'
+>
+  <div>
+    <h5 class='ee-heading'>
+      Confirm deletion
+    </h5>
+    <p>
+      Are you sure you want to delete these items? You won't be able to recover them.
+    </p>
+    <div style='display: flex; justify-content: flex-end; margin-top: 15px;'>
+      <button type='button' class='ee-button ee-popover-dismiss' style='margin-right: 10px;'>
+        <span class='ee-button-text'>
+          Cancel
+        </span>
+      </button>
+      <button type='button' class='ee-button ee-intent-danger ee-popover-dismiss'>
+        <span class='ee-button-text'>
+          Delete
+        </span>
+      </button>
+    </div>
+  </div>
 </Popover>
-<Button @onClick={{action 'onOverlayToggle1' }} @primary={{true}} {{did-insert this.didInsertPopper}}>
-	Popover
+<Button @onClick={{action 'onOverlayToggle1'}} @primary={{true}} {{did-insert this.didInsertPopper}}>
+  Popover
 </Button>
-<Button @onClick={{action 'onClickButton' }}>
-	{{#if this.isOpen}}
-		{{this.hide}}
-	{{else}}
-		{{this.show}}
-	{{/if}}
-	{{this.build}}
+<Button @onClick={{action 'onClickButton'}}>
+  {{#if this.isOpen}}
+    {{this.hide}}
+  {{else}}
+    {{this.show}}
+  {{/if}}
+  {{this.build}}
 </Button>
 <Collapse @isOpen={{this.isOpen}} @keepChildrenMounted={{this.keepChildrenMounted}}>
-	<pre class='bp3-code-block'>
-	{{this.collapseText}}
-	</pre>
+  <pre class='bp3-code-block'>
+    {{this.collapseText}}
+  </pre>
 </Collapse>
 
-<Button @props={{this.propsObject}} @onClick={{action 'onClick' }} @onKeyUp={{action 'onKeyUp' }}
-	@onKeyDown={{action 'onKeyDown' }}>
-	{{this.text}}
+<Button
+  @props={{this.propsObject}}
+  @onClick={{action 'onClick'}}
+  @onKeyUp={{action 'onKeyUp'}}
+  @onKeyDown={{action 'onKeyDown'}}
+>
+  {{this.text}}
 </Button>
 <Icon @icon='calendar' @iconSize={{20}} @intent='primary' @color='green' @title='calendar' />
 
-<ButtonGroup @minimal={{this.minimal}} @large={{this.large}} @vertical={{this.vertical}} @fill={{this.fill}}
-	@alignText={{this.alignText}} style='min-width:200px'>
-	<Button @icon='database' @type='button' />
-	<Button @icon='function' @type='button' />
-	<Button @icon='cog' @type='button' />
+<ButtonGroup
+  @minimal={{this.minimal}}
+  @large={{this.large}}
+  @vertical={{this.vertical}}
+  @fill={{this.fill}}
+  @alignText={{this.alignText}}
+  style='min-width:200px'
+>
+  <Button @icon='database' @type='button' />
+  <Button @icon='function' @type='button' />
+  <Button @icon='cog' @type='button' />
 </ButtonGroup>
 <Callout @props={{this.propsValue}} @title='Visually important content'>
-	{{this.calloutText}}
+  {{this.calloutText}}
 </Callout>
 
 <Card @elevation={{this.elevation}}>
-	{{this.elevationText}}
+  {{this.elevationText}}
 </Card>
 
 <ProgressBar @value={{0.7}} />
 
 <HtmlTable @bordered={{true}} @className='foo' @interactive={{true}} @striped={{true}}>
-	<thead>
-		<tr>
-			<th>
-			</th>
-			<th>
-			</th>
-			<th>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-			</td>
-			<td>
-			</td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			</td>
-			<td>
-			</td>
-			<td>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			</td>
-			<td>
-			</td>
-			<td>
-			</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>
+      </th>
+      <th>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
 </HtmlTable>
 
 <Spinner @size={{this.size}} @value={{this.value}} @intent='danger' @className='ee-small' />
 
-<FormGroup @helperText='Helper text with details...' @label='Label A' @labelFor='text-input' @labelInfo='(required)'
-	@intent='primary' @inline={{true}} style='color:red'>
-	<input placeholder='Placeholder text' />
+<FormGroup
+  @helperText='Helper text with details...'
+  @label='Label A'
+  @labelFor='text-input'
+  @labelInfo='(required)'
+  @intent='primary'
+  @inline={{true}}
+  style='color:red'
+>
+  <input placeholder='Placeholder text' />
 </FormGroup>
 
 <ControlGroup @fill={{true}} @vertical={{false}}>
-	<Button @icon='filter' />
-	<Button @icon='filter' />
+  <Button @icon='filter' />
+  <Button @icon='filter' />
 </ControlGroup>
 
 <Label />
 
 <Checkbox @label='Enabled' @onChange={{action this.handleEnabledChange}} @defaultIndeterminate={{true}} />
 <RadioGroup @label='Determine lunch'>
-	<Radio @label='Soup' @value='one' name='radio1' @inline={{true}} />
-	<Radio @label='Salad' @value='two' name='radio1' @inline={{true}} />
+  <Radio @label='Soup' @value='one' name='radio1' @inline={{true}} />
+  <Radio @label='Salad' @value='two' name='radio1' @inline={{true}} />
 </RadioGroup>
 
 <HtmlSelect @options={{this.options}} />
 
 <div>
-	<Label>
-		{{this.switchLabel}}
-	</Label>
-	<Switch @labelElement='<strong>Enabled</strong>' @inline={{true}} />
-	<Switch @labelElement='<em>Public</em>' @inline={{true}} />
-	<Switch @labelElement='<u>Cooperative</u>' defaultChecked={{true}} @inline={{true}} />
-	<Switch @labelElement='Containing Text' @innerLabelChecked='on' @innerLabel='off' @inline={{true}} />
+  <Label>
+    {{this.switchLabel}}
+  </Label>
+  <Switch @labelElement='<strong>Enabled</strong>' @inline={{true}} />
+  <Switch @labelElement='<em>Public</em>' @inline={{true}} />
+  <Switch @labelElement='<u>Cooperative</u>' defaultChecked={{true}} @inline={{true}} />
+  <Switch @labelElement='Containing Text' @innerLabelChecked='on' @innerLabel='off' @inline={{true}} />
 </div>
 <FileInput @buttonText='hii' @large={{true}} @hasSelection={{true}} @text='Choose file...' />
 
 <InputGroup>
-	<Button>
-		{{this.textIG}}
-	</Button>
+  <Button>
+    {{this.textIG}}
+  </Button>
 </InputGroup>
 <TextArea @growVertically={{true}} @value={{this.value1}} @intent='primary' />
 
 <Tag @icon='home' @large={{true}}>
-	{{this.tagText}}
+  {{this.tagText}}
 </Tag>
 
-<TagInput @onChange={{action this.handleChange}} @values={{this.values}} @inputValue='a' {{! @leftIcon='user' }} {{!
-	@placeholder='Separate values with commas...' }} />
+<TagInput
+  @onChange={{action this.handleChange}}
+  @values={{this.values}}
+  @inputValue='a'
+  {{! @leftIcon='user' }}
+  {{!
+	@placeholder='Separate values with commas...' }}
+/>
 
-<NumericInput @disabled={{this.disabled}} @large={{this.large}} @fill={{this.fill}} @leftIcon={{this.leftIcon}}
-	@allowNumericCharactersOnly={{this.allowNumericCharactersOnly}} @selectAllOnFocus={{this.selectAllOnFocus}}
-	@selectAllOnIncrement={{this.selectAllOnIncrement}} @min={{this.min}} @max={{this.max}} @intent={{this.intent}}
-	@buttonPosition={{this.buttonPosition}} @value={{this.valueNI}} @didPasteEventJustOccur={{true}} />
+<NumericInput
+  @disabled={{this.disabled}}
+  @large={{this.large}}
+  @fill={{this.fill}}
+  @leftIcon={{this.leftIcon}}
+  @allowNumericCharactersOnly={{this.allowNumericCharactersOnly}}
+  @selectAllOnFocus={{this.selectAllOnFocus}}
+  @selectAllOnIncrement={{this.selectAllOnIncrement}}
+  @min={{this.min}}
+  @max={{this.max}}
+  @intent={{this.intent}}
+  @buttonPosition={{this.buttonPosition}}
+  @value={{this.valueNI}}
+  @didPasteEventJustOccur={{true}}
+/>
 
 <ButtonGroup @minimal={{true}} @vertical={{this.vertical}}>
-	<Button @icon='folder-close' />
-	<Button @icon='edit' />
-	<Divider />
-	<Button @icon='folder-new' />
-	<Button @icon='trash' />
-	<Divider />
-	<Button @icon='add' />
-	<Button @icon='remove' />
+  <Button @icon='folder-close' />
+  <Button @icon='edit' />
+  <Divider />
+  <Button @icon='folder-new' />
+  <Button @icon='trash' />
+  <Divider />
+  <Button @icon='add' />
+  <Button @icon='remove' />
 </ButtonGroup>
 <Navbar />
-<Button @onClick={{action 'onOverlayToggle' }} @primary={{true}}>
-	Show overlay
+<Button @onClick={{action 'onOverlayToggle'}} @primary={{true}}>
+  Show overlay
 </Button>
-<Overlay @className='ee-overlay-scroll-container' @isOpen={{this.isOpenOverlay}} class="ee-card ee-elevation-4 docs-overlay-example-transition
-
-
-    {{if this.useTallContent 'docs-overlay-example-tall'}}" @autoFocus={{this.autoFocus}}
-	@enforceFocus={{this.enforceFocus}} @usePortal={{this.usePortal}} @canEscapeKeyClose={{this.canEscapeKeyClose}}
-	@canOutsideClickClose={{this.canOutsideClickClose}} @onClose={{action 'onClose' }}>
-	<div>
-		<h3 class='bp3-heading'>
-			I'm an Overlay!
-		</h3>
-		<p>
-			This is a simple container with some inline styles to position it on the screen. Its CSS
-			transitions are customized for this example only to demonstrate how easily custom
-			transitions can be implemented.
-		</p>
-		<p>
-			Click the "Focus button" below to transfer focus to the "Show overlay" trigger button
-			outside of this overlay. If persistent focus is enabled, focus will be constrained to the
-			overlay. Use the
-			<code class='bp3-code'>
+<Overlay
+  @className='ee-overlay-scroll-container'
+  @isOpen={{this.isOpenOverlay}}
+  class='ee-card ee-elevation-4 docs-overlay-example-transition {{if this.useTallContent 'docs-overlay-example-tall'}}'
+  @autoFocus={{this.autoFocus}}
+  @enforceFocus={{this.enforceFocus}}
+  @usePortal={{this.usePortal}}
+  @canEscapeKeyClose={{this.canEscapeKeyClose}}
+  @canOutsideClickClose={{this.canOutsideClickClose}}
+  @onClose={{action 'onClose'}}
+>
+  <div>
+    <h3 class='bp3-heading'>
+      I'm an Overlay!
+    </h3>
+    <p>
+      This is a simple container with some inline styles to position it on the screen. Its CSS transitions are
+      customized for this example only to demonstrate how easily custom transitions can be implemented.
+    </p>
+    <p>
+      Click the "Focus button" below to transfer focus to the "Show overlay" trigger button outside of this overlay. If
+      persistent focus is enabled, focus will be constrained to the overlay. Use the
+      <code class='bp3-code'>
         tab
       </code>
-			key to move to the next focusable element to illustrate
-			this effect.
-		</p>
-		<p>
-			Click the "Make me scroll" button below to make this overlay's content really tall, which
-			will make the overlay's container (but not the page) scrollable
-		</p>
-		<br />
-		<div class='bp3-dialog-footer-actions'>
-			<Button @intent='danger' @onClick={{action 'handleClose' }}>
-				Close
-			</Button>
-			<Button @onClick={{action 'focusButton' }} @class='focus-button'>
-				Focus button
-			</Button>
-			<Button @onClick={{action 'toggleScrollButton' }} @icon='double-chevron-down' @rightIcon='double-chevron-down'
-				@active={{this.useTallContent}}>
-				Make me scroll
-			</Button>
-		</div>
-	</div>
+      key to move to the next focusable element to illustrate this effect.
+    </p>
+    <p>
+      Click the "Make me scroll" button below to make this overlay's content really tall, which will make the overlay's
+      container (but not the page) scrollable
+    </p>
+    <br />
+    <div class='bp3-dialog-footer-actions'>
+      <Button @intent='danger' @onClick={{action 'handleClose'}}>
+        Close
+      </Button>
+      <Button @onClick={{action 'focusButton'}} @class='focus-button'>
+        Focus button
+      </Button>
+      <Button
+        @onClick={{action 'toggleScrollButton'}}
+        @icon='double-chevron-down'
+        @rightIcon='double-chevron-down'
+        @active={{this.useTallContent}}
+      >
+        Make me scroll
+      </Button>
+    </div>
+  </div>
 </Overlay>
 
-<Button @onClick={{action 'onDialogToggle' }}>
-	Show dialog
+<Button @onClick={{action 'onDialogToggle'}}>
+  Show dialog
 </Button>
-<Dialog @isOpen={{this.isOpenDialog}} @usePortal={{this.usePortal}} @canEscapeKeyClose={{this.canEscapeKeyClose}}
-	@canOutsideClickClose={{this.canOutsideClickClose}} @onClose={{action 'onClose' }} @icon='info-sign'
-	@title='Palantir Foundry'>
-	<div class='ee-dialog-body'>
-		<p>
-			<strong>
-				Data integration is the seminal problem of the digital age. For over ten years,
-				we’ve helped the world’s premier organizations rise to the challenge.
-			</strong>
-		</p>
-		<p>
-			Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and
-			extending the power of data integration. With Foundry, anyone can source, fuse, and transform
-			data into any shape they desire. Business analysts become data engineers — and leaders in their
-			organization’s data revolution.
-		</p>
-		<p>
-			Foundry’s back end includes a suite of best-in-class data integration capabilities: data
-			provenance, git-style versioning semantics, granular access controls, branching, transformation
-			authoring, and more. But these powers are not limited to the back-end IT shop.
-		</p>
-		<p>
-			In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data
-			integrations in their own right. Access controls, transformation logic, and data quality flow
-			from original data source to intermediate analysis to presentation in real time. Every end
-			product created in Foundry becomes a new data source that other users can build upon. And the
-			enterprise data foundation goes where the business drives it.
-		</p>
-		<p>
-			Start the revolution. Unleash the power of data integration with Palantir Foundry.
-		</p>
-	</div>
-	<div class='ee-dialog-footer'>
-		<div class='ee-dialog-footer-actions'>
-			<Button @onClick={{action 'onClose' }}>
-				Close
-			</Button>
-		</div>
-	</div>
+<Dialog
+  @isOpen={{this.isOpenDialog}}
+  @usePortal={{this.usePortal}}
+  @canEscapeKeyClose={{this.canEscapeKeyClose}}
+  @canOutsideClickClose={{this.canOutsideClickClose}}
+  @onClose={{action 'onClose'}}
+  @icon='info-sign'
+  @title='Palantir Foundry'
+>
+  <div class='ee-dialog-body'>
+    <p>
+      <strong>
+        Data integration is the seminal problem of the digital age. For over ten years, we’ve helped the world’s premier
+        organizations rise to the challenge.
+      </strong>
+    </p>
+    <p>
+      Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and extending the power
+      of data integration. With Foundry, anyone can source, fuse, and transform data into any shape they desire.
+      Business analysts become data engineers — and leaders in their organization’s data revolution.
+    </p>
+    <p>
+      Foundry’s back end includes a suite of best-in-class data integration capabilities: data provenance, git-style
+      versioning semantics, granular access controls, branching, transformation authoring, and more. But these powers
+      are not limited to the back-end IT shop.
+    </p>
+    <p>
+      In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data integrations in their
+      own right. Access controls, transformation logic, and data quality flow from original data source to intermediate
+      analysis to presentation in real time. Every end product created in Foundry becomes a new data source that other
+      users can build upon. And the enterprise data foundation goes where the business drives it.
+    </p>
+    <p>
+      Start the revolution. Unleash the power of data integration with Palantir Foundry.
+    </p>
+  </div>
+  <div class='ee-dialog-footer'>
+    <div class='ee-dialog-footer-actions'>
+      <Button @onClick={{action 'onClose'}}>
+        Close
+      </Button>
+    </div>
+  </div>
 </Dialog>

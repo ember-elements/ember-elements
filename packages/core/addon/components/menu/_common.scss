@@ -9,17 +9,13 @@ $menu-item-border-radius: $pt-border-radius - 1 !default;
 // will be misaligned by one pixel (Chrome quirk).
 $menu-item-line-height-factor: 1.4;
 $menu-item-line-height: round($pt-font-size * $menu-item-line-height-factor);
-$menu-item-line-height-large: round(
-  $pt-font-size-large * $menu-item-line-height-factor
-);
+$menu-item-line-height-large: round($pt-font-size-large * $menu-item-line-height-factor);
 
 $menu-min-width: $pt-grid-size * 18 !default;
 $menu-item-padding: ($pt-button-height - $pt-icon-size-standard) / 2 !default;
 $menu-item-padding-large: ($pt-button-height-large - $pt-icon-size-large) / 2 !default;
 $menu-item-padding-vertical: ($pt-button-height - $menu-item-line-height) / 2 !default;
-$menu-item-padding-vertical-large: (
-    $pt-button-height-large - $menu-item-line-height-large
-  ) / 2 !default;
+$menu-item-padding-vertical-large: ($pt-button-height-large - $menu-item-line-height-large) / 2 !default;
 
 $menu-background-color: $white !default;
 $dark-menu-background-color: $dark-gray4 !default;
@@ -31,10 +27,7 @@ $dark-menu-item-color-active: $dark-minimal-button-background-color-active !defa
 
 // customize modifier classes with params.
 // setting modifier to "" will generally apply it as default styles due to & selectors
-@mixin menu-item(
-  $disabled-selector: '.#{$ns}-disabled',
-  $hover-selector: ':hover'
-) {
+@mixin menu-item($disabled-selector: '.#{$ns}-disabled', $hover-selector: ':hover') {
   @include pt-flex-container(row, $menu-item-padding);
   align-items: flex-start;
   border-radius: $menu-item-border-radius;
@@ -65,10 +58,7 @@ $dark-menu-item-color-active: $dark-minimal-button-background-color-active !defa
   }
 }
 
-@mixin dark-menu-item(
-  $disabled-selector: '.#{$ns}-disabled',
-  $hover-selector: ':hover'
-) {
+@mixin dark-menu-item($disabled-selector: '.#{$ns}-disabled', $hover-selector: ':hover') {
   color: inherit;
 
   &#{$hover-selector} {

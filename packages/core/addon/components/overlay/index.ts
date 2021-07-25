@@ -212,7 +212,7 @@ export default class Overlay extends Component<OverlayArgs> {
   get getHasBackdropProp() {
     const hasBackDrop = this.getHasBackdrop();
 
-		this.getHasBackdropState = hasBackDrop; // eslint-disable-line
+    this.getHasBackdropState = hasBackDrop; // eslint-disable-line
 
     return hasBackDrop;
   }
@@ -523,7 +523,7 @@ export default class Overlay extends Component<OverlayArgs> {
       .some(({ containerElement: elem }) => {
         // `elem` is the container of backdrop & content, so clicking on that container
         // should not count as being "inside" the overlay.
-				return elem && elem.contains(eventTarget) && !elem.isSameNode(eventTarget); // eslint-disable-line
+      return elem && elem.contains(eventTarget) && !elem.isSameNode(eventTarget); // eslint-disable-line
       });
 
     if (this.getIsOpen() && this.getCanOutsideClickClose() && !isClickInThisOverlayOrDescendant) {

@@ -9,18 +9,9 @@ $dark-control-background-color: $dark-button-background-color !default;
 $dark-control-background-color-hover: $dark-button-background-color-hover !default;
 $dark-control-background-color-active: $dark-button-background-color-active !default;
 
-$control-checked-background-color: nth(
-  map-get($button-intents, 'primary'),
-  1
-) !default;
-$control-checked-background-color-hover: nth(
-  map-get($button-intents, 'primary'),
-  2
-) !default;
-$control-checked-background-color-active: nth(
-  map-get($button-intents, 'primary'),
-  3
-) !default;
+$control-checked-background-color: nth(map-get($button-intents, 'primary'), 1) !default;
+$control-checked-background-color-hover: nth(map-get($button-intents, 'primary'), 2) !default;
+$control-checked-background-color-active: nth(map-get($button-intents, 'primary'), 3) !default;
 
 $control-indicator-size: $pt-icon-size-standard !default;
 $control-indicator-size-large: $pt-icon-size-large !default;
@@ -216,8 +207,8 @@ $control-indicator-spacing: $pt-grid-size !default;
           '16px/#{$icon}.svg',
           (
             path: (
-              fill: $white
-            )
+              fill: $white,
+            ),
           )
         );
       }
@@ -409,9 +400,7 @@ $control-indicator-spacing: $pt-grid-size !default;
     }
 
     &.#{$ns}-large {
-      @include indicator-position(
-        $switch-width / 1em * $control-indicator-size-large
-      );
+      @include indicator-position($switch-width / 1em * $control-indicator-size-large);
     }
 
     .#{$ns}-dark & {
