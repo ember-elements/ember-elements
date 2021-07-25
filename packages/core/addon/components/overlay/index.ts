@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { next } from '@ember/runloop';
 
 import * as Classes from '../../_private/common/classes';
 import * as Keys from '../../_private/common/keys';
@@ -138,12 +139,12 @@ export default class Overlay extends Component<OverlayArgs> {
   PORTAL = Classes.PORTAL;
 
   popperContainer = '.ember-application';
-  prevPropsIsOpen = false;
+  @tracked prevPropsIsOpen = false;
   @tracked hasEverOpened = false;
   //ember css transition state handling
   @tracked isShowContentAnimation = true;
 
-  @tracked getHasBackdropState = true;
+  hasBackdropState = true;
 
   get props() {
     return this.args.props || {};
@@ -212,7 +213,7 @@ export default class Overlay extends Component<OverlayArgs> {
   get getHasBackdropProp() {
     const hasBackDrop = this.getHasBackdrop();
 
-    this.getHasBackdropState = hasBackDrop; // eslint-disable-line
+    this.hasBackdropState = hasBackDrop; // eslint-disable-line
 
     return hasBackDrop;
   }
@@ -224,7 +225,7 @@ export default class Overlay extends Component<OverlayArgs> {
   get getIsOpenProp() {
     this.didReceiveAttributes();
 
-    return this.getIsOpen();
+    return this.getIsOpen;
   }
 
   get _overlayContainer() {
@@ -252,10 +253,15 @@ export default class Overlay extends Component<OverlayArgs> {
   }
 
   get hasEverOpenedProp() {
-    return this.hasEverOpened ? this.OVERLAY_OPEN : '';
+    return this.getHasEverOpened ? this.OVERLAY_OPEN : '';
   }
+
   get getHasEverOpened() {
-    return this.hasEverOpened;
+    return this.hasEverOpened ? true : false;
+  }
+
+  get getHasBackdropState() {
+    return this.hasBackdropState ? true : false;
   }
 
   getautoFoucs() {
@@ -354,7 +360,7 @@ export default class Overlay extends Component<OverlayArgs> {
     return hasBackdrop;
   }
 
-  getIsOpen() {
+  get getIsOpen() {
     let isOpen = false;
 
     if (this.args.isOpen != undefined) {
@@ -374,7 +380,7 @@ export default class Overlay extends Component<OverlayArgs> {
 
   @action
   didUpdateElement(_element: HTMLElement) {
-    if (this.getIsOpen()) {
+    if (this.getIsOpen) {
       this.overlayWillOpen();
     }
   }
@@ -388,32 +394,42 @@ export default class Overlay extends Component<OverlayArgs> {
   private static getLastOpened = () => Overlay.openStack[Overlay.openStack.length - 1];
 
   didReceiveAttributes() {
-    if (this.prevPropsIsOpen && !this.getIsOpen()) {
-      this.getHasBackdropState = false;
-      this.isShowContentAnimation = false;
+    if (this.prevPropsIsOpen && !this.getIsOpen) {
+      next(this, () => {
+        this.hasBackdropState = false;
+        this.isShowContentAnimation = false;
+      });
 
       setTimeout(() => {
-        if (!this.isDestroyed) this.hasEverOpened = this.getIsOpen() ? true : false;
-        this.prevPropsIsOpen = this.getIsOpen() ? true : false;
+        if (!this.isDestroyed) {
+          next(this, () => {
+            this.hasEverOpened = this.getIsOpen ? true : false;
+          });
+        }
 
         if (!this.hasEverOpened) {
           this.overlayWillClose();
         }
       }, this.getTransitionDuration());
     } else {
-      this.isShowContentAnimation = true;
-      this.hasEverOpened = this.getIsOpen() ? true : false;
+      next(this, () => {
+        this.isShowContentAnimation = true;
+        this.hasEverOpened = this.getIsOpen ? true : false;
+      });
     }
 
-    if (!this.prevPropsIsOpen && this.getIsOpen()) {
-      this.getHasBackdropState = this.getHasBackdrop();
-      this.prevPropsIsOpen = this.getIsOpen();
+    if (!this.prevPropsIsOpen && this.getIsOpen) {
+      next(this, () => {
+        this.hasBackdropState = this.getHasBackdrop();
+        this.prevPropsIsOpen = this.getIsOpen;
+      });
+
       this.overlayWillOpen();
     }
   }
 
   get getIsShowContentAnimation() {
-    return this.isShowContentAnimation;
+    return this.isShowContentAnimation ? true : false;
   }
 
   @action
@@ -450,7 +466,7 @@ export default class Overlay extends Component<OverlayArgs> {
     return requestAnimationFrame(() => {
       // container ref may be undefined between component mounting and Portal rendering
       // activeElement may be undefined in some rare cases in IE
-      if (this.containerElement == null || document.activeElement == null || !this.getIsOpen()) {
+      if (this.containerElement == null || document.activeElement == null || !this.getIsOpen) {
         return;
       }
 
@@ -526,7 +542,7 @@ export default class Overlay extends Component<OverlayArgs> {
       return elem && elem.contains(eventTarget) && !elem.isSameNode(eventTarget); // eslint-disable-line
       });
 
-    if (this.getIsOpen() && this.getCanOutsideClickClose() && !isClickInThisOverlayOrDescendant) {
+    if (this.getIsOpen && this.getCanOutsideClickClose() && !isClickInThisOverlayOrDescendant) {
       // casting to any because this is a native event
       if (this.args.onClose) {
         this.args.onClose(e);
