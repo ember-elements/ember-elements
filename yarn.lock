@@ -7472,19 +7472,19 @@ eslint-module-utils@^2.6.0, eslint-module-utils@^2.6.1:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
-eslint-plugin-decorator-position@2.2.27:
-  version "2.2.27"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-decorator-position/-/eslint-plugin-decorator-position-2.2.27.tgz#0d509a03aa110aaa10b7d4cea608bef8cb38e6d5"
-  integrity sha512-TaTAco8yB3z7Jhn5nTa0nJE1EWsFSeekP5WelACkjRbAPdW3PHhgKe/jqRVUzC4Ebtcdwk15sY1w35eg0ZUAaA==
+eslint-plugin-decorator-position@2.2.28:
+  version "2.2.28"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-decorator-position/-/eslint-plugin-decorator-position-2.2.28.tgz#4119a3734ea1db46c241bb32fd28db24c838a7a8"
+  integrity sha512-jc4HlnL7eal07UYTgjDo0sv9Bbf4nV9GSTnlh6um72Fb8dDW7LRb65YJ5Mf5M9upE+ihI2GVJGI1D4TYUgBqeg==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.12"
     snake-case "^3.0.3"
 
-eslint-plugin-decorator-position@2.2.28:
-  version "2.2.28"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-decorator-position/-/eslint-plugin-decorator-position-2.2.28.tgz#4119a3734ea1db46c241bb32fd28db24c838a7a8"
-  integrity sha512-jc4HlnL7eal07UYTgjDo0sv9Bbf4nV9GSTnlh6um72Fb8dDW7LRb65YJ5Mf5M9upE+ihI2GVJGI1D4TYUgBqeg==
+eslint-plugin-decorator-position@2.2.29:
+  version "2.2.29"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-decorator-position/-/eslint-plugin-decorator-position-2.2.29.tgz#c66d52c6e2636541612463897ed7ef92db933dc6"
+  integrity sha512-M+IIi4aYbLuWoaJBHZV100blntgk+X/MDXK5xbFC6YYm1NHGNP0wTkLiYNQ62l8AixMp4rbLvg5nhJQqPiVgXQ==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.12"
