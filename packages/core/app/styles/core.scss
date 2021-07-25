@@ -1,7 +1,5 @@
 //import all component styles
 @import '../../addon/components/index';
-@import '../../addon/reset';
-@import '../../addon/typography';
 
 .ee-portal {
   // take the portal out of the document flow to prevent browsers from autoscrolling to the bottom
