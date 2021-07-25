@@ -139,9 +139,9 @@ export default class Overlay extends Component<OverlayArgs> {
 
   popperContainer = '.ember-application';
   prevPropsIsOpen = false;
-  hasEverOpened = false;
+  @tracked hasEverOpened = false;
   //ember css transition state handling
-  isShowContentAnimation = true;
+  @tracked isShowContentAnimation = true;
 
   @tracked getHasBackdropState = true;
 
