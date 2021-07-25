@@ -4,33 +4,24 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-interface CompTestArgs { }
+interface CompTestArgs {}
 
 interface ICProps {
-
-	active: boolean;
+  active: boolean;
 }
 class CPropsObj {
+  @tracked active = false;
 
-	@tracked active = false;
-
-	constructor(args: ICProps) {
-
-		this.active = args.active || false;
-
-	}
-
+  constructor(args: ICProps) {
+    this.active = args.active || false;
+  }
 }
 
 export default class CompTest extends Component<CompTestArgs> {
+  @tracked props = new CPropsObj({ active: false });
 
-	@tracked props = new CPropsObj({ active: false });
-
-	@action
-	onButtonClick() {
-		this.props.active = !this.props.active;
-
-	}
-
-
+  @action
+  onButtonClick() {
+    this.props.active = !this.props.active;
+  }
 }

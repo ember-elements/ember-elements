@@ -24,12 +24,10 @@ $card-background-color: $white !default;
 $dark-card-background-color: $dark-gray4 !default;
 
 $elevation-shadows: (
-  $pt-elevation-shadow-0 $pt-elevation-shadow-1 $pt-elevation-shadow-2
-    $pt-elevation-shadow-3 $pt-elevation-shadow-4
+  $pt-elevation-shadow-0 $pt-elevation-shadow-1 $pt-elevation-shadow-2 $pt-elevation-shadow-3 $pt-elevation-shadow-4
 );
 $dark-elevation-shadows: (
-  $pt-dark-elevation-shadow-0 $pt-dark-elevation-shadow-1
-    $pt-dark-elevation-shadow-2 $pt-dark-elevation-shadow-3
+  $pt-dark-elevation-shadow-0 $pt-dark-elevation-shadow-1 $pt-dark-elevation-shadow-2 $pt-dark-elevation-shadow-3
     $pt-dark-elevation-shadow-4
 );
 

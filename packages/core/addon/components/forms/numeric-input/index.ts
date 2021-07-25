@@ -261,11 +261,11 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
   get getValueProp() {
     if (this.didValueChange != getValueOrEmptyValue(this.args.value) && this.inputElement) {
-			this.didValueChange = getValueOrEmptyValue(this.args.value); // eslint-disable-line
+      this.didValueChange = getValueOrEmptyValue(this.args.value); // eslint-disable-line
       next(this, () => {
-				this.value = getValueOrEmptyValue(this.args.value); // eslint-disable-line
+        this.value = getValueOrEmptyValue(this.args.value); // eslint-disable-line
       });
-			this.inputElement.value = getValueOrEmptyValue(this.args.value); // eslint-disable-line
+      this.inputElement.value = getValueOrEmptyValue(this.args.value); // eslint-disable-line
     }
 
     return this.getValue();
@@ -425,7 +425,7 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
   @action
   handleInputChange(e: HTMLInputElement) {
-		const { value } = (e as any).target as HTMLInputElement; // eslint-disable-line
+    const { value } = (e as any).target as HTMLInputElement; // eslint-disable-line
 
     let nextValue = value;
 

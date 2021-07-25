@@ -30,26 +30,8 @@ $after: selector text to insert after transiton name (to select children)
   $after: ''
 ) {
   @include each-prop($properties, 2);
-  @include react-transition-phase(
-    $name,
-    'enter',
-    $properties,
-    $duration,
-    $easing,
-    $delay,
-    $before,
-    $after
-  );
-  @include react-transition-phase(
-    $name,
-    'leave',
-    $properties,
-    $duration,
-    $easing,
-    $delay,
-    $before,
-    $after
-  );
+  @include react-transition-phase($name, 'enter', $properties, $duration, $easing, $delay, $before, $after);
+  @include react-transition-phase($name, 'leave', $properties, $duration, $easing, $delay, $before, $after);
 }
 
 /*
@@ -118,10 +100,7 @@ Format transition class name with all the bits.
   @if ($phase == 'enter') {
     @return ($full-name, transition-name('appear', $name, $before, $after));
   } @else if ($phase == 'enter-active') {
-    @return (
-      $full-name,
-      transition-name('appear-active', $name, $before, $after)
-    );
+    @return ($full-name, transition-name('appear-active', $name, $before, $after));
   } @else {
     @return $full-name;
   }

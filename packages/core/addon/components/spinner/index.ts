@@ -130,7 +130,7 @@ export default class Spinner extends Component<SpinnerArgs> {
     const size = this.getSizeValue() as number;
     let strokeWidth = Math.min(MIN_STROKE_WIDTH, (STROKE_WIDTH * Spinner.SIZE_LARGE) / size);
 
-		this.strokeWidth = strokeWidth.toFixed(2); // eslint-disable-line
+    this.strokeWidth = strokeWidth.toFixed(2); // eslint-disable-line
 
     return this.getViewBox(strokeWidth);
   }

@@ -30,8 +30,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateY(-100%),
-          translateY(0)
-        )
+          translateY(0),
+        ),
       ),
       $pt-transition-duration * 2,
       $pt-transition-ease,
@@ -43,8 +43,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateY(-100%),
-          translateY(0)
-        )
+          translateY(0),
+        ),
       ),
       $pt-transition-duration,
       $before: '&'
@@ -63,8 +63,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateY(100%),
-          translateY(0)
-        )
+          translateY(0),
+        ),
       ),
       $pt-transition-duration * 2,
       $pt-transition-ease,
@@ -76,8 +76,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateY(100%),
-          translateY(0)
-        )
+          translateY(0),
+        ),
       ),
       $pt-transition-duration,
       $before: '&'
@@ -96,8 +96,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateX(-100%),
-          translateX(0)
-        )
+          translateX(0),
+        ),
       ),
       $pt-transition-duration * 2,
       $pt-transition-ease,
@@ -109,8 +109,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateX(-100%),
-          translateX(0)
-        )
+          translateX(0),
+        ),
       ),
       $pt-transition-duration,
       $before: '&'
@@ -129,8 +129,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateX(100%),
-          translateX(0)
-        )
+          translateX(0),
+        ),
       ),
       $pt-transition-duration * 2,
       $pt-transition-ease,
@@ -142,8 +142,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
       (
         transform: (
           translateX(100%),
-          translateX(0)
-        )
+          translateX(0),
+        ),
       ),
       $pt-transition-duration,
       $before: '&'
@@ -163,8 +163,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
         (
           transform: (
             translateX(100%),
-            translateX(0)
-          )
+            translateX(0),
+          ),
         ),
         $pt-transition-duration * 2,
         $pt-transition-ease,
@@ -176,8 +176,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
         (
           transform: (
             translateX(100%),
-            translateX(0)
-          )
+            translateX(0),
+          ),
         ),
         $pt-transition-duration,
         $before: '&'
@@ -196,8 +196,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
         (
           transform: (
             translateY(100%),
-            translateY(0)
-          )
+            translateY(0),
+          ),
         ),
         $pt-transition-duration * 2,
         $pt-transition-ease,
@@ -209,8 +209,8 @@ $dark-drawer-background-color: $dark-gray4 !default;
         (
           transform: (
             translateY(100%),
-            translateY(0)
-          )
+            translateY(0),
+          ),
         ),
         $pt-transition-duration,
         $before: '&'

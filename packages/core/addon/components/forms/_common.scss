@@ -29,7 +29,7 @@ $input-box-shadow-focus: inset 0 1px 1px rgba($black, $pt-drop-shadow-opacity) !
 
 $control-group-stack: (
   // lowest z-index
-    'input-disabled',
+  'input-disabled',
   'input-default',
   'button-disabled',
   'button-default',
@@ -49,10 +49,7 @@ $control-group-stack: (
 );
 
 // animating shadows requires the same number of shadows in different states
-@function input-transition-shadow(
-  $color: $input-shadow-color-focus,
-  $focus: false
-) {
+@function input-transition-shadow($color: $input-shadow-color-focus, $focus: false) {
   @if $focus {
     @return border-shadow(1, $color, 1px), border-shadow(0.3, $color, 3px);
   } @else {
@@ -60,17 +57,13 @@ $control-group-stack: (
   }
 }
 
-@function dark-input-transition-shadow(
-  $color: $dark-input-shadow-color-focus,
-  $focus: false
-) {
+@function dark-input-transition-shadow($color: $dark-input-shadow-color-focus, $focus: false) {
   @if $focus {
     @return border-shadow(1, $color, 1px), border-shadow(1, $color, 1px),
       // duplicating to minimize browser antialiasing in dark
-        border-shadow(0.3, $color, 3px);
+      border-shadow(0.3, $color, 3px);
   } @else {
-    @return border-shadow(0, $color, 0), border-shadow(0, $color, 0),
-      border-shadow(0, $color, 0);
+    @return border-shadow(0, $color, 0), border-shadow(0, $color, 0), border-shadow(0, $color, 0);
   }
 }
 
@@ -80,8 +73,7 @@ $control-group-stack: (
   outline: none;
   border: none;
   border-radius: $pt-border-radius;
-  box-shadow: input-transition-shadow($input-shadow-color-focus),
-    $pt-input-box-shadow;
+  box-shadow: input-transition-shadow($input-shadow-color-focus), $pt-input-box-shadow;
   background: $input-background-color;
   height: $pt-input-height;
   padding: 0 $input-padding-horizontal;
@@ -95,8 +87,7 @@ $control-group-stack: (
 
   &:focus,
   &.#{$ns}-active {
-    box-shadow: input-transition-shadow($input-shadow-color-focus, true),
-      $input-box-shadow-focus;
+    box-shadow: input-transition-shadow($input-shadow-color-focus, true), $input-box-shadow-focus;
   }
 
   &[type='search'],
@@ -172,17 +163,12 @@ $control-group-stack: (
 @mixin pt-dark-input() {
   @include pt-dark-input-placeholder();
 
-  box-shadow: dark-input-transition-shadow($dark-input-shadow-color-focus),
-    $pt-dark-input-box-shadow;
+  box-shadow: dark-input-transition-shadow($dark-input-shadow-color-focus), $pt-dark-input-box-shadow;
   background: $dark-input-background-color;
   color: $dark-input-color;
 
   &:focus {
-    box-shadow: dark-input-transition-shadow(
-        $dark-input-shadow-color-focus,
-        true
-      ),
-      $pt-dark-input-box-shadow;
+    box-shadow: dark-input-transition-shadow($dark-input-shadow-color-focus, true), $pt-dark-input-box-shadow;
   }
 
   &[readonly] {
@@ -196,8 +182,7 @@ $control-group-stack: (
 }
 
 @mixin pt-input-intent($color) {
-  box-shadow: input-transition-shadow($color), inset border-shadow(1, $color),
-    $pt-input-box-shadow;
+  box-shadow: input-transition-shadow($color), inset border-shadow(1, $color), $pt-input-box-shadow;
 
   &:focus {
     box-shadow: input-transition-shadow($color, true), $input-box-shadow-focus;
@@ -214,12 +199,10 @@ $control-group-stack: (
 }
 
 @mixin pt-dark-input-intent($color) {
-  box-shadow: dark-input-transition-shadow($color),
-    inset border-shadow(1, $color), $pt-dark-input-box-shadow;
+  box-shadow: dark-input-transition-shadow($color), inset border-shadow(1, $color), $pt-dark-input-box-shadow;
 
   &:focus {
-    box-shadow: dark-input-transition-shadow($color, true),
-      $pt-dark-input-box-shadow;
+    box-shadow: dark-input-transition-shadow($color, true), $pt-dark-input-box-shadow;
   }
 
   &[readonly] {

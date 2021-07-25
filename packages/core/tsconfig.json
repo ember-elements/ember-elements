@@ -37,7 +37,7 @@
 
     "module": "ESNext",
 
-		"skipLibCheck": true,
+    "skipLibCheck": true,
     // Stage 3 one day
     "experimentalDecorators": true,
 
@@ -50,16 +50,8 @@
       "core/*": ["./addon/*"],
       "core/test-support": ["./addon-test-support"],
       "core/test-support/*": ["./addon-test-support/*"],
-      "*": ["../types/*"]  
+      "*": ["../types/*"]
     }
-
   },
-  "include": [
-    "app/**/*",
-    "addon/**/*",
-    "tests/**/*",
-    "types/**/*",
-    "test-support/**/*",
-    "addon-test-support/**/*"
-  ]
+  "include": ["app/**/*", "addon/**/*", "tests/**/*", "types/**/*", "test-support/**/*", "addon-test-support/**/*"]
 }

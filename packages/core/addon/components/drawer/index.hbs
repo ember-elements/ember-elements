@@ -1,7 +1,17 @@
-<Overlay @className={{this.OVERLAY_CONTAINER}} @isOpen={{this.getIsOpen}} class={{rw this.DRAWER this.getClassName}}
-	style={{this.getStyle}} @onClose={{@onClose}} @autoFocus={{@autoFocus}} @props={{@overlayProps}}
-	@backdropClassName={{@backdropClassName}} @canEscapeKeyClose={{@canEscapeKeyClose}}
-	@canOutsideClickClose={{@canOutsideClickClose}} @transitionDuration={{@transitionDuration}}
-	@transitionName={{@transitionName}} @portalClassName={{@portalClassName}}>
-	{{yield}}
+<Overlay
+  @className={{this.OVERLAY_CONTAINER}}
+  @isOpen={{this.getIsOpen}}
+  class={{rw this.DRAWER this.getClassName}}
+  style={{this.getStyle}}
+  @onClose={{@onClose}}
+  @autoFocus={{@autoFocus}}
+  @props={{@overlayProps}}
+  @backdropClassName={{@backdropClassName}}
+  @canEscapeKeyClose={{@canEscapeKeyClose}}
+  @canOutsideClickClose={{@canOutsideClickClose}}
+  @transitionDuration={{@transitionDuration}}
+  @transitionName={{@transitionName}}
+  @portalClassName={{@portalClassName}}
+>
+  {{yield}}
 </Overlay>

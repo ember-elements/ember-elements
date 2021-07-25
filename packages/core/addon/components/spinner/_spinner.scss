@@ -33,8 +33,7 @@
 
   .#{$ns}-spinner-head {
     transform-origin: center;
-    transition: stroke-dashoffset ($pt-transition-duration * 2)
-      $pt-transition-ease;
+    transition: stroke-dashoffset ($pt-transition-duration * 2) $pt-transition-ease;
     stroke: $progress-head-color;
     stroke-linecap: round;
   }
