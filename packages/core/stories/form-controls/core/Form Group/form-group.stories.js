@@ -13,8 +13,7 @@ export default {
   },
   argTypes: {
     class: {
-      description:
-        'A space-delimited list of class names to pass along to a child element.',
+      description: 'A space-delimited list of class names to pass along to a child element.',
       control: 'string',
       table: {
         type: {
@@ -81,8 +80,7 @@ export default {
       },
     },
     label: {
-      description:
-        'Label of this form group.',
+      description: 'Label of this form group.',
       control: 'string',
       table: {
         type: {
@@ -101,8 +99,7 @@ export default {
       },
     },
     labelInfo: {
-      description:
-        'Optional secondary text that appears after the label.',
+      description: 'Optional secondary text that appears after the label.',
       control: 'string',
       table: {
         type: {

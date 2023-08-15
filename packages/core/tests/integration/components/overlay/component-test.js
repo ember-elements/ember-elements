@@ -64,9 +64,7 @@ module('Integration | Component | overlay', function (hooks) {
   test('hasBackdrop=false does not render backdrop', async function (assert) {
     this.set('isOpen', true);
 
-    await render(
-      hbs`<Overlay @isOpen={{isOpen}} @usePortal={{false}} @hasBackdrop={{false}}><strong/></Overlay>`
-    );
+    await render(hbs`<Overlay @isOpen={{isOpen}} @usePortal={{false}} @hasBackdrop={{false}}><strong/></Overlay>`);
     assert.dom('strong').exists();
     assert.dom('.' + Classes.OVERLAY_BACKDROP).doesNotExist();
     await this.set('isOpen', false);
@@ -93,9 +91,7 @@ module('Integration | Component | overlay', function (hooks) {
     });
     this.set('isOpen', true);
 
-    await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @onClose={{action this.onClose}} ></Overlay>`
-    );
+    await render(hbs`<Overlay @isOpen={{this.isOpen}} @onClose={{action this.onClose}} ></Overlay>`);
 
     await click('.' + Classes.OVERLAY_BACKDROP);
 
@@ -198,9 +194,7 @@ module('Integration | Component | overlay', function (hooks) {
   test('does not bring focus to overlay if autoFocus=false', async function (assert) {
     this.set('isOpen', true);
 
-    await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @autoFocus={{false}} ><input type="text" /></Overlay>`
-    );
+    await render(hbs`<Overlay @isOpen={{this.isOpen}} @autoFocus={{false}} ><input type="text" /></Overlay>`);
     assert.ok(document.activeElement.querySelector('.' + Classes.OVERLAY_BACKDROP));
 
     await this.set('isOpen', false);
@@ -230,9 +224,7 @@ module('Integration | Component | overlay', function (hooks) {
   test('disables document scrolling by default', async function (assert) {
     this.set('isOpen', true);
 
-    await render(
-      hbs`<Overlay @isOpen={{this.isOpen}}><input tabIndex="0" type="text" /></Overlay>`
-    );
+    await render(hbs`<Overlay @isOpen={{this.isOpen}}><input tabIndex="0" type="text" /></Overlay>`);
     const hasClass = await document.body.classList.contains(Classes.OVERLAY_OPEN);
     assert.true(hasClass);
     await this.set('isOpen', false);

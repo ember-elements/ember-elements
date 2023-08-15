@@ -25,3 +25,4 @@ tsconfig.tsbuildinfo
 
 .storybook
 stories/**
+/storybook-static/**

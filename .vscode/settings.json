@@ -14,7 +14,7 @@
 	"prettier.jsxSingleQuote": true,
 	"prettier.singleQuote": true,
 	"prettier.trailingComma": "es5",
-	"prettier.printWidth": 140,
+	"prettier.printWidth": 120,
 	"prettier.semi": true,
 	"prettier.bracketSpacing": true,
 	"prettier.endOfLine": "lf",
@@ -25,11 +25,9 @@
 	"html.format.wrapLineLength": 120,
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
-	"editor.renderIndentGuides": false,
 	"editor.wrappingIndent": "indent",
 	"editor.detectIndentation": false,
-	"editor.autoIndent": false,
-	"editor.highlightActiveIndentGuide": false,
+	"editor.autoIndent": "none",
 	"typescript.tsdk": "./node_modules/typescript/lib",
 	"files.watcherExclude": {
 		"**/build": true,
@@ -52,5 +50,7 @@
 	"yaml.format.printWidth": 120,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
-	}
+	},
+	"editor.guides.indentation": false,
+	"editor.guides.highlightActiveIndentation": false
 }

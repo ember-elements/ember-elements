@@ -27,8 +27,7 @@ export default {
           summary: 'boolean',
         },
       },
-      description:
-        "Whether this element is non-interactive.",
+      description: 'Whether this element is non-interactive.',
       control: 'boolean',
     },
     fill: {
@@ -49,8 +48,7 @@ export default {
       },
     },
     large: {
-      description:
-        'Whether to use large styles.',
+      description: 'Whether to use large styles.',
       table: {
         type: {
           summary: 'boolean',
@@ -59,8 +57,7 @@ export default {
       control: 'boolean',
     },
     minimal: {
-      description:
-        'Whether to use minimal styles.',
+      description: 'Whether to use minimal styles.',
       table: {
         type: {
           summary: 'boolean',
@@ -69,8 +66,7 @@ export default {
       control: 'boolean',
     },
     multiple: {
-      description:
-        'Multiple select is not supported.',
+      description: 'Multiple select is not supported.',
       table: {
         type: {
           summary: 'never',
@@ -83,8 +79,7 @@ export default {
           summary: 'HTMLSelectElement',
         },
       },
-      description:
-        'Change event handler. Use **event.target.value** to access the new value.',
+      description: 'Change event handler. Use **event.target.value** to access the new value.',
     },
     options: {
       table: {
@@ -111,13 +106,12 @@ const Template = (args) => ({
   context: args,
 });
 
-
 const OPTIONS = [
   { value: 'chooseAnItem', label: 'Choose An Item....' },
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
   { value: 'three', label: 'Three' },
-  { value: 'four', label: 'Four' }
+  { value: 'four', label: 'Four' },
 ];
 
 export const HTMLSelect = Template.bind({});
@@ -126,5 +120,5 @@ HTMLSelect.args = {
   fill: false,
   large: false,
   minimal: false,
-  OPTIONS: OPTIONS
+  OPTIONS: OPTIONS,
 };

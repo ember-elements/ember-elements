@@ -122,9 +122,7 @@ export default class Tooltip extends Component<TooltipArgs> {
   }
 
   get eventListener() {
-    this.addTooltipTargetEventListeners();
-
-    return true;
+    return this.addTooltipTargetEventListeners();
   }
 
   @action
@@ -258,6 +256,7 @@ export default class Tooltip extends Component<TooltipArgs> {
   addTooltipTargetEventListeners() {
     /* Setup event handling to hide and show the tooltip */
     const event = this.findEvent();
+    console.log(event);
 
     if (event === 'none') {
       return;
@@ -265,6 +264,8 @@ export default class Tooltip extends Component<TooltipArgs> {
 
     const hideOn = this.hideOn();
     const showOn = this.showOn();
+
+    console.log(showOn, hideOn);
 
     /* If show and hide are the same (e.g. click) toggle
 		the visibility */

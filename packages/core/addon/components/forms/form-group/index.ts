@@ -93,7 +93,7 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
       disabled = this.props.disabled;
     }
 
-    return disabled != null ? Classes.DISABLED : '';
+    return disabled ? Classes.DISABLED : '';
   }
 
   get getHelperText() {
@@ -117,7 +117,7 @@ export default class FormGroup extends Component<FormsFormGroupArgs> {
       inline = this.props.inline;
     }
 
-    return inline != null ? Classes.INLINE : '';
+    return inline ? Classes.INLINE : '';
   }
 
   get getIntent() {
