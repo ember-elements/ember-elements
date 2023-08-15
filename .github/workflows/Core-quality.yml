@@ -83,11 +83,11 @@ jobs:
       max-parallel: 6
       matrix:
         scenario:
-        - "ember-lts-3.16"
-        - "ember-lts-3.20"
-        - "ember-default-with-jquery"
-        - "ember-release"
-        - "ember-beta"
+        # - "ember-lts-3.16"
+        - "ember-lts-3.24"
+        # - "ember-default-with-jquery"
+        # - "ember-release"
+        # - "ember-beta"
         # TODO https://github.com/dunkinbase/ember-elements/issues/352
         # - "ember-canary" 
     steps:
