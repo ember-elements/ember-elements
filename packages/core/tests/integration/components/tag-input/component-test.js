@@ -54,7 +54,11 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('values', ['one', 'two', 'three5']);
     this.set('tagProps', { intent: 'primary' });
     await render(hbs` <TagInput @values={{this.values}} @tagProps={{this.tagProps}}  ></TagInput>`);
-    assert.equal(this.element.querySelectorAll('.' + Classes.TAG + '.' + Classes.intentClass('primary')).length, 3);
+    assert.equal(
+      this.element.querySelectorAll('.' + Classes.TAG + '.' + Classes.intentClass('primary'))
+        .length,
+      3
+    );
   });
 
   test('clicking Tag remove button invokes onRemove with that value', async function (assert) {
@@ -101,7 +105,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onAdd', function (value) {
       this.set('onAddValue', value);
     });
-    await render(hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} @addOnBlur={{true}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} @addOnBlur={{true}} />`
+    );
     await focus('input');
     await blur('input');
     assert.equal(this.onAddValue, undefined);
@@ -112,7 +118,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onAdd', function (value) {
       this.set('onAddValue', value);
     });
-    await render(hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} @addOnBlur={{false}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} @addOnBlur={{false}} />`
+    );
     await fillIn('input', 'hello world');
     await focus('input');
     await blur('input');
@@ -340,7 +348,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onInputChange', function () {
       this.set('isEntered', true);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}}/>`
+    );
     await triggerKeyEvent('input', 'keydown', 'Enter');
     assert.notOk(this.isEntered);
   });
@@ -350,7 +360,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onInputChange', function (e) {
       this.set('isEnteredValue', e.target.value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}}/>`
+    );
     await fillIn('input', 'hii');
     assert.equal(this.isEnteredValue, 'hii');
   });
@@ -387,7 +399,9 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('isEnteredValue', e.target.value);
     });
     this.set('inputValue', 'new value');
-    await render(hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}} />`
+    );
     assert.equal(this.element.querySelector('input').value.trim(), '');
   });
 });
