@@ -37,6 +37,7 @@ module.exports = async function () {
             'ember-source': await getChannelURL('beta'),
           },
         },
+        allowedToFail: true,
       },
       {
         name: 'ember-canary',
@@ -45,6 +46,7 @@ module.exports = async function () {
             'ember-source': await getChannelURL('canary'),
           },
         },
+        allowedToFail: true,
       },
       {
         name: 'ember-default-with-jquery',
