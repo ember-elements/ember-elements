@@ -23,7 +23,10 @@ module('Integration | Component | text-area', function (hooks) {
 
     await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`);
     const height = await this.element.querySelector('textarea').style.height;
-    this.set('text', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan');
+    this.set(
+      'text',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
+    );
 
     assert.notEqual(height, this.element.querySelector('textarea').style.height);
   });
@@ -31,13 +34,21 @@ module('Integration | Component | text-area', function (hooks) {
   test('doesnt clobber user-supplied styles', async function (assert) {
     this.set('text', 'hii');
 
-    await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} style='margin-top:10px'/>`);
+    await render(
+      hbs`<TextArea @growVertically={{true}} @value={{this.text}} style='margin-top:10px'/>`
+    );
 
-    this.set('text', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan');
+    this.set(
+      'text',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
+    );
 
     assert
       .dom('textarea')
-      .hasAttribute('style', `margin-top: 10px; height: ${this.element.querySelector('textarea').style.height};`);
+      .hasAttribute(
+        'style',
+        `margin-top: 10px; height: ${this.element.querySelector('textarea').style.height};`
+      );
   });
 
   test('can fit large initial content', async function (assert) {
@@ -55,7 +66,10 @@ module('Integration | Component | text-area', function (hooks) {
 
     await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`);
     const scrollHeightInPixels = await this.element.querySelector('textarea').scrollHeight;
-    this.set('text', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan');
+    this.set(
+      'text',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
+    );
 
     assert.equal(scrollHeightInPixels + 'px', this.element.querySelector('textarea').style.height);
   });

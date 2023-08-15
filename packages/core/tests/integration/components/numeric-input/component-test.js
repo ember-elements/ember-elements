@@ -26,7 +26,8 @@ module('Integration | Component | numeric-input', function (hooks) {
     await render(hbs` <NumericInput @buttonPosition='right'/>`);
 
     assert.equal(
-      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1].classList[0],
+      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1]
+        .classList[0],
       Classes.BUTTON_GROUP
     );
   });
@@ -37,7 +38,8 @@ module('Integration | Component | numeric-input', function (hooks) {
     `);
 
     assert.equal(
-      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[0].classList[0],
+      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[0]
+        .classList[0],
       Classes.BUTTON_GROUP
     );
   });
@@ -46,20 +48,27 @@ module('Integration | Component | numeric-input', function (hooks) {
     await render(hbs`
       <NumericInput @buttonPosition='none'/>
     `);
-    assert.notOk(document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1]);
+    assert.notOk(
+      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1]
+    );
   });
 
   test('does not render the buttons when buttonPosition is null', async function (assert) {
     await render(hbs`
       <NumericInput @buttonPosition='null'/>
     `);
-    assert.notOk(document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1]);
+    assert.notOk(
+      document.querySelector('.' + Classes.NUMERIC_INPUT).getElementsByTagName('div')[1]
+    );
   });
 
   test('always renders the children in a ControlGroup', async function (assert) {
     await render(hbs`<NumericInput/>`); // always renders the children in a ControlGroup
 
-    assert.equal(document.querySelector('.' + Classes.BUTTON_GROUP).parentNode.classList[0], Classes.CONTROL_GROUP);
+    assert.equal(
+      document.querySelector('.' + Classes.BUTTON_GROUP).parentNode.classList[0],
+      Classes.CONTROL_GROUP
+    );
   });
 
   test('Basic functionality:- works like a text input', async function (assert) {
@@ -268,7 +277,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     this.set('value', NUMERIC_SYMBOLS_WITHOUT_SHIFT);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
-    assert.equal(this.element.querySelector('.' + Classes.INPUT).value, '.-', 'NUMERIC_SYMBOLS_WITHOUT_SHIFT');
+    assert.equal(
+      this.element.querySelector('.' + Classes.INPUT).value,
+      '.-',
+      'NUMERIC_SYMBOLS_WITHOUT_SHIFT'
+    );
 
     this.set('value', NON_NUMERIC_SYMBOLS_WITH_SHIFT);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
@@ -280,7 +293,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     this.set('value', NUMERIC_SYMBOLS_WITH_SHIFT);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
-    assert.equal(this.element.querySelector('.' + Classes.INPUT).value, '+', 'NUMERIC_SYMBOLS_WITH_SHIFT');
+    assert.equal(
+      this.element.querySelector('.' + Classes.INPUT).value,
+      '+',
+      'NUMERIC_SYMBOLS_WITH_SHIFT'
+    );
   });
 
   test('disables keystroke for less common symbols typed with OPTION-key modifier on Mac', async function (assert) {
@@ -289,7 +306,11 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{this.value}} @didPasteEventJustOccur={{true}}  />
     `);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
-    assert.equal(this.element.querySelector('.' + Classes.INPUT).value, LESS_COMMON_SYMBOLS, 'LESS_COMMON_SYMBOLS');
+    assert.equal(
+      this.element.querySelector('.' + Classes.INPUT).value,
+      LESS_COMMON_SYMBOLS,
+      'LESS_COMMON_SYMBOLS'
+    );
   });
 
   test('disables keystroke for the spacebar', async function (assert) {
@@ -307,7 +328,11 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{this.value}} @didPasteEventJustOccur={{true}}  />
     `);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
-    assert.equal(this.element.querySelector('.' + Classes.INPUT).value, NON_CHARACTER_KEYS, 'NON_CHARACTER_KEYS');
+    assert.equal(
+      this.element.querySelector('.' + Classes.INPUT).value,
+      NON_CHARACTER_KEYS,
+      'NON_CHARACTER_KEYS'
+    );
   });
 
   test('allows keystroke for numeric digits (0-9)', async function (assert) {
@@ -316,7 +341,11 @@ module('Integration | Component | numeric-input', function (hooks) {
       <NumericInput @value={{this.value}} @didPasteEventJustOccur={{true}}  />
     `);
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 'Enter');
-    assert.equal(this.element.querySelector('.' + Classes.INPUT).value, '0123456789', 'NUMERIC_DIGITS');
+    assert.equal(
+      this.element.querySelector('.' + Classes.INPUT).value,
+      '0123456789',
+      'NUMERIC_DIGITS'
+    );
   });
 
   test('Keyboard interactions in input field "Press ↑", "Press ↓"', async function (assert) {
