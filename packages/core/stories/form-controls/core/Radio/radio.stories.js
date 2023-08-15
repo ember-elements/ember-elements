@@ -53,8 +53,7 @@ export default {
           summary: 'boolean',
         },
       },
-      description:
-        'Whether the control is checked.',
+      description: 'Whether the control is checked.',
       control: 'boolean',
     },
     class: {
@@ -72,8 +71,7 @@ export default {
           summary: 'boolean',
         },
       },
-      description:
-        'Whether the control is initially checked (uncontrolled mode).',
+      description: 'Whether the control is initially checked (uncontrolled mode).',
       control: 'boolean',
     },
     disabled: {
@@ -82,8 +80,7 @@ export default {
           summary: 'boolean',
         },
       },
-      description:
-        'Whether the control is non-interactive.',
+      description: 'Whether the control is non-interactive.',
       control: 'boolean',
     },
     inline: {
@@ -96,8 +93,7 @@ export default {
       },
     },
     label: {
-      description:
-        'Text label for the control.',
+      description: 'Text label for the control.',
       control: 'string',
       table: {
         type: {
@@ -106,8 +102,7 @@ export default {
       },
     },
     labelElement: {
-      description:
-        'Html Element for check box instead of label.',
+      description: 'Html Element for check box instead of label.',
       control: 'string',
       table: {
         type: {
@@ -134,10 +129,9 @@ export default {
     },
     value: {
       type: {
-        required: true
+        required: true,
       },
-      description:
-        'Value of this option.',
+      description: 'Value of this option.',
       control: 'string',
       table: {
         type: {
@@ -196,7 +190,6 @@ Radio.args = {
   large: false,
   value: 'string',
 };
-
 
 export const LargeRadio = Template.bind({});
 LargeRadio.args = {

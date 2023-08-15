@@ -50,7 +50,7 @@ export default class ControlGroup extends Component<ControlGroupArgs> {
       fill = this.props.fill;
     }
 
-    return fill != null ? Classes.FILL : '';
+    return fill ? Classes.FILL : '';
   }
 
   get getVertical() {
@@ -62,6 +62,6 @@ export default class ControlGroup extends Component<ControlGroupArgs> {
       vertical = this.props.vertical;
     }
 
-    return vertical != null ? Classes.VERTICAL : '';
+    return vertical ? Classes.VERTICAL : '';
   }
 }

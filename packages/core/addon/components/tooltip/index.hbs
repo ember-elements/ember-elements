@@ -1,7 +1,9 @@
 {{! template-lint-disable}}
 {{unbound this._parentFinder}}
 {{unbound this.eventListener}}
-<span style='display: none;'>{{this.openComp}}</span>
+<span style='display: none;'>
+  {{this.openComp}}
+</span>
 <Popover
   ...attributes
   {{will-destroy this.willDestroyRef}}
