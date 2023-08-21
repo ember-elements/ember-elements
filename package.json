@@ -18,14 +18,12 @@
 	"devDependencies": {
 		"lerna": "^4.0.0"
 	},
-	"engines": {
-		"node": "14.16.1"
-	},
+	
 	"ember": {
 		"edition": "octane"
 	},
 	"volta": {
-		"node": "14.16.1",
+ "node": "18.13.0",
 		"yarn": "1.22.10"
 	}
 }

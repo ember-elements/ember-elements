@@ -124,14 +124,12 @@
 		"stylelint-scss": "^3.19.0",
 		"typescript": "^4.3.4"
 	},
-	"engines": {
-		"node": "14.16.1"
-	},
+
 	"ember": {
 		"edition": "octane"
 	},
 	"volta": {
-		"node": "14.16.1",
+"node": "18.13.0",
 		"yarn": "1.22.10"
 	},
 	"ember-addon": {
