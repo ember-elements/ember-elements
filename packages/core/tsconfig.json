@@ -1,5 +1,6 @@
 // @ts-ignore
 {
+  "extends": "@tsconfig/ember/tsconfig.json",
   "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "composite": true,
