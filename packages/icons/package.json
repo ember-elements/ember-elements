@@ -93,6 +93,7 @@
 		"ember-cli-sri": "^2.1.1",
 		"ember-cli-terser": "^4.0.1",
 		"ember-cli-typescript-blueprints": "^3.0.0",
+		"ember-cli-update": "^1.0.1",
 		"ember-disable-prototype-extensions": "^1.1.3",
 		"ember-export-application-global": "^2.0.1",
 		"ember-load-initializers": "^2.1.2",
@@ -124,12 +125,11 @@
 		"stylelint-scss": "^3.19.0",
 		"typescript": "^4.3.4"
 	},
-
 	"ember": {
 		"edition": "octane"
 	},
 	"volta": {
-"node": "18.13.0",
+		"node": "18.13.0",
 		"yarn": "1.22.10"
 	},
 	"ember-addon": {
