@@ -17,7 +17,7 @@
     <Icon @icon={{this.getTagIcon}} />
   {{/if}}
 
-  {{#if hasBlock}}
+  {{#if (has-block)}}
     <span class={{rw this.FILL this.TEXT_OVERFLOW_ELLIPSIS}}>
       {{yield}}
     </span>

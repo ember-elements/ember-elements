@@ -487,12 +487,12 @@ export default class Overlay extends Component<OverlayArgs> {
   }
 
   private overlayWillOpen() {
-    const { openStack } = Overlay;
+    const { openStack } = Overlay
 
     if (openStack.length > 0) {
       document.removeEventListener(
         'focus',
-        Overlay.getLastOpened().handleDocumentFocus,
+        (Overlay as any).getLastOpened().handleDocumentFocus,
         /* useCapture */ true
       );
     }
@@ -561,7 +561,7 @@ export default class Overlay extends Component<OverlayArgs> {
       openStack.splice(stackIndex, 1);
 
       if (openStack.length > 0) {
-        const lastOpenedOverlay = Overlay.getLastOpened();
+        const lastOpenedOverlay = Overlay.getLastOpened() as any;
 
         if (lastOpenedOverlay.getEnforceFocus()) {
           document.addEventListener(

@@ -169,7 +169,7 @@ export default class Checkbox extends Component<CheckboxArgs> {
     // ele is input element
     // propsValue is ICheckboxState and indeterminateValue @tracked value
     if (ele != null) {
-      ele.indeterminate = propsValue[0] || propsValue[1];
+      ele.indeterminate = (propsValue[0] || propsValue[1]) as boolean;
     }
   }
 }

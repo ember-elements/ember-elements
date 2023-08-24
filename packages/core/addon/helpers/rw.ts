@@ -4,7 +4,7 @@ export function rw(params: Array<string> /*, hash*/) {
   let removedWhiteSpace = '';
 
   for (let index = 0; index < (params || []).length; index++) {
-    const element: string = params[index];
+    const element: string = params[index] as string;
 
     if (element) {
       removedWhiteSpace += element + ' ';

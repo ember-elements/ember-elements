@@ -34,7 +34,7 @@
             {{will-destroy this.willDestroyElementComp}}
             {{css-transition this.getTransitionName}}
           >
-            {{#if hasBlock}}
+            {{#if (has-block)}}
               {{yield}}
             {{/if}}
           </div>
@@ -83,7 +83,7 @@
               {{will-destroy this.willDestroyElementComp}}
               {{css-transition this.getTransitionName}}
             >
-              {{#if hasBlock}}
+              {{#if (has-block)}}
                 {{yield}}
               {{/if}}
             </div>
