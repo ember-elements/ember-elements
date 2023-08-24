@@ -2,8 +2,6 @@ name: '@ember-elements/icons'
 on:
   pull_request:
     branches: [main]
-    # paths:
-    # - 'packages/icons/**'
 
 env:
   cwd: packages/icons/
@@ -32,11 +30,6 @@ jobs:
     - name: "JS/TS"
       working-directory: ${{ env.cwd }}
       run: yarn eslint . --ext .ts --ext .js
-
-
-    # - name: "Styles"
-    #   working-directory: ${{ env.cwd }}
-    #   run: yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss
 
     - name: 'Type Correctness'
       working-directory: ${{ env.cwd }}

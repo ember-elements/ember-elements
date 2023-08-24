@@ -2,8 +2,9 @@ name: '@ember-elements/core'
 on:
   pull_request:
     branches: [main]
-    # paths:
-    # - 'packages/core/**'
+  push:
+    branches:
+      - main
 
 env:
   cwd: packages/core/
@@ -96,7 +97,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: yarn
       - name: Install Dependencies
         working-directory: ${{ env.cwd }}
@@ -104,34 +105,4 @@ jobs:
       - name: Run Tests
         working-directory: ${{ env.cwd }}
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
-
-
-  # TODO will enable later 
-  # tests_ember_compat:
-  #   if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
-  #   name: Ember Compatability
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 5
-  #   strategy:
-  #     max-parallel: 6
-  #     matrix:
-  #       scenario:
-  #       # - "ember-lts-3.16"
-  #       - "ember-lts-3.24"
-  #       # - "ember-default-with-jquery"
-  #       # - "ember-release"
-  #       # - "ember-beta"
-  #       # TODO https://github.com/dunkinbase/ember-elements/issues/352
-  #       # - "ember-canary" 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: volta-cli/action@v1
-
-  #   - name: Install
-  #     working-directory: ${{ env.cwd }}
-  #     run: yarn install
-
-  #   - name: "Test: ${{ matrix.scenario }}"
-  #     working-directory: ${{ env.cwd }}
-  #     run: yarn test:try-one ${{ matrix.scenario }}
 
