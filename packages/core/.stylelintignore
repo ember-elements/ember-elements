@@ -1,8 +1,15 @@
 # Ignore supporting directories to improve scan time
 /dummy/
-/dist/
 /node_modules/
 /tmp/
 /public/
 /vendor/
 
+# unconventional files
+/blueprints/*/files/
+
+# compiled output
+/dist/
+
+# addons
+/.node_modules.ember-try/

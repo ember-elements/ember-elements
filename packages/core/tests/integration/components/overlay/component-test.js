@@ -1,5 +1,5 @@
 /* eslint-disable qunit/no-commented-tests */
-import { click, render, triggerKeyEvent } from '@ember/test-helpers';
+import { click, pauseTest, render, triggerKeyEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
@@ -65,7 +65,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{isOpen}} @usePortal={{false}} @hasBackdrop={{false}}><strong/></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @usePortal={{false}} @hasBackdrop={{false}}><strong/></Overlay>`
     );
     assert.dom('strong').exists();
     assert.dom('.' + Classes.OVERLAY_BACKDROP).doesNotExist();
@@ -77,7 +77,7 @@ module('Integration | Component | overlay', function (hooks) {
       this.set('isOpen', true);
     });
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} ><strong/></Overlay> <button id='buttonToggle' onclick={{action toggleOverlay}}></button>`
+      hbs`<Overlay @isOpen={{this.isOpen}} ><strong/></Overlay> <button id='buttonToggle' onclick={{action this.toggleOverlay}}></button>`
     );
 
     assert.equal(this.element.querySelectorAll('strong').length, 0);
@@ -110,7 +110,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @onClose={{action onClose}} @canOutsideClickClose={{false}}><strong/></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @onClose={{action this.onClose}} @canOutsideClickClose={{false}}><strong/></Overlay>`
     );
 
     await click('.' + Classes.OVERLAY_BACKDROP);
@@ -174,7 +174,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @canEscapeKeyClose={{false}} @isOpen={{this.isOpen}} @onClose={{action onClose}} @usePortal={{false}}><strong/></Overlay>`
+      hbs`<Overlay @canEscapeKeyClose={{false}} @isOpen={{this.isOpen}} @onClose={{action this.onClose}} @usePortal={{false}}><strong/></Overlay>`
     );
 
     await triggerKeyEvent('.' + Classes.OVERLAY_BACKDROP, 'keydown', 27);

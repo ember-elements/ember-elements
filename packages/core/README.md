@@ -1,12 +1,15 @@
-# core
+# @ember-elements/core
 
 [Short description of the addon.]
 
 ## Compatibility
 
-- Ember.js v3.16 or above
-- Ember CLI v2.13 or above
-- Node.js v10 or above
+## Compatibility
+
+* Ember.js v4.4 or above
+* Ember CLI v4.4 or above
+* Node.js v16 or above
+
 
 ## Installation
 

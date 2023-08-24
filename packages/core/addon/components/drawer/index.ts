@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
+
 
 import * as Classes from '../../_private/common/classes';
 import * as posFun from '../../_private/common/position';

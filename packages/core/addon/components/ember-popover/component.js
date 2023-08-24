@@ -5,9 +5,8 @@ import { assert } from '@ember/debug';
 // eslint-disable-next-line  ember/no-computed-properties-in-native-classes
 import { computed } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
-
+// import { createPopper as Popper } from '@popperjs/core';
 import { scheduler as raf } from 'ember-raf-scheduler';
-
 import layout from './template';
 
 export default Component.extend({
