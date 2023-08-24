@@ -80,7 +80,7 @@ jobs:
     timeout-minutes: 10
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         try-scenario:
           - ember-lts-4.4
@@ -99,8 +99,10 @@ jobs:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
+        working-directory: ${{ env.cwd }}
         run: yarn install --frozen-lockfile
       - name: Run Tests
+        working-directory: ${{ env.cwd }}
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
 
 
