@@ -6,24 +6,20 @@
 	],
 	"scripts": {
 		"lint:js": "eslint .",
-		"startCore": "yarn workspace @ember-elements/core start",
-		"startCoreTest": "yarn workspace @ember-elements/core test",
-		"startIcons": "yarn workspace @ember-elements/icons start",
-		"lintallCore": "yarn workspace @ember-elements/core lint:all",
+		"start:core": "yarn workspace @ember-elements/core start",
+		"start:core:test": "yarn workspace @ember-elements/core test:ember",
+		"start:icons": "yarn workspace @ember-elements/icons start",
+		"lint:core": "yarn workspace @ember-elements/core lint",
+		"lint:core:fix": "yarn workspace @ember-elements/core lint:fix",
 		"test": "yarn workspace @ember-elements/core test",
-		"dtslint": "lerna run dtslint",
-		"node-test": "lerna run node-test",
-		"try": "ember try:one"
+		"lint:icons": "yarn workspace @ember-elements/icons lint",
+		"lint:icons:fix": "yarn workspace @ember-elements/icons lint:fix"
 	},
 	"devDependencies": {
-		"lerna": "^4.0.0"
-	},
-	
-	"ember": {
-		"edition": "octane"
+		"lerna": "^7.1.5"
 	},
 	"volta": {
- "node": "18.13.0",
+		"node": "18.13.0",
 		"yarn": "1.22.10"
 	}
 }
