@@ -6,3 +6,11 @@
 /public/
 /vendor/
 
+# unconventional files
+/blueprints/*/files/
+
+# compiled output
+/dist/
+
+# addons
+/.node_modules.ember-try/
