@@ -1,8 +1,8 @@
-![Logo](/tests/dummy/public/ember-elements.png)
+![Logo](/packages/core/tests/dummy/public/ember-elements.png)
 
 **Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.
 
-[![Build Status](https://travis-ci.org/dunkinbase/ember-elements.svg?branch=master)](https://travis-ci.org/dunkinbase/ember-elements)
+[![Build Status](https://travis-ci.org/dunkinbase/ember-elements.svg?branch=main)](https://travis-ci.org/dunkinbase/ember-elements)
 [![minified](https://badgen.net/bundlephobia/min/ember-elements)](https://bundlephobia.com/result?p=ember-elements)
 [![minified + gzip](https://badgen.net/bundlephobia/minzip/ember-elements)](https://bundlephobia.com/result?p=ember-elements)
 [![license](https://badgen.net/github/license/dunkinbase/ember-elements)](https://github.com/dunkinbase/ember-elements/blob/master/LICENSE)
