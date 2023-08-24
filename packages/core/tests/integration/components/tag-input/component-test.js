@@ -196,10 +196,7 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('values', ['one', 'two', 'three13']);
     await render(hbs` <TagInput @values={{this.values}} />`);
     await triggerKeyEvent('input', 'keydown', 39);
-    assert.strictEqual(
-      this.element.querySelector('.' + Classes.ACTIVE),
-      null
-    );
+    assert.strictEqual(this.element.querySelector('.' + Classes.ACTIVE), null);
   });
 
   //onChange event
