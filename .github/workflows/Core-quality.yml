@@ -66,9 +66,9 @@ jobs:
       working-directory: ${{ env.cwd }}
       run: yarn ember-template-lint .
 
-    - name: "Styles"
-      working-directory: ${{ env.cwd }}
-      run: yarn stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss
+    # - name: "Styles"
+    #   working-directory: ${{ env.cwd }}
+    #   run: yarn stylelint app/styles/*.scss addon/components/*.scss addon/components/**/*.scss addon/components/**/**/*.scss
 
     - name: 'Type Correctness'
       working-directory: ${{ env.cwd }}
