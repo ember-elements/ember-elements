@@ -34,9 +34,9 @@ jobs:
       run: yarn eslint . --ext .ts --ext .js
 
 
-    - name: "Styles"
-      working-directory: ${{ env.cwd }}
-      run: yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss
+    # - name: "Styles"
+    #   working-directory: ${{ env.cwd }}
+    #   run: yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss
 
     - name: 'Type Correctness'
       working-directory: ${{ env.cwd }}

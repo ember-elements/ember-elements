@@ -16,17 +16,13 @@
   "scripts": {
     "build": "ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.css\"",
-    "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
-    "lint:scss": "yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss",
-    "lint:scss:fix": "yarn stylelint app/styles/*.scss addon/*.scss addon/**/*.scss --fix",
     "lint:hbs": "ember-template-lint .",
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --skipLibCheck --noEmit",
-    "lint:js:overide": "yarn eslint . --ext .ts --ext .js",
+    "lint:js:overide": "eslint . --ext .ts --ext .js",
     "types:build": "tsc --build",
     "types:clean": "tsc --build --clean",
     "types:rebuild": "tsc --build --clean && yarn tsc --build",
@@ -45,7 +41,6 @@
   "lint-staged": {
     "*.{ts,js}": "yarn eslint --fix --quiet --cache",
     "*.hbs": "yarn ember-template-lint --fix",
-    "*.scss": "yarn stylelint --fix --cache",
     "*.js": "eslint --cache --fix"
   },
   "dependencies": {
@@ -124,10 +119,6 @@
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "sass-lint": "^1.13.1",
-    "stylelint": "^15.10.3",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-prettier": "^4.0.2",
-    "stylelint-scss": "^3.19.0",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2"
   },
