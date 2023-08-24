@@ -2,6 +2,11 @@
 
 module.exports = {
   name: require('./package').name,
+   options: {
+   'ember-cli-babel': {
+     enableTypeScriptTransform: true,
+   },
+  }
   // Disable it for now
 
   // optionsFor(type, options) {

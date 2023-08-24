@@ -1,12 +1,15 @@
-# icons
+# @ember-elements/icons
 
 [Short description of the addon.]
 
 ## Compatibility
 
-- Ember.js v3.4 or above
-- Ember CLI v2.13 or above
-- Node.js v8 or above
+## Compatibility
+
+* Ember.js v4.4 or above
+* Ember CLI v4.4 or above
+* Node.js v16 or above
+
 
 ## Installation
 

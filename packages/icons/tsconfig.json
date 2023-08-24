@@ -21,8 +21,13 @@
     "module": "es6",
     "experimentalDecorators": true,
     "paths": {
-      "dummy/tests/*": ["tests/*"],
-      "dummy/*": ["tests/dummy/app/*", "app/*"],
+      "dummy/tests/*": [
+        "tests/*"
+      ],
+      "dummy/*": [
+        "tests/dummy/app/*",
+        "app/*"
+      ],
       "@ember-elements/icons": [
         "addon",
         "node_modules/@ember-elements/icons/addon"
@@ -31,18 +36,30 @@
         "addon/*",
         "node_modules/@ember-elements/icons/addon/*"
       ],
-      "@ember-elements/icons/test-support": ["addon-test-support"],
-      "@ember-elements/icons/test-support/*": ["addon-test-support/*"],
-      "*": ["types/*"]
+      "@ember-elements/icons/test-support": [
+        "addon-test-support"
+      ],
+      "@ember-elements/icons/test-support/*": [
+        "addon-test-support/*"
+      ],
+      "*": [
+        "types/*"
+      ]
     }
   },
   "include": [
-    "app/**/*",
     "addon/**/*",
+    "app/**/*",
     "tests/**/*",
-    "types/**/*",
-    "test-support/**/*",
-    "addon-test-support/**/*",
-    "iconName.ts"
+    "types/*"
   ]
+  // "include": [
+  //   "app/**/*",
+  //   "addon/**/*",
+  //   "tests/**/*",
+  //   "types/**/*",
+  //   "test-support/**/*",
+  //   "addon-test-support/**/*",
+  //   "iconName.ts"
+  // ]
 }

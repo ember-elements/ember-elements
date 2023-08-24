@@ -2,15 +2,14 @@
 
 ## Installation
 
-- `git clone <repository-url>`
-- `cd icons`
-- `yarn install`
+* `git clone <repository-url>`
+* `cd ember-elements-icons`
+* `yarn install`
 
 ## Linting
 
-- `yarn lint:hbs`
-- `yarn lint:js`
-- `yarn lint:js --fix`
+* `yarn lint`
+* `yarn lint:fix`
 
 ## Running tests
 
@@ -23,4 +22,4 @@
 - `ember serve`
 - Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+For more information on using ember-cli, visit [https://cli.emberjs.com/release/](https://cli.emberjs.com/release/).
