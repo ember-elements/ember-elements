@@ -376,11 +376,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await input.focus();
     await triggerKeyEvent(input, 'keydown', 40);
-    assert.strictEqual(input.value, 0, 'simulateDecrement');
+    assert.strictEqual(input.value, '0', 'simulateDecrement');
 
     await triggerKeyEvent(input, 'keydown', 38);
 
-    assert.strictEqual(input.value, 1, 'simulateIncrement');
+    assert.strictEqual(input.value, '1', 'simulateIncrement');
   });
 
   test('Keyboard interactions on buttons (with Space key) "Press SPACE" "Press SPACE"', async function (assert) {
@@ -396,11 +396,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     const input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, 2, 'simulateIncrement');
+    assert.strictEqual(input.value, '2', 'simulateIncrement');
 
     await triggerKeyEvent(button[1], 'keydown', 32);
 
-    assert.strictEqual(input.value, 1, 'simulateDecrement');
+    assert.strictEqual(input.value, '1', 'simulateDecrement');
   });
 
   test('Keyboard interactions on buttons (with Enter key) "Press Enter" "Press Enter"', async function (assert) {
@@ -416,11 +416,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     const input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, 2, 'simulateIncrement');
+    assert.strictEqual(input.value, '2', 'simulateIncrement');
 
     await triggerKeyEvent(button[1], 'keydown', 'Enter');
 
-    assert.strictEqual(input.value, 1, 'simulateDecrement');
+    assert.strictEqual(input.value, '1', 'simulateDecrement');
   });
 
   //Value bounds
@@ -435,7 +435,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     await triggerKeyEvent(button[1], 'keydown', 'Enter', { shiftKey: true });
     await triggerKeyEvent(button[1], 'keydown', 'Enter', { shiftKey: true });
 
-    assert.strictEqual(input.value, -20, 'simulateDecrement');
+    assert.strictEqual(input.value, '-20', 'simulateDecrement');
   });
   test('if no bounds are defined:- clamps an out-of-bounds value to the new `min` if the component props change', async function (assert) {
     await render(hbs`
@@ -444,11 +444,11 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     let input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, 0, 'value is 0');
+    assert.strictEqual(input.value, '0', 'value is 0');
 
     await this.set('minValue', 10);
     input = this.element.querySelector('input');
-    assert.strictEqual(input.value, 10, 'changed default 0 to 10 ');
+    assert.strictEqual(input.value, '10', 'changed default 0 to 10 ');
   });
 
   test('if no bounds are defined:- clamps an out-of-bounds value to the new `max` if the component props change', async function (assert) {
@@ -458,14 +458,14 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     let input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, 0, 'value is 0');
+    assert.strictEqual(input.value, '0', 'value is 0');
 
     const button = this.element.querySelectorAll('button');
 
     await this.set('maxValue', -10);
     await click(button[0]);
     input = this.element.querySelector('input');
-    assert.strictEqual(input.value, -10, 'can not increment max value ');
+    assert.strictEqual(input.value, '-10', 'can not increment max value ');
   });
 
   test('if `min` is defined: decrements the value as usual if it is above the minimum', async function (assert) {
@@ -479,7 +479,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await click(button[1]);
 
-    assert.strictEqual(input.value, 0, ' min value should not change');
+    assert.strictEqual(input.value, '0', ' min value should not change');
   });
 
   test('if `min` is defined: clamps the value to the minimum bound when decrementing by stepSize', async function (assert) {
@@ -494,7 +494,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to decrement by 1
     await click(button[1]);
 
-    assert.strictEqual(input.value, -0.5);
+    assert.strictEqual(input.value, '-0.5');
   });
 
   test('if `min` is defined: clamps the value to the minimum bound when decrementing by minorStepSize', async function (assert) {
@@ -509,7 +509,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to decrement by 0.1
     await triggerKeyEvent(button[1], 'keydown', 'Enter', { altKey: true });
 
-    assert.strictEqual(input.value, -0.05);
+    assert.strictEqual(input.value, '-0.05');
   });
 
   test('if `min` is defined: clamps the value to the minimum bound when decrementing by majorStepSize', async function (assert) {
@@ -524,7 +524,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to decrement by 10
     await triggerKeyEvent(button[1], 'keydown', 'Enter', { shiftKey: true });
 
-    assert.strictEqual(input.value, -5);
+    assert.strictEqual(input.value, '-5');
   });
 
   test('if `min` is defined:fires onValueChange with clamped value if nextProps.min > value ', async function (assert) {
@@ -541,7 +541,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to decrement by 10
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 13);
 
-    assert.strictEqual(input.value, 0);
+    assert.strictEqual(input.value, '0');
   });
 
   test('if `min` is defined:does not fire onValueChange if nextProps.min < value ', async function (assert) {
@@ -558,7 +558,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to decrement by 10
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 13);
 
-    assert.strictEqual(input.value, -10);
+    assert.strictEqual(input.value, '-10');
   });
 
   test('if `max` is defined: decrements the value as usual if it is above the minimum', async function (assert) {
@@ -572,7 +572,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await click(button[0]);
 
-    assert.strictEqual(input.value, 0, ' max value should not change');
+    assert.strictEqual(input.value, '0', ' max value should not change');
   });
 
   test('if `max` is defined: clamps the value to the maximum bound when incrementing by stepSize', async function (assert) {
@@ -587,7 +587,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to incrementing by 1
     await click(button[0]);
 
-    assert.strictEqual(input.value, 0.5);
+    assert.strictEqual(input.value, '0.5');
   });
 
   test('if `max` is defined: clamps the value to the maximum bound when incrementing by minorStepSize', async function (assert) {
@@ -602,7 +602,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to incrementing by 0.1
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { altKey: true });
 
-    assert.strictEqual(input.value, 0.05);
+    assert.strictEqual(input.value, '0.05');
   });
 
   test('if `max` is defined: clamps the value to the maximum bound when incrementing by majorStepSize', async function (assert) {
@@ -617,7 +617,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     // try to incrementing by 10
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { shiftKey: true });
 
-    assert.strictEqual(input.value, 5);
+    assert.strictEqual(input.value, '5');
   });
 
   test('if `max` is defined:fires onValueChange with clamped value if nextProps.max > value ', async function (assert) {
@@ -633,7 +633,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 13);
 
-    assert.strictEqual(input.value, 0);
+    assert.strictEqual(input.value, '0');
   });
 
   test('if `max` is defined:does not fire onValueChange if nextProps.max < value ', async function (assert) {
@@ -649,7 +649,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await triggerKeyEvent('.' + Classes.INPUT, 'keyup', 13);
 
-    assert.strictEqual(input.value, 10);
+    assert.strictEqual(input.value, '10');
   });
 
   test('if min === max : never changes value', async function (assert) {
@@ -668,7 +668,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     await triggerKeyEvent(button[0], 'keydown', 13);
     await triggerKeyEvent(button[0], 'keydown', 13);
 
-    assert.strictEqual(input.value, 2);
+    assert.strictEqual(input.value, '2');
   });
 
   test('clampValueOnBlur : does not clamp or invoke onValueChange on blur if clampValueOnBlur=false', async function (assert) {
@@ -684,7 +684,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     await triggerKeyEvent(input, 'keydown', 13);
 
-    assert.strictEqual(input.value, -5);
+    assert.strictEqual(input.value, '-5');
   });
 
   test('clampValueOnBlur :clamps an out-of-bounds value to min', async function (assert) {
@@ -698,7 +698,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     let input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, -10);
+    assert.strictEqual(input.value, '-10');
   });
 
   test('clampValueOnBlur :clamps an out-of-bounds value to max', async function (assert) {
@@ -712,7 +712,7 @@ module('Integration | Component | numeric-input', function (hooks) {
 
     let input = this.element.querySelector('input');
 
-    assert.strictEqual(input.value, 5);
+    assert.strictEqual(input.value, '5');
   });
 
   test('clears the field if the value is invalid when incrementing', async function (assert) {
@@ -786,13 +786,13 @@ module('Integration | Component | numeric-input', function (hooks) {
     const input = this.element.querySelector('input');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter');
-    assert.strictEqual(input.value, 0.1);
+    assert.strictEqual(input.value, '0.1');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { altKey: true });
-    assert.strictEqual(input.value, 0.101);
+    assert.strictEqual(input.value, '0.101');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { shiftKey: true });
-    assert.strictEqual(input.value, 1.101);
+    assert.strictEqual(input.value, '1.101');
   });
 
   test('changes max precision appropriately when the [*]stepSize props change: excess digits should truncate to max precision', async function (assert) {
@@ -804,7 +804,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     const input = this.element.querySelector('input');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { altKey: true });
-    assert.strictEqual(input.value, 0.001);
+    assert.strictEqual(input.value, '0.001');
   });
 
   test('changes max precision appropriately when the [*]stepSize props change: now try a smaller step size, and expect no truncation', async function (assert) {
@@ -816,7 +816,7 @@ module('Integration | Component | numeric-input', function (hooks) {
     const input = this.element.querySelector('input');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { altKey: true });
-    assert.strictEqual(input.value, 0.0002);
+    assert.strictEqual(input.value, '0.0002');
   });
   test('changes max precision appropriately when the [*]stepSize props change: now try a larger step size, and expect more truncation than before', async function (assert) {
     await render(hbs`
@@ -827,6 +827,6 @@ module('Integration | Component | numeric-input', function (hooks) {
     const input = this.element.querySelector('input');
 
     await triggerKeyEvent(button[0], 'keydown', 'Enter', { altKey: true });
-    assert.strictEqual(input.value, 0.1);
+    assert.strictEqual(input.value, '0.1');
   });
 });

@@ -40,7 +40,7 @@ module('Integration | Component | spinner', function (hooks) {
     );
     const offset = head.getAttribute('stroke-dashoffset');
 
-    assert.strictEqual(offset, pathLength * (1 - 0.25));
+    assert.strictEqual(parseInt(offset), pathLength * (1 - 0.25));
   });
 
   test('value sets stroke-dashoffset', async function (assert) {
@@ -55,7 +55,7 @@ module('Integration | Component | spinner', function (hooks) {
     );
     const offset = head.getAttribute('stroke-dashoffset');
 
-    assert.strictEqual(offset, pathLength * (1 - 0.35));
+    assert.strictEqual(parseInt(offset), pathLength * (1 - 0.35));
   });
 
   test('viewBox adjusts based on size', async function (assert) {
@@ -72,6 +72,6 @@ module('Integration | Component | spinner', function (hooks) {
       .querySelector('svg')
       .getAttribute('viewBox');
 
-    assert.notstrictEqual(firstVewBox, secondVewBox);
+    assert.notDeepEqual(firstVewBox, secondVewBox);
   });
 });
