@@ -198,7 +198,7 @@ module('Integration | Component | tag-input', function (hooks) {
     await triggerKeyEvent('input', 'keydown', 39);
     assert.strictEqual(
       this.element.querySelector('.' + Classes.ACTIVE),
-      undefined
+      null
     );
   });
 
