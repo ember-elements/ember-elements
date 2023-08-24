@@ -12,12 +12,12 @@ module.exports = function (defaults) {
     //   rulesDir: 'eslint-rules',
     //   extensions: ['js', 'ts'],
     // },
-       sassOptions: {
-    includePaths: ['addon/styles']
-    },
-     'ember-cli-babel': {
-     enableTypeScriptTransform: true,
-   },
+      sassOptions: {
+        includePaths: ['addon/styles']
+      },
+      'ember-cli-babel': {
+        enableTypeScriptTransform: true,
+      },
   });
 
   /*

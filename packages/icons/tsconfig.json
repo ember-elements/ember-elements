@@ -1,65 +1,67 @@
+// @ts-ignore
 {
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "es2020",
-    "allowJs": true,
+    "composite": true,
+    "target": "ESNext",
     "moduleResolution": "node",
+    // The JS ecosystem has 4+ module formats and many packages do not use ES modules...
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // Correctness checks
     "noImplicitAny": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "noFallthroughCasesInSwitch": true,
+    // Footgun prevention
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
+    // We're not using typescript to transpile, so noEmitOnError would not
+    // prevent invalid code from compiling
     "noEmitOnError": false,
-    "noEmit": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "baseUrl": ".",
-    "module": "es6",
+    // "noEmit": false,  // ! toggle it later
+    "allowJs": false,
+    // Babel handles source maps
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "module": "ESNext",
+    "skipLibCheck": true,
+    // Stage 3 one day
     "experimentalDecorators": true,
+    // tsc will only be used for declarations
+    // "emitDeclarationOnly": true, // ! toggle it later
     "paths": {
       "dummy/tests/*": [
-        "tests/*"
+        "./*"
       ],
       "dummy/*": [
-        "tests/dummy/app/*",
-        "app/*"
+        "./dummy/app/*"
       ],
-      "@ember-elements/icons": [
-        "addon",
-        "node_modules/@ember-elements/icons/addon"
+      "icons/*": [
+        "./addon/*"
       ],
-      "@ember-elements/icons/*": [
-        "addon/*",
-        "node_modules/@ember-elements/icons/addon/*"
+      "icons/test-support": [
+        "./addon-test-support"
       ],
-      "@ember-elements/icons/test-support": [
-        "addon-test-support"
-      ],
-      "@ember-elements/icons/test-support/*": [
-        "addon-test-support/*"
+      "icons/test-support/*": [
+        "./addon-test-support/*"
       ],
       "*": [
-        "types/*"
+        "../types/*"
       ]
     }
   },
   "include": [
-    "addon/**/*",
     "app/**/*",
+    "addon/**/*",
     "tests/**/*",
-    "types/*"
+    "types/**/*",
+    "test-support/**/*",
+    "addon-test-support/**/*",
+    "iconName.ts"
   ]
-  // "include": [
-  //   "app/**/*",
-  //   "addon/**/*",
-  //   "tests/**/*",
-  //   "types/**/*",
-  //   "test-support/**/*",
-  //   "addon-test-support/**/*",
-  //   "iconName.ts"
-  // ]
 }
