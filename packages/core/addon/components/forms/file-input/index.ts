@@ -150,7 +150,9 @@ export default class FileInput extends Component<FileInputArgs> {
   }
 
   get getButtonText() {
-    return this.getButtonTextArgs() ? Classes.FILE_UPLOAD_INPUT_CUSTOM_TEXT : '';
+    return this.getButtonTextArgs()
+      ? Classes.FILE_UPLOAD_INPUT_CUSTOM_TEXT
+      : '';
   }
 
   get buttonTextValue() {

@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -34,7 +35,8 @@ export default {
       },
     },
     vertical: {
-      description: 'Whether the control group should appear with vertical styling.',
+      description:
+        'Whether the control group should appear with vertical styling.',
       control: 'boolean',
       table: {
         type: {
@@ -53,11 +55,11 @@ const Template = (args) => {
   return {
     template: hbs`
 	<ControlGroup @fill={{this.fill}} @vertical={{this.vertical}}>
-	 <Button @intent="primary">
+	 <Button @intent='primary'>
 	  	Hii
 	 </Button>
-	 <InputGroup @placeholder="Find filters..."></InputGroup>
-	 <Button @icon="arrow-right"></Button>
+	 <InputGroup @placeholder='Find filters...'></InputGroup>
+	 <Button @icon='arrow-right'></Button>
   </ControlGroup>`,
     context: {
       vertical: args.vertical,

@@ -27,7 +27,8 @@ export default {
     },
 
     autoFocus: {
-      description: 'Whether the overlay should acquire application focus when it first opens.',
+      description:
+        'Whether the overlay should acquire application focus when it first opens.',
       control: 'boolean',
       table: {
         type: {
@@ -40,7 +41,8 @@ export default {
     },
 
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -53,7 +55,8 @@ export default {
     },
 
     usePortal: {
-      description: 'whether the user portal be interactive or not on dialog popup',
+      description:
+        'whether the user portal be interactive or not on dialog popup',
       control: 'boolean',
       table: {
         type: {
@@ -105,7 +108,8 @@ export default {
     },
 
     isCloseButtonShown: {
-      description: 'whether the close button appear on dialog pop up(at right corner)',
+      description:
+        'whether the close button appear on dialog pop up(at right corner)',
       control: 'boolean',
       table: {
         type: {

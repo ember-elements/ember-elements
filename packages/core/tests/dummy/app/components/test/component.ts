@@ -36,10 +36,16 @@ export default class Test extends Component<TestArgs> {
   elevationText = 'elevationText';
   elevation = 4;
   value = 0.4;
-  options = [{ value: 'a' }, { value: 'b', className: 'foo' }, { value: 'c', disabled: true }, { label: 'Dog' }];
+  options = [
+    { value: 'a' },
+    { value: 'b', className: 'foo' },
+    { value: 'c', disabled: true },
+    { label: 'Dog' },
+  ];
   switchLabel = 'Privacy setting';
   textIG = 'hi';
-  value1 = 'asdfsdafasdfsdfsdfsdfsdfsdafasdfdsafasdfdsfadsfadsfdsfdsfdsfdsfsdfsdfdsfsdfsdfsd';
+  value1 =
+    'asdfsdafasdfsdfsdfsdfsdfsdafasdfdsafasdfdsfadsfadsfdsfdsfdsfdsfsdfsdfdsfsdfsdfsd';
   tagText = 'hii';
   values = ['hii', 'hii2'];
   @action
@@ -233,7 +239,8 @@ export default class Test extends Component<TestArgs> {
     { title: 'Alien', year: 1979 },
     { title: 'Sunset Boulevard', year: 1950 },
     {
-      title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+      title:
+        'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
       year: 1964,
     },
     { title: 'The Great Dictator', year: 1940 },
@@ -305,7 +312,11 @@ export default class Test extends Component<TestArgs> {
     if (exactMatch) {
       return normalizedTitle === normalizedQuery;
     } else {
-      return `${film.rank}. ${normalizedTitle} ${film.year}`.indexOf(normalizedQuery) >= 0;
+      return (
+        `${film.rank}. ${normalizedTitle} ${film.year}`.indexOf(
+          normalizedQuery
+        ) >= 0
+      );
     }
   };
 
@@ -337,9 +348,14 @@ export default class Test extends Component<TestArgs> {
 
   @action
   handleValueChange(film: IFilm) {
-    const { createdItems, items } = maybeDeleteCreatedFilmFromArrays(this.TOP_100_FILMS, this.createdItems, this.film);
+    const { createdItems, items } = maybeDeleteCreatedFilmFromArrays(
+      this.TOP_100_FILMS,
+      this.createdItems,
+      this.film
+    );
     // Add the new film to the list if it is newly created.
-    const { createdItems: nextCreatedItems, items: nextItems } = maybeAddCreatedFilmToArrays(items, createdItems, film);
+    const { createdItems: nextCreatedItems, items: nextItems } =
+      maybeAddCreatedFilmToArrays(items, createdItems, film);
 
     set(this, 'createdItems', nextCreatedItems);
     set(this, 'film', film);
@@ -380,11 +396,12 @@ export default class Test extends Component<TestArgs> {
   }
   private deselectFilm(index: number) {
     const film = this.films[index];
-    const { createdItems: nextCreatedItems, items: nextItems } = maybeDeleteCreatedFilmFromArrays(
-      this.items,
-      this.createdItemsMulti,
-      film
-    );
+    const { createdItems: nextCreatedItems, items: nextItems } =
+      maybeDeleteCreatedFilmFromArrays(
+        this.items,
+        this.createdItemsMulti,
+        film
+      );
 
     // Delete the item if the user manually created it.
     set(this, 'createdItemsMulti', nextCreatedItems);
@@ -406,14 +423,20 @@ export default class Test extends Component<TestArgs> {
     let nextItems = this.items.slice();
 
     filmsToSelect.forEach((film) => {
-      const results = maybeAddCreatedFilmToArrays(nextItems, nextCreatedItems, film);
+      const results = maybeAddCreatedFilmToArrays(
+        nextItems,
+        nextCreatedItems,
+        film
+      );
 
       nextItems = results.items;
       nextCreatedItems = results.createdItems;
       // Avoid re-creating an item that is already selected (the "Create
       // Item" option will be shown even if it matches an already selected
       // item).
-      nextFilms = !arrayContainsFilm(nextFilms, film) ? [...nextFilms, film] : nextFilms;
+      nextFilms = !arrayContainsFilm(nextFilms, film)
+        ? [...nextFilms, film]
+        : nextFilms;
     });
 
     set(this, 'createdItemsMulti', nextCreatedItems);
@@ -478,7 +501,9 @@ export function maybeAddCreatedFilmToArrays(
   const isNewlyCreatedItem = !arrayContainsFilm(items, film);
 
   return {
-    createdItems: isNewlyCreatedItem ? addFilmToArray(createdItems, film) : createdItems,
+    createdItems: isNewlyCreatedItem
+      ? addFilmToArray(createdItems, film)
+      : createdItems,
     // Add a created film to `items` so that the film can be deselected.
     items: isNewlyCreatedItem ? addFilmToArray(items, film) : items,
   };
@@ -493,7 +518,9 @@ export function maybeDeleteCreatedFilmFromArrays(
 
   // Delete the item if the user manually created it.
   return {
-    createdItems: wasItemCreatedByUser ? deleteFilmFromArray(createdItems, film) : createdItems,
+    createdItems: wasItemCreatedByUser
+      ? deleteFilmFromArray(createdItems, film)
+      : createdItems,
     items: wasItemCreatedByUser ? deleteFilmFromArray(items, film) : items,
   };
 }

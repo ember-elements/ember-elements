@@ -9,7 +9,7 @@ declare module '@ember/component' {
   import type { TemplateFactory } from 'ember-cli-htmlbars';
 
   type TF = TemplateFactory;
-  export function setComponentTemplate(template: TF, klass: any): any;
+  export function setComponentTemplate(template: TF, klass: any): any; // eslint-disable-line
 }
 
 declare module '@ember-elements/icons';

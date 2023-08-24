@@ -16,7 +16,12 @@ import {
   toMaxPrecision,
 } from './numericInputUtils';
 
-import type { IIntentProps, Intent, IProps, Position } from '../../../_private/common';
+import type {
+  IIntentProps,
+  Intent,
+  IProps,
+  Position,
+} from '../../../_private/common';
 import type { IconName } from '@ember-elements/icons/addon'; // import icons for TagInput
 
 interface INumericInputProps extends IIntentProps, IProps {
@@ -155,7 +160,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
   @tracked delta = 0;
   @tracked shouldSelectAfterUpdate = false;
   @tracked value = getValueOrEmptyValue(this.args.value);
-  @tracked stepMaxPrecision = NumericInput.getStepMaxPrecision(this.props, this.args);
+  @tracked stepMaxPrecision = NumericInput.getStepMaxPrecision(
+    this.props,
+    this.args
+  );
   // Not bothering to remove entries when their timeouts finish because clearing invalid ID is a no-op
   @tracked timeoutIds: number[] = [];
   @tracked intervalId: number | null = null;
@@ -260,7 +268,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
   }
 
   get getValueProp() {
-    if (this.didValueChange != getValueOrEmptyValue(this.args.value) && this.inputElement) {
+    if (
+      this.didValueChange != getValueOrEmptyValue(this.args.value) &&
+      this.inputElement
+    ) {
       this.didValueChange = getValueOrEmptyValue(this.args.value); // eslint-disable-line
       next(this, () => {
         this.value = getValueOrEmptyValue(this.args.value); // eslint-disable-line
@@ -393,7 +404,8 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
   @action
   incrementButtonHandlers(eventType: string, evt: KeyboardEvent) {
-    if (eventType == 'down') this.getButtonEventHandlers(IncrementDirection.DOWN, evt);
+    if (eventType == 'down')
+      this.getButtonEventHandlers(IncrementDirection.DOWN, evt);
     else this.getButtonEventHandlers(IncrementDirection.UP, evt);
   }
   // Callbacks - Input
@@ -431,8 +443,11 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
     if (this.getAllowNumericCharactersOnly() && this.didPasteEventJustOccur) {
       this.didPasteEventJustOccur = false;
+
       const valueChars = value.split('');
-      const sanitizedValueChars = valueChars.filter(isFloatingPointNumericCharacter);
+      const sanitizedValueChars = valueChars.filter(
+        isFloatingPointNumericCharacter
+      );
       const sanitizedValue = sanitizedValueChars.join('');
 
       nextValue = sanitizedValue;
@@ -484,7 +499,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
   handleInputKeyPress(e: KeyboardEvent) {
     // we prohibit keystrokes in onKeyPress instead of onKeyDown, because
     // e.key is not trustworthy in onKeyDown in all browsers.
-    if (this.getAllowNumericCharactersOnly() && !isValidNumericKeyboardEvent(e)) {
+    if (
+      this.getAllowNumericCharactersOnly() &&
+      !isValidNumericKeyboardEvent(e)
+    ) {
       e.preventDefault();
     }
 
@@ -509,11 +527,18 @@ export default class NumericInput extends Component<NumericInputArgs> {
 
   // Value Helpers
   // =============
-  private static getStepMaxPrecision(props: INumericInputProps, args: INumericInputProps) {
+  private static getStepMaxPrecision(
+    props: INumericInputProps,
+    args: INumericInputProps
+  ) {
     if (props.minorStepSize != null || args.minorStepSize != null) {
-      return Utils.countDecimalPlaces((props.minorStepSize || args.minorStepSize) as number);
+      return Utils.countDecimalPlaces(
+        (props.minorStepSize || args.minorStepSize) as number
+      );
     } else {
-      return Utils.countDecimalPlaces((props.stepSize || args.stepSize) as number);
+      return Utils.countDecimalPlaces(
+        (props.stepSize || args.stepSize) as number
+      );
     }
   }
 
@@ -531,10 +556,18 @@ export default class NumericInput extends Component<NumericInputArgs> {
     const didBoundsChange = didMinChange || didMaxChange;
     const sanitizedValue =
       value !== NumericInput.VALUE_EMPTY
-        ? NumericInput.getSanitizedValue(value, /* delta */ 0, this.getMin(), this.getMax())
+        ? NumericInput.getSanitizedValue(
+            value,
+            /* delta */ 0,
+            this.getMin(),
+            this.getMax()
+          )
         : NumericInput.VALUE_EMPTY;
 
-    const stepMaxPrecision = NumericInput.getStepMaxPrecision(this.props, this.args);
+    const stepMaxPrecision = NumericInput.getStepMaxPrecision(
+      this.props,
+      this.args
+    );
 
     // if a new min and max were provided that cause the existing value to fall
     // outside of the new bounds, then clamp the value to the new valid range.
@@ -560,7 +593,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
       return NumericInput.VALUE_EMPTY;
     }
 
-    const nextValue = toMaxPrecision(parseFloat(value) + delta, stepMaxPrecision);
+    const nextValue = toMaxPrecision(
+      parseFloat(value) + delta,
+      stepMaxPrecision
+    );
 
     return clampValue(nextValue, min, max).toString();
   }
@@ -568,7 +604,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
   // Callbacks - Buttons
   // ===================
 
-  private getButtonEventHandlers(direction: IncrementDirection, evt: KeyboardEvent) {
+  private getButtonEventHandlers(
+    direction: IncrementDirection,
+    evt: KeyboardEvent
+  ) {
     if (Keys.isKeyboardClick(evt.keyCode)) {
       this.handleButtonClick(evt, direction);
     } else {
@@ -577,7 +616,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
     }
   }
 
-  private handleButtonClick = (e: MouseEvent | KeyboardEvent, direction: IncrementDirection) => {
+  private handleButtonClick = (
+    e: MouseEvent | KeyboardEvent,
+    direction: IncrementDirection
+  ) => {
     const delta = this.updateDelta(direction, e);
     const nextValue = this.incrementValue(delta);
 
@@ -657,7 +699,10 @@ export default class NumericInput extends Component<NumericInputArgs> {
     }
   }
 
-  private updateDelta(direction: IncrementDirection, e: MouseEvent | KeyboardEvent) {
+  private updateDelta(
+    direction: IncrementDirection,
+    e: MouseEvent | KeyboardEvent
+  ) {
     this.delta = this.getIncrementDelta(direction, e.shiftKey, e.altKey);
 
     return this.delta;

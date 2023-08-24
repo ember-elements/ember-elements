@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'string',
       table: {
         type: {
@@ -61,7 +62,8 @@ export default {
       control: 'boolean',
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -125,11 +127,11 @@ const Template = (args) => ({
   @inline={{inline}}
   @intent={{intent}}
   @label={{label}}
-  @labelFor="text-input"
+  @labelFor='text-input'
   @helperText={{helperText}}
   @labelInfo={{requiredLabel}}
 >
-  <InputGroup  placeholder="Placeholder text" @disabled={{this.disabled}} @intent={{intent}} ></InputGroup>
+  <InputGroup  placeholder='Placeholder text' @disabled={{this.disabled}} @intent={{intent}} ></InputGroup>
 </FormGroup>`,
   context: args,
 });

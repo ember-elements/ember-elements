@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     alignIndicator: {
-      description: 'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
+      description:
+        'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
       control: {
         type: 'select',
         options: {
@@ -38,7 +39,8 @@ export default {
       control: 'boolean',
     },
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -52,7 +54,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the control is initially checked (uncontrolled mode).',
+      description:
+        'Whether the control is initially checked (uncontrolled mode).',
       control: 'boolean',
     },
     defaultIndeterminate: {
@@ -61,7 +64,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether this checkbox is initially indeterminate (uncontrolled mode).',
+      description:
+        'Whether this checkbox is initially indeterminate (uncontrolled mode).',
       control: 'boolean',
     },
     disabled: {

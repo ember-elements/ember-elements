@@ -5,7 +5,12 @@ import { action } from '@ember/object';
 
 import * as Classes from '../../../_private/common/classes';
 
-import type { IControlledProps, IIntentProps, Intent, IProps } from '../../../_private/common';
+import type {
+  IControlledProps,
+  IIntentProps,
+  Intent,
+  IProps,
+} from '../../../_private/common';
 import type { IconName } from '@ember-elements/icons/addon';
 
 const DEFAULT_RIGHT_ELEMENT_WIDTH = 10;

@@ -5,14 +5,16 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ' HTML tables allow web developers to arrange data into rows and columns. ',
+        component:
+          ' HTML tables allow web developers to arrange data into rows and columns. ',
       },
     },
   },
 
   argTypes: {
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',

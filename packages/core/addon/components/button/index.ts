@@ -262,7 +262,9 @@ export default class Button extends Component<ButtonArgs> {
 
   @action
   onUpdate(element: HTMLElement) {
-    const textSpanTag: HTMLElement | null = element.querySelector('.' + Classes.BUTTON_TEXT);
+    const textSpanTag: HTMLElement | null = element.querySelector(
+      '.' + Classes.BUTTON_TEXT
+    );
 
     if (textSpanTag && textSpanTag.innerHTML.trim() == '') {
       textSpanTag.remove();

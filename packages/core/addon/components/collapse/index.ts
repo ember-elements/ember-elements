@@ -38,7 +38,9 @@ interface CollapseArgs extends ICollapseProps {
 }
 
 export default class Collapse extends Component<CollapseArgs> {
-  animationState = this.args.isOpen ? AnimationStates.OPEN : AnimationStates.CLOSED;
+  animationState = this.args.isOpen
+    ? AnimationStates.OPEN
+    : AnimationStates.CLOSED;
   @tracked isOpen = false;
   height = '0px';
   @tracked openStartTimeOut!: ReturnType<typeof setTimeout>;
@@ -172,19 +174,26 @@ export default class Collapse extends Component<CollapseArgs> {
     if (this.animationState === AnimationStates.CLOSING_START) {
       this.animationState = AnimationStates.CLOSING;
       this.height = `${this.defaultHeight}px`;
-      this.closingTimeOut = setTimeout(() => this.onDelayedStateChange(), transitionDuration);
+      this.closingTimeOut = setTimeout(
+        () => this.onDelayedStateChange(),
+        transitionDuration
+      );
     }
 
     if (this.animationState === AnimationStates.OPEN_START) {
       this.animationState = AnimationStates.OPENING;
       this.height = this.defaultHeight + 'px';
-      this.openStartTimeOut = setTimeout(() => this.onDelayedStateChange(), transitionDuration);
+      this.openStartTimeOut = setTimeout(
+        () => this.onDelayedStateChange(),
+        transitionDuration
+      );
     }
   }
 
   willRenderComp() {
     const isContentVisible = this.animationState !== AnimationStates.CLOSED;
-    const shouldRenderChildren = isContentVisible || this.getKeepChildrenMounted();
+    const shouldRenderChildren =
+      isContentVisible || this.getKeepChildrenMounted();
     const displayWithTransform =
       isContentVisible && this.animationState !== AnimationStates.CLOSING;
     const isAutoHeight = this.height === 'auto';
@@ -198,17 +207,23 @@ export default class Collapse extends Component<CollapseArgs> {
     };
 
     this.containerStyle = `${
-      containerStyle.height != undefined ? `height:` + containerStyle.height + `;` : ''
+      containerStyle.height != undefined
+        ? `height:` + containerStyle.height + `;`
+        : ''
     } ${
-      containerStyle.overflowY != undefined ? `overflow-y:` + containerStyle.overflowY + `;` : ''
+      containerStyle.overflowY != undefined
+        ? `overflow-y:` + containerStyle.overflowY + `;`
+        : ''
     } ${
-      containerStyle.transition != undefined ? `transition:` + containerStyle.transition + `;` : ''
+      containerStyle.transition != undefined
+        ? `transition:` + containerStyle.transition + `;`
+        : ''
     } `.trim();
 
     this.contentsStyle = htmlSafe(
-      `transform: ${displayWithTransform ? 'translateY(0)' : `translateY(-${this.height})`};  ${
-        isAutoHeight ? 'transition:none ' : ''
-      } `
+      `transform: ${
+        displayWithTransform ? 'translateY(0)' : `translateY(-${this.height})`
+      };  ${isAutoHeight ? 'transition:none ' : ''} `
     ) as SafeString;
   }
   private onDelayedStateChange() {
@@ -221,6 +236,7 @@ export default class Collapse extends Component<CollapseArgs> {
       case AnimationStates.CLOSING:
         this.animationState = AnimationStates.CLOSED;
         this.willRenderComp();
+
         break;
       default:
         break;

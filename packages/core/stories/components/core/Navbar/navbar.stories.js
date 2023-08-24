@@ -7,13 +7,15 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Navbars present useful navigation controls at the top of an application.',
+        component:
+          'Navbars present useful navigation controls at the top of an application.',
       },
     },
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         category: 'Navigation Bar Props',
         type: {
@@ -35,7 +37,8 @@ export default {
           summary: false,
         },
       },
-      description: 'Whether this navbar should be fixed to the top of the viewport (using CSS <b>position: fixed</b>).',
+      description:
+        'Whether this navbar should be fixed to the top of the viewport (using CSS <b>position: fixed</b>).',
       control: 'boolean',
     },
     style: {
@@ -72,7 +75,8 @@ export default {
       },
     },
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         category: 'Navigation Bar Group Props',
         type: {
@@ -98,7 +102,8 @@ export default {
       control: 'text',
     },
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         category: 'Navigation Bar Divider Props',
         type: {
@@ -132,10 +137,10 @@ const Template = (args) => ({
 		<NavbarGroup @align={{this.align}}>
 			<NavbarHeading> ember-elements </NavbarHeading>
 			<NavbarDivider />
-			<Button @minimal={{true}} @icon="home">
+			<Button @minimal={{true}} @icon='home'>
 				Home
 			</Button>
-			<Button @minimal={{true}} @icon="document">
+			<Button @minimal={{true}} @icon='document'>
 				Document
 			</Button>
 		</NavbarGroup>

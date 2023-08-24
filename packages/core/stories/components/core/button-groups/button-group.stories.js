@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -25,7 +26,8 @@ export default {
       control: 'text',
     },
     fill: {
-      description: 'Whether the button group should take up the full width of its container.',
+      description:
+        'Whether the button group should take up the full width of its container.',
       table: {
         type: {
           summary: 'boolean',
@@ -36,7 +38,8 @@ export default {
     },
     large: {
       control: 'boolean',
-      description: 'Whether the child buttons should appear with large styling.',
+      description:
+        'Whether the child buttons should appear with large styling.',
       table: {
         type: {
           summary: 'boolean',
@@ -48,7 +51,8 @@ export default {
     },
     minimal: {
       control: 'boolean',
-      description: 'Whether the button groups should appear with minimal styling.',
+      description:
+        'Whether the button groups should appear with minimal styling.',
       table: {
         type: {
           summary: 'boolean',
@@ -59,7 +63,8 @@ export default {
       },
     },
     vertical: {
-      description: 'Whether the button group should appear with vertical styling.',
+      description:
+        'Whether the button group should appear with vertical styling.',
       control: 'boolean',
       table: {
         type: {

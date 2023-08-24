@@ -10,7 +10,12 @@
     this.getLarge
   }}
 >
-  <input type='checkbox' disabled={{this.getDisabled}} onchange={{this.handleChange}} ...attributes />
+  <input
+    type='checkbox'
+    disabled={{this.getDisabled}}
+    onchange={{this.handleChange}}
+    ...attributes
+  />
   <sapn class={{this.CONTROL_INDICATOR}}>
     {{#if this.getInnerLabels}}
       <div key='checked' class={{this.CONTROL_INDICATOR_CHILD}}>

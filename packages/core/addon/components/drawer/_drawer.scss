@@ -155,7 +155,9 @@ $dark-drawer-background-color: $dark-gray4 !default;
     width: $drawer-default-size;
   }
 
-  &:not(.#{$ns}-position-top):not(.#{$ns}-position-bottom):not(.#{$ns}-position-left):not(.#{$ns}-position-right) {
+  &:not(.#{$ns}-position-top):not(.#{$ns}-position-bottom):not(
+      .#{$ns}-position-left
+    ):not(.#{$ns}-position-right) {
     &:not(.#{$ns}-vertical) {
       @include react-transition-phase(
         '#{$ns}-overlay',

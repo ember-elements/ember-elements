@@ -22,7 +22,11 @@
     ...attributes
   />
   {{#if (has-block)}}
-    <span class={{this.INPUT_ACTION}} {{did-insert this.updateWidth}} {{did-update this.updateWidth}}>
+    <span
+      class={{this.INPUT_ACTION}}
+      {{did-insert this.updateWidth}}
+      {{did-update this.updateWidth}}
+    >
       {{yield}}
     </span>
   {{/if}}

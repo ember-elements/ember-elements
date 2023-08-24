@@ -27,4 +27,7 @@ export interface IItemRendererProps {
 }
 
 /** Type alias for a function that receives an item and props   renders a JSX element (or `null`). */
-export type ItemRenderer<T> = (item: T, itemProps: IItemRendererProps) => string | null;
+export type ItemRenderer<T> = (
+  item: T,
+  itemProps: IItemRendererProps
+) => string | null;

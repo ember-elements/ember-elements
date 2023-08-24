@@ -14,7 +14,8 @@ export default {
   },
   argTypes: {
     canEscapeKeyClose: {
-      description: 'Whether pressing the **esc** key should invoke **onClose**.',
+      description:
+        'Whether pressing the **esc** key should invoke **onClose**.',
       control: 'boolean',
       table: {
         type: {
@@ -39,7 +40,8 @@ export default {
       },
     },
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -77,7 +79,8 @@ export default {
       },
     },
     portalClassName: {
-      description: 'Space-delimited string of class names applied to the **Portal** element if **usePortal=true**.',
+      description:
+        'Space-delimited string of class names applied to the **Portal** element if **usePortal=true**.',
       table: {
         type: {
           summary: 'string',
@@ -126,7 +129,7 @@ export default {
 const Template = (args) => {
   const [, updateArgs] = useArgs();
   return {
-    template: hbs`<Button @onClick={{this.onClick}} @intent="primary"
+    template: hbs`<Button @onClick={{this.onClick}} @intent='primary'
 >Show Drawer</Button>
 <Drawer @isOpen={{this.isOpen}} @onClose={{this.onClosed}}
  @transitionDuration={{this.transitionDuration}}

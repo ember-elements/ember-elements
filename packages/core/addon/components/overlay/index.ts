@@ -391,7 +391,8 @@ export default class Overlay extends Component<OverlayArgs> {
   }
 
   private static openStack: Overlay[] = [];
-  private static getLastOpened = () => Overlay.openStack[Overlay.openStack.length - 1];
+  private static getLastOpened = () =>
+    Overlay.openStack[Overlay.openStack.length - 1];
 
   didReceiveAttributes() {
     if (this.prevPropsIsOpen && !this.getIsOpen) {
@@ -466,15 +467,23 @@ export default class Overlay extends Component<OverlayArgs> {
     return requestAnimationFrame(() => {
       // container ref may be undefined between component mounting and Portal rendering
       // activeElement may be undefined in some rare cases in IE
-      if (this.containerElement == null || document.activeElement == null || !this.getIsOpen) {
+      if (
+        this.containerElement == null ||
+        document.activeElement == null ||
+        !this.getIsOpen
+      ) {
         return;
       }
 
-      const isFocusOutsideModal = !this.containerElement.contains(document.activeElement);
+      const isFocusOutsideModal = !this.containerElement.contains(
+        document.activeElement
+      );
 
       if (isFocusOutsideModal) {
         // element marked autofocus has higher priority than the other clowns
-        const autofocusElement = this.containerElement.querySelector('[autofocus]') as HTMLElement;
+        const autofocusElement = this.containerElement.querySelector(
+          '[autofocus]'
+        ) as HTMLElement;
         const wrapperElement = this.containerElement;
 
         if (autofocusElement != null) {
@@ -487,12 +496,12 @@ export default class Overlay extends Component<OverlayArgs> {
   }
 
   private overlayWillOpen() {
-    const { openStack } = Overlay
+    const { openStack } = Overlay;
 
     if (openStack.length > 0) {
       document.removeEventListener(
         'focus',
-        (Overlay as any).getLastOpened().handleDocumentFocus,
+        (Overlay as any).getLastOpened().handleDocumentFocus, // eslint-disable-line
         /* useCapture */ true
       );
     }
@@ -504,7 +513,11 @@ export default class Overlay extends Component<OverlayArgs> {
     }
 
     if (this.getEnforceFocus()) {
-      document.addEventListener('focus', this.handleDocumentFocus, /* useCapture */ true);
+      document.addEventListener(
+        'focus',
+        this.handleDocumentFocus,
+        /* useCapture */ true
+      );
     }
 
     if (this.getCanOutsideClickClose() && !this.getHasBackdrop()) {
@@ -539,10 +552,16 @@ export default class Overlay extends Component<OverlayArgs> {
       .some(({ containerElement: elem }) => {
         // `elem` is the container of backdrop & content, so clicking on that container
         // should not count as being "inside" the overlay.
-      return elem && elem.contains(eventTarget) && !elem.isSameNode(eventTarget); // eslint-disable-line
+        return (
+          elem && elem.contains(eventTarget) && !elem.isSameNode(eventTarget)
+        ); // eslint-disable-line
       });
 
-    if (this.getIsOpen && this.getCanOutsideClickClose() && !isClickInThisOverlayOrDescendant) {
+    if (
+      this.getIsOpen &&
+      this.getCanOutsideClickClose() &&
+      !isClickInThisOverlayOrDescendant
+    ) {
       // casting to any because this is a native event
       if (this.args.onClose) {
         this.args.onClose(e);
@@ -551,7 +570,11 @@ export default class Overlay extends Component<OverlayArgs> {
   };
 
   private overlayWillClose() {
-    document.removeEventListener('focus', this.handleDocumentFocus, /* useCapture */ true);
+    document.removeEventListener(
+      'focus',
+      this.handleDocumentFocus,
+      /* useCapture */ true
+    );
     document.removeEventListener('mousedown', this.handleDocumentClick);
 
     const { openStack } = Overlay;
@@ -561,7 +584,7 @@ export default class Overlay extends Component<OverlayArgs> {
       openStack.splice(stackIndex, 1);
 
       if (openStack.length > 0) {
-        const lastOpenedOverlay = Overlay.getLastOpened() as any;
+        const lastOpenedOverlay = Overlay.getLastOpened() as any; // eslint-disable-line
 
         if (lastOpenedOverlay.getEnforceFocus()) {
           document.addEventListener(
@@ -572,8 +595,12 @@ export default class Overlay extends Component<OverlayArgs> {
         }
       }
 
-      if (openStack.filter((o) => o.getUsePortal() && o.getHasBackdrop()).length === 0) {
-        if (document.body.classList) document.body.classList.remove(Classes.OVERLAY_OPEN);
+      if (
+        openStack.filter((o) => o.getUsePortal() && o.getHasBackdrop())
+          .length === 0
+      ) {
+        if (document.body.classList)
+          document.body.classList.remove(Classes.OVERLAY_OPEN);
       }
     }
   }

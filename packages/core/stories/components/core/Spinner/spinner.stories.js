@@ -12,7 +12,8 @@ export default {
 
   argType: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -24,7 +25,8 @@ export default {
       controller: 'text',
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,danger,elementary,secondary,</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,danger,elementary,secondary,</b>.',
       table: {
         type: {
           summary: 'string',
@@ -65,7 +67,8 @@ export default {
           summary: 75,
         },
       },
-      description: 'To set the size of loading icon(50-small,75-default,100-large)',
+      description:
+        'To set the size of loading icon(50-small,75-default,100-large)',
       control: 'integer',
     },
   },

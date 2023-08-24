@@ -29,7 +29,12 @@
   {{did-insert this.tooltipRef}}
   {{did-update this.tooltipRef this.tooltip1}}
 >
-  <Tooltip @intent='primary' @target={{this.tooltipRefVar}} @event='none' @isOpen={{this.isOpenTooltip}}>
+  <Tooltip
+    @intent='primary'
+    @target={{this.tooltipRefVar}}
+    @event='none'
+    @isOpen={{this.isOpenTooltip}}
+  >
     hi its me ..wake up
   </Tooltip>
   user controlled Tooltip
@@ -38,7 +43,11 @@
 <Button @onClick={{action 'handleOpenDrawer'}}>
   Show Drawer
 </Button>
-<Drawer @isOpen={{this.isOpenDrawer}} @onClose={{action 'handleCloseDrawer'}} @canOutsideClickClose={{false}}>
+<Drawer
+  @isOpen={{this.isOpenDrawer}}
+  @onClose={{action 'handleCloseDrawer'}}
+  @canOutsideClickClose={{false}}
+>
   <Drawer::Header>
     <Icon @icon='info-sign' @iconSize={{20}} />
     <h4 class='ee-heading'>
@@ -57,28 +66,36 @@
     <div class='ee-dialog-body'>
       <p>
         <strong>
-          Data integration is the seminal problem of the digital age. For over ten years, we’ve helped the world’s
-          premier organizations rise to the challenge.
+          Data integration is the seminal problem of the digital age. For over
+          ten years, we’ve helped the world’s premier organizations rise to the
+          challenge.
         </strong>
       </p>
       <p>
-        Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and extending the
-        power of data integration. With Foundry, anyone can source, fuse, and transform data into any shape they desire.
-        Business analysts become data engineers — and leaders in their organization’s data revolution.
+        Palantir Foundry radically reimagines the way enterprises interact with
+        data by amplifying and extending the power of data integration. With
+        Foundry, anyone can source, fuse, and transform data into any shape they
+        desire. Business analysts become data engineers — and leaders in their
+        organization’s data revolution.
       </p>
       <p>
-        Foundry’s back end includes a suite of best-in-class data integration capabilities: data provenance, git-style
-        versioning semantics, granular access controls, branching, transformation authoring, and more. But these powers
-        are not limited to the back-end IT shop.
+        Foundry’s back end includes a suite of best-in-class data integration
+        capabilities: data provenance, git-style versioning semantics, granular
+        access controls, branching, transformation authoring, and more. But
+        these powers are not limited to the back-end IT shop.
       </p>
       <p>
-        In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data integrations in their
-        own right. Access controls, transformation logic, and data quality flow from original data source to
-        intermediate analysis to presentation in real time. Every end product created in Foundry becomes a new data
-        source that other users can build upon. And the enterprise data foundation goes where the business drives it.
+        In Foundry, tables, applications, reports, presentations, and
+        spreadsheets operate as data integrations in their own right. Access
+        controls, transformation logic, and data quality flow from original data
+        source to intermediate analysis to presentation in real time. Every end
+        product created in Foundry becomes a new data source that other users
+        can build upon. And the enterprise data foundation goes where the
+        business drives it.
       </p>
       <p>
-        Start the revolution. Unleash the power of data integration with Palantir Foundry.
+        Start the revolution. Unleash the power of data integration with
+        Palantir Foundry.
       </p>
     </div>
   </div>
@@ -106,9 +123,9 @@
     <li>
       <a
         class='ee-menu-item
-          {{if item.modifiers.active 'ee-active'}}
-          {{if item.modifiers.active 'ee-intent-primary'}}
-          {{if item.modifiers.disabled 'ee-disabled'}}
+          {{if item.modifiers.active "ee-active"}}
+          {{if item.modifiers.active "ee-intent-primary"}}
+          {{if item.modifiers.disabled "ee-disabled"}}
           ee-popover-dismiss'
         onclick={{handleClick}}
       >
@@ -124,7 +141,10 @@
   {{else}}
     <li>
       <a
-        class='ee-menu-item ee-popover-dismiss {{if item.active 'ee-active'}} {{if item.active 'ee-intent-primary'}} '
+        class='ee-menu-item ee-popover-dismiss
+          {{if item.active "ee-active"}}
+          {{if item.active "ee-intent-primary"}}
+          '
         onclick={{handleClick}}
       >
         <Icon @icon='add' style='margin-right:5px' />
@@ -160,13 +180,15 @@
       <li>
         <a
           class='ee-menu-item
-            {{if item.modifiers.active 'ee-active'}}
-            {{if item.modifiers.active 'ee-intent-primary'}}
-            {{if item.modifiers.disabled 'ee-disabled'}}
+            {{if item.modifiers.active "ee-active"}}
+            {{if item.modifiers.active "ee-intent-primary"}}
+            {{if item.modifiers.disabled "ee-disabled"}}
             ee-popover-dismiss'
           onclick={{handleClick}}
         >
-          <Icon @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank'}} />
+          <Icon
+            @icon={{if (sel this.films item.modifiers.item) 'tick' 'blank'}}
+          />
           <div class='ee-text-overflow-ellipsis ee-fill'>
             {{item.rank}}.
             {{item.title}}
@@ -179,7 +201,10 @@
     {{else}}
       <li>
         <a
-          class='ee-menu-item ee-popover-dismiss {{if item.active 'ee-active'}} {{if item.active 'ee-intent-primary'}} '
+          class='ee-menu-item ee-popover-dismiss
+            {{if item.active "ee-active"}}
+            {{if item.active "ee-intent-primary"}}
+            '
           onclick={{handleClick}}
         >
           <Icon @icon='add' style='margin-right:5px' />
@@ -202,15 +227,23 @@
       Confirm deletion
     </h5>
     <p>
-      Are you sure you want to delete these items? You won't be able to recover them.
+      Are you sure you want to delete these items? You won't be able to recover
+      them.
     </p>
     <div style='display: flex; justify-content: flex-end; margin-top: 15px;'>
-      <button type='button' class='ee-button ee-popover-dismiss' style='margin-right: 10px;'>
+      <button
+        type='button'
+        class='ee-button ee-popover-dismiss'
+        style='margin-right: 10px;'
+      >
         <span class='ee-button-text'>
           Cancel
         </span>
       </button>
-      <button type='button' class='ee-button ee-intent-danger ee-popover-dismiss'>
+      <button
+        type='button'
+        class='ee-button ee-intent-danger ee-popover-dismiss'
+      >
         <span class='ee-button-text'>
           Delete
         </span>
@@ -218,7 +251,11 @@
     </div>
   </div>
 </Popover>
-<Button @onClick={{action 'onOverlayToggle1'}} @primary={{true}} {{did-insert this.didInsertPopper}}>
+<Button
+  @onClick={{action 'onOverlayToggle1'}}
+  @primary={{true}}
+  {{did-insert this.didInsertPopper}}
+>
   Popover
 </Button>
 <Button @onClick={{action 'onClickButton'}}>
@@ -229,7 +266,10 @@
   {{/if}}
   {{this.build}}
 </Button>
-<Collapse @isOpen={{this.isOpen}} @keepChildrenMounted={{this.keepChildrenMounted}}>
+<Collapse
+  @isOpen={{this.isOpen}}
+  @keepChildrenMounted={{this.keepChildrenMounted}}
+>
   <pre class='bp3-code-block'>
     {{this.collapseText}}
   </pre>
@@ -243,7 +283,13 @@
 >
   {{this.text}}
 </Button>
-<Icon @icon='calendar' @iconSize={{20}} @intent='primary' @color='green' @title='calendar' />
+<Icon
+  @icon='calendar'
+  @iconSize={{20}}
+  @intent='primary'
+  @color='green'
+  @title='calendar'
+/>
 
 <ButtonGroup
   @minimal={{this.minimal}}
@@ -267,7 +313,12 @@
 
 <ProgressBar @value={{0.7}} />
 
-<HtmlTable @bordered={{true}} @className='foo' @interactive={{true}} @striped={{true}}>
+<HtmlTable
+  @bordered={{true}}
+  @className='foo'
+  @interactive={{true}}
+  @striped={{true}}
+>
   <thead>
     <tr>
       <th>
@@ -306,7 +357,12 @@
   </tbody>
 </HtmlTable>
 
-<Spinner @size={{this.size}} @value={{this.value}} @intent='danger' @className='ee-small' />
+<Spinner
+  @size={{this.size}}
+  @value={{this.value}}
+  @intent='danger'
+  @className='ee-small'
+/>
 
 <FormGroup
   @helperText='Helper text with details...'
@@ -327,7 +383,11 @@
 
 <Label />
 
-<Checkbox @label='Enabled' @onChange={{action this.handleEnabledChange}} @defaultIndeterminate={{true}} />
+<Checkbox
+  @label='Enabled'
+  @onChange={{action this.handleEnabledChange}}
+  @defaultIndeterminate={{true}}
+/>
 <RadioGroup @label='Determine lunch'>
   <Radio @label='Soup' @value='one' name='radio1' @inline={{true}} />
   <Radio @label='Salad' @value='two' name='radio1' @inline={{true}} />
@@ -341,10 +401,24 @@
   </Label>
   <Switch @labelElement='<strong>Enabled</strong>' @inline={{true}} />
   <Switch @labelElement='<em>Public</em>' @inline={{true}} />
-  <Switch @labelElement='<u>Cooperative</u>' defaultChecked={{true}} @inline={{true}} />
-  <Switch @labelElement='Containing Text' @innerLabelChecked='on' @innerLabel='off' @inline={{true}} />
+  <Switch
+    @labelElement='<u>Cooperative</u>'
+    defaultChecked={{true}}
+    @inline={{true}}
+  />
+  <Switch
+    @labelElement='Containing Text'
+    @innerLabelChecked='on'
+    @innerLabel='off'
+    @inline={{true}}
+  />
 </div>
-<FileInput @buttonText='hii' @large={{true}} @hasSelection={{true}} @text='Choose file...' />
+<FileInput
+  @buttonText='hii'
+  @large={{true}}
+  @hasSelection={{true}}
+  @text='Choose file...'
+/>
 
 <InputGroup>
   <Button>
@@ -399,7 +473,8 @@
 <Overlay
   @className='ee-overlay-scroll-container'
   @isOpen={{this.isOpenOverlay}}
-  class='ee-card ee-elevation-4 docs-overlay-example-transition {{if this.useTallContent 'docs-overlay-example-tall'}}'
+  class='ee-card ee-elevation-4 docs-overlay-example-transition
+    {{if this.useTallContent "docs-overlay-example-tall"}}'
   @autoFocus={{this.autoFocus}}
   @enforceFocus={{this.enforceFocus}}
   @usePortal={{this.usePortal}}
@@ -412,20 +487,23 @@
       I'm an Overlay!
     </h3>
     <p>
-      This is a simple container with some inline styles to position it on the screen. Its CSS transitions are
-      customized for this example only to demonstrate how easily custom transitions can be implemented.
+      This is a simple container with some inline styles to position it on the
+      screen. Its CSS transitions are customized for this example only to
+      demonstrate how easily custom transitions can be implemented.
     </p>
     <p>
-      Click the "Focus button" below to transfer focus to the "Show overlay" trigger button outside of this overlay. If
-      persistent focus is enabled, focus will be constrained to the overlay. Use the
+      Click the "Focus button" below to transfer focus to the "Show overlay"
+      trigger button outside of this overlay. If persistent focus is enabled,
+      focus will be constrained to the overlay. Use the
       <code class='bp3-code'>
         tab
       </code>
       key to move to the next focusable element to illustrate this effect.
     </p>
     <p>
-      Click the "Make me scroll" button below to make this overlay's content really tall, which will make the overlay's
-      container (but not the page) scrollable
+      Click the "Make me scroll" button below to make this overlay's content
+      really tall, which will make the overlay's container (but not the page)
+      scrollable
     </p>
     <br />
     <div class='bp3-dialog-footer-actions'>
@@ -462,28 +540,36 @@
   <div class='ee-dialog-body'>
     <p>
       <strong>
-        Data integration is the seminal problem of the digital age. For over ten years, we’ve helped the world’s premier
-        organizations rise to the challenge.
+        Data integration is the seminal problem of the digital age. For over ten
+        years, we’ve helped the world’s premier organizations rise to the
+        challenge.
       </strong>
     </p>
     <p>
-      Palantir Foundry radically reimagines the way enterprises interact with data by amplifying and extending the power
-      of data integration. With Foundry, anyone can source, fuse, and transform data into any shape they desire.
-      Business analysts become data engineers — and leaders in their organization’s data revolution.
+      Palantir Foundry radically reimagines the way enterprises interact with
+      data by amplifying and extending the power of data integration. With
+      Foundry, anyone can source, fuse, and transform data into any shape they
+      desire. Business analysts become data engineers — and leaders in their
+      organization’s data revolution.
     </p>
     <p>
-      Foundry’s back end includes a suite of best-in-class data integration capabilities: data provenance, git-style
-      versioning semantics, granular access controls, branching, transformation authoring, and more. But these powers
-      are not limited to the back-end IT shop.
+      Foundry’s back end includes a suite of best-in-class data integration
+      capabilities: data provenance, git-style versioning semantics, granular
+      access controls, branching, transformation authoring, and more. But these
+      powers are not limited to the back-end IT shop.
     </p>
     <p>
-      In Foundry, tables, applications, reports, presentations, and spreadsheets operate as data integrations in their
-      own right. Access controls, transformation logic, and data quality flow from original data source to intermediate
-      analysis to presentation in real time. Every end product created in Foundry becomes a new data source that other
-      users can build upon. And the enterprise data foundation goes where the business drives it.
+      In Foundry, tables, applications, reports, presentations, and spreadsheets
+      operate as data integrations in their own right. Access controls,
+      transformation logic, and data quality flow from original data source to
+      intermediate analysis to presentation in real time. Every end product
+      created in Foundry becomes a new data source that other users can build
+      upon. And the enterprise data foundation goes where the business drives
+      it.
     </p>
     <p>
-      Start the revolution. Unleash the power of data integration with Palantir Foundry.
+      Start the revolution. Unleash the power of data integration with Palantir
+      Foundry.
     </p>
   </div>
   <div class='ee-dialog-footer'>

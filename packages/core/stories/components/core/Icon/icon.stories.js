@@ -14,7 +14,8 @@ export default {
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -38,7 +39,8 @@ export default {
       control: 'text',
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger</b>.',
       table: {
         type: {
           summary: 'string',
@@ -111,10 +113,7 @@ const Template = (args) => ({
       @icon={{this.icon}}
       @iconSize={{this.iconSize}}
       @intent={{this.intent}}
-			style={{this.style}}
-			@intent={{this.intent}}
-			@iconSize={{this.iconSize}}
-			@title={{this.title}}
+			style={{this.style}} @title={{this.title}}
 			@color={{this.color}}
       />`,
   context: args,

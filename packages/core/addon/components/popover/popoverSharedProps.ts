@@ -1,4 +1,7 @@
-import { Boundary as PopperBoundary, Modifiers as PopperModifiers } from 'popper.js';
+import {
+  Boundary as PopperBoundary,
+  Modifiers as PopperModifiers,
+} from 'popper.js';
 
 import { Position } from '../../_private/common/position';
 
@@ -15,7 +18,8 @@ export const PopoverPosition = {
   AUTO_END: 'auto-end' as const,
   AUTO_START: 'auto-start' as const,
 };
-export type PopoverPosition = typeof PopoverPosition[keyof typeof PopoverPosition];
+export type PopoverPosition =
+  (typeof PopoverPosition)[keyof typeof PopoverPosition];
 
 /** Props shared between `Popover` and `Tooltip`. */
 export interface IPopoverSharedProps extends IOverlayableProps, IProps {

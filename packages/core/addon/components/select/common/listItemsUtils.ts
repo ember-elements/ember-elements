@@ -26,7 +26,10 @@ export function isCreateNewItem<T>(
     return false;
   }
 
-  return (item as ICreateNewItem).__blueprintCreateNewItemBrand === 'blueprint-create-new-item';
+  return (
+    (item as ICreateNewItem).__blueprintCreateNewItemBrand ===
+    'blueprint-create-new-item'
+  );
 }
 
 /**
@@ -34,6 +37,8 @@ export function isCreateNewItem<T>(
  * the `activeItem` is `undefined` or a "Create Item" option, in which case
  * `null` will be returned instead.
  */
-export function getActiveItem<T>(activeItem: T | ICreateNewItem | null | undefined): T | null {
+export function getActiveItem<T>(
+  activeItem: T | ICreateNewItem | null | undefined
+): T | null {
   return activeItem == null || isCreateNewItem(activeItem) ? null : activeItem;
 }

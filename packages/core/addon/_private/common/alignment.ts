@@ -4,4 +4,4 @@ export const Alignment = {
   LEFT: 'left' as const,
   RIGHT: 'right' as const,
 };
-export type Alignment = typeof Alignment[keyof typeof Alignment];
+export type Alignment = (typeof Alignment)[keyof typeof Alignment];

@@ -6,13 +6,15 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A card is a bounded unit of UI content with a solid background color.',
+        component:
+          'A card is a bounded unit of UI content with a solid background color.',
       },
     },
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -57,7 +59,8 @@ export default {
       control: 'boolean',
     },
     onClick: {
-      description: 'Callback invoked when the card is clicked. Recommended when <b>interactive</b> is <b>true</b>.',
+      description:
+        'Callback invoked when the card is clicked. Recommended when <b>interactive</b> is <b>true</b>.',
       table: {
         type: {
           summary: 'action',
@@ -77,8 +80,8 @@ const Template = (args) => ({
 			@className={{this.className}}
 			@onClick={{this.onClick}}
     >
-      <h5 class="bp3-heading">
-          <a href="#">Analytical applications</a>
+      <h5 class='bp3-heading'>
+          <a href='#'>Analytical applications</a>
       </h5>
       <p>
         User interfaces that enable people to interact smoothly with data,

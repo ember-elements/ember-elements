@@ -317,7 +317,11 @@ export default class TagInput extends Component<TagInputArgs> {
       // defer this check using rAF so activeElement will have updated.
       // @ts-ignore
       if (currentTarget && !currentTarget.contains(document.activeElement)) {
-        if (this.getAddOnBlur() && this.inputValue !== undefined && this.inputValue.length > 0) {
+        if (
+          this.getAddOnBlur() &&
+          this.inputValue !== undefined &&
+          this.inputValue.length > 0
+        ) {
           this.addTags(this.inputValue, 'blur');
         }
 
@@ -370,7 +374,9 @@ export default class TagInput extends Component<TagInputArgs> {
       // cursor at beginning of input allows interaction with tags.
       // use selectionEnd to verify cursor position and no text selection.
       if (event.which === Keys.ARROW_LEFT || event.which === Keys.ARROW_RIGHT) {
-        const nextActiveIndex = this.getNextActiveIndex(event.which === Keys.ARROW_RIGHT ? 1 : -1);
+        const nextActiveIndex = this.getNextActiveIndex(
+          event.which === Keys.ARROW_RIGHT ? 1 : -1
+        );
 
         if (nextActiveIndex !== activeIndex) {
           event.stopPropagation();
@@ -384,7 +390,10 @@ export default class TagInput extends Component<TagInputArgs> {
 
     if (this.args.onKeyDown) {
       // @ts-ignore
-      this.args.onKeyDown(event, activeIndexToEmit === NONE ? undefined : activeIndexToEmit);
+      this.args.onKeyDown(
+        event,
+        activeIndexToEmit === NONE ? undefined : activeIndexToEmit
+      );
     }
   }
 
@@ -392,7 +401,10 @@ export default class TagInput extends Component<TagInputArgs> {
   handleInputKeyUp(event: HTMLInputElement) {
     if (this.args.onKeyUp) {
       // @ts-ignore
-      this.args.onKeyUp(event, this.activeIndex === NONE ? undefined : this.activeIndex);
+      this.args.onKeyUp(
+        event,
+        this.activeIndex === NONE ? undefined : this.activeIndex
+      );
     }
   }
 
@@ -474,7 +486,9 @@ export default class TagInput extends Component<TagInputArgs> {
 
     if (activeIndex === NONE) {
       // nothing active & moving left: select last defined value. otherwise select nothing.
-      return direction < 0 ? this.findNextIndex(this.getValuesData.length, -1) : NONE;
+      return direction < 0
+        ? this.findNextIndex(this.getValuesData.length, -1)
+        : NONE;
     } else {
       // otherwise, move in direction and clamp to bounds.
       // note that upper bound allows going one beyond last item
@@ -504,7 +518,9 @@ export default class TagInput extends Component<TagInputArgs> {
 
     // NOTE: split() typings define two overrides for string and RegExp.
     // this does not play well with our union prop type, so we'll just declare it as a valid type.
-    return (separator === false ? [inputValue] : inputValue.split(separator as string))
+    return (
+      separator === false ? [inputValue] : inputValue.split(separator as string)
+    )
       .map((val) => val.trim())
       .filter((val) => val.length > 0);
   }

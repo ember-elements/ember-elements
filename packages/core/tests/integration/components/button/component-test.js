@@ -29,7 +29,9 @@ module('Integration | Component | button', function (hooks) {
     await render(hbs`<Button @icon='style' />`);
     assert.dom('svg').exists();
     assert.dom('span').hasClass(ICON);
+
     let element = await this.element.querySelectorAll('span');
+
     assert.ok(element[0].classList.contains(ICON));
   });
 
@@ -47,7 +49,9 @@ module('Integration | Component | button', function (hooks) {
     // Handle any actions with this.set('myAction', function(val) { ... });
     this.set('text', 'foo');
     this.set('children', 'foo');
-    await render(hbs`<Button >{{this.text}}<em>{{this.children}}</em></Button>`);
+    await render(
+      hbs`<Button >{{this.text}}<em>{{this.children}}</em></Button>`
+    );
     assert.dom('span').exists();
     assert.dom('em').exists();
   });
@@ -76,7 +80,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onClick={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onClick={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     await click('button');
     assert.dom('span').exists();
@@ -92,7 +96,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onClick={{action  this.buttonAction 'Hello' 'World'  }} @disabled={{true}}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onClick={{action  this.buttonAction 'Hello' 'World'  }} @disabled={{true}}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     // await click('button'); // TODO error Error: Can not `click` disabled
     assert.dom('span').exists();
@@ -108,7 +112,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onKeyDown={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onKeyDown={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     await click('button');
     await triggerKeyEvent('button', 'keydown', 'Enter');
@@ -126,7 +130,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onKeyDown={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onKeyDown={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     await triggerKeyEvent('button', 'keydown', 'Space');
 
@@ -143,7 +147,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onKeyUp={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onKeyUp={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     await triggerKeyEvent('button', 'keyup', 'Enter');
 
@@ -160,7 +164,7 @@ module('Integration | Component | button', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Button @onKeyUp={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id="result">{{ this.result }}</div>`
+      hbs`<Button @onKeyUp={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Button>  <div id='result'>{{ this.result }}</div>`
     );
     await triggerKeyEvent('button', 'keyup', 'Space');
 

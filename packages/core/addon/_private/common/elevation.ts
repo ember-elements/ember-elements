@@ -5,4 +5,4 @@ export const Elevation = {
   THREE: 3 as const,
   FOUR: 4 as const,
 };
-export type Elevation = typeof Elevation[keyof typeof Elevation];
+export type Elevation = (typeof Elevation)[keyof typeof Elevation];

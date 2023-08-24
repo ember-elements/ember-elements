@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -79,7 +80,8 @@ export default {
           summary: 'HTMLSelectElement',
         },
       },
-      description: 'Change event handler. Use **event.target.value** to access the new value.',
+      description:
+        'Change event handler. Use **event.target.value** to access the new value.',
     },
     options: {
       table: {

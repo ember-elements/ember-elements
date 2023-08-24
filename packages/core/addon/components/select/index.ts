@@ -82,7 +82,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
     this.queryState = this.findQuery() || '';
 
     if (this.args.createNewItemFromQuery) {
-      this.createNewItemState = this.args.createNewItemFromQuery(this.queryState);
+      this.createNewItemState = this.args.createNewItemFromQuery(
+        this.queryState
+      );
     }
 
     this.filteredItemsState = this.getFilteredItems(this.queryState);
@@ -97,7 +99,10 @@ export default class Select<T> extends Component<SelectArgs<T>> {
   }
 
   get getActiveItem() {
-    if (this.findActiveItem() !== undefined && this.findActiveItem() !== this.activeItemState) {
+    if (
+      this.findActiveItem() !== undefined &&
+      this.findActiveItem() !== this.activeItemState
+    ) {
       this.shouldCheckActiveItemInViewport = true;
       this.activeItemState = this.findActiveItem();
     }
@@ -110,7 +115,11 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
     if (query !== null && this.queryState !== query) {
       // new query
-      this.setQuery(query, this.findResetOnQuery(), this.findCreateNewItemFromQuery());
+      this.setQuery(
+        query,
+        this.findResetOnQuery(),
+        this.findCreateNewItemFromQuery()
+      );
     }
     // else if (
     //   // same query (or uncontrolled query), but items in the list changed
@@ -261,7 +270,8 @@ export default class Select<T> extends Component<SelectArgs<T>> {
     const activeElement = this.getActiveElement();
 
     if (this.itemsParentRef != null && activeElement != null) {
-      const { offsetTop: activeTop, offsetHeight: activeHeight } = activeElement;
+      const { offsetTop: activeTop, offsetHeight: activeHeight } =
+        activeElement;
       const {
         offsetTop: parentOffsetTop,
         scrollTop: parentScrollTop,
@@ -271,12 +281,14 @@ export default class Select<T> extends Component<SelectArgs<T>> {
       const { paddingTop, paddingBottom } = this.getItemsParentPadding();
 
       // compute the two edges of the active item for comparison, including parent padding
-      const activeBottomEdge = activeTop + activeHeight + paddingBottom - parentOffsetTop;
+      const activeBottomEdge =
+        activeTop + activeHeight + paddingBottom - parentOffsetTop;
       const activeTopEdge = activeTop - paddingTop - parentOffsetTop;
 
       if (activeBottomEdge >= parentScrollTop + parentHeight) {
         // offscreen bottom: align bottom of item with bottom of viewport
-        this.itemsParentRef.scrollTop = activeBottomEdge + activeHeight - parentHeight;
+        this.itemsParentRef.scrollTop =
+          activeBottomEdge + activeHeight - parentHeight;
       } else if (activeTopEdge <= parentScrollTop) {
         // offscreen top: align top of item with top of viewport
         this.itemsParentRef.scrollTop = activeTopEdge - activeHeight;
@@ -286,7 +298,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
   private getItemsParentPadding() {
     // assert ref exists because it was checked before calling
-    const { paddingTop, paddingBottom } = getComputedStyle(this.itemsParentRef!);
+    const { paddingTop, paddingBottom } = getComputedStyle(
+      this.itemsParentRef!
+    );
 
     return {
       paddingBottom: pxToNumber(paddingBottom),
@@ -299,7 +313,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
     if (this.itemsParentRef != null) {
       if (Fun.isCreateNewItem(activeItem)) {
-        return this.itemsParentRef.children.item(this.filteredItemsState.length) as HTMLElement;
+        return this.itemsParentRef.children.item(
+          this.filteredItemsState.length
+        ) as HTMLElement;
       } else {
         const activeIndex = this.getActiveIndex();
 
@@ -326,7 +342,11 @@ export default class Select<T> extends Component<SelectArgs<T>> {
     return items;
   }
 
-  public setQuery(query: string, resetActiveItem = this.findResetOnQuery(), createNewItemFromQuery) {
+  public setQuery(
+    query: string,
+    resetActiveItem = this.findResetOnQuery(),
+    createNewItemFromQuery
+  ) {
     this.shouldCheckActiveItemInViewport = true;
     const hasQueryChanged = query !== this.queryState;
 
@@ -335,7 +355,10 @@ export default class Select<T> extends Component<SelectArgs<T>> {
     }
 
     const filteredItems = this.getFilteredItems(query);
-    const createNewItem = createNewItemFromQuery != null && query !== '' ? createNewItemFromQuery(query) : undefined;
+    const createNewItem =
+      createNewItemFromQuery != null && query !== ''
+        ? createNewItemFromQuery(query)
+        : undefined;
 
     this.createNewItemState = createNewItem;
     this.filteredItemsState = filteredItems;
@@ -346,10 +369,16 @@ export default class Select<T> extends Component<SelectArgs<T>> {
     const shouldUpdateActiveItem =
       resetActiveItem ||
       activeIndex < 0 ||
-      isItemDisabled(Fun.getActiveItem(this.findItemsEqual()), activeIndex, this.findItemDisabled());
+      isItemDisabled(
+        Fun.getActiveItem(this.findItemsEqual()),
+        activeIndex,
+        this.findItemDisabled()
+      );
 
     if (shouldUpdateActiveItem) {
-      this.setActiveItem(getFirstEnabledItem(filteredItems, this.findItemDisabled()));
+      this.setActiveItem(
+        getFirstEnabledItem(filteredItems, this.findItemDisabled())
+      );
     }
 
     this.checkViewPort();
@@ -364,7 +393,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
     // NOTE: this operation is O(n) so it should be avoided in render(). safe for events though.
     for (let i = 0; i < items.length; ++i) {
-      if (FunProps.executeItemsEqual(this.findItemsEqual(), items[i], activeItem)) {
+      if (
+        FunProps.executeItemsEqual(this.findItemsEqual(), items[i], activeItem)
+      ) {
         return i;
       }
     }
@@ -495,10 +526,18 @@ export default class Select<T> extends Component<SelectArgs<T>> {
       query: this.queryState,
       renderItem: this.renderItem,
     };
-    const maybeNoResults = this.isCreateItemRendered() ? null : this.args.noResults;
-    const menuContent = FunRender.renderFilteredItems(listProps, maybeNoResults, this.findInitialContent());
+    const maybeNoResults = this.isCreateItemRendered()
+      ? null
+      : this.args.noResults;
+    const menuContent = FunRender.renderFilteredItems(
+      listProps,
+      maybeNoResults,
+      this.findInitialContent()
+    );
 
-    this.createItemView = this.isCreateItemRendered() ? this.renderCreateItemMenuItem(this.queryState) : null;
+    this.createItemView = this.isCreateItemRendered()
+      ? this.renderCreateItemMenuItem(this.queryState)
+      : null;
 
     if (menuContent == null && this.createItemView == null) {
       return null;
@@ -515,7 +554,11 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
       const matchesPredicate = this.filteredItemsState.indexOf(item) >= 0;
       const modifiers = {
-        active: FunProps.executeItemsEqual(this.findItemsEqual(), Fun.getActiveItem(activeItem), item),
+        active: FunProps.executeItemsEqual(
+          this.findItemsEqual(),
+          Fun.getActiveItem(activeItem),
+          item
+        ),
         disabled: isItemDisabled(item, index, this.findItemDisabled()),
         matchesPredicate,
         item,
@@ -602,7 +645,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
 
     if (keyCode === Keys.ARROW_UP || keyCode === Keys.ARROW_DOWN) {
       event.preventDefault();
-      const nextActiveItem = this.getNextActiveItem(keyCode === Keys.ARROW_UP ? -1 : 1);
+      const nextActiveItem = this.getNextActiveItem(
+        keyCode === Keys.ARROW_UP ? -1 : 1
+      );
 
       if (nextActiveItem != null) {
         this.setActiveItem(nextActiveItem);
@@ -620,7 +665,10 @@ export default class Select<T> extends Component<SelectArgs<T>> {
    * @param direction amount to move in each iteration, typically +/-1
    * @param startIndex item to start iteration
    */
-  private getNextActiveItem(direction: number, startIndex = this.getActiveIndex()): T | ICreateNewItem | null {
+  private getNextActiveItem(
+    direction: number,
+    startIndex = this.getActiveIndex()
+  ): T | ICreateNewItem | null {
     if (this.isCreateItemRendered()) {
       const reachedCreate =
         (startIndex === 0 && direction === -1) ||
@@ -631,7 +679,12 @@ export default class Select<T> extends Component<SelectArgs<T>> {
       }
     }
 
-    return getFirstEnabledItem(this.filteredItemsState, this.findItemDisabled(), direction, startIndex);
+    return getFirstEnabledItem(
+      this.filteredItemsState,
+      this.findItemDisabled(),
+      direction,
+      startIndex
+    );
   }
   private isCreateItemRendered(): boolean {
     return (
@@ -645,14 +698,21 @@ export default class Select<T> extends Component<SelectArgs<T>> {
   }
 
   private canCreateItems(): boolean {
-    return this.findCreateNewItemFromQuery() != null && this.args.createNewItemRenderer != null;
+    return (
+      this.findCreateNewItemFromQuery() != null &&
+      this.args.createNewItemRenderer != null
+    );
   }
 
   private wouldCreatedItemMatchSomeExistingItem() {
     // search only the filtered items, not the full items list, because we
     // only need to check items that match the current query.
     return this.filteredItemsState.some((item) =>
-      FunProps.executeItemsEqual(this.findItemsEqual(), item, this.createNewItemState)
+      FunProps.executeItemsEqual(
+        this.findItemsEqual(),
+        item,
+        this.createNewItemState
+      )
     );
   }
 
@@ -676,7 +736,9 @@ export default class Select<T> extends Component<SelectArgs<T>> {
   private handleItemCreate(query: string, evt?: HTMLElement) {
     // we keep a cached createNewItem in state, but might as well recompute
     // the result just to be sure it's perfectly in sync with the query.
-    const item = this.args.createNewItemFromQuery ? this.args.createNewItemFromQuery(query) : null;
+    const item = this.args.createNewItemFromQuery
+      ? this.args.createNewItemFromQuery(query)
+      : null;
 
     if (item != null) {
       if (this.args.onItemSelect) {
@@ -726,7 +788,11 @@ function wrapNumber(value: number, min: number, max: number) {
   return value;
 }
 
-function isItemDisabled<T>(item: T | null, index: number, itemDisabled?: IListItemsProps<T>['itemDisabled']) {
+function isItemDisabled<T>(
+  item: T | null,
+  index: number,
+  itemDisabled?: IListItemsProps<T>['itemDisabled']
+) {
   if (itemDisabled == null || item == null) {
     return false;
   } else if (Utils.isFunction(itemDisabled)) {

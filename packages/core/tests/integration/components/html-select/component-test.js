@@ -12,8 +12,14 @@ module('Integration | Component | html-select', function (hooks) {
 
     await render(hbs`<HtmlSelect @options={{this.options}}/>`);
 
-    assert.equal(this.element.querySelectorAll('option')[0].textContent.trim(), 'a');
-    assert.equal(this.element.querySelectorAll('option')[1].textContent.trim(), 'b');
+    assert.strictEqual(
+      this.element.querySelectorAll('option')[0].textContent.trim(),
+      'a'
+    );
+    assert.strictEqual(
+      this.element.querySelectorAll('option')[1].textContent.trim(),
+      'b'
+    );
   });
   test('<HtmlSelect>:renders options props', async function (assert) {
     this.set('options', [
@@ -24,9 +30,17 @@ module('Integration | Component | html-select', function (hooks) {
     ]);
     await render(hbs`<HtmlSelect @options={{this.options}}/>`);
 
-    assert.equal(this.element.querySelectorAll('option')[0].textContent.trim(), 'a', 'value');
+    assert.strictEqual(
+      this.element.querySelectorAll('option')[0].textContent.trim(),
+      'a',
+      'value'
+    );
     assert.ok(this.element.querySelector('.foo'), 'class Name');
     assert.ok(this.element.querySelectorAll('option')[2].disabled, 'disabled');
-    assert.equal(this.element.querySelectorAll('option')[3].textContent.trim(), 'Dog', 'label');
+    assert.strictEqual(
+      this.element.querySelectorAll('option')[3].textContent.trim(),
+      'Dog',
+      'label'
+    );
   });
 });
