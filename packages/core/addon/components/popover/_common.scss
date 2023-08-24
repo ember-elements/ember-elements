@@ -18,7 +18,8 @@ $dark-popover-background-color: $dark-gray4 !default;
   $arrow-position: -$arrow-square-size * 0.5 + $arrow-offset;
   // because the 45 deg rotation will make out div stick out a little bit further,
   // we have to slide it over by that amount first and then by the set offset value
-  $computed-arrow-offset: ($arrow-diagonal-half-size - $arrow-square-size) * 0.5 + $arrow-offset;
+  $computed-arrow-offset: ($arrow-diagonal-half-size - $arrow-square-size) * 0.5 +
+    $arrow-offset;
 
   .#{$ns}-popover-arrow {
     position: absolute;
@@ -102,14 +103,17 @@ $dark-popover-background-color: $dark-gray4 !default;
   @each $side in (top, right, left, bottom) {
     // giant selector is 1 character too long :(
     // stylelint-disable-next-line max-line-length
-    .#{$ns}-tether-element-attached-#{$side}.#{$ns}-tether-target-attached-#{$side} > & > .#{$ns}-popover-arrow {
+    .#{$ns}-tether-element-attached-#{$side}.#{$ns}-tether-target-attached-#{$side}
+      > &
+      > .#{$ns}-popover-arrow {
       #{$side}: $computed-arrow-offset;
     }
   }
 
   @each $top in (top, middle, bottom) {
     @each $left in (left, center, right) {
-      .#{$ns}-tether-element-attached-#{$top}.#{$ns}-tether-element-attached-#{$left} > & {
+      .#{$ns}-tether-element-attached-#{$top}.#{$ns}-tether-element-attached-#{$left}
+        > & {
         @if ($top == middle) {
           // "middle" is tether's way of saying "top == center"
           transform-origin: center $left;

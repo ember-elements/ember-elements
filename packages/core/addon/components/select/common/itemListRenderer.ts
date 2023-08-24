@@ -47,7 +47,9 @@ export interface IItemListRendererProps<T> {
 }
 
 /** Type alias for a function that renders the list of items. */
-export type ItemListRenderer<T> = (itemListProps: IItemListRendererProps<T>) => string;
+export type ItemListRenderer<T> = (
+  itemListProps: IItemListRendererProps<T>
+) => string;
 
 /**
  * `ItemListRenderer` helper method for rendering each item in `filteredItems`,
@@ -65,7 +67,9 @@ export function renderFilteredItems(
     return initialContent;
   }
 
-  const items = props.filteredItems.map(props.renderItem).filter((item) => item != null);
+  const items = props.filteredItems
+    .map(props.renderItem)
+    .filter((item) => item != null);
 
   return items.length > 0 ? items : noResults;
 }

@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -23,7 +24,8 @@ export default {
     },
 
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -58,7 +60,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the tooltip should be defaultly open while the event is none',
+      description:
+        'Whether the tooltip should be defaultly open while the event is none',
       control: 'boolean',
     },
 
@@ -73,7 +76,8 @@ export default {
     },
 
     event: {
-      description: 'Option to choose the event the tooltip should have (hover,focus,none)',
+      description:
+        'Option to choose the event the tooltip should have (hover,focus,none)',
       table: {
         type: {
           summary: 'string',
@@ -91,7 +95,8 @@ export default {
     },
 
     position: {
-      description: 'visual position of the tooltip with respect to the parent container',
+      description:
+        'visual position of the tooltip with respect to the parent container',
       table: {
         type: {
           summary: 'string',
@@ -175,7 +180,7 @@ ClickEventToolTip.args = { event: 'click' };
 const FocusTemplate = (args) => {
   return {
     template: hbs`
-<span tabindex="0" >click tab key to show tooltip
+<span tabindex='0' >click tab key to show tooltip
     <Tooltip @popoverClassName={{this.class}}
      @intent={{this.intent}}
       @position={{this.position}}

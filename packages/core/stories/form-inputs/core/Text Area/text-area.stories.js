@@ -6,13 +6,15 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Apply `Classes.INPUT` on a `<textarea>`, or use the `TextArea` component.',
+        component:
+          'Apply `Classes.INPUT` on a `<textarea>`, or use the `TextArea` component.',
       },
     },
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -26,7 +28,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the text area should take up the full width of its container.',
+      description:
+        'Whether the text area should take up the full width of its container.',
       control: 'boolean',
     },
     growVertically: {
@@ -35,11 +38,13 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the text area should automatically grow vertically to accomodate content.',
+      description:
+        'Whether the text area should automatically grow vertically to accomodate content.',
       control: 'boolean',
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -86,7 +91,7 @@ const Template = (args) => ({
   @small={{this.small}}
   @intent={{this.intent}}
   @value={{this.value}}
-  @onChange={{action (mut this.value) value="target.value"}}
+  @onChange={{action (mut this.value) value='target.value'}}
 ></TextArea>`,
   context: args,
 });

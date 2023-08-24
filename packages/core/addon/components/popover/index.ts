@@ -4,7 +4,11 @@ import { htmlSafe } from '@ember/template';
 
 import * as Classes from '../../_private/common/classes';
 import { positionToPlacement } from './popoverMigrationUtils';
-import { arrowOffsetModifier, getPosition, getTransformOrigin } from './popperUtils';
+import {
+  arrowOffsetModifier,
+  getPosition,
+  getTransformOrigin,
+} from './popperUtils';
 
 import type { IProps } from '../../_private/common';
 import type { IPopoverSharedProps } from './popoverSharedProps';
@@ -165,7 +169,9 @@ export default class Select extends Component<PopoverArgs> {
 
   private updatePopoverState = (data: PopperJS.Data) => {
     // always set string; let shouldComponentUpdate determine if update is necessary
-    this.transformOrigin = htmlSafe(`transform-origin:${getTransformOrigin(data)}`);
+    this.transformOrigin = htmlSafe(
+      `transform-origin:${getTransformOrigin(data)}`
+    );
 
     return data;
   };
@@ -175,13 +181,19 @@ export default class Select extends Component<PopoverArgs> {
     return !this.minimalData();
   }
 
-  private getarrowModifier = (data: PopperJS.Data, options: PopperJS.ModifierFn) => {
+  private getarrowModifier = (
+    data: PopperJS.Data,
+    options: PopperJS.ModifierFn
+  ) => {
     data = arrowOffsetModifier(data, options);
+
     const arrowCss = data.offsets.arrow || {};
 
     this.arrowProps = htmlSafe(`left:${arrowCss.left}px;top:${arrowCss.top}px`);
 
-    this.arrowAngleStyle = htmlSafe(`transform: rotate(${this.getArrowAngle(data.placement)}deg)`);
+    this.arrowAngleStyle = htmlSafe(
+      `transform: rotate(${this.getArrowAngle(data.placement)}deg)`
+    );
 
     return data;
   };

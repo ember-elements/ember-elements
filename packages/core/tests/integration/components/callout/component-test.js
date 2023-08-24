@@ -7,6 +7,7 @@ import hbs from 'htmlbars-inline-precompile';
 const NS = 'ee';
 const CALLOUT = `${NS}-callout`;
 const PRIMARY = `${NS}-intent-primary`;
+
 module('Integration | Component | callout', function (hooks) {
   setupRenderingTest(hooks);
 

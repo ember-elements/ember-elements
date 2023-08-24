@@ -101,17 +101,19 @@ module('Integration | Component |checkbox', function (hooks) {
 
   test('labelElement with string value to Check Box', async function (assert) {
     await render(hbs`<Checkbox @labelElement='hellow'/>`);
-    assert.equal(this.element.textContent.trim(), 'hellow');
+    assert.strictEqual(this.element.textContent.trim(), 'hellow');
   });
   test('labelElement with htmlElement value to Check Box', async function (assert) {
     await render(hbs`<Checkbox @labelElement='<div>hellow<div>'/>`);
-    assert.equal(this.element.textContent.trim(), 'hellow');
+    assert.strictEqual(this.element.textContent.trim(), 'hellow');
   });
 
   test('first priority for labelElement when compared with label', async function (assert) {
-    await render(hbs`<Checkbox @label='hello' @labelElement='<div>hellow<div>'/>`);
+    await render(
+      hbs`<Checkbox @label='hello' @labelElement='<div>hellow<div>'/>`
+    );
 
-    assert.equal(this.element.textContent.trim(), 'hello');
+    assert.strictEqual(this.element.textContent.trim(), 'hello');
   });
 
   test('large prop set true value to check box  ', async function (assert) {
@@ -141,7 +143,9 @@ module('Integration | Component |checkbox', function (hooks) {
   });
 
   test('defaultIndeterminate first priority when check prop occurred', async function (assert) {
-    await render(hbs`<Checkbox @defaultIndeterminate={{true}} @checked={{true}}/>`);
+    await render(
+      hbs`<Checkbox @defaultIndeterminate={{true}} @checked={{true}}/>`
+    );
 
     assert.false(this.element.querySelector('input').checked);
     assert.true(this.element.querySelector('input').indeterminate);

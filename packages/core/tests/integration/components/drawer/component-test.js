@@ -5,6 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 import * as Classes from '../classes';
+
 const DrawerContents = `
  <div class='${Classes.DRAWER_BODY}' key={1}>
       <p>

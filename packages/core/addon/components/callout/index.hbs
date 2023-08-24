@@ -1,4 +1,12 @@
-<div class={{rw this.CALLOUT this.getClassName this.getIntent this.getIconClassName}} ...attributes>
+<div
+  class={{rw
+    this.CALLOUT
+    this.getClassName
+    this.getIntent
+    this.getIconClassName
+  }}
+  ...attributes
+>
   {{#if this.getIconName}}
     <Icon @icon={{this.getIconName}} @iconSize={{this.SIZE_LARGE}} />
   {{/if}}

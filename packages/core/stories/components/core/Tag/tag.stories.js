@@ -11,7 +11,8 @@ export default {
       },
     },
   },
-  description: 'Storybook helps you build UI components in isolation from your app',
+  description:
+    'Storybook helps you build UI components in isolation from your app',
   argTypes: {
     active: {
       table: {
@@ -26,7 +27,8 @@ export default {
       control: 'boolean',
     },
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -39,7 +41,8 @@ export default {
     },
 
     fill: {
-      description: 'Whether the tag should take up the full width of its container.',
+      description:
+        'Whether the tag should take up the full width of its container.',
       table: {
         type: {
           summary: 'boolean',
@@ -70,7 +73,8 @@ export default {
       },
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -223,7 +227,11 @@ Primary.args = {
   rightIcon: '',
   intent: 'primary',
   value: 'Sample Tag',
-  onRemove: (e, args) => action(console.log(`e : ${e} `, 'args: ', args), alert('onRemove action triggered')),
+  onRemove: (e, args) =>
+    action(
+      console.log(`e : ${e} `, 'args: ', args),
+      alert('onRemove action triggered')
+    ),
 };
 
 export const Success = Template.bind({});

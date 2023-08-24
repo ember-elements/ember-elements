@@ -27,7 +27,8 @@ export default {
     },
 
     autoFocus: {
-      description: 'Whether the overlay should acquire application focus when it first opens.',
+      description:
+        'Whether the overlay should acquire application focus when it first opens.',
       control: 'boolean',
       table: {
         type: {
@@ -40,7 +41,8 @@ export default {
     },
 
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {

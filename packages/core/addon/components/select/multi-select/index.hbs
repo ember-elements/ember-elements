@@ -22,7 +22,11 @@
     {{! inputProps='{inputProps}' }}
   >
     {{#if this.getTagRenderer}}
-      <Button @icon='cross' @minimal={{true}} @onClick={{@handleClearTagInput}} />
+      <Button
+        @icon='cross'
+        @minimal={{true}}
+        @onClick={{@handleClearTagInput}}
+      />
     {{/if}}
   </TagInput>
 </div>
@@ -57,11 +61,20 @@
       {{#if this.getMenuContent.length}}
         {{#each this.getMenuContent as |item index|}}
           {{#if item.modifiers.matchesPredicate}}
-            {{yield true item (action 'handleItemSelectClick' item.modifiers.item) index}}
+            {{yield
+              true
+              item
+              (action 'handleItemSelectClick' item.modifiers.item)
+              index
+            }}
           {{/if}}
         {{/each}}
       {{else if this.createItemView}}
-        {{yield false this.createItemView (action 'handleClick' this.queryState)}}
+        {{yield
+          false
+          this.createItemView
+          (action 'handleClick' this.queryState)
+        }}
       {{else if @noResults}}
         {{{@noResults}}}
       {{/if}}

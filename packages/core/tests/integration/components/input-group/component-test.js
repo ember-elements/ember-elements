@@ -10,7 +10,9 @@ module('Integration | Component | input-group', function (hooks) {
   setupRenderingTest(hooks);
 
   test('supports className, fill, & large', async function (assert) {
-    await render(hbs`<InputGroup @className='foo' @fill={{true}} @large={{true}} />`);
+    await render(
+      hbs`<InputGroup @className='foo' @fill={{true}} @large={{true}} />`
+    );
 
     assert.dom('div').hasClass(Classes.INPUT_GROUP);
     assert.dom('div').hasClass(Classes.FILL);

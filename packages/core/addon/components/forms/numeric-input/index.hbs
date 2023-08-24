@@ -1,10 +1,18 @@
 {{! template-lint-disable no-action}}
 <ControlGroup
-  @className={{rw this.NUMERIC_INPUT this.getNumericILarge this.getNumericIClassName}}
+  @className={{rw
+    this.NUMERIC_INPUT
+    this.getNumericILarge
+    this.getNumericIClassName
+  }}
   @fill={{this.numericIFill}}
 >
   {{#if (eq this.PositionLeft this.getButtonPosition)}}
-    <ButtonGroup @className={{this.FIXED}} key='button-group' @vertical={{true}}>
+    <ButtonGroup
+      @className={{this.FIXED}}
+      key='button-group'
+      @vertical={{true}}
+    >
       <Button
         @disabled={{this.getNumericIDisabled}}
         @icon='chevron-down'
@@ -43,7 +51,11 @@
     {{yield}}
   </InputGroup>
   {{#if (eq this.PositionRight this.getButtonPosition)}}
-    <ButtonGroup @className={{this.FIXED}} key='button-group' @vertical={{true}}>
+    <ButtonGroup
+      @className={{this.FIXED}}
+      key='button-group'
+      @vertical={{true}}
+    >
       <Button
         @disabled={{this.getNumericIDisabled}}
         @icon='chevron-down'

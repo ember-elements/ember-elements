@@ -100,7 +100,9 @@ export default class Spinner extends Component<SpinnerArgs> {
       value = this.props.value;
     }
 
-    return PATH_LENGTH - PATH_LENGTH * (value == null ? 0.25 : clamp(value, 0, 1));
+    return (
+      PATH_LENGTH - PATH_LENGTH * (value == null ? 0.25 : clamp(value, 0, 1))
+    );
   }
   get getNoSpin() {
     let value;
@@ -128,7 +130,10 @@ export default class Spinner extends Component<SpinnerArgs> {
   get viewBox() {
     // keep spinner track width consistent at all sizes (down to about 10px).
     const size = this.getSizeValue() as number;
-    let strokeWidth = Math.min(MIN_STROKE_WIDTH, (STROKE_WIDTH * Spinner.SIZE_LARGE) / size);
+    let strokeWidth = Math.min(
+      MIN_STROKE_WIDTH,
+      (STROKE_WIDTH * Spinner.SIZE_LARGE) / size
+    );
 
     this.strokeWidth = strokeWidth.toFixed(2); // eslint-disable-line
 
@@ -152,7 +157,8 @@ export default class Spinner extends Component<SpinnerArgs> {
 
     if (
       size != undefined &&
-      (className.indexOf(Classes.SMALL) >= 0 || className.indexOf(Classes.LARGE) >= 0)
+      (className.indexOf(Classes.SMALL) >= 0 ||
+        className.indexOf(Classes.LARGE) >= 0)
     ) {
       console.warn(SPINNER_WARN_CLASSES_SIZE);
     }

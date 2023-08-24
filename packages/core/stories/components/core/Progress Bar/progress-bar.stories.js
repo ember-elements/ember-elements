@@ -26,7 +26,8 @@ export default {
       control: 'boolean',
     },
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -38,7 +39,8 @@ export default {
       control: 'text',
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -65,7 +67,8 @@ export default {
           summary: false,
         },
       },
-      description: 'Whether this navbar should be fixed to the top of the viewport (using CSS <b>position: fixed</b>).',
+      description:
+        'Whether this navbar should be fixed to the top of the viewport (using CSS <b>position: fixed</b>).',
       control: 'boolean',
     },
     value: {

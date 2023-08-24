@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     alignIndicator: {
-      description: 'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
+      description:
+        'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
       control: {
         type: 'select',
         options: {
@@ -38,7 +39,8 @@ export default {
       control: 'boolean',
     },
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -52,7 +54,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the control is initially checked (uncontrolled mode).',
+      description:
+        'Whether the control is initially checked (uncontrolled mode).',
       control: 'boolean',
     },
     disabled: {
@@ -74,7 +77,8 @@ export default {
       },
     },
     innerLabel: {
-      description: 'Text to display inside the switch indicator when unchecked.',
+      description:
+        'Text to display inside the switch indicator when unchecked.',
       control: 'string',
       table: {
         type: {
@@ -130,7 +134,7 @@ const Template = (args) => ({
   @inline={{inline}}
   @large={{large}}
   @alignIndicator={{this.alignIndicator}}
-  @labelElement="<u>Cooperative</u>"
+  @labelElement='<u>Cooperative</u>'
   @defaultChecked={{this.defaultChecked}}
   @innerLabel={{this.innerLabel}}
   @innerLabelChecked={{this.innerLabelChecked}}

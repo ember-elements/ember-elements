@@ -10,7 +10,12 @@
     this.getLarge
   }}
 >
-  <input type='radio' disabled={{this.getDisabled}} onchange={{this.handleChange}} ...attributes />
+  <input
+    type='radio'
+    disabled={{this.getDisabled}}
+    onchange={{this.handleChange}}
+    ...attributes
+  />
   <sapn class={{this.CONTROL_INDICATOR}}></sapn>
   {{#if this.getLabel}}
     {{this.getLabel}}

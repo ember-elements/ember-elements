@@ -18,10 +18,16 @@ module('Integration | Component | progress-bar', function (hooks) {
 
   test('does not set width by default', async function (assert) {
     await render(hbs`<ProgressBar></ProgressBar>`);
-    assert.equal(this.element.querySelector(PROGRESS_METER).style.width, '');
+    assert.strictEqual(
+      this.element.querySelector(PROGRESS_METER).style.width,
+      ''
+    );
   });
   test('value sets width percentage', async function (assert) {
     await render(hbs`<ProgressBar @value={{0.35}}></ProgressBar>`);
-    assert.equal(this.element.querySelector(PROGRESS_METER).style.width, '35%');
+    assert.strictEqual(
+      this.element.querySelector(PROGRESS_METER).style.width,
+      '35%'
+    );
   });
 });

@@ -12,7 +12,8 @@ export default {
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       table: {
         type: {
           summary: 'string',
@@ -81,7 +82,7 @@ const Template = (args) => ({
       The component is a simple wrapper around the CSS API
       that provides props for modifiers and optional
       title element. Any additional HTML props will be spread to the rendered
-      <code class="ee-code">&lt;div&gt;</code>
+      <code class='ee-code'>&lt;div&gt;</code>
       element.
     </Callout>`,
   context: args,

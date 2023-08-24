@@ -1,5 +1,5 @@
 /* eslint-disable qunit/no-commented-tests */
-import { click, pauseTest, render, triggerKeyEvent } from '@ember/test-helpers';
+import { click, render, triggerKeyEvent } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
@@ -23,13 +23,14 @@ module('Integration | Component | overlay', function (hooks) {
 
   test('renders contents to specified container correctly', async function (assert) {
     const CLASS_TO_TEST = 'ee-test-content';
+
     this.set('content', `<div class='${CLASS_TO_TEST}'>test</div>`);
     this.set('toggleOverlay', function () {
       this.set('isOpen', true);
     });
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}}><strong class='ee-test-content'> Overlay content! </strong></Overlay>  <button id='buttonToggle' onclick={{action this.toggleOverlay}}></button>`
+      hbs`<Overlay @isOpen={{this.isOpen}}><strong class='ee-test-content'> Overlay content! </strong></Overlay>  <button id='buttonToggle' onclick={{action this.toggleOverlay}} type='button'></button>`
     );
     await click('#buttonToggle');
     assert.dom('.' + CLASS_TO_TEST).exists();
@@ -38,6 +39,7 @@ module('Integration | Component | overlay', function (hooks) {
 
   test('portalClassName appears on Portal', async function (assert) {
     const CLASS_TO_TEST = 'bp-test-content';
+
     this.set('CLASS_TO_TEST', CLASS_TO_TEST);
     this.set('isOpen', true);
 
@@ -51,12 +53,16 @@ module('Integration | Component | overlay', function (hooks) {
   test('renders Portal after first opened', async function (assert) {
     this.set('isOpen', false);
 
-    await render(hbs`<Overlay @isOpen={{this.isOpen}}><span class='exists'> hi </span></Overlay>`);
+    await render(
+      hbs`<Overlay @isOpen={{this.isOpen}}><span class='exists'> hi </span></Overlay>`
+    );
 
     assert.dom('.exists').doesNotExist();
     await this.set('isOpen', true);
 
-    await render(hbs`<Overlay @isOpen={{this.isOpen}}><span class='exists'> hi </span></Overlay>`);
+    await render(
+      hbs`<Overlay @isOpen={{this.isOpen}}><span class='exists'> hi </span></Overlay>`
+    );
     assert.dom('.exists').exists();
     await this.set('isOpen', false);
   });
@@ -77,12 +83,12 @@ module('Integration | Component | overlay', function (hooks) {
       this.set('isOpen', true);
     });
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} ><strong/></Overlay> <button id='buttonToggle' onclick={{action this.toggleOverlay}}></button>`
+      hbs`<Overlay @isOpen={{this.isOpen}} ><strong/></Overlay> <button id='buttonToggle' onclick={{action this.toggleOverlay}} type='button'></button>`
     );
 
-    assert.equal(this.element.querySelectorAll('strong').length, 0);
+    assert.strictEqual(this.element.querySelectorAll('strong').length, 0);
     await click('#buttonToggle');
-    assert.equal(this.element.querySelectorAll('strong').length, 1);
+    assert.strictEqual(this.element.querySelectorAll('strong').length, 1);
     await this.set('isOpen', false);
   });
 
@@ -199,9 +205,11 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @autoFocus={{false}} ><input type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @autoFocus={{false}} ><input type='text' /></Overlay>`
     );
-    assert.ok(document.activeElement.querySelector('.' + Classes.OVERLAY_BACKDROP));
+    assert.ok(
+      document.activeElement.querySelector('.' + Classes.OVERLAY_BACKDROP)
+    );
 
     await this.set('isOpen', false);
   });
@@ -211,7 +219,7 @@ module('Integration | Component | overlay', function (hooks) {
   //   await render(
   //     hbs`<Overlay @isOpen={{this.isOpen}} ><input autoFocus="true" type="text" /></Overlay>`
   //   );
-  //   assert.equal(document.activeElement, this.element.querySelector('input'));
+  //   assert.strictEqual(document.activeElement, this.element.querySelector('input'));
   //   await this.set('isOpen', false);
   // });
 
@@ -231,9 +239,13 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}}><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}}><input tabIndex='0' type='text' /></Overlay>`
     );
-    const hasClass = await document.body.classList.contains(Classes.OVERLAY_OPEN);
+
+    const hasClass = await document.body.classList.contains(
+      Classes.OVERLAY_OPEN
+    );
+
     assert.true(hasClass);
     await this.set('isOpen', false);
   });
@@ -241,7 +253,7 @@ module('Integration | Component | overlay', function (hooks) {
   test('disables document scrolling if hasBackdrop=true and usePortal=true', async function (assert) {
     this.set('isOpen', true);
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}} @usePortal={{true}}  ><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}} @usePortal={{true}}  ><input tabIndex='0' type='text' /></Overlay>`
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
@@ -255,10 +267,11 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}} @usePortal={{false}}  ><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}} @usePortal={{false}}  ><input tabIndex='0' type='text' /></Overlay>`
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
+
     assert.false(hasClass);
     await this.set('isOpen', false);
   });
@@ -268,7 +281,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{false}} @usePortal={{true}}  ><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{false}} @usePortal={{true}}  ><input tabIndex='0' type='text' /></Overlay>`
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
@@ -281,7 +294,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{false}} @usePortal={{false}}  ><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{false}} @usePortal={{false}}  ><input tabIndex='0' type='text' /></Overlay>`
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);
@@ -294,7 +307,7 @@ module('Integration | Component | overlay', function (hooks) {
     this.set('isOpen', true);
 
     await render(
-      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}}   ><input tabIndex="0" type="text" /></Overlay>`
+      hbs`<Overlay @isOpen={{this.isOpen}} @hasBackdrop={{true}}   ><input tabIndex='0' type='text' /></Overlay>`
     );
 
     const hasClass = document.body.classList.contains(Classes.OVERLAY_OPEN);

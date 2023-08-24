@@ -72,7 +72,8 @@ $progress-bar-gradient: linear-gradient(
   }
 
   &:not(.#{$ns}-no-animation):not(.#{$ns}-no-stripes) .#{$ns}-progress-meter {
-    animation: linear-progress-bar-stripes ($pt-transition-duration * 3) linear infinite reverse;
+    animation: linear-progress-bar-stripes ($pt-transition-duration * 3) linear
+      infinite reverse;
   }
 
   &.#{$ns}-no-stripes .#{$ns}-progress-meter {

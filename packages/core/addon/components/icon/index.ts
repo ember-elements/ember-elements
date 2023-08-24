@@ -155,8 +155,12 @@ export default class Icon extends Component<IconArgs> {
   }
 
   //Returns `null` if name is unknown or paths values
-  private renderSvgPaths(pathsSize: number, iconName: IconName): Array<string> | null {
-    const svgPathsRecord = pathsSize === Icon.SIZE_STANDARD ? IconSvgPaths16 : IconSvgPaths20;
+  private renderSvgPaths(
+    pathsSize: number,
+    iconName: IconName
+  ): Array<string> | null {
+    const svgPathsRecord =
+      pathsSize === Icon.SIZE_STANDARD ? IconSvgPaths16 : IconSvgPaths20;
     const pathStrings = svgPathsRecord[iconName];
 
     if (pathStrings == null) {

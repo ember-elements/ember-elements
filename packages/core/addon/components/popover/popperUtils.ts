@@ -90,7 +90,8 @@ export const arrowOffsetModifier: PopperJS.ModifierFn = (data) => {
     // the "up & back" directions require negative popper offsets
     data.offsets.popper[offsetSide] -= arrowOffsetSize + ARROW_SPACING;
     // can only use left/top on arrow so gotta get clever with 100% + X
-    data.offsets.arrow[offsetSide] = data.offsets.popper[len] - arrowSize + arrowOffsetSize;
+    data.offsets.arrow[offsetSide] =
+      data.offsets.popper[len] - arrowSize + arrowOffsetSize;
   } else {
     data.offsets.popper[offsetSide] += arrowOffsetSize + ARROW_SPACING;
     data.offsets.arrow[offsetSide] = -arrowOffsetSize;

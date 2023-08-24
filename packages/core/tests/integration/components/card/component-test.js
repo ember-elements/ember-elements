@@ -17,7 +17,9 @@ module('Integration | Component | card', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Card @elevation={{3}} @className='foo' @interactive={{true}}/>`);
+    await render(
+      hbs`<Card @elevation={{3}} @className='foo' @interactive={{true}}/>`
+    );
     assert.dom('div').hasClass(CARD);
     assert.dom('div').hasClass('foo');
     assert.dom('div').hasClass(ELEVATION_3);
@@ -36,7 +38,7 @@ module('Integration | Component | card', function (hooks) {
       this.set('result', a + ' ' + b);
     });
     await render(
-      hbs`<Card @onClick={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Card>  <div id="result">{{ this.result }}</div>`
+      hbs`<Card @onClick={{action  this.buttonAction 'Hello' 'World'  }}>{{this.text}}</Card>  <div id='result'>{{ this.result }}</div>`
     );
     await click('div');
     assert.dom('#result').hasText('Hello World');

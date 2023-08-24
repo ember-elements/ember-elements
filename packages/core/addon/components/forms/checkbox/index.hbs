@@ -15,8 +15,16 @@
     disabled={{this.getDisabled}}
     onchange={{this.handleChange}}
     ...attributes
-    {{did-insert this.updateIndeterminate this.ICheckboxState this.indeterminateValue}}
-    {{did-update this.updateIndeterminate this.ICheckboxState this.indeterminateValue}}
+    {{did-insert
+      this.updateIndeterminate
+      this.ICheckboxState
+      this.indeterminateValue
+    }}
+    {{did-update
+      this.updateIndeterminate
+      this.ICheckboxState
+      this.indeterminateValue
+    }}
   />
   <sapn class={{this.CONTROL_INDICATOR}}></sapn>
   {{#if this.getLabel}}

@@ -1,2 +1,2 @@
 declare module 'dummy/config/environment';
-declare module 'dummy/app'
+declare module 'dummy/app';

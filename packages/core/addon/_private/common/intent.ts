@@ -8,4 +8,4 @@ export const Intent = {
   WARNING: 'warning' as const,
   DANGER: 'danger' as const,
 };
-export type Intent = typeof Intent[keyof typeof Intent];
+export type Intent = (typeof Intent)[keyof typeof Intent];

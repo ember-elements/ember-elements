@@ -6,13 +6,15 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'The Input Group defines a field for entering a text such as password',
+        component:
+          'The Input Group defines a field for entering a text such as password',
       },
     },
   },
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -59,7 +61,8 @@ export default {
     },
 
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -90,7 +93,8 @@ export default {
 
     growVertically: {
       control: 'boolean',
-      description: 'Whether this element should grow vertically as the text fills the current area',
+      description:
+        'Whether this element should grow vertically as the text fills the current area',
       table: {
         type: {
           summary: 'boolean',

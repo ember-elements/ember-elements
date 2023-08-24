@@ -1,4 +1,11 @@
-import { blur, click, fillIn, focus, render, triggerKeyEvent } from '@ember/test-helpers';
+import {
+  blur,
+  click,
+  fillIn,
+  focus,
+  render,
+  triggerKeyEvent,
+} from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
@@ -12,13 +19,19 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('inputProps', { autofocus: true });
     this.set('VALUES', ['one', 'two', 'three1']);
     await render(hbs` <TagInput @values={{this.VALUES}} autofocus={{true}} />`);
-    assert.ok(this.element.querySelector('input').autofocus, 'inputProps is rendering');
+    assert.ok(
+      this.element.querySelector('input').autofocus,
+      'inputProps is rendering'
+    );
   });
 
   test('renders a Tag for each value', async function (assert) {
     this.set('values', ['one', 'two', 'three2']);
     await render(hbs` <TagInput @values={{this.values}}  />`);
-    assert.equal(this.element.querySelectorAll('.' + Classes.TAG).length, this.values.length);
+    assert.strictEqual(
+      this.element.querySelectorAll('.' + Classes.TAG).length,
+      this.values.length
+    );
   });
 
   test('values can be valid html element', async function (assert) {
@@ -30,9 +43,12 @@ module('Integration | Component | tag-input', function (hooks) {
     ]);
     await render(hbs` <TagInput @values={{this.values}} />`);
     // undefined does not produce a tag
-    assert.equal(this.element.querySelectorAll('.' + Classes.TAG).length, 3);
-    assert.equal(this.element.querySelectorAll('strong').length, 1);
-    assert.equal(this.element.querySelectorAll('em').length, 1);
+    assert.strictEqual(
+      this.element.querySelectorAll('.' + Classes.TAG).length,
+      3
+    );
+    assert.strictEqual(this.element.querySelectorAll('strong').length, 1);
+    assert.strictEqual(this.element.querySelectorAll('em').length, 1);
   });
 
   test('leftIcon renders an icon as first child', async function (assert) {
@@ -47,16 +63,22 @@ module('Integration | Component | tag-input', function (hooks) {
     await render(
       hbs` <TagInput @values={{this.values}} @leftIcon='add'  ><Button @className='plus-button'>{{this.plus}}</Button></TagInput>`
     );
-    assert.equal(this.element.querySelector('button.plus-button').textContent.trim(), 'plus');
+    assert.strictEqual(
+      this.element.querySelector('button.plus-button').textContent.trim(),
+      'plus'
+    );
   });
 
   test('tagProps object is applied to each Tag', async function (assert) {
     this.set('values', ['one', 'two', 'three5']);
     this.set('tagProps', { intent: 'primary' });
-    await render(hbs` <TagInput @values={{this.values}} @tagProps={{this.tagProps}}  ></TagInput>`);
-    assert.equal(
-      this.element.querySelectorAll('.' + Classes.TAG + '.' + Classes.intentClass('primary'))
-        .length,
+    await render(
+      hbs` <TagInput @values={{this.values}} @tagProps={{this.tagProps}}  ></TagInput>`
+    );
+    assert.strictEqual(
+      this.element.querySelectorAll(
+        '.' + Classes.TAG + '.' + Classes.intentClass('primary')
+      ).length,
       3
     );
   });
@@ -74,9 +96,12 @@ module('Integration | Component | tag-input', function (hooks) {
       hbs` <TagInput @values={{this.values}} @onRemove={{action this.onRemove}} @onChange={{action this.onChange}}/>`
     );
     await click('button');
-    assert.equal(this.element.querySelectorAll('.' + Classes.TAG).length, 2);
-    assert.equal(this.value, 'one');
-    assert.equal(this.index, 0);
+    assert.strictEqual(
+      this.element.querySelectorAll('.' + Classes.TAG).length,
+      2
+    );
+    assert.strictEqual(this.value, 'one');
+    assert.strictEqual(this.index, 0);
   });
 
   test('onAdd:- is not invoked on enter when input is empty', async function (assert) {
@@ -84,7 +109,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onAdd', function () {
       this.set('isCalledOnAdd', true);
     });
-    await render(hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 'Enter'); //01
     assert.notOk(this.isCalledOnAdd);
   });
@@ -94,7 +121,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onAdd', function () {
       this.set('isCalledOnAdd', true);
     });
-    await render(hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onAdd={{action this.onAdd}} />`
+    );
     await fillIn('input', 'hello world');
     await triggerKeyEvent('input', 'keydown', 'Enter'); //02
     assert.ok(this.isCalledOnAdd);
@@ -110,7 +139,7 @@ module('Integration | Component | tag-input', function (hooks) {
     );
     await focus('input');
     await blur('input');
-    assert.equal(this.onAddValue, undefined);
+    assert.strictEqual(this.onAddValue, undefined);
   });
 
   test('onAdd:- is not invoked on blur when addOnBlur=false', async function (assert) {
@@ -124,7 +153,7 @@ module('Integration | Component | tag-input', function (hooks) {
     await fillIn('input', 'hello world');
     await focus('input');
     await blur('input');
-    assert.equal(this.onAddValue, undefined);
+    assert.strictEqual(this.onAddValue, undefined);
   });
   // when addOnPaste = true
 
@@ -133,7 +162,7 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('values', ['one', 'two', 'three11']);
     await render(hbs` <TagInput @values={{this.values}} />`);
     await triggerKeyEvent('input', 'keydown', 8); //last item
-    assert.equal(
+    assert.strictEqual(
       this.element
         .querySelector('.' + Classes.ACTIVE)
         .querySelector('span')
@@ -147,25 +176,30 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onRemove', function (value) {
       this.set('value', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onRemove={{action this.onRemove	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onRemove={{action this.onRemove	}}/>`
+    );
     await triggerKeyEvent('input', 'keydown', 37); //first
     await triggerKeyEvent('input', 'keydown', 37); // second
     await triggerKeyEvent('input', 'keydown', 8); // key 8 to remove 3rd
-    assert.equal(
+    assert.strictEqual(
       this.element
         .querySelector('.' + Classes.ACTIVE)
         .querySelector('span')
         .textContent.trim(),
       'one'
     );
-    assert.equal(this.value, 'two');
+    assert.strictEqual(this.value, 'two');
   });
 
   test('onRemove:- pressing right arrow key in initial state does nothing', async function (assert) {
     this.set('values', ['one', 'two', 'three13']);
     await render(hbs` <TagInput @values={{this.values}} />`);
     await triggerKeyEvent('input', 'keydown', 39);
-    assert.equal(this.element.querySelector('.' + Classes.ACTIVE), undefined);
+    assert.strictEqual(
+      this.element.querySelector('.' + Classes.ACTIVE),
+      undefined
+    );
   });
 
   //onChange event
@@ -174,7 +208,9 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onChange', function (value) {
       this.set('isEntered', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await triggerKeyEvent('input', 'keydown', 'Enter'); //03
     assert.notOk(this.isEntered);
   });
@@ -184,10 +220,12 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onChange', function (value) {
       this.set('values', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await fillIn('input', 'hii');
     await triggerKeyEvent('input', 'keydown', 'Enter'); //04
-    assert.equal(this.values.length, 4);
+    assert.strictEqual(this.values.length, 4);
   });
 
   test('onChange:- can add multiple tags at once with separator', async function (assert) {
@@ -195,10 +233,12 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onChange', function (value) {
       this.set('values', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await fillIn('input', 'hii,hii,hii');
     await triggerKeyEvent('input', 'keydown', 'Enter'); //05
-    assert.equal(this.values.length, 6);
+    assert.strictEqual(this.values.length, 6);
   });
 
   test('onChange:- is invoked when a tag is removed by clicking', async function (assert) {
@@ -206,9 +246,11 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onChange', function (value) {
       this.set('values', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await click('button');
-    assert.equal(this.values.length, 2);
+    assert.strictEqual(this.values.length, 2);
   });
 
   test('onChange:- is invoked when a tag is removed by backspace', async function (assert) {
@@ -217,10 +259,12 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('values', value);
       this.set('isInvokde', true);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await triggerKeyEvent('input', 'keydown', 8); // key 8 press1
     await triggerKeyEvent('input', 'keydown', 8); // press 2
-    assert.equal(this.values.length, 2);
+    assert.strictEqual(this.values.length, 2);
     assert.ok(this.isInvokde);
   });
 
@@ -229,8 +273,8 @@ module('Integration | Component | tag-input', function (hooks) {
     await render(hbs` <TagInput @values={{this.values}} />`);
     await fillIn('input', 'hii');
     await triggerKeyEvent('input', 'keydown', 'Enter'); //06
-    assert.equal(this.values.length, 3);
-    assert.equal(this.element.querySelector('input').value.trim(), 'hii');
+    assert.strictEqual(this.values.length, 3);
+    assert.strictEqual(this.element.querySelector('input').value.trim(), 'hii');
   });
 
   test('onChange:- does not clear the input if onChange returns set value', async function (assert) {
@@ -238,11 +282,16 @@ module('Integration | Component | tag-input', function (hooks) {
     this.set('onChange', function (value) {
       this.set('values', value);
     });
-    await render(hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`);
+    await render(
+      hbs` <TagInput @values={{this.values}}  @onChange={{action this.onChange	}}/>`
+    );
     await fillIn('input', 'hii');
     await triggerKeyEvent('input', 'keydown', 'Enter'); //07
-    assert.equal(this.values.length, 4); //get  4 values
-    assert.equal(this.element.querySelector('input').textContent.trim(), '');
+    assert.strictEqual(this.values.length, 4); //get  4 values
+    assert.strictEqual(
+      this.element.querySelector('input').textContent.trim(),
+      ''
+    );
   });
 
   test('onKeyDown:-emits the active tag index on key down', async function (assert) {
@@ -250,10 +299,12 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('index', index);
     });
     this.set('values', ['one', 'two', 'three21']);
-    await render(hbs` <TagInput @values={{this.values}} @onKeyDown={{action this.onKeyDown}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onKeyDown={{action this.onKeyDown}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8); //keydown 8 -01
     await triggerKeyEvent('input', 'keydown', 8); //keydown 8 -02
-    assert.equal(this.index, 2);
+    assert.strictEqual(this.index, 2);
   });
 
   test('onKeyDown:-emits undefined on key down if active index == NONE (-1)', async function (assert) {
@@ -261,9 +312,11 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('index', index);
     });
     this.set('values', ['one', 'two', 'three22']);
-    await render(hbs` <TagInput @values={{this.values}} @onKeyDown={{action this.onKeyDown}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onKeyDown={{action this.onKeyDown}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8); //keydown 8 -03
-    assert.equal(this.index, undefined);
+    assert.strictEqual(this.index, undefined);
   });
 
   test('onKeyUp:-emits the active tag index on key down', async function (assert) {
@@ -271,10 +324,12 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('index', index);
     });
     this.set('values', ['one', 'two', 'three23']);
-    await render(hbs` <TagInput @values={{this.values}} @onKeyUp={{action this.onKeyUp}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onKeyUp={{action this.onKeyUp}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8);
     await triggerKeyEvent('input', 'keyup', 8);
-    assert.equal(this.index, 2);
+    assert.strictEqual(this.index, 2);
   });
 
   test('onKeyUp:-emits undefined on key down if active index == NONE (-1)', async function (assert) {
@@ -282,19 +337,29 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('index', index);
     });
     this.set('values', ['one', 'two', 'three24']);
-    await render(hbs` <TagInput @values={{this.values}} @onKeyUp={{action this.onKeyUp}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onKeyUp={{action this.onKeyUp}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8); //keydown 8 -04
-    assert.equal(this.index, undefined);
+    assert.strictEqual(this.index, undefined);
   });
 
   // placeholder
 
   test('placeholder:-appears only when values is empty', async function (assert) {
     this.set('values', []);
-    await render(hbs` <TagInput @placeholder='hold the door' @values={{this.values}}  />`);
-    assert.equal(this.element.querySelector('input').placeholder.trim(), 'hold the door');
+    await render(
+      hbs` <TagInput @placeholder='hold the door' @values={{this.values}}  />`
+    );
+    assert.strictEqual(
+      this.element.querySelector('input').placeholder.trim(),
+      'hold the door'
+    );
     this.set('values', [undefined]);
-    assert.equal(this.element.querySelector('input').placeholder.trim(), 'hold the door');
+    assert.strictEqual(
+      this.element.querySelector('input').placeholder.trim(),
+      'hold the door'
+    );
   });
 
   test('when input is not empty:-pressing backspace does not remove item', async function (assert) {
@@ -302,9 +367,11 @@ module('Integration | Component | tag-input', function (hooks) {
       this.set('values', values);
     });
     this.set('values', ['one', 'two', 'three25']);
-    await render(hbs` <TagInput @values={{this.values}} @onChange={{action this.onChange}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onChange={{action this.onChange}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8); //keydown 8 -05
-    assert.equal(this.values.length, 3);
+    assert.strictEqual(this.values.length, 3);
   });
 
   test('when input is not empty:-arrow key interactions ignore falsy values', async function (assert) {
@@ -320,11 +387,16 @@ module('Integration | Component | tag-input', function (hooks) {
       'Casper',
       undefined,
     ]);
-    await render(hbs` <TagInput @values={{this.values}} @onChange={{action this.onChange}} />`);
+    await render(
+      hbs` <TagInput @values={{this.values}} @onChange={{action this.onChange}} />`
+    );
     await triggerKeyEvent('input', 'keydown', 8); // keydown 8 0-05
     await triggerKeyEvent('input', 'keydown', 8); // keydown 8 0-05
-    assert.equal(this.element.querySelectorAll('.' + Classes.TAG).length, 2); //02
-    assert.equal(this.values.length, 6); //02
+    assert.strictEqual(
+      this.element.querySelectorAll('.' + Classes.TAG).length,
+      2
+    ); //02
+    assert.strictEqual(this.values.length, 6); //02
   });
 
   //disabled
@@ -364,7 +436,7 @@ module('Integration | Component | tag-input', function (hooks) {
       hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}}/>`
     );
     await fillIn('input', 'hii');
-    assert.equal(this.isEnteredValue, 'hii');
+    assert.strictEqual(this.isEnteredValue, 'hii');
   });
 
   // inputValue
@@ -376,7 +448,10 @@ module('Integration | Component | tag-input', function (hooks) {
     await render(
       hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}} @inputValue='new value' />`
     );
-    assert.equal(this.element.querySelector('input').value.trim(), 'new value');
+    assert.strictEqual(
+      this.element.querySelector('input').value.trim(),
+      'new value'
+    );
   });
 
   test('inputValue:- Updating inputValue updates input element', async function (assert) {
@@ -388,9 +463,12 @@ module('Integration | Component | tag-input', function (hooks) {
     await render(
       hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}} @inputValue={{this.inputValue}} />`
     );
-    assert.equal(this.element.querySelector('input').value.trim(), 'new value'); //02
+    assert.strictEqual(
+      this.element.querySelector('input').value.trim(),
+      'new value'
+    ); //02
     await fillIn('input', 'ab');
-    assert.equal(this.element.querySelector('input').value.trim(), 'ab');
+    assert.strictEqual(this.element.querySelector('input').value.trim(), 'ab');
   });
 
   test('inputValue:- has a default empty string value', async function (assert) {
@@ -402,6 +480,6 @@ module('Integration | Component | tag-input', function (hooks) {
     await render(
       hbs` <TagInput @values={{this.values}}  @onInputChange={{action this.onInputChange	}} />`
     );
-    assert.equal(this.element.querySelector('input').value.trim(), '');
+    assert.strictEqual(this.element.querySelector('input').value.trim(), '');
   });
 });

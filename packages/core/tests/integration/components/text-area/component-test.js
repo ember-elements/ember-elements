@@ -9,7 +9,9 @@ module('Integration | Component | text-area', function (hooks) {
   setupRenderingTest(hooks);
 
   test('supports className, fill, & large & small', async function (assert) {
-    await render(hbs`<TextArea @className='foo' @fill={{true}} @large={{true}} @small={{true}} />`);
+    await render(
+      hbs`<TextArea @className='foo' @fill={{true}} @large={{true}} @small={{true}} />`
+    );
 
     assert.dom('textarea').hasClass(Classes.INPUT);
     assert.dom('textarea').hasClass(Classes.FILL);
@@ -21,14 +23,21 @@ module('Integration | Component | text-area', function (hooks) {
   test('can resize automatically', async function (assert) {
     this.set('text', 'hii');
 
-    await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`);
+    await render(
+      hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`
+    );
+
     const height = await this.element.querySelector('textarea').style.height;
+
     this.set(
       'text',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
     );
 
-    assert.notEqual(height, this.element.querySelector('textarea').style.height);
+    assert.notEqual(
+      height,
+      this.element.querySelector('textarea').style.height
+    );
   });
 
   test('doesnt clobber user-supplied styles', async function (assert) {
@@ -47,7 +56,9 @@ module('Integration | Component | text-area', function (hooks) {
       .dom('textarea')
       .hasAttribute(
         'style',
-        `margin-top: 10px; height: ${this.element.querySelector('textarea').style.height};`
+        `margin-top: 10px; height: ${
+          this.element.querySelector('textarea').style.height
+        };`
       );
   });
 
@@ -64,13 +75,21 @@ module('Integration | Component | text-area', function (hooks) {
         Fusce at felis mattis, tincidunt erat non, varius erat.`
     );
 
-    await render(hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`);
-    const scrollHeightInPixels = await this.element.querySelector('textarea').scrollHeight;
+    await render(
+      hbs`<TextArea @growVertically={{true}} @value={{this.text}} />`
+    );
+
+    const scrollHeightInPixels =
+      await this.element.querySelector('textarea').scrollHeight;
+
     this.set(
       'text',
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean finibus eget enim non accumsan'
     );
 
-    assert.equal(scrollHeightInPixels + 'px', this.element.querySelector('textarea').style.height);
+    assert.strictEqual(
+      scrollHeightInPixels + 'px',
+      this.element.querySelector('textarea').style.height
+    );
   });
 });

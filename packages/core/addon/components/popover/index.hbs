@@ -21,12 +21,21 @@
       @placement={{this.getPlacement}}
       @isScheduleUpdate={{@isScheduleUpdate}}
     >
-      <div class={{rw this.POPOVER this.getPopoverClassName}} style={{this.transformOrigin}}>
+      <div
+        class={{rw this.POPOVER this.getPopoverClassName}}
+        style={{this.transformOrigin}}
+      >
         {{#if this.getIsArrowEnabled}}
           <div class={{this.POPOVER_ARROW}} style={{this.arrowProps}} x-arrow>
             <svg viewBox='0 0 30 30' style={{this.arrowAngleStyle}}>
-              <path class='{{this.POPOVER_ARROW}}-border' d={{this.SVG_SHADOW_PATH}}></path>
-              <path class='{{this.POPOVER_ARROW}}-fill' d={{this.SVG_ARROW_PATH}}></path>
+              <path
+                class='{{this.POPOVER_ARROW}}-border'
+                d={{this.SVG_SHADOW_PATH}}
+              ></path>
+              <path
+                class='{{this.POPOVER_ARROW}}-fill'
+                d={{this.SVG_ARROW_PATH}}
+              ></path>
             </svg>
           </div>
         {{/if}}

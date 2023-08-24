@@ -29,7 +29,11 @@
         {{did-update this.refHandlersInputUpdate this.queryState}}
       >
         {{#if this.queryState.length}}
-          <Button @icon='cross' @minimal={{true}} @onClick={{action 'onClickResetQuery'}} />
+          <Button
+            @icon='cross'
+            @minimal={{true}}
+            @onClick={{action 'onClickResetQuery'}}
+          />
         {{/if}}
       </InputGroup>
     {{/if}}
@@ -40,11 +44,19 @@
       {{#if this.getMenuContent.length}}
         {{#each this.getMenuContent as |item|}}
           {{#if item.modifiers.matchesPredicate}}
-            {{yield true item (action 'handleItemSelectClick' item.modifiers.item)}}
+            {{yield
+              true
+              item
+              (action 'handleItemSelectClick' item.modifiers.item)
+            }}
           {{/if}}
         {{/each}}
       {{else if this.createItemView}}
-        {{yield false this.createItemView (action 'handleClick' this.queryState)}}
+        {{yield
+          false
+          this.createItemView
+          (action 'handleClick' this.queryState)
+        }}
       {{else if @noResults}}
         {{{@noResults}}}
       {{/if}}

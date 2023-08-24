@@ -21,21 +21,30 @@ module('Integration | Component | collapse', function (hooks) {
     await render(hbs`
      <Collapse @isOpen={{false}}>{{this.text}}</Collapse>
     `);
-    assert.equal(this.element.querySelector('.' + Classes.COLLAPSE).style.height, '');
+    assert.strictEqual(
+      this.element.querySelector('.' + Classes.COLLAPSE).style.height,
+      ''
+    );
   });
   skip('is open', async function (assert) {
     this.set('text', 'template block text');
     await render(hbs`
      <Collapse @isOpen={{true}}>{{this.text}}</Collapse>
     `);
-    assert.equal(this.element.querySelector('.' + Classes.COLLAPSE).style.height, 'auto');
+    assert.strictEqual(
+      this.element.querySelector('.' + Classes.COLLAPSE).style.height,
+      'auto'
+    );
   });
   skip('is opening', async function (assert) {
     this.set('text', 'template block text');
     await render(hbs`
      <Collapse @isOpen={{true}}>{{this.text}}</Collapse>
     `);
-    assert.equal(this.element.querySelector('.' + Classes.COLLAPSE).style.height, 'auto');
+    assert.strictEqual(
+      this.element.querySelector('.' + Classes.COLLAPSE).style.height,
+      'auto'
+    );
   });
   test('unmounts children by default', async function (assert) {
     await render(hbs`

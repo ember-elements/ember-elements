@@ -13,7 +13,8 @@ export default {
   },
   argTypes: {
     alignIndicator: {
-      description: 'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
+      description:
+        'Alignment of the indicator within container. The options are **left**, **center**, **right**.',
       control: {
         type: 'select',
         options: {
@@ -29,7 +30,8 @@ export default {
       },
     },
     intent: {
-      description: 'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
+      description:
+        'Visual intent color to apply to element. Options are <b>primary,success,warning,danger,none</b>.',
       table: {
         type: {
           summary: 'string',
@@ -57,7 +59,8 @@ export default {
       control: 'boolean',
     },
     class: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -71,7 +74,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the control is initially checked (uncontrolled mode).',
+      description:
+        'Whether the control is initially checked (uncontrolled mode).',
       control: 'boolean',
     },
     disabled: {
@@ -144,14 +148,14 @@ export default {
 
 const Template = (args) => ({
   template: hbs`<RadioGroup
-  @label="Determine lunch"
-  @name="group"
+  @label='Determine lunch'
+  @name='group'
   @inline={{this.inline}}
   @selectedValue={{this.value}}
   @onChange={{this.handleRadioChange}}
 >
   <Radio
-    @value="one"
+    @value='one'
     @large={{this.large}}
     @disabled={{this.disabled}}
   @inline={{this.inline}}
@@ -160,7 +164,7 @@ const Template = (args) => ({
   Soup
    </Radio>
   <Radio
-    @value="two"
+    @value='two'
     @large={{this.large}}
     @disabled={{this.disabled}}
     @alignIndicator={{this.alignIndicator}}
@@ -168,7 +172,7 @@ const Template = (args) => ({
    Salad
    </Radio>
   <Radio
-    @value="three"
+    @value='three'
     @large={{this.large}}
     @disabled={{this.disabled}}
     @alignIndicator={{this.alignIndicator}}

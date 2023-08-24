@@ -31,7 +31,9 @@ module('Integration | Component | tooltip', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<p class='target' ><Tooltip @event='none' @isOpen={{true}}></Tooltip></p>`);
+    await render(
+      hbs`<p class='target' ><Tooltip @event='none' @isOpen={{true}}></Tooltip></p>`
+    );
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });
 
@@ -39,7 +41,9 @@ module('Integration | Component | tooltip', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<p class='target' ><Tooltip @event='click'></Tooltip></p>`);
+    await render(
+      hbs`<p class='target' ><Tooltip @event='click'></Tooltip></p>`
+    );
     await click('.target');
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });
@@ -48,7 +52,9 @@ module('Integration | Component | tooltip', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<p class='target' ><Tooltip @intent='primary'></Tooltip></p>`);
+    await render(
+      hbs`<p class='target' ><Tooltip @intent='primary'></Tooltip></p>`
+    );
     await triggerEvent('.target', 'mouseenter');
     assert.dom(`.${Classes.intentClass('primary')}`).exists();
   });
@@ -57,7 +63,9 @@ module('Integration | Component | tooltip', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<p id='target' ><Tooltip @targetId='target'></Tooltip></p>`);
+    await render(
+      hbs`<p id='target' ><Tooltip @targetId='target'></Tooltip></p>`
+    );
     await triggerEvent('#target', 'mouseenter');
     assert.dom(`.${Classes.TOOLTIP}`).exists();
   });

@@ -7,11 +7,11 @@ module.exports = {
       enableTypeScriptTransform: true,
     },
     nodeAssets: {
-     'popper.js': {
-      srcDir: 'dist/umd',
-      import: ['popper.js'],
-      vendor: ['popper.js.map']
-    }
-    }
-  }
+      'popper.js': {
+        srcDir: 'dist/umd',
+        import: ['popper.js'],
+        vendor: ['popper.js.map'],
+      },
+    },
+  },
 };

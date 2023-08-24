@@ -12,7 +12,8 @@ export default {
 
   argTypes: {
     className: {
-      description: 'A space-delimited list of class names to pass along to a child element.',
+      description:
+        'A space-delimited list of class names to pass along to a child element.',
       control: 'text',
       table: {
         type: {
@@ -41,24 +42,24 @@ export default {
 const Template = (args) => ({
   template: hbs`
 			<ButtonGroup minimal={{true}} @vertical={{this.vertical}}>
-			  <Button @intent="secondary"> add </Button>
+			  <Button @intent='secondary'> add </Button>
 
-				<Button @intent="secondary"> delete </Button>
+				<Button @intent='secondary'> delete </Button>
 			<Divider
       @tagName={{this.tagName}}
       @className={{this.className}}
       />
 
-			<Button @intent="secondary"> Save </Button>
-			<Button @intent="secondary"> Cancel </Button>
+			<Button @intent='secondary'> Save </Button>
+			<Button @intent='secondary'> Cancel </Button>
 
 				<Divider
       @tagName={{this.tagName}}
       @className={{this.className}}
       />
 
-			<Button @icon="add" @intent="secondary" />
-			<Button @icon="minus" @intent="secondary" />
+			<Button @icon='add' @intent='secondary' />
+			<Button @icon='minus' @intent='secondary' />
 
 			</ButtonGroup>`,
   context: args,

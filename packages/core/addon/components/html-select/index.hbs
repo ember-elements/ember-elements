@@ -1,12 +1,34 @@
-<div class={{rw this.HTML_SELECT this.getClassName this.getDisabled this.getFill this.getLarge this.getMinimal}}>
-  <select disabled={{if this.getDisabled true false}} multiple={{false}} onchange={{this.handleChange}} ...attributes>
+<div
+  class={{rw
+    this.HTML_SELECT
+    this.getClassName
+    this.getDisabled
+    this.getFill
+    this.getLarge
+    this.getMinimal
+  }}
+>
+  <select
+    disabled={{if this.getDisabled true false}}
+    multiple={{false}}
+    onchange={{this.handleChange}}
+    ...attributes
+  >
     {{#each this.getOptions as |optionItem|}}
       <option
         class={{optionItem.className}}
         disabled={{optionItem.disabled}}
         selected={{optionItem.selected}}
-        key={{if optionItem.value optionItem.value (if optionItem.label optionItem.label optionItem)}}
-        value={{if optionItem.value optionItem.value (if optionItem.label optionItem.label optionItem)}}
+        key={{if
+          optionItem.value
+          optionItem.value
+          (if optionItem.label optionItem.label optionItem)
+        }}
+        value={{if
+          optionItem.value
+          optionItem.value
+          (if optionItem.label optionItem.label optionItem)
+        }}
       >
         {{#if optionItem.label}}
           {{optionItem.label}}

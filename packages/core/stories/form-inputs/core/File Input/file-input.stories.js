@@ -20,7 +20,8 @@ export default {
           summary: 'boolean',
         },
       },
-      description: 'Whether the file input should take up the full width of its container.',
+      description:
+        'Whether the file input should take up the full width of its container.',
       control: 'boolean',
     },
     hasSelection: {

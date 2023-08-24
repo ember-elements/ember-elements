@@ -28,8 +28,15 @@
   {{/if}}
 
   {{#if this.isRemovable}}
-    <button type='button' className={{this.TAG_REMOVE}} {{on 'click' this.onRemoveClick}}>
-      <Icon @icon='small-cross' @iconSize={{if this.getLarge this.SIZE_LARGE this.SIZE_STANDARD}} />
+    <button
+      type='button'
+      className={{this.TAG_REMOVE}}
+      {{on 'click' this.onRemoveClick}}
+    >
+      <Icon
+        @icon='small-cross'
+        @iconSize={{if this.getLarge this.SIZE_LARGE this.SIZE_STANDARD}}
+      />
     </button>
   {{/if}}
 </span>

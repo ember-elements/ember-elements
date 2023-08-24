@@ -291,12 +291,18 @@ export default Component.extend({
       };
 
       if (onCreate) {
-        assert('onCreate of ember-popover must be a function', typeof onCreate === 'function');
+        assert(
+          'onCreate of ember-popover must be a function',
+          typeof onCreate === 'function'
+        );
         options.onCreate = onCreate;
       }
 
       if (onUpdate) {
-        assert('onUpdate of ember-popover must be a function', typeof onUpdate === 'function');
+        assert(
+          'onUpdate of ember-popover must be a function',
+          typeof onUpdate === 'function'
+        );
         options.onUpdate = onUpdate;
       }
 
@@ -340,31 +346,36 @@ export default Component.extend({
     return this._publicAPI;
   },
 
-  _popperContainer: computed('_initialParentNode', '_renderInPlace', 'popperContainer', function () {
-    const renderInPlace = this._renderInPlace;
-    const maybeContainer = this.popperContainer;
+  _popperContainer: computed(
+    '_initialParentNode',
+    '_renderInPlace',
+    'popperContainer',
+    function () {
+      const renderInPlace = this._renderInPlace;
+      const maybeContainer = this.popperContainer;
 
-    let popperContainer;
+      let popperContainer;
 
-    if (renderInPlace) {
-      popperContainer = this._initialParentNode;
-    } else if (maybeContainer instanceof Element) {
-      popperContainer = maybeContainer;
-    } else if (typeof maybeContainer === 'string') {
-      const selector = maybeContainer;
-      const possibleContainers = self.document.querySelectorAll(selector);
+      if (renderInPlace) {
+        popperContainer = this._initialParentNode;
+      } else if (maybeContainer instanceof Element) {
+        popperContainer = maybeContainer;
+      } else if (typeof maybeContainer === 'string') {
+        const selector = maybeContainer;
+        const possibleContainers = self.document.querySelectorAll(selector);
 
-      assert(
-        `ember-popover with popperContainer selector "${selector}" found ` +
-          `${possibleContainers.length} possible containers when there should be exactly 1`,
-        possibleContainers.length === 1
-      );
+        assert(
+          `ember-popover with popperContainer selector "${selector}" found ` +
+            `${possibleContainers.length} possible containers when there should be exactly 1`,
+          possibleContainers.length === 1
+        );
 
-      popperContainer = possibleContainers[0];
+        popperContainer = possibleContainers[0];
+      }
+
+      return popperContainer;
     }
-
-    return popperContainer;
-  }),
+  ),
 
   _renderInPlace: computed('renderInPlace', function () {
     // self.document is undefined in Fastboot, so we have to render in

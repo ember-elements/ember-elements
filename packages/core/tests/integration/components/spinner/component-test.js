@@ -5,6 +5,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 import * as Classes from '../classes';
+
 const SIZE_SMALL = 20;
 const SIZE_LARGE = 100;
 
@@ -33,9 +34,13 @@ module('Integration | Component | spinner', function (hooks) {
 
     const head = await this.element.querySelector(`.${Classes.SPINNER_HEAD}`);
     // NOTE: strokeDasharray is string "X X", but parseInt terminates at non-numeric character
-    const pathLength = parseInt(head.getAttribute('stroke-dasharray').toString(), 10);
+    const pathLength = parseInt(
+      head.getAttribute('stroke-dasharray').toString(),
+      10
+    );
     const offset = head.getAttribute('stroke-dashoffset');
-    assert.equal(offset, pathLength * (1 - 0.25));
+
+    assert.strictEqual(offset, pathLength * (1 - 0.25));
   });
 
   test('value sets stroke-dashoffset', async function (assert) {
@@ -44,19 +49,29 @@ module('Integration | Component | spinner', function (hooks) {
 
     const head = await this.element.querySelector(`.${Classes.SPINNER_HEAD}`);
     // NOTE: strokeDasharray is string "X X", but parseInt terminates at non-numeric character
-    const pathLength = parseInt(head.getAttribute('stroke-dasharray').toString(), 10);
+    const pathLength = parseInt(
+      head.getAttribute('stroke-dasharray').toString(),
+      10
+    );
     const offset = head.getAttribute('stroke-dashoffset');
-    assert.equal(offset, pathLength * (1 - 0.35));
+
+    assert.strictEqual(offset, pathLength * (1 - 0.35));
   });
 
   test('viewBox adjusts based on size', async function (assert) {
     this.set('size', SIZE_SMALL);
     await render(hbs`<Spinner @size={{this.size}}></Spinner>`);
-    const firstVewBox = await this.element.querySelector('svg').getAttribute('viewBox');
+
+    const firstVewBox = await this.element
+      .querySelector('svg')
+      .getAttribute('viewBox');
 
     this.set('size', SIZE_LARGE);
-    const secondVewBox = await this.element.querySelector('svg').getAttribute('viewBox');
 
-    assert.notEqual(firstVewBox, secondVewBox);
+    const secondVewBox = await this.element
+      .querySelector('svg')
+      .getAttribute('viewBox');
+
+    assert.notstrictEqual(firstVewBox, secondVewBox);
   });
 });

@@ -1,6 +1,7 @@
 'use strict';
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+
 module.exports = function (defaults) {
   const options = {};
 
@@ -10,21 +11,20 @@ module.exports = function (defaults) {
 
   const app = new EmberAddon(defaults, {
     // Add options here
-     sassOptions: {
-    includePaths: ['addon/components']
+    sassOptions: {
+      includePaths: ['addon/components'],
     },
     'ember-cli-babel': {
       enableTypeScriptTransform: true,
     },
-      nodeAssets: {
-        'popper.js': {
-          srcDir: 'dist/umd',
-          import: ['popper.js'],
-          vendor: ['popper.js.map']
-        }
+    nodeAssets: {
+      'popper.js': {
+        srcDir: 'dist/umd',
+        import: ['popper.js'],
+        vendor: ['popper.js.map'],
+      },
     },
-      ...options,
-
+    ...options,
   });
 
   /*
@@ -36,11 +36,12 @@ module.exports = function (defaults) {
   // return app.toTree()
 
   const { maybeEmbroider } = require('@embroider/test-setup');
+
   return maybeEmbroider(app, {
     skipBabel: [
       {
         package: 'qunit',
       },
-    ]
+    ],
   });
 };
