@@ -2,6 +2,7 @@
 </span>
 {{#if this.renderInPlace}}
   <div class={{rw this.PORTAL this.getPortalClassName}}>
+    {{! template-lint-disable}}
     <div
       class={{rw
         this.OVERLAY
@@ -11,8 +12,6 @@
       }}
       {{did-insert this.getRefElement}}
       onKeyDown={{action 'handleKeyDown'}}
-      {{!
-			template-lint-disable}}
     >
       {{#if (and this.getLazyProp this.getHasEverOpened)}}
         {{#if this.getIsShowContentAnimation}}
@@ -40,6 +39,7 @@
           </div>
         {{/if}}
       {{else}}
+        {{! template-lint-disable no-invalid-interactive}}
         {{#if this.getIsOpenProp}}
           {{yield}}
         {{/if}}
@@ -61,7 +61,7 @@
         {{did-insert this.getRefElement}}
         onKeyDown={{action 'handleKeyDown'}}
         {{!
-				template-lint-disable}}
+        template-lint-disable}}
       >
         {{#if (and this.getLazyProp this.getHasEverOpened)}}
           {{#if this.getIsShowContentAnimation}}
@@ -70,18 +70,30 @@
                 class={{rw this.OVERLAY_BACKDROP this.getBackdropClassName}}
                 tabIndex={{if this.getCanOutsideClickCloseProp 0 null}}
                 onMouseDown={{action 'handleBackdropMouseDown'}}
-                {{css-transition this.getTransitionName}}
-                {{! template-lint-disable}}
+                {{css-transition
+                  enterClass=(concat this.getTransitionName '-enter')
+                  enterActiveClass=(concat this.getTransitionName '-enter')
+                  enterToClass=(concat this.getTransitionName '-enter-active')
+                  leaveClass=(concat this.getTransitionName '-leave')
+                  leaveActiveClass=(concat this.getTransitionName '-leave')
+                  leaveToClass=(concat this.getTransitionName '-leave-active')
+                }}
               >
               </div>
             {{/if}}
-
             <div
               class={{rw this.OVERLAY_CONTENT}}
               ...attributes
               {{did-update this.didUpdateElement this.getIsOpenProp}}
               {{will-destroy this.willDestroyElementComp}}
-              {{css-transition this.getTransitionName}}
+              {{css-transition
+                enterClass=(concat this.getTransitionName '-enter')
+                enterActiveClass=(concat this.getTransitionName '-enter')
+                enterToClass=(concat this.getTransitionName '-enter-active')
+                leaveClass=(concat this.getTransitionName '-leave')
+                leaveActiveClass=(concat this.getTransitionName '-leave')
+                leaveToClass=(concat this.getTransitionName '-leave-active')
+              }}
             >
               {{#if (has-block)}}
                 {{yield}}
