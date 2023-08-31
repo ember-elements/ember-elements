@@ -2,26 +2,11 @@
 <meta name="dummy/config/environment" content="%7B%22modulePrefix%22%3A%22dummy%22%2C%22environment%22%3A%22test%22%2C%22rootURL%22%3A%22%2F%22%2C%22locationType%22%3A%22none%22%2C%22EmberENV%22%3A%7B%22EXTEND_PROTOTYPES%22%3Afalse%2C%22FEATURES%22%3A%7B%7D%2C%22_APPLICATION_TEMPLATE_WRAPPER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue%2C%22_JQUERY_INTEGRATION%22%3Afalse%2C%22_TEMPLATE_ONLY_GLIMMER_COMPONENTS%22%3Atrue%7D%2C%22APP%22%3A%7B%22LOG_ACTIVE_GENERATION%22%3Afalse%2C%22LOG_VIEW_LOOKUPS%22%3Afalse%2C%22rootElement%22%3A%22%23ember-testing%22%2C%22autoboot%22%3Afalse%7D%7D" />
 <link rel="stylesheet" href="./assets/vendor.css" />
 <link rel="stylesheet" href="./assets/dummy.css" />
-<script>
-            (function() {
-              var srcUrl = null;
-              var host = location.hostname || 'localhost';
-              var defaultPort = location.protocol === 'https:' ? 443 : 80;
-              var port = 4200;
-              var path = '';
-              var prefixURL = '';
-              var src = srcUrl || prefixURL + '/_lr/livereload.js?port=' + port + '&host=' + host + path;
-              var script = document.createElement('script');
-              script.type = 'text/javascript';
-              script.src = location.protocol + '//' + host + ':4200' + src;
-              document.getElementsByTagName('head')[0].appendChild(script);
-            }());
-          </script>
 <script src="./testem.js"></script>
 <script src="./assets/vendor.js"></script>
-<script>runningTests = true; Ember.testing=true;</script>
+<script>window.Ember = require("ember").default; runningTests = true; Ember.testing=true;</script>
 <script src="./assets/chunk.vendors-node_modules_ember-css-transitions_dist_modifiers_css-transition_js-node_modules_embe-af879d.a9c03ba9eaf573f9a368.js"></script>
-<script src="./assets/chunk.app.1416e96c3664f3eec01e.js"></script>
+<script src="./assets/chunk.app.6e7e5477d2e6f5972f64.js"></script>
 <script src="./assets/chunk.vendors-node_modules_qunit_qunit_qunit_js.c4a99927caf88d13dee3.js"></script>
-<script src="./assets/chunk.tests.b1066159276239305e87.js"></script>
+<script src="./assets/chunk.tests.b679b2d45a42b17875ee.js"></script>
 <script src="./assets/dummy.js"></script>

@@ -73,8 +73,8 @@
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
-    "@storybook/ember": "^6.3.12",
-    "@storybook/ember-cli-storybook": "^0.4.0",
+    "@storybook/ember": "6.5.14",
+    "@storybook/ember-cli-storybook": "^0.6.1",
     "@tsconfig/ember": "^3.0.0",
     "@types/ember": "^4.0.4",
     "@types/ember-qunit": "^6.1.1",
@@ -155,5 +155,14 @@
   "volta": {
     "node": "18.13.0",
     "yarn": "1.22.10"
+  },
+  "overrides": {
+    "@storybook/ember": {
+      "ember-source": "~5.2.0"
+    }
+  },
+  "storybook": {
+    "ignoreTestFiles": true,
+    "config": {}
   }
 }
