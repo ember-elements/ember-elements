@@ -7,7 +7,10 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  controls: { expanded: true },
   actions: { argTypesRegex: '^on[A-Z].*' },
+  docs: { inlineStories: false, iframeHeight: 'auto' },
+  layout: 'centered',
 };
 
 export const globalTypes = {
