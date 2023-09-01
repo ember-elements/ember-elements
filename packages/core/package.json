@@ -5,7 +5,10 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/pranavliag/ember-elements.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jugaadi/ember-elements.git"
+  },
   "license": "MIT",
   "author": "",
   "directories": {
@@ -35,7 +38,8 @@
     "test:try-one": "ember try:one",
     "test:ember-compatibility": "ember try:each",
     "storybook": "start-storybook -p 6006 -s dist,.storybook/static",
-    "build-storybook": "ember build --environment test && build-storybook -s dist,.storybook/static"
+    "build-storybook": "ember build --environment test && build-storybook -s dist,.storybook/static",
+    "chromatic": "npx chromatic --project-token CHROMATIC_PROJECT_TOKEN"
   },
   "husky": {
     "hooks": {
@@ -106,6 +110,7 @@
     "babel-plugin-ember-modules-api-polyfill": "^3.5.0",
     "babel-plugin-htmlbars-inline-precompile": "^5.3.1",
     "broccoli-asset-rev": "^3.0.0",
+    "chromatic": "^6.24.1",
     "concurrently": "^8.2.0",
     "ember-auto-import": "^2.6.3",
     "ember-cli": "~5.2.0",
@@ -164,5 +169,11 @@
   "storybook": {
     "ignoreTestFiles": true,
     "config": {}
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jugaadi/ember-elements/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/jugaadi/ember-elements#readme",
+  "_id": "@ember-elements/core@0.8.0"
 }
