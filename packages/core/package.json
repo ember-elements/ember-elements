@@ -38,8 +38,8 @@
     "test:try-one": "ember try:one",
     "test:ember-compatibility": "ember try:each",
     "storybook": "start-storybook -p 6006 -s dist,.storybook/static",
-    "build-storybook": "ember build --environment test && build-storybook -s dist,.storybook/static",
-    "chromatic": "npx chromatic --project-token CHROMATIC_PROJECT_TOKEN"
+    "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && ember build --environment test && build-storybook -s dist,.storybook/static",
+    "chromatic": "npx chromatic --project-token"
   },
   "husky": {
     "hooks": {
