@@ -41,7 +41,7 @@ jobs:
         if: steps.storybook_build.outcome == 'success'
         uses: chromaui/action@v1
         with:
-          projectToken: 'chpt_f021bd7bab1ae4b'
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/core/
           exitOnceUploaded: true
 
