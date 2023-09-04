@@ -17,9 +17,9 @@ defaults:
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: Storybook
-    #   url: ${{ steps.chromatic-deploy.outputs.storybookUrl }}
+    environment:
+      name: Storybook
+      url: ${{ steps.chromatic-deploy.outputs.storybookUrl }}
 
     steps:
       - uses: actions/checkout@v1
