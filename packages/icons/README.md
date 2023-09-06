@@ -1,8 +1,11 @@
+![Logo](https://github.com/ember-elements/ember-elements/blob/main/packages/core/tests/dummy/public/ember-elements.png?raw=true)
+
 # @ember-elements/icons
 
-[Short description of the addon.]
+**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com/docs)**.
 
-## Compatibility
+This package contains a collection of files for displaying icons.
+
 
 ## Compatibility
 
@@ -14,12 +17,9 @@
 ## Installation
 
 ```
-ember install icons
+ember install @ember-elements/icons
 ```
 
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 
