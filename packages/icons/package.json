@@ -1,15 +1,28 @@
 {
   "name": "@ember-elements/icons",
-  "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.3",
+  "description": "Fonts, icons, and css files for creating and displaying icons.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "emberJs",
+    "typescript",
+    "icons",
+    "design-system",
+    "ui-components",
+    "ui",
+    "ember",
+    "components"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ember-elements/ember-elements.git",
+    "directory": "packages/icons"
+  },
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
-  "author": "",
+  "author": "Ember Elements",
   "directories": {
     "test": "tests"
   },
@@ -31,7 +44,9 @@
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
-    "clean": "rm -rf dist tmp node_modules coverage*"
+    "clean": "rm -rf dist tmp node_modules coverage*",
+    "prepublishOnly": "rm -f tsconfig.tsbuildinfo",
+    "release": "npm publish --access public --force"
   },
   "husky": {
     "hooks": {
@@ -133,5 +148,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "bugs": {
+    "url": "https://github.com/ember-elements/ember-elements/issues"
   }
 }
