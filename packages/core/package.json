@@ -53,6 +53,8 @@
     ".{ts,js,scss,hbs}": "yarn prettier --check "
   },
   "dependencies": {
+    "@ember-elements/icons": "^0.0.3",
+    "@ember/render-modifiers": "^2.1.0",
     "ember-cli-babel": "^8.0.0",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-cli-node-assets": "^0.2.2",
@@ -65,9 +67,7 @@
     "@babel/core": "^7.15.8",
     "@babel/eslint-parser": "^7.22.10",
     "@babel/plugin-proposal-decorators": "^7.22.10",
-    "@ember-elements/icons": "0.0.0",
     "@ember/optional-features": "^2.0.0",
-    "@ember/render-modifiers": "^2.1.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.2.0",
     "@embroider/test-setup": "^3.0.1",

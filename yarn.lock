@@ -1297,6 +1297,16 @@
   resolved "https://registry.yarnpkg.com/@ember-data/rfc395-data/-/rfc395-data-0.0.4.tgz#ecb86efdf5d7733a76ff14ea651a1b0ed1f8a843"
   integrity sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==
 
+"@ember-elements/icons@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@ember-elements/icons/-/icons-0.0.3.tgz#829f40e7f971029bf3c557403edfd20f5113f547"
+  integrity sha512-GyW40sugvA/AfOU3O9qkKc6VPNV3qDjlprnoC6cTgHySRsQmQzIDleMCcOTIpUHy2Wet8VeviQYo8aaR54g7gA==
+  dependencies:
+    ember-cli-babel "^8.0.0"
+    ember-cli-htmlbars "^6.3.0"
+    ember-cli-sass "^10.0.1"
+    sass "^1.66.1"
+
 "@ember/edition-utils@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ember/edition-utils/-/edition-utils-1.2.0.tgz#a039f542dc14c8e8299c81cd5abba95e2459cfa6"
