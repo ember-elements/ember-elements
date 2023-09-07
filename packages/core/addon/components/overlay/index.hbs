@@ -20,8 +20,16 @@
               class={{rw this.OVERLAY_BACKDROP this.getBackdropClassName}}
               tabIndex={{if this.getCanOutsideClickCloseProp 0 null}}
               onMouseDown={{action 'handleBackdropMouseDown'}}
-              {{css-transition this.getTransitionName}}
-              {{! template-lint-disable}}
+              {{css-transition
+                enterClass=(concat this.getTransitionName '-enter')
+                enterActiveClass=(concat this.getTransitionName '-enter')
+                enterToClass=(concat this.getTransitionName '-enter-active')
+                leaveClass=(concat this.getTransitionName '-leave')
+                leaveActiveClass=(concat this.getTransitionName '-leave')
+                leaveToClass=(concat this.getTransitionName '-leave-active')
+              }}
+              {{!
+              template-lint-disable}}
             >
             </div>
           {{/if}}
@@ -95,13 +103,11 @@
                 leaveToClass=(concat this.getTransitionName '-leave-active')
               }}
             >
-              {{#if (has-block)}}
-                {{yield}}
-              {{/if}}
+              {{yield}}
             </div>
           {{/if}}
         {{else}}
-          {{#if this.getIsOpenProp}}
+          {{#if (and this.getIsOpenProp this.getHasEverOpened)}}
             {{yield}}
           {{/if}}
         {{/if}}
