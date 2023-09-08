@@ -7,10 +7,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ember-elements/ember-elements.git"
+    "url": "git+https://github.com/LowBP/ember-elements.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": "ember-elements",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -74,6 +74,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@nullvoxpopuli/eslint-configs": "^3.2.2",
+    "@semantic-release/git": "^10.0.1",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
@@ -145,6 +146,7 @@
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "sass-lint": "^1.13.1",
+    "semantic-release": "^21.1.1",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2"
   },
@@ -171,9 +173,22 @@
     "config": {}
   },
   "bugs": {
-    "url": "https://github.com/ember-elements/ember-elements/issues"
+    "url": "https://github.com/LowBP/ember-elements/issues"
   },
+  "release": {
+      "branches": [
+        "*"
+      ],
+      "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/changelog",
+        "@semantic-release/npm",
+        "@semantic-release/github",
+        "@semantic-release/git"
+      ]
+    },
   "readme": "ERROR: No README data found!",
-  "homepage": "https://github.com/ember-elements/ember-elements#readme",
+  "homepage": "https://github.com/LowBP/ember-elements#readme",
   "_id": "@ember-elements/core@0.8.0"
 }

@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: volta-cli/action@v1
 
     - name: Install
@@ -45,7 +45,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: volta-cli/action@v1
 
     - name: Install
@@ -106,3 +106,33 @@ jobs:
         working-directory: ${{ env.cwd }}
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
 
+  commits:
+    name: Commit Messages
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: volta-cli/action@v1
+      - uses: wagoid/commitlint-github-action@v4.1.12
+
+  publish:
+    name: Release
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    needs:
+      - tests
+      - lint
+      - try-scenarios
+      - commits
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - uses: volta-cli/action@v1
+      - name: Release
+        run: ./node_modules/.bin/semantic-release
+        working-directory: ${{ env.cwd }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
