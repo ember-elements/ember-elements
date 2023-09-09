@@ -13,9 +13,13 @@
 		"lint:core:fix": "yarn workspace @ember-elements/core lint:fix",
 		"test": "yarn workspace @ember-elements/core test",
 		"lint:icons": "yarn workspace @ember-elements/icons lint",
-		"lint:icons:fix": "yarn workspace @ember-elements/icons lint:fix"
+		"lint:icons:fix": "yarn workspace @ember-elements/icons lint:fix",
+    "prepare": "yarn husky install"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^17.7.1",
+		"@commitlint/config-conventional": "^17.7.0",
+		"husky": "^8.0.3",
 		"lerna": "^7.1.5"
 	},
 	"volta": {

@@ -48,16 +48,6 @@
     "prepublishOnly": "rm -f tsconfig.tsbuildinfo",
     "release": "npm publish --access public --force"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js}": "yarn eslint --fix --quiet --cache",
-    "*.hbs": "yarn ember-template-lint --fix",
-    "*.js": "eslint --cache --fix"
-  },
   "dependencies": {
     "ember-cli-babel": "^8.0.0",
     "ember-cli-htmlbars": "^6.3.0",
@@ -126,8 +116,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-qunit": "^8.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "husky": "4.3.8",
-    "lint-staged": "11.0.0",
     "loader.js": "^4.7.0",
     "prettier": "^3.0.2",
     "qunit": "^2.19.4",

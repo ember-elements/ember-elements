@@ -41,17 +41,6 @@
     "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && ember build --environment test && build-storybook -s dist,.storybook/static",
     "chromatic": "npx chromatic --project-token"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js}": "yarn eslint --fix --quiet --cache",
-    "*.hbs": "yarn ember-template-lint --fix",
-    "*.js": "eslint --cache --fix",
-    ".{ts,js,scss,hbs}": "yarn prettier --check "
-  },
   "dependencies": {
     "@ember-elements/icons": "^0.0.3",
     "@ember/render-modifiers": "^2.1.0",
@@ -138,8 +127,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-qunit": "^8.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "husky": "4.3.8",
-    "lint-staged": "11.0.0",
     "loader.js": "^4.7.0",
     "prettier": "^3.0.2",
     "qunit": "^2.19.4",
