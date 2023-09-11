@@ -15,7 +15,8 @@
     "popper",
     "ember-popper",
     "styles",
-    "theme"
+    "theme",
+    "ui-toolkit"
   ],
   "repository": {
     "type": "git",
