@@ -1,8 +1,10 @@
+![Logo](https://github.com/ember-elements/ember-elements/blob/main/packages/core/tests/dummy/public/ember-elements.png?raw=true)
+
 # @ember-elements/core
 
-[Short description of the addon.]
+**Ember Elements** is a UI toolkit built with Typescript and made available as an **Ember addon**. It is based on the awesome **[Blueprint design system](https://blueprintjs.com)**.
 
-## Compatibility
+This package contains the core set of UI components and emberJs code
 
 ## Compatibility
 
@@ -13,12 +15,8 @@
 ## Installation
 
 ```
-ember install core
+npm install --save @ember-elements/core
 ```
-
-## Usage
-
-[Longer description of how to use the addon in apps.]
 
 ## Contributing
 
