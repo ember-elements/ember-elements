@@ -133,7 +133,6 @@ jobs:
       - tests
       - lint
       - try-scenarios
-      - commitlint
 
     steps:
       - uses: actions/checkout@v3
