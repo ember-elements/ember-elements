@@ -8,6 +8,7 @@ on:
 
 env:
   cwd: packages/core/
+  iwd: packages/icons/
 
 jobs:
   tests:
@@ -114,11 +115,67 @@ jobs:
     name: Commit Messages
     timeout-minutes: 5
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
+    if: github.event == 'pull_request'
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: volta-cli/action@v1
       - uses: wagoid/commitlint-github-action@v4.1.12
+
+
+  publish-core:
+    name: Release Core
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - tests
+      - lint
+      - try-scenarios
+      - commitlint
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 18
+
+      - name: Install
+        working-directory: ${{ env.cwd }}
+        run: yarn install
+
+      - name: Release
+        working-directory: ${{ env.cwd }}
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/core@${version}' --changelogFile 'CHANGELOG.md'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  publish-icons:
+    name: Release Icons
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: 
+       - publish-core
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 18
+
+      - name: Install
+        working-directory: ${{ env.iwd }}
+        run: git pull && yarn install
+
+      - name: Release
+        working-directory: ${{ env.iwd }}
+        run: npx -p @semantic-release/commit-analyzer -p @semantic-release/release-notes-generator -p @semantic-release/npm -p @semantic-release/github -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release --tagFormat '@ember-elements/icons@${version}'  --changelogFile 'CHANGELOG.md'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+
 
