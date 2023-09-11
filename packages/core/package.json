@@ -3,14 +3,26 @@
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "emberJs",
+    "typescript",
+    "icons",
+    "design-system",
+    "ui-components",
+    "ui",
+    "ember",
+    "components",
+    "popper",
+    "ember-popper",
+    "styles",
+    "theme"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ember-elements/ember-elements.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": "ember-elements",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -39,7 +51,8 @@
     "test:ember-compatibility": "ember try:each",
     "storybook": "start-storybook -p 6006 -s dist,.storybook/static",
     "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && ember build --environment test && build-storybook -s dist,.storybook/static",
-    "chromatic": "npx chromatic --project-token"
+    "chromatic": "npx chromatic --project-token",
+    "prepublishOnly": "rm -f tsconfig.tsbuildinfo CHANGELOG.md && rm -rf stories storybook-static .storybook .vscode"
   },
   "dependencies": {
     "@ember-elements/icons": "^0.0.3",
@@ -160,7 +173,46 @@
   "bugs": {
     "url": "https://github.com/ember-elements/ember-elements/issues"
   },
-  "readme": "ERROR: No README data found!",
   "homepage": "https://github.com/ember-elements/ember-elements#readme",
-  "_id": "@ember-elements/core@0.8.0"
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/@ember-elements/core): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

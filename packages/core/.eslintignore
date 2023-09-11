@@ -23,3 +23,5 @@ stories/**
 /storybook-static/**
 .*/
 
+CHANGELOG.md
+
