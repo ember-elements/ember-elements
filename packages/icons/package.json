@@ -1,6 +1,6 @@
 {
   "name": "@ember-elements/icons",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Fonts, icons, and css files for creating and displaying icons.",
   "keywords": [
     "ember-addon",
@@ -141,7 +141,7 @@
   "bugs": {
     "url": "https://github.com/ember-elements/ember-elements/issues"
   },
-   "release": {
+  "release": {
     "branches": [
       "main"
     ],
