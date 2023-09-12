@@ -136,6 +136,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+           persist-credentials: false 
       - uses: volta-cli/action@v1
         with:
           node-version: 18
@@ -161,6 +163,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+           persist-credentials: false 
       - uses: volta-cli/action@v1
         with:
           node-version: 18
