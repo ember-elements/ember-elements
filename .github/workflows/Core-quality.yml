@@ -83,7 +83,7 @@ jobs:
   try-scenarios:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     strategy:
       fail-fast: false
@@ -103,10 +103,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: yarn
       - name: Install Dependencies
         working-directory: ${{ env.cwd }}
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Run Tests
         working-directory: ${{ env.cwd }}
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
