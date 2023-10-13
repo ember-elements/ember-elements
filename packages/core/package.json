@@ -55,7 +55,7 @@
     "prepublishOnly": "rm -f tsconfig.tsbuildinfo CHANGELOG.md && rm -rf stories storybook-static .storybook .vscode"
   },
   "dependencies": {
-    "@ember-elements/icons": "^0.0.3",
+    "@ember-elements/icons": "^1.0.0",
     "@ember/render-modifiers": "^2.1.0",
     "ember-cli-babel": "^8.0.0",
     "ember-cli-htmlbars": "^6.3.0",
